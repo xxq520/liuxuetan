@@ -2,13 +2,52 @@
   "pages":[
     "pages/index/index",
     "pages/pay/pay",
-    "pages/userLogin/userLogin"
+    "pages/userLogin/userLogin",
+    "pages/logs/logs",
+    "pages/my/my"
   ],
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#3b5370",
     "navigationBarTitleText": "留学谈",
     "navigationBarTextStyle":"white"
+  },
+  "tabBar": {
+    "color":"#999999",
+    "selectedColor":"#e9a431",
+    "borderStyle":"black",
+    "backgroundColor":"#f7f7fa",
+    "list": [{
+      "pagePath":"pages/index/index",
+      "text":"首页",
+      "iconPath":"static/image/home.png",
+      "selectedIconPath":"static/image/home_selected.png"
+      },
+      {
+        "pagePath":"pages/pay/pay",
+        "text":"发现",
+        "iconPath":"static/image/faxian.png",
+        "selectedIconPath":"static/image/faxian_selected.png"
+        },
+      {
+        "pagePath":"pages/userLogin/userLogin",
+        "text":"服务",
+        "iconPath":"static/image/fuwu.png",
+        "selectedIconPath":"static/image/fuwu.png"
+      },
+      {
+        "pagePath":"pages/logs/logs",
+        "text":"信息",
+        "iconPath":"static/image/xiaoxi.png",
+        "selectedIconPath":"static/image/xiaoxi_selected.png"
+      },
+      {
+        "pagePath":"pages/my/my",
+        "text":"我的",
+        "iconPath":"static/image/wode.png",
+        "selectedIconPath":"static/image/wode_selected.png"
+      }
+    ]
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"
