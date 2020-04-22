@@ -1,0 +1,2 @@
+<input type="text" value="{{payNum}}" bindinput="changeNum"></input>
+<button bindtap="pay" type="primary">立即支付</button>
