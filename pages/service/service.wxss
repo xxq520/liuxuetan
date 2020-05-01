@@ -7,18 +7,107 @@ page{
 }
 .filter{
   display: flex;
+  margin-left: 30rpx
 }
-.van-dropdown-menu__title{
-  width: 104rpx;
-  height: 35rpx;
-  background: #f5f5f6;
-  border-radius: 20rpx;
-  font-size: 24rpx;
-  line-height: 35rpx
+.shopList{
+  padding: 40rpx 20rpx 44rpx 20rpx;
+  display: flex;
+  border-bottom: 1rpx solid #dddddd;
+  position: relative
+}
+/* 头像 */
+.avart{
+  width: 138rpx;
+  height: 138rpx;
+  border-radius: 10rpx
+}
+/* 内容区域 */
+.shopListCenter{
+  padding: 10rpx 0 0 28rpx
+}
+/* 商家的名称 */
+.shopTitle{
+  font-size: 28rpx;
+  font-weight: bold
+}
+.shopStar{
+  color: #e9a431;
+  display: flex;
+  align-items: center;
+  margin: 4rpx 0 4rpx 0;
+}
+.Star{
+  margin-top: -5rpx;
+}
+.Star text{
+  font-size: 22rpx;
+  font-weight: bold;
+  padding-right: 10rpx
+}
+.Star image{
+  width: 22rpx;
+  height: 22rpx;
+  margin-right: 6rpx
+}
+.line{
+  height: 22rpx;
+  width: 1rpx;
+  background: #8c8c8c ;
+  margin: 0 14rpx;
 
 }
+.comment{
+  font-size: 21rpx;
+  color: #a9a9a9;
+}
+.shopType{
+
+}
+.right{
+  height: 26rpx;
+  width: 16rpx;
+  position: absolute;
+  top: 52rpx;
+  right: 20rpx;
+}
+.shopType text{
+  font-size: 18rpx;
+  padding: 8rpx 16rpx;
+  background: #f5f5f6;
+  color: #999999;
+  margin-right: 20rpx;
+  border-radius: 5rpx
+}
+
+
+.van-dropdown-menu__title{
+  width: 116rpx;
+  height: 40rpx;
+  background: #f5f5f6;
+  border-radius: 20rpx;
+  font-size: 22rpx;
+  line-height: 40rpx
+}
+.van-dropdown-menu__item {
+display: -webkit-flex;
+display: flex;
+-webkit-flex: 1;
+flex: 1;
+-webkit-align-items: top !important;
+align-items: top !important;
+-webkit-justify-content: center;
+justify-content: center;
+min-width: 0;
+}
+.van-dropdown-menu{
+  height: 61rpx !important;
+}
+
 .van-dropdown-menu__title::after{
-  right: 0
+  right: 15rpx !important;
+}
+.van-dropdown-item--down{
+  top:256rpx !important;
 }
 .top_search{
     height: 96rpx;
@@ -70,7 +159,7 @@ page{
 }
 .hot_search{
   display: flex;
-  padding: 30rpx 20rpx;
+  padding: 30rpx 20rpx 0 20rpx;
   
 }
 .search { 

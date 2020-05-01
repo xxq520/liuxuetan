@@ -31,4 +31,97 @@
         </van-dropdown-menu>
         </view>
     </view>
+    <!-- 每位商家展示 -->
+    <view class="shopList">
+      <image mode="aspectFill" class="avart" src="/static/image/avart.png"></image>
+      <view class="shopListCenter">
+        <view class="shopTitle">Swapnil P.</view>
+        <view class="shopStar">
+          <view class="Star">
+            <text>评分</text>
+            <image src="/static/image/star_select.png"></image>
+            <image src="/static/image/star_select.png"></image>
+            <image src="/static/image/star_select.png"></image>
+            <image src="/static/image/star.png"></image>
+            <image src="/static/image/star.png"></image>
+          </view>
+          <view class="line"></view>
+          <view class="comment">1950条评论</view>
+        </view>
+        <view class="shopType">
+          <text>英国大学申请</text>
+          <text>语言培训</text>
+        </view>
+      </view>
+      <image class="right"  src="/static/image/right.png"></image>
+    </view>
+    <view class="shopList">
+      <image mode="aspectFill" class="avart" src="/static/image/avart.png"></image>
+      <view class="shopListCenter">
+        <view class="shopTitle">Swapnil P.</view>
+        <view class="shopStar">
+          <view class="Star">
+            <text>评分</text>
+            <image src="/static/image/star_select.png"></image>
+            <image src="/static/image/star_select.png"></image>
+            <image src="/static/image/star_select.png"></image>
+            <image src="/static/image/star.png"></image>
+            <image src="/static/image/star.png"></image>
+          </view>
+          <view class="line"></view>
+          <view class="comment">1950条评论</view>
+        </view>
+        <view class="shopType">
+          <text>英国大学申请</text>
+          <text>语言培训</text>
+        </view>
+      </view>
+      <image class="right"  src="/static/image/right.png"></image>
+    </view>
+    <view class="shopList">
+      <image mode="aspectFill" class="avart" src="/static/image/avart.png"></image>
+      <view class="shopListCenter">
+        <view class="shopTitle">Swapnil P.</view>
+        <view class="shopStar">
+          <view class="Star">
+            <text>评分</text>
+            <image src="/static/image/star_select.png"></image>
+            <image src="/static/image/star_select.png"></image>
+            <image src="/static/image/star_select.png"></image>
+            <image src="/static/image/star.png"></image>
+            <image src="/static/image/star.png"></image>
+          </view>
+          <view class="line"></view>
+          <view class="comment">1950条评论</view>
+        </view>
+        <view class="shopType">
+          <text>英国大学申请</text>
+          <text>语言培训</text>
+        </view>
+      </view>
+      <image class="right"  src="/static/image/right.png"></image>
+    </view>
+    <view class="shopList">
+      <image mode="aspectFill" class="avart" src="/static/image/avart.png"></image>
+      <view class="shopListCenter">
+        <view class="shopTitle">Swapnil P.</view>
+        <view class="shopStar">
+          <view class="Star">
+            <text>评分</text>
+            <image src="/static/image/star_select.png"></image>
+            <image src="/static/image/star_select.png"></image>
+            <image src="/static/image/star_select.png"></image>
+            <image src="/static/image/star.png"></image>
+            <image src="/static/image/star.png"></image>
+          </view>
+          <view class="line"></view>
+          <view class="comment">1950条评论</view>
+        </view>
+        <view class="shopType">
+          <text>英国大学申请</text>
+          <text>语言培训</text>
+        </view>
+      </view>
+      <image class="right"  src="/static/image/right.png"></image>
+    </view>
 </view>
