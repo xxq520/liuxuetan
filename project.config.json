@@ -4,25 +4,31 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
-		"preloadBackgroundData": false,
 		"minified": true,
 		"newFeature": true,
-		"autoAudits": false,
 		"coverView": true,
+		"nodeModules": true,
+		"autoAudits": false,
 		"showShadowRootInWxmlPanel": true,
-		"scopeDataCheck": false
+		"scopeDataCheck": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		},
+		"preloadBackgroundData": false,
+		"useCompilerModule": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.11.0",
-<<<<<<< HEAD
+	"libVersion": "2.10.4",
 	"appid": "wxbef88a039a04ee2d",
-=======
-	"appid": "wx44817b0d07b41845",
->>>>>>> cda799b6b75700d30b9b5b92aec097a6f959d2a5
-	"projectname": "%E7%95%99%E5%AD%A6%E8%B0%88",
+	"projectname": "liuxuetan",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},

@@ -1,9 +1,9 @@
 {
   "pages":[
+    "pages/service/service",
     "pages/index/index",
-    "pages/pay/pay",
-    "pages/userLogin/userLogin",
-    "pages/logs/logs",
+    "pages/discover/discover",
+    "pages/message/message",
     "pages/my/my"
   ],
   "window":{
@@ -24,19 +24,19 @@
       "selectedIconPath":"static/image/home_selected.png"
       },
       {
-        "pagePath":"pages/pay/pay",
+        "pagePath":"pages/discover/discover",
         "text":"发现",
         "iconPath":"static/image/faxian.png",
         "selectedIconPath":"static/image/faxian_selected.png"
         },
-      {
-        "pagePath":"pages/userLogin/userLogin",
+        {
+        "pagePath":"pages/service/service",
         "text":"服务",
         "iconPath":"static/image/fuwu.png",
-        "selectedIconPath":"static/image/fuwu.png"
-      },
+        "selectedIconPath":"static/image/fuwu_selected.png"
+        },
       {
-        "pagePath":"pages/logs/logs",
+        "pagePath":"pages/message/message",
         "text":"信息",
         "iconPath":"static/image/xiaoxi.png",
         "selectedIconPath":"static/image/xiaoxi_selected.png"

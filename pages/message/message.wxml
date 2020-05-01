@@ -1,0 +1,70 @@
+<!-- pages/message/message.wxml -->
+<view class="container">
+    <view class="top_message">
+        <view class="search_box">
+            <input type="text" placeholder="SEARCH" placeholder-style="color:#fff"></input>
+            <image src="../../static/image/white_search.png"></image>
+        </view>
+        <view class="dynamic">
+            <view class="dynamic-item">
+                <view class="gradual_at gradual_item">
+                    <image src="../../static/image/@.png" />
+                </view>
+                <text>@我的</text>
+            </view>
+            <view class="dynamic-item">
+                <view class="gradual_pl gradual_item">
+                    <image src="../../static/image/pinglun.png" />
+                </view>
+                <text>评论</text>
+            </view>
+            <view class="dynamic-item">
+                <view class="gradual_dz gradual_item">
+                    <image src="../../static/image/dianzan_2.png" />
+                </view>
+                <text>赞</text>
+            </view>
+        </view>
+    </view>
+    <view class="message_list">
+        <view class="message_item">
+            <image class="user_tx" src="../../static/image/xiaoxitouxiang.png" />
+            <view class="right_info">
+                <view class="user_info">
+                    <text class="user_name">雷丁顾问</text>
+                    <text class="discuss_time">2019.02.05 18：00</text>
+                </view>
+                <view class="message_info">
+                    <text class="message_ts">最新消息</text>
+                    <text class="message_num">23</text>
+                </view>
+            </view>
+        </view>
+              <view class="message_item">
+            <image class="user_tx" src="../../static/image/xiaoxitouxiang.png" />
+            <view class="right_info">
+                <view class="user_info">
+                    <text class="user_name">雷丁顾问</text>
+                    <text class="discuss_time">2019.02.05 18：00</text>
+                </view>
+                <view class="message_info">
+                    <text class="message_ts">最新消息</text>
+                    <text class="message_num">23</text>
+                </view>
+            </view>
+        </view>
+              <view class="message_item">
+            <image class="user_tx" src="../../static/image/xiaoxitouxiang.png" />
+            <view class="right_info">
+                <view class="user_info">
+                    <text class="user_name">雷丁顾问</text>
+                    <text class="discuss_time">2019.02.05 18：00</text>
+                </view>
+                <view class="message_info">
+                    <text class="message_ts">最新消息</text>
+                    <text class="message_num">23</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

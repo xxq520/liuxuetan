@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<view class="container">
+<view class="container" bindtap="guanzhu">
 	<view class="top_bg">
 			<view class="top_search">
 		<view class="logo-box"><image class="logo" src="../../static/image/logo.png"></image></view>
@@ -20,9 +20,17 @@
 		<view class="tab_item bor_b current_color">
 	       推荐
 		</view>
-		<view class="tab_item">
+		<view class="tab_item" catchtap="guanzhu">
              关注	
 			<image class="xiala" src="../../static/image/xiala.png" />
+			<!-- 关注分类 -->
+			<view class="hotType" wx:if="{{isShow}}">
+					<view>医学专科</view>
+					<view>医学专科2</view>
+					<view>医学专科3</view>
+					<view>医学专科4</view>
+					<view>医学专科5</view>
+			</view>
 		</view>
 	</view>
 	<view class="article_list">

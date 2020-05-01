@@ -1,0 +1,110 @@
+<!-- pages/discover/discover.wxml -->
+<view class="container">
+    <view class="top_search">
+        <image class="logo" src="../../static/image/logo_2.png" />
+        <view class="select">
+            <text>英国</text>
+            <image src="../../static/image/xiala_2.png" />
+        </view>
+        <image class="search_btn" src="../../static/image/search.png" />
+    </view>
+    <view class="roll_nav">
+        <view class="nav_item current_item current_color">热门</view>
+        <view class="nav_item">大学</view>
+        <view class="nav_item">生活</view>
+        <view class="nav_item">旅游</view>
+        <view class="nav_item">职场</view>
+        <view class="nav_item">饮食</view>
+        <view class="nav_item">风情</view>
+        <view class="nav_item">风情</view>
+        <view class="nav_item">风情</view>
+        <view class="nav_item">风情</view>
+    </view>
+    <view class="hot_search">
+        <view class="hot_item">
+            <image src="../../static/image/zhiding.png" />
+            <text class="hot_title">剑桥大学</text>
+        </view>
+        <view class="hot_item">
+            <text class="ranking">1</text>
+            <text class="hot_title">剑桥大学</text>
+        </view>
+        <view class="hot_item">
+            <text class="ranking">2</text>
+            <text class="hot_title">2020英国大学排名</text>
+        </view>
+        <view class="hot_item">
+            <text class="ranking">3</text>
+            <text class="hot_title">英国疫情</text>
+        </view>
+        <view class="hot_item">
+            <text class="ranking">4</text>
+            <text class="hot_title">英国领事馆</text>
+        </view>
+        <view class="hot_item">
+            <text class="ranking">5</text>
+            <text class="hot_title">国外必备哪些东西呢？</text>
+        </view>
+    </view>
+    <view class="article_list mrg_top_20">
+        <view class="article_item">
+            <view class="article_title">
+                <view class="title_box">
+                    <view class="wen_ti">问</view>
+                    <text class="title_txt">英国留学必带清单（意想不到）</text>
+                </view>
+                <view class="collect_btn">
+                    <image src="../../static/image/aixin.png" />
+                    <text>收藏</text>
+                </view>
+            </view>
+            <view class="article_context">
+                这是一篇不一样的干货篇！有些东西你想都可能没想过要用到！
+                当前国内疫情有所减缓！！ 可是英国疫情加重！好多东西后悔
+                没有带过来伯明翰，为了不让来英国的同学陷入我这样尴尬的处
+                境，我决定分享一些值得带！不对是一定要带的东西，拿本本记
+				好！补充加祈祷
+                <text class="full_text">阅读全文</text>
+            </view>
+            <view class="issue_image_list">
+                <image src="../../static/image/wenti_tietu.png" />
+                <image src="../../static/image/wenti_tietu.png" />
+                <image src="../../static/image/wenti_tietu.png" />
+            </view>
+            <view class="user_info">
+                <image class="user_tx" src="../../static/image/kouzhao.png" />
+                <view class="info_content">
+                    <view class="top_info">
+                        <text class="user_name">Green</text>
+                        <text class="publish_time">刚刚发表</text>
+                    </view>
+                    <view class="bottom_info">
+                        <view class="browse">
+                            <image src="../../static/image/year.png" />
+                            <text class="browse_context">浏览量</text>
+                            <text class="browse_num">31</text>
+                        </view>
+                        <view class="attention">
+                            <image src="../../static/image/guanzhu.png" />
+                            <text class="attention_btn">关注</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="status">
+                <view class="status_item">
+                    <image src="../../static/image/zhuanfa.png" />
+                    <text>800</text>
+                </view>
+                <view class="status_item">
+                    <image src="../../static/image/dianzan.png" />
+                    <text class="zan_color">2000</text>
+                </view>
+                <view class="status_item">
+                    <image src="../../static/image/liuyan.png" />
+                    <text>10</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

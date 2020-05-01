@@ -89,6 +89,20 @@ page{
   color: #e9a431;
 
 }
+.hotType{
+  position: absolute;
+  top: 60rpx;
+  left: -148rpx;
+  height: 300rpx;
+  background-color: #fff;
+  width: 350rpx;
+}
+.hotType view{
+  text-align: center;
+  color: #333333;
+  height: 59rpx;
+  line-height: 59rpx;
+}
 
 .bor_b::before {
   content: "";
