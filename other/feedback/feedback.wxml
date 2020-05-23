@@ -1,0 +1,8 @@
+<!--pages/feedback/feedback.wxml-->
+<view class="feedbackBody">
+  <textarea class="content" placeholder="请描述你的问题，我们会尽快处理并回复（必填）"></textarea>
+  <view class="box">
+   <van-uploader file-list="{{ fileList }}" bind:after-read="afterRead" />
+  </view>
+  <button class="commit">提交反馈</button>
+</view>

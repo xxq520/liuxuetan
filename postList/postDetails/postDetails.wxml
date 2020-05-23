@@ -1,0 +1,251 @@
+<!-- pages/postDetails/postDetails.wxml -->
+<!-- 下拉显示置顶问题 -->
+<view class="top_fixed" wx:if="{{scollHeight>100}}">
+    <view class="problem_title">
+        <view class="left_problem">
+            <view class="ask">问</view>
+            <text class="txt_title current_color">{{newContent.new_header}}</text>
+        </view>
+        <view class="right_answer4">
+            <text class="my_answer" bindtap="showPopup">评论</text>
+            <text class="dot_three">···</text>
+        </view>
+    </view>
+    <view class="label_list">
+        <view class="label_item" wx:for="{{new_tags}}">{{item}}</view>
+    </view>
+</view>
+<view class="top_search" wx:else>
+    <image class="logo" src="../../static/image/logo_2.png" />
+    <view class="search-box">
+        <input type="text" placeholder="SEARCH" />
+        <image src="../../static/image/search.png" />
+    </view>
+    <view class="dot_three pd_16">···</view>
+</view>
+<view class="problem_list">
+    <view class="left_problem flex_right">
+        <text class="txt_title current_color">英国什么城市好玩？</text>
+        <view class="collect_btn">
+            <image src="../../static/image/aixin.png" />
+            <text>收藏</text>
+        </view>
+    </view>
+    <view class="label_list">
+        <view class="label_item" wx:for="{{new_tags}}">{{item}}</view>
+    </view>
+    <view class="user_info">
+        <image class="user_tx" src="http://www.liuxuetalk.com/{{newContent.usr_profile_image_tn}}" />
+        <view class="right_info">
+            <view class="right_top">
+                <text class="user_name">{{newContent.usr_display_name}}</text>
+                <text class="publish_time">刚刚发表</text>
+            </view>
+            <view class="right_bottom">
+                <image src="../../static/image/guanzhu.png" />
+                <text>关注</text>
+            </view>
+        </view>
+    </view>
+    <view class="context_two">
+        <rich-text nodes=" {{newContent.new_content}}"></rich-text>
+    </view>
+    <view class="publish_time_info">编辑于 2018-05-03・著作权归作者所有</view>
+    <view class="share-way">
+        <text>分享到</text>
+        <image src="../../static/image/weixin.png" />
+        <image src="../../static/image/pengyouquan.png" />
+        <image src="../../static/image/QQ.png" />
+    </view>
+</view>
+<view class="watching_list">
+    <view class="comment_list">
+        <text class="comment_title">评论</text>
+        <view class="comment_item" wx:if="{{comment[0]}}">
+           <view class="comment_user_info">
+            <view class="left_comment_user_info">
+              <image src="http://www.liuxuetalk.com/{{comment[0].usr_profile_image_tn}}" />
+              <view>
+                 <text class="comment_user_name">{{comment[0].usr_display_name}}</text>
+                 <view class="context">
+                 <rich-text nodes="{{comment[0].ncm_comment}}"></rich-text>
+              </view>
+              </view>
+            </view>
+            <view class="right_comment_praise">
+              <view class="right_top_comment">
+                <view class="right_praise_num" bindtap="LikeComment" data-index="0" data-item="{{comment[0]}}">
+                  <image src="../../static/image/dianzan.png" />
+                  <text>{{comment[0].ncm_like}}</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="view_arr" bindtap="watchOlder">查看全部{{comment.length}}条评论>></view>
+        <view class="comment_info">
+          <view class="left_comment">
+            <image src="http://www.liuxuetalk.com/{{userInfo.usr_profile_image}}"  />
+            <input disabled="disabled" placeholder="添加评论..." bindtap="showPopup"/>
+          </view>
+          <view class="right_cz">
+            <view class="cz_item">
+            <button open-type="share" size="mini">
+              <image src="../../static/image/zhuanfa_gray.png" />
+              <text class="">转发{{newContent.new_forward}}</text>
+            </button>
+            </view>
+            <view class="cz_item"  bindtap="likeNew" data-type="like">
+              <image src="{{isActive?'../../static/image/dianzan.png':'../../static/image/dianzan_gray.png'}}" />
+              <text class="">点赞{{newContent.new_like}}</text>
+            </view>
+            <view class="cz_item" bindtap="watchOlder">
+              <image src="../../static/image/pinglun_gray.png" />
+              <text class="">评论{{comment.length}}</text>
+            </view>
+          </view>
+        </view>
+        <view class="view_arr_answer"  bindtap="golookPrpblem">查看全部{{comment.length}}个答案>></view>
+        <view class="info_card">
+            <view class="card_top_info">
+                <view class="card_top_left">
+                    <image src="http://www.liuxuetalk.com/{{newContent.usr_profile_image_tn}}" />
+                    <view class="left_childer">
+                        <text class="card_user_name">{{newContent.usr_display_name}}</text>
+                        <text class="user_details_info">详细资料></text>
+                    </view>
+                </view>
+                <view class="guanzhu_btm" bindtap="SaveUserFavForumAdmin" data-id="{{newContent.id}}">
+                    <image src="../../static/image/guanzhu_2.png" />
+                    <text>关注</text>
+                </view>
+            </view>
+            <view class="card_bottom_info">
+                <view class="card_bottm_info-item">
+                    <text>{{newContent.new_like}}</text>
+                    <text>赞</text>
+                </view>
+                <view class="card_bottm_info-item">
+                    <text>{{newContent.new_favourite}}</text>
+                    <text>收藏</text>
+                </view>
+                <view class="card_bottm_info-item">
+                    <text>{{newContent.new_favourite}}</text>
+                    <text>关注</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="answer_list">
+    <view class="answer_item">
+        <view class="context line_2">
+            这是一篇不一样的干货篇！有些东西你想都可能没想过要用到！
+当前国内疫情有所减缓！！ 可是英国疫情加重！好多东西后悔
+没有带过来伯明翰，为了不让来英国的同学陷入我这样尴尬的处
+境，我决定分享一些值得带！不对是一定要带的东西，拿本本...
+境，我决定分享一些值得带！不对是一定要带的东西，拿本本...
+境，我决定分享一些值得带！不对是一定要带的东西，拿本本...
+境，我决定分享一些值得带！不对是一定要带的东西，拿本本...
+        </view>
+        <view class="published_status">
+            <view class="left_status">
+                <image class="user_tx" src="https://t1.picb.cc/uploads/2020/05/02/kzt0le.png" />
+                <text class="user_name">Green</text>
+                <text class="published_time">刚刚发表</text>
+                  <view class="right_bottom published_Focus ">
+                    <image src="../../static/image/guanzhu.png" />
+                    <text>关注</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="answer_item">
+        <view class="recommended-title ">
+            <view class="line_2">这是一篇不一样的干货篇！有些东西你想都可能没想过要用到！是一篇不一样的干货篇！有些东西你是一篇不一样的干货篇！有些东西你</view>
+            <view class="recommended_tietu">
+                <image src="../../static/image/xiangguan_tj.png" />
+            </view>
+        </view>
+        <view class="published_status">
+            <view class="left_status">
+                <image class="user_tx" src="https://t1.picb.cc/uploads/2020/05/02/kzt3Fy.png" />
+                <text class="user_name">Green</text>
+                <text class="published_time">刚刚发表</text>
+                <view class="right_bottom published_Focus ">
+                    <image src="../../static/image/guanzhu.png" />
+                    <text>关注</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<van-transition show="{{ watch }}" name="fade-up" custom-class="block">
+    <view class="cover_container">
+      <view class="arr_comment">
+        <view class="arr_comment_title">
+          <image class="close" src="../../static/image/guanbi.png" bindtap="watchOlder" />
+          <text>全部{{comment.length}}条评论</text>
+        </view>
+        <view class="comment">
+          <view class="arr_comment_list" wx:for="{{comment}}">
+          <view class="comment_item">
+            <view class="comment_user_info">
+              <view class="left_comment_user_info">
+                <image src="http://www.liuxuetalk.com/{{item.usr_profile_image_tn}}" />
+                <view>
+                  <text class="comment_user_name">{{item.usr_display_name}}</text>
+                   <view class="context">
+                   <rich-text nodes="{{item.ncm_comment}}"></rich-text>
+                </view>
+                </view>
+              </view>
+              <view class="right_comment_praise">
+                <view class="right_top_comment">
+                  <view class="right_praise_num" bindtap="LikeComment" data-index="{{index}}" data-item="{{item}}">
+                    <image src="../../static/image/dianzan.png" />
+                    <text>{{item.ncm_like}}</text>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        </view>
+      </view>
+    </view>
+  </van-transition>
+ <view class="bottom_fixed">
+    <view class="left_comment">
+      <image src="http://www.liuxuetalk.com/{{userInfo.usr_profile_image}}" />
+      <input disabled="disabled" placeholder="添加评论..."  bindtap="showPopup"/>
+    </view>
+    <view class="right_cz">
+      <view class="cz_item">
+      <button open-type="share" size="mini">
+        <image src="../../static/image/zhuanfa_2.png" />
+        <text class="">转发{{newContent.new_forward}}</text>
+      </button>
+      </view>
+      <view class="cz_item" bindtap="likeNew" data-type="like">
+        <image src="{{isActive?'../../static/image/dianzan_3_2.png':'../../static/image/dianzan_3.png'}}" />
+        <text class="{{isActive?'select_color':''}}">点赞</text>
+      </view>
+      <view class="cz_item"  bindtap="watchOlder">
+        <image src="../../static/image/pinglun_2.png" />
+        <text class="">评论{{newContent.new_comment}}</text>
+      </view>
+    </view>
+  </view>
+<van-popup
+  show="{{ show }}"
+  closeable
+  position="bottom"
+  custom-style="height: 20%"
+  bind:close="onClose"
+>
+<view class="alertInput">
+ <input placeholder="添加评论..."  bindinput="changeComment" />
+ <button size="mini" type="primary" bindtap="SaveNewsCommentRecord">发送</button>
+</view>
+</van-popup>

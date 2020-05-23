@@ -1,0 +1,17 @@
+<!-- store/noticeDetails/noticeDetails.wxml -->
+<view class="noticeDetails">
+    <view class="remind-matters">
+        <text class="remind-title">服务器维护通知：</text>
+        <view class="time">2020-04-26 09:28</view>
+        <textarea class="matters-texterea" placeholder-style="color:#333333;">
+                  在本月4月20日-4月21日之间服务器进行维护，请在本月4月
+20日-4月21日之间服务器进行维护，请在本月4月20日-4月21日
+之间服务器进行维护，请在本月4月20日-4月21日之间服务器进行
+维护，请...
+        </textarea>
+    </view>
+    <view class="btn-info">
+        <view class="return">返回</view>
+        <view class="next-article">下一篇</view>
+    </view>
+</view>

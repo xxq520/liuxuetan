@@ -1,0 +1,88 @@
+/* other/withdrawal/withdrawal.wxss */
+page {
+    background-color: #fff;
+}
+.create{
+    padding-top: 30rpx;
+}
+.selectShop{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30rpx;
+    height: 88rpx;
+    line-height: 88rpx;
+    border-bottom: solid 1rpx #dddddd;
+}
+.selectShop .title{
+	font-family: PingFang-SC-Medium;
+	font-size: 32rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0rpx;
+	color: #333333;
+}
+.selectShop .select{
+    
+}
+.selectShop text{
+	font-family: PingFang-SC-Medium;
+	font-size: 32rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0rpx;
+	color: #333333;
+}
+.selectShop image{
+    width: 15rpx;
+    height: 25rpx;
+    margin-left: 30rpx;
+}
+.select{
+    border: none;
+    outline: none;
+}
+.none{
+    display: flex;
+    align-items: center;
+}
+.none image{
+    opacity:0 ;
+}
+.message{
+	font-family: PingFang-SC-Medium;
+	font-size: 32rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0rpx;
+    color: #333333;
+    margin: 48rpx 0 28rpx 30rpx;
+}
+textarea{
+    height: 350rpx;
+    width: auto;
+	border-radius: 10rpx;
+    border: solid 1rpx #dddddd;
+    margin: 0  30rpx;
+}
+.btn{
+    width: 690rpx;
+	height: 85rpx;
+	background-color: #3b5370;
+    border-radius: 10rpx; 
+    text-align: center;
+    line-height: 85rpx;
+    font-family: PingFang-SC-Medium;
+    font-size: 34rpx;
+    margin:  0 auto;
+}
+.send{
+    margin-top: 100rpx;
+    color: #fff;
+}
+.close{
+    background-color: #fff;
+    color: #8c8c8c;
+    border: solid 1rpx #8c8c8c;
+    margin-top: 40rpx;
+}

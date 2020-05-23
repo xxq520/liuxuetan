@@ -1,0 +1,156 @@
+/* pages/message/message.wxss */
+.top_message {
+    height: 264rpx;
+    background-color: #3b5370;
+    position: relative;
+    margin-bottom: 206rpx;
+}
+
+.search_box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding-top: 50rpx;
+    padding-left: 7%;
+    padding-right: 7%;
+    position: relative;
+}
+
+.search_box input {
+    width: 100%;
+    height: 60rpx;
+    background-color: #f5f5f5;
+    border-radius: 30rpx;
+    background-color: rgba(255, 255, 255, 0.5);
+    font-size: 24rpx;
+    letter-spacing: 1rpx;
+    color: #ffffff;
+    padding-left: 27rpx;
+}
+
+.search_box image {
+    width: 28rpx;
+    height: 32rpx;
+   position: absolute;
+   right: calc(7% + 28rpx ) ;
+}
+.dynamic{
+    width: 92%;
+	height: 210rpx;
+	background-color: #ffffff;
+	box-shadow: 0rpx 5rpx 29rpx 0rpx 
+		rgba(0, 0, 0, 0.23);
+	border-radius: 10rpx;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+    bottom: -116rpx;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.dynamic-item{
+    display: flex;
+    flex-direction: column;
+ align-items: center;
+
+}
+.gradual_at{
+    background-image: linear-gradient(0deg, 
+    #ff7c66 1%, 
+    #fd5f65 100%), 
+linear-gradient(
+    #ff5845, 
+    #ff5845);
+background-blend-mode: normal, 
+    normal;
+}
+.gradual_at,.gradual_pl,.gradual_dz{
+    width: 86rpx;
+    height: 86rpx;
+    margin-bottom: 18rpx;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.gradual_pl{
+	background-image: linear-gradient(0deg, 
+		#f6b119 0%, 
+		#fba21b 50%, 
+		#ff951c 100%), 
+	linear-gradient(
+		#333333, 
+		#333333);
+	background-blend-mode: normal, 
+		normal;
+}
+.gradual_dz{
+    background-image: linear-gradient(0deg, 
+    #ff7c66 1%, 
+    #fd5f65 100%), 
+linear-gradient(
+    #ff5845, 
+    #ff5845);
+background-blend-mode: normal, 
+    normal;
+}
+ .gradual_item:nth-child(1) image{
+	width: 40rpx;
+	height: 39rpx;
+}
+ .gradual_item:nth-child(2) image{
+	width: 39rpx;
+	height: 39rpx;
+}
+.gradual_item:nth-child(3) image{
+    width: 41rpx;
+	height: 36rpx;
+}
+.message_list{
+    width: 92%;
+    margin: 0 auto;
+  
+}
+.message_item{
+    display: flex;
+    margin-bottom: 72rpx;
+}
+
+.user_tx{
+    width: 86rpx;
+    height: 86rpx;
+    margin-right: 28rpx;
+}
+.right_info{
+    width: calc(100% - 114rpx);
+}
+.user_info{
+    margin-bottom: 14rpx;
+}
+.user_info,.message_info{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.user_name{
+    font-size: 32rpx;
+	color: #333333;
+}
+.discuss_time{
+    font-size: 22rpx;
+	color: #999999;
+}
+.message_ts{
+    font-size: 28rpx;
+	color: #666666;
+}
+.message_num{
+    font-size: 20rpx;
+    color: #ffffff;
+    padding: 6rpx 12rpx;
+    background-color: #ff301e;
+    border-radius: 50%;
+}

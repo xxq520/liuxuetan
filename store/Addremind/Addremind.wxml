@@ -1,0 +1,35 @@
+<!-- store/Addremind/Addremind.wxml -->
+<view class="Addremind">
+    <view class="remind-matters">
+        <text class="remind-title">提醒事项</text>
+        <textarea class="matters-texterea" placeholder-style="color:#333333;" placeholder="我要写的内容"></textarea>
+    </view>
+    <view class="remind-time">
+        <view class="">
+            <text>提醒日期</text>
+            <picker mode="date" value="x" start="2020-05-01" end="2030-09-01" bindchange="bindDateChange" wx:if="{{!checked}}">
+                <text class="remind-date">2020年04月26日</text>
+            </picker>
+        </view>
+        <image src="/static/image/jiantou_you.png" />
+    </view>
+    <view class="complete">完成</view>
+    <!-- <view class="cover_container">
+        <view class="operation">
+            <text class="cancel">取消</text>
+            <text class="time-title">提醒日期</text>
+            <text class="determine">确定</text>
+        </view>
+        <picker-view indicator-style="height: 30px;" class="picker" value="{{value}}" bindchange="bindChange">
+            <picker-view-column>
+                <view wx:for="{{years}}" style="line-height: 30px">{{item}}年</view>
+            </picker-view-column>
+            <picker-view-column>
+                <view wx:for="{{months}}" style="line-height: 30px">{{item}}月</view>
+            </picker-view-column>
+            <picker-view-column>
+                <view wx:for="{{days}}" style="line-height: 30px">{{item}}日</view>
+            </picker-view-column>
+        </picker-view>
+    </view> -->
+</view>

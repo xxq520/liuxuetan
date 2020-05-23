@@ -1,0 +1,35 @@
+<!-- pages/release/release.wxml -->
+<view class="">
+	<view class="release_title_box">
+		<view class="wen-inco">问</view>
+		<input class="release_title" type="text" bindinput="changeHeaderTit" placeholder="请在这里简要描述您的问题（5-30个字）" />
+	</view>
+	<!-- <textarea class="release_info" placeholder="在这里补充问题的详细信息..."></textarea> -->
+	<view class="container" style="height:{{500}}rpx;">
+		<editor id="editor" class="ql-container" placeholder="{{placeholder}}" bindstatuschange="onStatusChange" bindready="onEditorReady">
+		</editor>
+	</view>
+
+	<view class="toolbar" catchtouchend="format" style="bottom: {{isIOS ? keyboardHeight : 0}}px">
+		<i class="iconfont icon-charutupian" catchtouchend="insertImage"></i>
+		<i class="iconfont icon-format-header-2 {{formats.header === 2 ? 'ql-active' : ''}}" data-name="header" data-value="{{2}}"></i>
+		<i class="iconfont icon-format-header-3 {{formats.header === 3 ? 'ql-active' : ''}}" data-name="header" data-value="{{3}}"></i>
+		<i class="iconfont icon-zitijiacu {{formats.bold ? 'ql-active' : ''}}" data-name="bold"></i>
+		<i class="iconfont icon-zitixieti {{formats.italic ? 'ql-active' : ''}}" data-name="italic"></i>
+		<i class="iconfont icon-zitixiahuaxian {{formats.underline ? 'ql-active' : ''}}" data-name="underline"></i>
+        <view class="upload-btn" bindtap="saveNews">发布</view>
+	</view>
+	<!-- <view class="upload">
+		<view class="upload-info">
+			<view class="upload-item">
+				<image src="/static/image/image.png" />
+				<text>图片</text>
+			</view>
+			<view class="upload-item">
+				<image src="/static/image/video.png" />
+				<text>视频</text>
+			</view>
+		</view>
+		<view class="upload-btn">发布</view>
+	</view> -->
+</view>

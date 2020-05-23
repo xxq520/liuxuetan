@@ -1,0 +1,17 @@
+import { VantComponent } from '../common/component';
+const request = require("../../utils/request.js");
+const url = require("../../utils/apisUrl.js");
+const app = getApp();
+VantComponent({
+    relation: {
+        type: 'descendant',
+        name: 'goods-action-button',
+        current: 'goods-action',
+    },
+    props: {
+        safeAreaInsetBottom: {
+            type: Boolean,
+            value: true
+        }
+    }
+});

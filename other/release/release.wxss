@@ -1,0 +1,128 @@
+/* pages/release/release.wxss */
+page{
+    background-color: #f5f5f5;
+}
+.release_title{
+    height: 136rpx;
+    background-color: #ffffff;
+   width: calc(100% - 38rpx);
+}
+.release_title,.release_info{
+ 
+}
+.release_info{
+    width: 100%;
+    height: 318rpx;
+    background-color: #ffffff;
+    padding: 30rpx 28rpx;
+}
+.release_title_box{
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    margin-bottom: 10rpx;
+    padding: 0 20rpx;
+}
+.wen-inco{
+	width: 28rpx;
+	height: 25rpx;
+	background-color: #e9a431;
+    border-radius: 4rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 18rpx;
+    font-size: 18rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0rpx;
+	color: #ffffff;
+}
+.upload{
+display: flex;
+align-items: center;
+justify-content: space-between;
+background-color: #fbfbfb;
+padding: 22rpx 20rpx 12rpx 40rpx;
+}
+.upload-info{
+    display: flex;
+}
+.upload-item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 20rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0rpx;
+    color: #8c8c8c;
+    margin-right: 50rpx;
+}
+.upload-item image{
+    width: 38rpx;
+    height: 38rpx;
+    margin-bottom: 8rpx;
+}
+.upload-btn{
+padding: 14rpx 20rpx;
+	background-color: #e9a431;
+    border-radius: 10rpx;
+    font-size: 24rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0rpx;
+	color: #ffffff;
+}
+@import "../common/lib/weui.wxss";
+@import "./assets/iconfont.wxss";
+
+.container {
+  width: 100%;
+}
+
+.ql-container {
+  box-sizing: border-box;
+  width: 100%;
+  height: 500rpx;
+  font-size: 16px;
+  line-height: 1.5;
+  overflow: auto;
+  padding: 10px 10px 20px 10px;
+  background-color: #fff;
+  border: 1px solid #ECECEC;
+}
+
+.ql-active {
+  color: #22C704;
+}
+
+.iconfont {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.toolbar {
+  box-sizing: border-box;
+  padding: 0 10px;
+  height: 50px;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  right: 100%;
+  top: 700rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #ECECEC;
+  border-left: none;
+  border-right: none;
+}
+.ql-editor.ql-blank:before {
+    /* 此处设置 placeholder 样式 */
+    color: rgba(0, 0, 0, 0.5);
+    font-style: normal;
+  }

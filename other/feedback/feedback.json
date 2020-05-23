@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "van-uploader": "/dist/uploader/index"
+  },
+  "navigationBarTitleText": "意见反馈",
+  "backgroundTextStyle": "light",
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle": "black"
+}

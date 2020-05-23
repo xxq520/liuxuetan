@@ -1,0 +1,18 @@
+<!-- other/withdrawal/withdrawal.wxml -->
+<view class="withdrawal">
+    <view class="withdrawal-WeChat">
+        <image src="/static/image/WeChat.png" />
+        <text>提现至微信</text>
+    </view>
+    <view class="withdrawal-price">
+        <view class="input-price">
+            <text>￥</text>
+            <input  type="digit" value="2.86" />
+        </view>
+        <view class="can-withdrawal-price">
+            <text >可提现金额 20000元</text>
+            <text class="all-withdrawal">全部提取</text>
+        </view>
+    </view>
+    <view class="withdrawal-btn">两小时内到账，确认提现</view>
+</view>

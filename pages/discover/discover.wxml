@@ -1,0 +1,98 @@
+<!-- pages/discover/discover.wxml -->
+<view class="container">
+    <view class="top_search">
+        <image class="logo" src="../../static/image/logo_2.png" />
+        <view class="select">
+            <text>英国</text>
+            <image src="../../static/image/xiala_2.png" />
+        </view>
+        <view class="search_btnniew"><image bindtap="goSearch" class="search_btn" src="../../static/image/search.png" /></view>
+    </view>
+    <view class="roll_nav">
+     <view class="nav_item current_item current_color">热门</view>
+        <view class="nav_item " wx:if="{{item.tag_is_group}}" wx:for="{{searchTag}}">{{item.tag_name}}</view>
+    </view>
+    <view class="hot_search">
+        <view class="hot_item">
+            <image src="../../static/image/zhiding.png" />
+            <text class="hot_title">剑桥大学</text>
+        </view>
+        <view class="hot_item">
+            <text class="ranking">1</text>
+            <text class="hot_title">剑桥大学</text>
+        </view>
+        <view class="hot_item">
+            <text class="ranking">2</text>
+            <text class="hot_title">2020英国大学排名</text>
+        </view>
+        <view class="hot_item">
+            <text class="ranking">3</text>
+            <text class="hot_title">英国疫情</text>
+        </view>
+        <view class="hot_item">
+            <text class="ranking">4</text>
+            <text class="hot_title">英国领事馆</text>
+        </view>
+        <view class="hot_item">
+            <text class="ranking">5</text>
+            <text class="hot_title">国外必备哪些东西呢？</text>
+        </view>
+    </view>
+    <view class="article_list mrg_top_20" bindtap="goPostdetails" data-type="{{item.ntp_type=='问题'?2:1}}" data-id="{{item.new_id}}" wx:for="{{newList}}"  wx:key="index">
+        <view class="article_item">
+            <view class="article_title">
+                <view class="title_box">
+                    <view class="wen_ti" wx:if="{{item.ntp_type=='问题'}}">问</view>
+                    <text class="title_txt">{{item.new_header}}</text>
+                </view>
+                <view class="collect_btn">
+                    <image src="../../static/image/aixin.png" />
+                    <text>收藏</text>
+                </view>
+            </view>
+            <view class="article_context">
+               {{item.new_content}}
+                <text class="full_text" wx:if="{{item.new_content.length>10}}">阅读全文</text>
+            </view>
+            <view class="issue_image_list">
+                <image src="../../static/image/wenti_tietu.png" />
+                <image src="../../static/image/wenti_tietu.png" />
+                <image src="../../static/image/wenti_tietu.png" />
+            </view>
+            <view class="user_info">
+                <image class="user_tx" src="../../static/image/kouzhao.png" />
+                <view class="info_content">
+                    <view class="top_info">
+                        <text class="user_name">{{item.usr_display_name}}</text>
+                        <text class="publish_time">刚刚发表</text>
+                    </view>
+                    <view class="bottom_info">
+                        <view class="browse">
+                            <image src="../../static/image/year.png" />
+                            <text class="browse_context">浏览量</text>
+                            <text class="browse_num">{{item.new_visit}}</text>
+                        </view>
+                        <view class="attention">
+                            <image src="../../static/image/guanzhu.png" />
+                            <text class="attention_btn">关注</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="status">
+                <view class="status_item">
+                    <image src="../../static/image/zhuanfa.png" />
+                    <text>{{item.new_forward}}</text>
+                </view>
+                <view class="status_item">
+                    <image src="../../static/image/dianzan.png" />
+                    <text class="zan_color">{{item.new_like}}</text>
+                </view>
+                <view class="status_item">
+                    <image src="../../static/image/liuyan.png" />
+                    <text>{{item.new_comment}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

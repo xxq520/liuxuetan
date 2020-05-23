@@ -1,0 +1,49 @@
+<!--pages/regiest/regiest.wxml-->
+<view class="regiestBody">
+    <view class="regiestBg">
+      <view class="user AccountPassword">
+         <image src="../../static/image/user.png"></image>
+         <input type="number" value="{{name}}" placeholder="请输入用户名" bindinput="changeInput" data-type="name"></input>
+    </view>
+    <view class="user AccountPassword">
+         <image src="../../static/image/user.png"></image>
+         <input type="number" value="{{phone}}" placeholder="请输入手机号" bindinput="changeInput" data-type="phone"></input>
+    </view>
+     <view class="VerificationCode AccountPassword">
+         <image src="../../static/image/VerificationCode.png"></image>
+         <input type="number" value="{{code}}" placeholder="请输入验证码" bindinput="changeInput" data-type="code"></input>
+         <van-count-down
+            class="control-count-down"
+            millisecond
+            time="{{ 300000 }}"
+            auto-start="{{ false }}"
+            format="ss 秒"
+            bind:finish="finished"
+            />
+        <text bindtap="sendCode" wx:if="{{!isCode}}">获取验证码</text>
+    </view>
+    <view class="Password  AccountPassword">
+         <image src="../../static/image/Password.png"></image>
+         <input type="password" value="{{password}}" placeholder="请输入密码" bindinput="changeInput" data-type="password"></input>
+    </view>
+     <view class="Password AccountPassword">
+         <image src="../../static/image/Password.png"></image>
+          <input type="password" value="{{okpassword}}" placeholder="请确认密码" bindinput="changeInput" data-type="okpassword"></input>
+    </view>
+    <view class="btn" bindtap="submitBtn">立即注册</view>
+    <view class="Already" bindtap="goLogin">
+        <text>已有账号？</text><text>立即登录</text>
+     </view>
+     <view class="or">
+        <!-- <text></text> -->
+        <text>或</text>
+        <!-- <text></text> -->
+     </view>
+     <view class="Onekey">
+         <image src="../../static/image/WeChat.png"></image>
+         <text>微信授权一键登录</text>
+     </view>
+</view>
+
+
+</view>

@@ -1,0 +1,113 @@
+<!-- pages/myStore/myStore.wxml -->
+<view class="myStore">
+	<view class="top-option">
+		<view class="option-item " bindtap="goTab" data-url="/store/product/product">我的产品</view>
+		<view class="option-item " bindtap="goTab" data-url="/store/storeMyorder/storeMyorder">
+			订单管理
+		</view>
+		<view class="option-item" bindtap="goTab" data-url="/store/billManagement/billManagement">
+			账单管理
+		</view>
+		<view class="option-item " bindtap="goTab" data-url="/store/SetUpThe/SetUpThe">设置</view>
+		<view class="option-item bor_bom current_ot" bindtap="goTab" data-url="/store/myStore/myStore">
+			我的概况
+		</view>
+	</view>
+	<view class="order-status">
+		<view class="left-order-info">
+			<text class="order-num-status">未完成订单/全部订单</text>
+			<view class="order-info">
+				<text class="order-num">14/32</text>
+				<image src="/static/image/order.png" />
+			</view>
+		</view>
+		<view class="right-echarts">
+			<van-circle value="{{status}}" size="80 " layer-color="#ddd" color="#e9a431" text="" />
+			<view class="score">
+				<text class="score_num">4.3/5</text>
+				<text class="score_txt">综合评分</text>
+			</view>
+		</view>
+	</view>
+	<view class="echarts-container">
+		<view class="income-info">
+			<text class="years-income">本月收入/本年收入累计(元):</text>
+			<text class="income-price">95000/1230000</text>
+		</view>
+		<view class="box">
+			<ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ec}}"></ec-canvas>
+		</view>
+	</view>
+	<view class="remind_matters">
+		<view class="remind_title">提醒事项</view>
+		<view class="remind_matters_list">
+			<view class="matters-title">
+				<text class="matters">事项</text>
+				<view class="time">提醒日期</view>
+			</view>
+			<view class="matters-info">
+				<view class="matters-item">
+					<view class="remind_info line_1">事提醒客户提供成客户提供成...</view>
+					<view class="remind_date line_1">2020年04月10日</view>
+				</view>
+				<view class="matters-item">
+					<view class="remind_info line_1">事提醒客户提供成客户提供成...</view>
+					<view class="remind_date line_1">2020年04月10日</view>
+				</view>
+				<view class="matters-item">
+					<view class="remind_info line_1">事提醒客户提供成客户提供成...</view>
+					<view class="remind_date line_1">2020年04月10日</view>
+				</view>
+			</view>
+			<navigator url="/store/Addremind/Addremind">
+				<view class="add_remind">
+					<text>添加提醒</text>
+					<image src="/static/image/addremind.png" />
+				</view>
+			</navigator>
+		</view>
+	</view>
+	<view class="related_notice">
+		<view class="notice_title">
+			<view class="remind_title">相关通知</view>
+			<view class="more_notice">
+				<text>更多</text>
+				<image src="/static/image/jiantou_you.png" />
+			</view>
+		</view>
+		<view class="notice_item">
+			<view class="notice_item_title">
+				<image src="/static/image/notice.png" />
+				<view class="line_1">服务器维护通知：服务器维护通知：</view>
+			</view>
+			<navigator url="/store/noticeDetails/noticeDetails">
+				<view class="notice_item_info">
+					<view class="info-contxt">
+						<view class="info-txt line_1">
+							在本月4月20日-4月21日之间服务器进行维护，4月21日之间服务器进行维护，请4月21日之间服务器进行维护，请请...
+						</view>
+						<text>展开>></text>
+					</view>
+					<text class="notice_time">2020年4月12日</text>
+				</view>
+			</navigator>
+		</view>
+		<view class="notice_item">
+			<view class="notice_item_title">
+				<image src="/static/image/notice.png" />
+				<view class="line_1">服务器维护通知：服务器维护通知：</view>
+			</view>
+			<navigator url="/store/noticeDetails/noticeDetails">
+				<view class="notice_item_info">
+					<view class="info-contxt">
+						<view class="info-txt line_1">
+							在本月4月20日-4月21日之间服务器进行维护，4月21日之间服务器进行维护，请4月21日之间服务器进行维护，请请...
+						</view>
+						<text>展开>></text>
+					</view>
+					<text class="notice_time">2020年4月12日</text>
+				</view>
+			</navigator>
+		</view>
+	</view>
+</view>

@@ -1,0 +1,99 @@
+<!-- pages/my/my.wxml -->
+<view class="container">
+    <view class="bg_ff">
+        <view class="top_search">
+            <view class="search_box">
+                <input type="text" placeholder="SEARCH" placeholder-style="color:#fff"></input>
+                <image src="../../static/image/white_search.png"></image>
+            </view>
+            <view class="user_info">
+                <view class="top_info">
+                    <image class="user_tx" src="http://www.liuxuetalk.com/{{userInfo.usr_profile_image}}" />
+                    <view class="top_right_abs">
+                        <view class="top_abs">
+                            <text class="user_name">{{userInfo.usr_display_name}}</text>
+                            <navigator url="/store/myStore/myStore">
+                                <view class="homepage_btn red_dot">
+                                    <text>个人主页</text>
+                                    <image src="../../static/image/sm_jiantou_you.png" />
+                                </view>
+                            </navigator>
+                        </view>
+                        <view class="bottom_abs">
+                            <text class="mobile">134****9975</text>
+                        </view>
+                    </view>
+                </view>
+                <view class="bottom_info">
+                    <view class="info_item shugang">
+                        <text>{{userInfo.usr_post+userInfo.usr_question}}</text>
+                        <text>我的发表</text>
+                    </view>
+                    <view class="info_item shugang">
+                        <text>{{userInfo.usr_like}}</text>
+                        <text>关注</text>
+                    </view>
+                    <view class="info_item shugang">
+                        <text>{{userInfo.usr_like}}</text>
+                        <text>收藏</text>
+                    </view>
+                    <view class="info_item ">
+                        <text>{{userInfo.usr_visit}}</text>
+                        <text>最近浏览</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="bg_ff">
+        <view class="options_list">
+            <navigator url="/other/myOrder/myOrder">
+                <view class="options_item">
+                    <image src="../../static/image/dingdan.png" />
+                    <view class="item_contxt">
+                        <text>我的订单</text>
+                        <image src="../../static/image/jiantou_you.png" />
+                    </view>
+                </view>
+            </navigator>
+            <navigator url="/other/setting/setting">
+                <view class="options_item">
+                    <image src="../../static/image/shezhi.png" />
+                    <view class=".item_contxt">
+                        <text>设置</text>
+                        <image src="../../static/image/jiantou_you.png" />
+                    </view>
+                </view>
+            </navigator>
+            <navigator url="/other/feedback/feedback">
+                <view class="options_item">
+                    <image src="../../static/image/fankui.png" />
+                    <view class="item_contxt">
+                        <text>意见反馈</text>
+                        <image src="../../static/image/jiantou_you.png" />
+                    </view>
+                </view>
+            </navigator>
+        </view>
+    </view>
+    <view class="recommend">
+        <view class="recommend_title">推介内容</view>
+        <view class="recommend_list">
+            <view class="recommend_item">
+                <image class="cover_img" src="https://t1.picb.cc/uploads/2020/05/02/kztXL7.png" />
+                <view class="title_info">中央兰开夏大学</view>
+                <image class="lianjie_img" src="../../static/image/lianjie.png" />
+            </view>
+            <view class="recommend_item">
+                <image class="cover_img" src="https://t1.picb.cc/uploads/2020/05/02/kztXL7.png" />
+                <view class="title_info">中央兰开夏大学</view>
+                <image class="lianjie_img" src="../../static/image/lianjie.png" />
+            </view>
+            <view class="recommend_item">
+                <image class="cover_img" src="https://t1.picb.cc/uploads/2020/05/02/kztXL7.png" />
+                <view class="title_info">中央兰开夏大学</view>
+                <image class="lianjie_img" src="../../static/image/lianjie.png" />
+            </view>
+        </view>
+    </view>
+</view>

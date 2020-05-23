@@ -1,0 +1,17 @@
+<view class="content" >
+    <view class="contentItem">
+        <text >消息通知</text>
+        <image src="/static/image/right.png" />
+    </view>
+    <view class="contentItem">
+        <text >隐私</text>
+        <image src="/static/image/right.png" />
+    </view>
+    <view class="contentItem">
+        <text >通用</text>
+        <image src="/static/image/right.png" />
+    </view>
+</view>
+<view class="exit">
+    退出我的账号
+</view>

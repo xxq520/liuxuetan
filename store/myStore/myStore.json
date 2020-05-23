@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "ec-canvas": "../ec-canvas/ec-canvas",
+    "van-circle": "/dist/circle/index"
+  },
+  "navigationBarTitleText": "我的店铺",
+  "backgroundTextStyle": "light",
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle": "black"
+}

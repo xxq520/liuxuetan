@@ -1,0 +1,128 @@
+<view class="detail">
+    <view class="order">
+        <view class="time">
+            <view class="timeTit">
+                <view>最后更新时间：</view>
+                <text>2020年4月3日</text>
+            </view>
+            <view class="timeRight">
+                <view>
+                    <image src="/static/image/nook.png" />
+                    <text>未完成</text>
+                </view>
+                <text>订单完成确认</text>
+            </view>
+        </view>
+        <view class="orderPre">
+            <view class="namepreson">客户</view>
+            <view class="nameData">刘佳宇</view>
+        </view>
+        <view class="orderPre">
+            <view class="namepreson">商品</view>
+            <view class="nameData">英国留学申请</view>
+        </view>
+        <view class="orderPre">
+            <view class="namepreson">价格</view>
+            <view class="nameData">4000元</view>
+        </view>
+        <view class="orderPre b-t">
+            <view class="namepreson none">价格</view>
+            <view class="nameData">确认退款金额：0 元</view>
+        </view>
+    </view>
+    <!-- 订单备注 -->
+    <view class="remarks">
+        <view class="orderrRemarks">订单备注</view>
+        <textarea class="content">
+            申请2020年9月入学
+            • 曼大-工商管理
+            • 伯明翰大学-国际商务
+            • 谢菲尔特大学-工商管理
+            • 华威WMG-国际商务
+        </textarea>
+        <view class="orderrRemarks task">
+            <text>添加任务项</text>
+            <image src="/static/image/addicon.png" />
+        </view>
+        <view class="orderPre taskList">
+            <view class="namepreson">曼彻斯特大学</view>
+            <view class="nameData">
+                <image src="/static/image/select.png" />
+                完成
+            </view>
+        </view>
+        <view class="orderPre taskList b-t">
+            <view class="namepreson">伯明翰大学</view>
+            <view class="nameData">
+                <image src="/static/image/nook.png" />
+                未完成
+            </view>
+        </view>
+        <view class="orderPre taskList b-t">
+            <view class="namepreson">谢菲尔特大学</view>
+            <view class="nameData">
+                <image src="/static/image/nook.png" />
+                未完成
+            </view>
+        </view>
+    </view>
+    <!-- 备忘发表 -->
+    <view class="Memo">
+        <view class="orderrRemarks">
+            <text>备忘发表</text>
+            <view>
+                <text>提醒</text>
+                <picker mode="date" value="x" start="2020-05-01" end="2030-09-01" bindchange="bindDateChange" wx:if="{{!checked}}">
+                    <van-switch inactive-color="#dddddd" size="20px" checked="{{ checked }}" bind:change="onChange" />
+                </picker>
+                 <van-switch wx:else inactive-color="#dddddd" size="20px" checked="{{ checked }}" bind:change="onChange" />
+            </view>
+        </view>
+        <view class="MemoTetx">
+            <textarea >提醒客户提供成绩单</textarea>
+            <view class="sendMemo">
+                <text >2020-04-03 22:43</text>
+                <view >发表</view>
+            </view>
+        </view>
+        <view class="MemoList">
+            <view class="memoleft">
+                <view >提醒客户提供成绩单</view>
+                <text >2020-04-03 22:43</text>
+            </view>
+            <view class="memoright">
+                <view >
+                    <text >提醒</text>
+                    <text >删除</text>
+                </view>
+                <view class="memorightTime">2020年4月10日</view>
+            </view>
+        </view>
+         <view class="MemoList">
+            <view class="memoleft">
+                <view >提醒客户提供成绩单</view>
+                <text >2020-04-03 22:43</text>
+            </view>
+            <view class="memoright">
+                <view >
+                    <text >提醒</text>
+                    <text >删除</text>
+                </view>
+                <view class="memorightTime">2020年4月10日</view>
+            </view>
+        </view>
+         <view class="MemoList">
+            <view class="memoleft">
+                <view >提醒客户提供成绩单</view>
+                <text >2020-04-03 22:43</text>
+            </view>
+            <view class="memoright">
+                <view >
+                    <text class="select">@ 提醒</text>
+                    <text >删除</text>
+                </view>
+                <view class="memorightTime">2020年4月10日</view>
+            </view>
+        </view>
+    </view>
+</view>

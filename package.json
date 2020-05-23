@@ -1,0 +1,25 @@
+{
+  "name": "liuxuetan",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "echarts": "^4.7.0",
+    "miniprogram-sm-crypto": "^0.1.0",
+    "vant-weapp": "^0.5.28"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xxq520/liuxuetan.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xxq520/liuxuetan/issues"
+  },
+  "homepage": "https://github.com/xxq520/liuxuetan#readme"
+}

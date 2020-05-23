@@ -1,0 +1,275 @@
+page{
+    background: #f5f5f5;
+}
+.detail{
+
+}
+.order{
+    padding: 26rpx 30rpx 0 30rpx;
+    background-color: #fff;
+}
+.timeTit{
+
+}
+.time{
+    display: flex;
+    justify-content: space-between;
+}
+.timeTit{
+
+}
+.timeTit view{
+	font-family: PingFang-SC-Medium;
+	font-size: 18rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	line-height: 34rpx;
+	letter-spacing: 0rpx;
+	color: #8c8c8c;
+}
+.timeTit text{
+    font-family: PingFang-SC-Medium;
+	font-size: 22rpx;
+	font-weight: normal;
+	letter-spacing: 0rpx;
+	color: #333333;
+}
+.timeRight{
+    display: flex;
+}
+.timeRight{
+    display: flex;
+    align-items: center;
+}
+.timeRight view{
+    display: flex;
+    align-items: center;
+}
+.timeRight image{
+    width: 24rpx;
+	height: 24rpx;
+}
+.timeRight view{
+    font-family: PingFang-SC-Medium;
+	font-size: 18rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0rpx;
+    color: #333333;
+    display: flex;
+    align-items: center;
+}
+.timeRight view text{
+    padding-left: 6rpx;
+    line-height: 20rpx;
+    font-size: 20rpx;
+}
+.timeRight>text{
+	font-family: PingFang-SC-Medium;
+	font-size: 20rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0rpx;
+    color: #ffffff;
+    padding: 4rpx 15rpx;
+    background-color: #e9a431;
+    border-radius: 4rpx;
+    margin-left: 55rpx;
+}
+.orderPre{
+    display: flex;
+    justify-content: space-between;
+    height: 64rpx;
+    line-height: 64rpx;
+}
+.namepreson{
+	font-family: PingFang-SC-Medium;
+	font-size: 24rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0rpx;
+	color: #333333;
+}
+.nameData{
+	font-family: PingFang-SC-Medium;
+	font-size: 24rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0rpx;
+	color: #333333;
+}
+.b-t{
+    border-top: solid 1rpx rgba(44, 44, 44, .2); 
+}
+.none{
+    opacity:0 ;
+}
+.remarks{
+    margin-top: 20rpx;
+    margin-bottom: 20rpx;
+    background-color: #fff;
+    padding: 26rpx 30rpx 0 30rpx;
+
+}
+.orderrRemarks{
+	font-family: PingFang-SC-Medium;
+	font-size: 24rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0rpx;
+	color: #3b5370;
+}
+.content{
+	border-radius: 10rpx;
+    border: solid 1rpx #dddddd; 
+    padding: 26rpx 20rpx;
+    width: auto;
+    height: auto;
+    margin-top: 25rpx;
+}
+.orderrRemarks image{
+    width: 26rpx;
+    height: 26rpx;
+    margin-left: 10rpx;
+}
+.task{
+    margin-top: 30rpx;
+    display: flex;
+    align-items: center;
+    margin-bottom: 16rpx;
+}
+.taskList{
+    height: 66rpx;
+    line-height: 66rpx;
+}
+.taskList .nameData{
+    display: flex;
+    align-items: center;
+}
+.taskList .nameData image{
+    width: 24rpx;
+    height: 24rpx;
+    margin-right: 16rpx;
+}
+.taskList .namepreson{
+	font-family: PingFang-SC-Medium;
+	font-size: 24rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0rpx;
+	color: #333333;
+}
+.Memo{
+    margin-top: 20rpx;
+    padding: 26rpx 30rpx 0 30rpx;
+    background-color: #fff;
+}
+.Memo  .orderrRemarks{
+    display: flex;
+    justify-content: space-between;
+}
+.Memo  .orderrRemarks view{
+    display: flex;
+    align-items: center;
+}
+.Memo  .orderrRemarks view text{
+    padding-right: 16rpx;
+    color: #dddddd;
+}
+.MemoTetx{
+    margin-top: 20rpx;
+    width: 690rpx;
+    height: auto;
+	border-radius: 10rpx;
+    border: solid 1rpx #dddddd;
+    padding: 20rpx;
+    margin-bottom: 20rpx;
+}
+.MemoTetx textarea{
+    height: auto;
+}
+.sendMemo{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40rpx;
+}
+.sendMemo text{
+	font-family: PingFang-SC-Medium;
+	font-size: 20rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0rpx;
+    color: #8c8c8c;
+}
+.sendMemo view{
+	width: 80rpx;
+    height: 40rpx;
+    font-size: 20rpx;
+    color: #fff;
+    line-height: 40rpx;
+	background-color: #e9a431;
+    border-radius: 4rpx;
+    text-align: center;
+}
+.MemoList{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: solid 1rpx rgba(44, 44, 44, .2); 
+    padding-top: 10rpx;
+    padding-bottom: 16rpx;
+}
+.MemoList .memoleft{ 
+    line-height: 24rpx;
+}
+.MemoList .memoleft view{ 
+	font-family: PingFang-SC-Medium;
+	font-size: 24rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0rpx;
+	color: #333333;
+}
+.MemoList .memoleft text{ 
+    width: 161rpx;
+	height: 15rpx;
+	font-family: PingFang-SC-Medium;
+	font-size: 18rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0rpx;
+	color: #8c8c8c;
+}
+.MemoList .memoright{ 
+    
+}
+.MemoList .memoright>view{ 
+    margin-right: 20rpx;
+    display: flex;
+    justify-content: flex-end;
+}
+.MemoList .memoright>view text{ 
+	font-family: PingFang-SC-Medium;
+	font-size: 20rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0rpx;
+    color: #8c8c8c;
+    margin-left: 30rpx;
+    
+}
+.memorightTime{
+    width: 126rpx;
+	height: 17rpx;
+	font-family: PingFang-SC-Medium;
+	font-size: 18rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0rpx;
+    color: #e9a431; 
+    text-align: left;
+    margin-left: -26rpx;
+    margin-top: 10rpx;
+}
+.select{
+    color: #e9a431 !important; 
+}

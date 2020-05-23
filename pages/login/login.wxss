@@ -1,0 +1,183 @@
+/* pages/regiest/regiest.wxss */
+
+.regiestBody {
+  width: 100%;
+  /* position: relative; */
+}
+
+.regiestBody .regiestBg {
+  width: 100%;
+  height: auto;
+  padding: 130rpx 105rpx;
+  /* margin-top: 130rpx; */
+  margin: auto;
+}
+
+.AccountPassword {
+  margin-bottom: 83rpx;
+  position: relative;
+  display: flex;
+}
+
+.AccountPassword image {
+  display: 2;
+}
+
+.AccountPassword input {
+  margin-left: 50rpx;
+  font-size: 32rpx;
+  width: 461rpx;
+  display: 8;
+  padding-bottom: 10rpx;
+  font-size: 28rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0rpx;
+	color: #999999;
+}
+
+.AccountPassword text {
+  position: absolute;
+  right: 0;
+  font-size: 30rpx;
+  color: #e9a431;
+}
+
+image {
+  width: 34rpx;
+	height: 38rpx;
+  vertical-align: middle;
+}
+
+input {
+  display: inline-block;
+  vertical-align: middle;
+  border-bottom: 1rpx solid rgba(221  , 221, 221,.8);
+}
+
+.btn {
+  width: 100% !important;
+  height: 86rpx;
+  color: #fff;
+  border-radius: 44rpx !important;
+  background-color: #3b5370;
+  text-align: center;
+  line-height: 86rpx;
+  margin-bottom: 30rpx;
+  margin-top: 10rpx;
+}
+
+.Already {
+  text-align: center;
+  font-size: 28rpx;
+  margin-bottom: 130rpx;
+  font-family: PingFang-SC-Medium;
+	font-size: 24rpx;
+	font-weight: normal;
+	letter-spacing: 0rpx;
+	color: #999999;
+}
+
+.Already text:nth-child(1) {
+  color: #e9a431;
+}
+
+
+.or {
+  position: relative;
+  text-align: center;
+  width: 380rpx;
+  font-size: 28rpx;
+  margin: auto;
+}
+
+.or text {
+  line-height: 20px;
+  margin: auto;
+  font-family: PingFang-SC-Medium;
+	font-size: 24rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0rpx;
+	color: #999999;
+}
+
+/*CSS伪类用法*/
+
+.or text:after, .or text:before {
+  position: absolute;
+  top:50%;
+  background: #ddd;
+  content: "";
+  height: 2rpx;
+  width: 160rpx;
+  opacity: 0.5;
+}
+
+/*调整背景横线的左右距离*/
+
+.or text:before {
+  left: 0;
+}
+
+.or text:after {
+  right: 0;
+}
+
+.Onekey {
+  margin-top: 32rpx;
+  text-align: center;
+  font-size: 28rpx;
+}
+
+.Onekey image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.Onekey text {
+  margin-left: 22rpx;
+  font-family: PingFang-SC-Medium;
+	font-size: 24rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0rpx;
+	color: #999999;
+}
+
+.top{
+  height: 365rpx;
+  position: relative;
+}
+.topBg{
+  width: 100%;
+  height: 365rpx
+}
+.topFs{
+  width: 254rpx;
+  height: 135rpx;
+  position: absolute;
+  top: 58%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+
+}
+.back{
+  width: 20rpx;
+  height: 39rpx;
+  position: absolute;
+  top: 64rpx;
+  left: 25rpx;
+}
+.reiest{
+  display: flex;
+  justify-content: space-between;
+  font-family: PingFang-SC-Medium;
+	font-size: 24rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0rpx;
+  color: #999999;
+  margin-bottom: 230rpx;
+}
+

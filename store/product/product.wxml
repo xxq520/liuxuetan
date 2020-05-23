@@ -1,0 +1,88 @@
+<!-- 我得店铺订单管理页面 -->
+<view class="myStore">
+	<view class="top-option">
+		<view class="option-item  bor_bom current_ot" bindtap="goTab" data-url="/store/product/product">我的产品</view>
+		<view class="option-item " bindtap="goTab" data-url="/store/storeMyorder/storeMyorder">
+			订单管理
+		</view>
+		<view class="option-item" bindtap="goTab" data-url="/store/billManagement/billManagement">
+			账单管理
+		</view>
+		<view class="option-item " bindtap="goTab" data-url="/store/SetUpThe/SetUpThe">设置</view>
+		<view class="option-item " bindtap="goTab" data-url="/store/myStore/myStore">
+			我的概况
+		</view>
+	</view>
+	<!-- 订单搜索框 -->
+	<view class="filterOrder">
+		<!-- <picker class="filter" range="{{filterArr}}">
+      <text>所属分类</text>
+      <image src="/static/image/downjt.png" />
+    </picker> -->
+		<van-dropdown-menu class="filter">
+			<van-dropdown-item value="{{ 0 }}" options="{{ option1 }}" />
+		</van-dropdown-menu>
+		<text class="xiaoliang">销量</text>
+		<navigator url="/store/createOrder/createOrder">
+			<view class="createOrder">
+				<text>创建产品</text>
+				<image src="/static/image/createOrder.png" />
+			</view>
+		</navigator>
+	</view>
+	<!-- 产品列表 -->
+	<view class="product">
+		<view class="productCon">
+			<image class="productImg" />
+			<view class="productContent">
+				<view class="productTitle line_1">
+					英国留学申请
+				</view>
+				<view class="price">￥ 3000.00</view>
+				<view class="num">销量 : 14 2020.01.02 </view>
+			</view>
+			<image class="right" src="/static/image/right.png" />
+		</view>
+		<view class="productutil">
+			<text >下架</text>
+			<text class="select">修改</text>
+			<text >删除</text>
+		</view>
+	</view>
+	<view class="product">
+		<view class="productCon">
+			<image class="productImg" />
+			<view class="productContent">
+				<view class="productTitle line_1">
+					英国留学申请
+				</view>
+				<view class="price">￥ 3000.00</view>
+				<view class="num">销量 : 14 2020.01.02 </view>
+			</view>
+			<image class="right" src="/static/image/right.png" />
+		</view>
+		<view class="productutil">
+			<text >下架</text>
+			<text class="select">修改</text>
+			<text >删除</text>
+		</view>
+	</view>
+	<view class="product">
+		<view class="productCon">
+			<image class="productImg" />
+			<view class="productContent">
+				<view class="productTitle line_1">
+					英国留学申请
+				</view>
+				<view class="price">￥ 3000.00</view>
+				<view class="num">销量 : 14 2020.01.02 </view>
+			</view>
+			<image class="right" src="/static/image/right.png" />
+		</view>
+		<view class="productutil">
+			<text >下架</text>
+			<text class="select">修改</text>
+			<text >删除</text>
+		</view>
+	</view>
+</view>

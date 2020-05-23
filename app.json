@@ -1,0 +1,97 @@
+{
+  "pages": [
+    "pages/my/my",
+    "pages/index/index",
+    "pages/regiest/regiest",
+    "pages/login/login",
+    "pages/message/message",
+    "pages/discover/discover",
+    "pages/service/service"
+  ],
+  "subpackages": [
+    {
+      "root": "postList",
+      "pages": [
+        "postDetails/postDetails",
+        "problemDetails/problemDetails",
+        "topicColumn/topicColumn",
+        "answer/answer"
+      ]
+    },
+    {
+      "root": "other",
+      "pages": [
+        "feedback/feedback",
+        "search/search",
+        "myOrder/myOrder",
+        "personalData/personalData",
+        "release/release",
+        "CustomerService/CustomerService",
+        "setting/setting",
+        "myNews/myNews"
+      ]
+    },
+    {
+      "root": "store",
+      "pages": [
+        "myStore/myStore",
+        "storeMyorder/storeMyorder",
+        "orderDetail/orderDetail",
+        "createOrder/createOrder",
+        "billManagement/billManagement",
+        "withdrawal/withdrawal",
+        "product/product",
+        "noticeDetails/noticeDetails",
+        "Addremind/Addremind",
+        "SetUpThe/SetUpThe"
+      ]
+    }
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#3b5370",
+    "navigationBarTitleText": "留学谈",
+    "navigationBarTextStyle": "white"
+    
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#e9a431",
+    "borderStyle": "black",
+    "backgroundColor": "#f7f7fa",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "static/image/home.png",
+        "selectedIconPath": "static/image/home_selected.png"
+      },
+      {
+        "pagePath": "pages/discover/discover",
+        "text": "发现",
+        "iconPath": "static/image/faxian.png",
+        "selectedIconPath": "static/image/faxian_selected.png"
+      },
+      {
+        "pagePath": "pages/service/service",
+        "text": "服务",
+        "iconPath": "static/image/fuwu.png",
+        "selectedIconPath": "static/image/fuwu_selected.png"
+      },
+      {
+        "pagePath": "pages/message/message",
+        "text": "信息",
+        "iconPath": "static/image/xiaoxi.png",
+        "selectedIconPath": "static/image/xiaoxi_selected.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "static/image/wode.png",
+        "selectedIconPath": "static/image/wode_selected.png"
+      }
+    ]
+  },
+  "style":"v2",
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,29 @@
+<!-- pages/CustomerService/CustomerService.wxml -->
+<view class="CustomerService" id="j_page">
+	<view class="{{item.usr_profile_image_tn!=userInfo.usr_profile_image_tn?'user-info':'reply-info'}}" wx:for="{{chatList}}" >
+		<view class="user-chat-info" wx:if="{{item.usr_profile_image_tn!=userInfo.usr_profile_image_tn}}">
+			<image class="user-tx" src="http://www.liuxuetalk.com/{{item.usr_profile_image_tn}}" />
+			<view class="chat-content">{{item.cha_message}}</view>
+		</view>
+        <view class="reply-chat-info" wx:else>
+			<view class="chat-content">{{item.cha_message}}</view>
+			<image class="user-tx" src="http://www.liuxuetalk.com/{{item.usr_profile_image_tn}}" />
+		</view>
+        <!-- <view class="end-time" >10月10日 10:48</view> -->
+	</view>
+	<!-- <view class="user-info"  wx:for="{{chatList}}" wx:else>
+		<view class="user-chat-info">
+			<image class="user-tx" src="http://www.liuxuetalk.com/{{item.usr_profile_image_tn}}" />
+			<view class="chat-content">{{item.cha_message}}</view>
+		</view>
+	</view> -->
+	<view class="bot_fixed">
+		<input type="text" placeholder="请输入您想说的话…" bindinput="changeChatContent" value='{{chatContent}}'/>
+		<view class="right">
+        <view class="add-info">
+			<image src="/static/image/jiahao.png" />
+		</view>
+        <view wx:if="{{chatContent.length}}" class="btnsend" bindtap="sendMessage">发送</view>
+        </view>
+	</view>
+</view>

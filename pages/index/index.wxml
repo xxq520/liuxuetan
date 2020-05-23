@@ -1,0 +1,224 @@
+<!-- index.wxml -->
+<view class="container">
+  <view class="top_bg">
+    <view class="top_search">
+      <view class="logo-box">
+        <image class="logo" src="../../static/image/logo.png"></image>
+      </view>
+      <view class="search-box">
+        <input type="text" placeholder="SEARCH"></input>
+        <image class="search_btn" src="../../static/image/search.png" />
+      </view>
+      <van-overlay show="{{ sendMessage }}" bind:click="changeMessage" />
+      <view class="right_jia" bindtap="changeMessage">
+        <view class="jia_bg">
+          <image src="{{sendMessage?'../../static/image/jia_select.png':'../../static/image/jia.png'}}" />
+          <view class="sendMessage" wx:if="{{sendMessage}}">
+            <navigator url="/other/release/release">
+              <view>
+                <image src="/static/image/xie.png"></image>
+                <text>发布文章</text>
+              </view>
+            </navigator>
+            <navigator url="/other/release/release">
+              <view>
+                <image src="/static/image/wenhao.png"></image>
+                <text>发布问题</text>
+              </view>
+            </navigator>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="tab_bar">
+    <view class="tab_item  current_color {{!searchContent?'bor_b':''}}">推荐</view>
+    <view class="tab_item " catchtap="guanzhu">
+      <text class="{{searchContent?'bor_b':''}}">关注</text>
+      <image src="/static/image/xiala.png" />
+    </view>
+    <!-- 关注弹出窗 -->
+    <view class="denger" wx:if="{{isShow}}">
+      <view class="html">默认标签</view>
+      <view class="alertbox">
+        <text class="{{followIndex==0?'selectYellow':''}}" data-text="" data-num="0"  bindtap="seacrchFollow">全部关注</text>
+        <text class="{{followIndex==index+1?'selectYellow':''}}"   wx:for="{{follow}}" wx:key="index"  bindtap="seacrchFollow" data-num="{{index+1}}"  data-text="{{item.new_tags}}">{{item.new_tags}}</text>
+      </view>
+    </view>
+    <view class="ceng" wx:if="{{isShow}}" catchtap="guanzhu"></view>
+  </view>
+  <view class="article_list">
+  <!-- en_new_id: "uY3xOl6YjhwNcZKPbYeuuQ==%^#%"
+  filtered_record: 11
+  isFavourite: false
+  isLiked: false
+  new_comment: 4
+  new_content: "test"
+  new_favourite: 1
+  new_forward: 0
+  new_header: "英国什么城市好玩？"
+  new_header_image: ""
+  new_header_image_tn: ""
+  new_id: 17
+  new_key: "uY3xOl6YjhwNcZKPbYeuuQ%3d%3d"
+  new_like: 0
+  new_order: 234
+  new_tags: "英国旅游"
+  new_tags_index: "英国旅游"
+  new_valid: true
+  new_visit: 110
+  new_weight: 0
+  ntp_id: 2
+  ntp_type: "问题"
+  usr_display_name: "juneasix"
+  usr_profile_image_tn: "/Uploads/Profile/Thumbnails/monkey.jpg"
+  utp_badge: null -->
+   <view class="article_item" bindtap="goPostdetails" data-type="{{item.ntp_type=='问题'?2:1}}" data-id="{{item.new_id}}" wx:for="{{indexData}}"  wx:key="index"> 
+      <view class="article_title">
+        <view class="title_box">
+          <view class="wen_ti" wx:if="{{item.ntp_type=='问题'}}">问</view>
+          <text class="title_txt">{{item.new_header}}</text>
+        </view>
+        <view class="collect_btn">
+          <image src="../../static/image/aixin.png" />
+          <text>收藏</text>
+        </view>
+      </view>
+      <view class="article_context">
+       {{item.new_content}}
+      </view>
+       <text class="full_text" wx:if="{{item.new_content.length>10}}">阅读全文</text>
+      <view class="user_info">
+        <image class="user_tx" src="http://www.liuxuetalk.com/{{item.usr_profile_image_tn}}" />
+        <view class="info_content">
+          <view class="top_info">
+            <text class="user_name">{{item.usr_display_name}}</text>
+            <text class="publish_time">刚刚发表</text>
+          </view>
+          <view class="bottom_info">
+            <view class="browse">
+              <image src="../../static/image/year.png" />
+              <text class="browse_context">浏览量</text>
+              <text class="browse_num">{{item.new_visit}}</text>
+            </view>
+            <view class="attention">
+              <image src="../../static/image/guanzhu.png" />
+              <text class="attention_btn">关注</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="status">
+        <view class="status_item">
+          <image src="../../static/image/zhuanfa.png" />
+          <text>{{item.new_forward}}</text>
+        </view>
+        <view class="status_item">
+          <image src="../../static/image/dianzan.png" />
+          <text class="zan_color">{{item.new_like}}</text>
+        </view>
+        <view class="status_item">
+          <image src="../../static/image/liuyan.png" />
+          <text>{{item.new_comment}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="article_item" bindtap="goPostdetails" data-type="1">
+      <view class="article_title">
+        <view class="title_box">
+          <view class="wen_ti">问</view>
+          <text class="title_txt">英国留学必带清单（意想不到）</text>
+        </view>
+        <view class="collect_btn">
+          <image src="../../static/image/aixin.png" />
+          <text>收藏</text>
+        </view>
+      </view>
+      <view class="article_context">
+        这是一篇不一样的干货篇！有些东西你想都可能没想过要用到！ 当前国内疫情有所减缓！！ 可是英国疫情加重！好多东西后悔 没有带过来伯明翰，为了不让来英国的同学陷入我这样尴尬的处 境，我决定分享一些值得带！不对是一定要带的东西，拿本本记 好！补充加祈祷
+        <text class="full_text">阅读全文</text>
+      </view>
+      <view class="user_info">
+        <image class="user_tx" src="../../static/image/kouzhao.png" />
+        <view class="info_content">
+          <view class="top_info">
+            <text class="user_name">Green</text>
+            <text class="publish_time">刚刚发表</text>
+          </view>
+          <view class="bottom_info">
+            <view class="browse">
+              <image src="../../static/image/year.png" />
+              <text class="browse_context">浏览量</text>
+              <text class="browse_num">31</text>
+            </view>
+            <view class="attention">
+              <image src="../../static/image/guanzhu.png" />
+              <text class="attention_btn">关注</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="status">
+        <view class="status_item">
+          <image src="../../static/image/zhuanfa.png" />
+          <text>800</text>
+        </view>
+        <view class="status_item">
+          <image src="../../static/image/dianzan.png" />
+          <text class="zan_color">2000</text>
+        </view>
+        <view class="status_item">
+          <image src="../../static/image/liuyan.png" />
+          <text>10</text>
+        </view>
+      </view>
+    </view>
+    <view class="article_item" bindtap="goPostdetails" data-type="2">
+      <view class="article_title">
+        <view class="title_box">
+          <view class="wen_ti">问</view>
+          <text class="title_txt wen_title_cor">英国什么城市好玩？</text>
+        </view>
+        <view class="collect_btn">
+          <image src="../../static/image/aixin.png" />
+          <text>收藏</text>
+        </view>
+      </view>
+      <view class="user_info mar_top_16">
+        <image class="user_tx " src="../../static/image/kouzhao.png" />
+        <view class="info_content">
+          <view class="top_info">
+            <text class="user_name">Green</text>
+            <text class="publish_time">刚刚发表</text>
+          </view>
+          <view class="bottom_info">
+            <view class="browse">
+              <image src="../../static/image/year.png" />
+              <text class="browse_context">浏览量</text>
+              <text class="browse_num">31</text>
+            </view>
+            <view class="attention">
+              <image src="../../static/image/guanzhu.png" />
+              <text class="attention_btn">关注</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="status mar_b_36">
+        <view class="status_item">
+          <image src="../../static/image/zhuanfa.png" />
+          <text>800</text>
+        </view>
+        <view class="status_item">
+          <image src="../../static/image/dianzan.png" />
+          <text class="zan_color">2000</text>
+        </view>
+        <view class="status_item">
+          <image src="../../static/image/liuyan.png" />
+          <text>10</text>
+        </view>
+      </view>
+      <view class="wen_da">FENG：London(伦敦)伦敦作为游人最爱的城市似乎有很多理 由，又似乎没有理由。自罗马时代起，世界各地的人们就聚...</view>
+    </view>
+  </view>
+</view>

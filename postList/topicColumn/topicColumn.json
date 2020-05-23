@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "van-dropdown-menu": "/dist/dropdown-menu/index",
+    "van-dropdown-item": "/dist/dropdown-item/index"
+  },
+  "navigationBarTitleText": "话题专栏",
+  "backgroundTextStyle": "light",
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle": "black"
+}

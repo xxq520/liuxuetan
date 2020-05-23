@@ -1,0 +1,32 @@
+<!-- pages/regiest/regiest.wxml -->
+<view class="top">
+    <image class="topBg" src="/static/image/loginBg.png" />
+    <image class="topFs" src="/static/image/liuxuetanLogo.png" />
+    <!-- <image class="back" src="/static/image/back.png" /> -->
+</view>
+<view class="regiestBody">
+    <view class="regiestBg">
+        <view class="user AccountPassword">
+            <image src="../../static/image/user.png"></image>
+            <input type="number" value="{{phone}}" placeholder="请输入手机号" bindinput="changeInput" data-type="phone"></input>
+        </view>
+        <view class="Password AccountPassword">
+            <image src="../../static/image/Password.png"></image>
+            <input type="password" value="{{password}}" placeholder="请输入密码" bindinput="changeInput" data-type="password"></input>
+        </view>
+        <view class="btn" bindtap="submitBtn">登录</view>
+        <view class="reiest">
+            <view bindtap="goregister">注册</view>
+            <view >忘记密码?</view>
+        </view>
+        <view class="or">
+            <!-- <text></text> -->
+            <text>或</text>
+            <!-- <text></text> -->
+        </view>
+        <view class="Onekey">
+            <image src="../../static/image/WeChat.png"></image>
+            <text>微信授权一键登录</text>
+        </view>
+    </view>
+</view>

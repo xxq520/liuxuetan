@@ -1,0 +1,78 @@
+<!-- store/SetUpThe/SetUpThe.wxml -->
+<view class="SetUpThe">
+	<view class="top-option">
+		<view class="option-item " bindtap="goTab" data-url="/store/product/product">我的产品</view>
+		<view class="option-item " bindtap="goTab" data-url="/store/storeMyorder/storeMyorder">
+			订单管理
+		</view>
+		<view class="option-item" bindtap="goTab" data-url="/store/billManagement/billManagement">
+			账单管理
+		</view>
+		<view class="option-item bor_bom current_ot" bindtap="goTab" data-url="/store/SetUpThe/SetUpThe">设置</view>
+		<view class="option-item " bindtap="goTab" data-url="/store/myStore/myStore">
+			我的概况
+		</view>
+	</view>
+	<view class="input-info">
+		<view class="info-item">
+			<text>副标题</text>
+			<input type="text" placeholder="请输入副标题" />
+		</view>
+		<view class="info-item">
+			<text>简介内容</text>
+			<input type="text" placeholder="请输入简介内容" />
+		</view>
+		<view class="info-item">
+			<text>详细介绍</text>
+			<input type="text" placeholder="请输入详细内容介绍" />
+		</view>
+	</view>
+	<view class="background-image">
+		<view class="upload-title">背景图片上传</view>
+		<van-uploader file-list="{{fileList}}" />
+	</view>
+	<view class="intro-image">
+		<view class="upload-title">简介图片上传</view>
+		<van-uploader file-list="{{fileList}}" />
+	</view>
+	<picker class="filter" range="{{filterArr}}">
+		<view class="Where-countries">
+			<view class="countries-info">
+				<text>商家所在国家</text>
+				<text class="countries">英国</text>
+			</view>
+
+			<image src="/static/ima1ge/jiantou_you.png" />
+		</view>
+	</picker>
+	<view class="classify">
+		<view class="classify-title">
+			<view class="classify-context">所属分类</view>
+			<view class="study-abroad">留学申请</view>
+			<view class="status">已开通</view>
+		</view>
+		<view class="context-list">
+			<view class="context-item">
+				<view class="classify-context"></view>
+				<view class="study-abroad">学术辅导</view>
+				<view class="status current_color">申请开通</view>
+			</view>
+			<view class="context-item">
+				<view class="classify-context"></view>
+				<view class="study-abroad">学术辅导</view>
+				<view class="status current_color">申请开通</view>
+			</view>
+			<view class="context-item">
+				<view class="classify-context"></view>
+				<view class="study-abroad">学术辅导</view>
+				<view class="status">已开通</view>
+			</view>
+			<view class="context-item">
+				<view class="classify-context"></view>
+				<view class="study-abroad">学术辅导</view>
+				<view class="status current_color">申请开通</view>
+			</view>
+		</view>
+
+	</view>
+</view>

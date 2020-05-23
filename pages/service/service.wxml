@@ -1,0 +1,127 @@
+<!-- pages/discover/discover.wxml -->
+<view class="container">
+    <view class="top_search">
+        <image class="logo" src="../../static/image/logo_2.png" />
+        <view class="select">
+            <text>英国</text>
+            <image src="../../static/image/xiala_2.png" />
+        </view>
+        <image class="search_btn" src="../../static/image/search.png" />
+    </view>
+    <view class="roll_nav">
+        <view class="nav_item current_item current_color">留学申请</view>
+        <view class="nav_item">学术辅导</view>
+        <view class="nav_item">旅游签证</view>
+        <view class="nav_item">求职顾问</view>
+        <view class="nav_item">法律顾问</view>
+        <view class="nav_item">法律顾问</view>
+        <view class="nav_item">法律顾问</view>
+        <view class="nav_item">法律顾问</view>
+        <view class="nav_item">法律顾问</view>
+        <view class="nav_item">法律顾问</view>
+    </view>
+    <view class="hot_search">
+        <view class="search">
+            <input placeholder="商家搜索"></input>
+            <image src="/static/image/search.png" ></image>
+        </view>
+        <view class="filter">
+        <van-dropdown-menu>
+          <van-dropdown-item value="" options="{{ option1 }}" title="排序"/>
+        </van-dropdown-menu>
+        </view>
+    </view>
+    <!-- 每位商家展示 -->
+    <view class="shopList" bindtap="gopreploData">
+      <image mode="aspectFill" class="avart" src="https://t1.picb.cc/uploads/2020/05/02/kztvAG.png"></image>
+      <view class="shopListCenter">
+        <view class="shopTitle">Swapnil P.</view>
+        <view class="shopStar">
+          <view class="Star">
+            <text>评分</text>
+            <image src="/static/image/star_select.png"></image>
+            <image src="/static/image/star_select.png"></image>
+            <image src="/static/image/star_select.png"></image>
+            <image src="/static/image/star.png"></image>
+            <image src="/static/image/star.png"></image>
+          </view>
+          <view class="line"></view>
+          <view class="comment">1950条评论</view>
+        </view>
+        <view class="shopType">
+          <text>英国大学申请</text>
+          <text>语言培训</text>
+        </view>
+      </view>
+      <image class="right"  src="/static/image/right.png"></image>
+    </view>
+    <view class="shopList" bindtap="gopreploData">
+      <image mode="aspectFill" class="avart" src="https://t1.picb.cc/uploads/2020/05/02/kztvAG.png"></image>
+      <view class="shopListCenter">
+        <view class="shopTitle">Swapnil P.</view>
+        <view class="shopStar">
+          <view class="Star">
+            <text>评分</text>
+            <image src="/static/image/star_select.png"></image>
+            <image src="/static/image/star_select.png"></image>
+            <image src="/static/image/star_select.png"></image>
+            <image src="/static/image/star.png"></image>
+            <image src="/static/image/star.png"></image>
+          </view>
+          <view class="line"></view>
+          <view class="comment">1950条评论</view>
+        </view>
+        <view class="shopType">
+          <text>英国大学申请</text>
+          <text>语言培训</text>
+        </view>
+      </view>
+      <image class="right"  src="/static/image/right.png"></image>
+    </view>
+    <view class="shopList" bindtap="gopreploData">
+      <image mode="aspectFill" class="avart" src="https://t1.picb.cc/uploads/2020/05/02/kztvAG.png"></image>
+      <view class="shopListCenter">
+        <view class="shopTitle">Swapnil P.</view>
+        <view class="shopStar">
+          <view class="Star">
+            <text>评分</text>
+            <image src="/static/image/star_select.png"></image>
+            <image src="/static/image/star_select.png"></image>
+            <image src="/static/image/star_select.png"></image>
+            <image src="/static/image/star.png"></image>
+            <image src="/static/image/star.png"></image>
+          </view>
+          <view class="line"></view>
+          <view class="comment">1950条评论</view>
+        </view>
+        <view class="shopType">
+          <text>英国大学申请</text>
+          <text>语言培训</text>
+        </view>
+      </view>
+      <image class="right"  src="/static/image/right.png"></image>
+    </view>
+    <view class="shopList" bindtap="gopreploData">
+      <image mode="aspectFill" class="avart" src="https://t1.picb.cc/uploads/2020/05/02/kztvAG.png"></image>
+      <view class="shopListCenter">
+        <view class="shopTitle">Swapnil P.</view>
+        <view class="shopStar">
+          <view class="Star">
+            <text>评分</text>
+            <image src="/static/image/star_select.png"></image>
+            <image src="/static/image/star_select.png"></image>
+            <image src="/static/image/star_select.png"></image>
+            <image src="/static/image/star.png"></image>
+            <image src="/static/image/star.png"></image>
+          </view>
+          <view class="line"></view>
+          <view class="comment">1950条评论</view>
+        </view>
+        <view class="shopType">
+          <text>英国大学申请</text>
+          <text>语言培训</text>
+        </view>
+      </view>
+      <image class="right"  src="/static/image/right.png"></image>
+    </view>
+</view>

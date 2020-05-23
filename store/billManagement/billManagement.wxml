@@ -1,0 +1,93 @@
+<!-- other/billManagement/billManagement.wxml -->
+<view class="billManagement">
+    <view class="top-option">
+       <view class="option-item " bindtap="goTab" data-url="/store/product/product">我的产品</view>
+		<view class="option-item " bindtap="goTab" data-url="/store/storeMyorder/storeMyorder">
+			订单管理
+		</view>
+		<view class="option-item bor_bom current_ot" bindtap="goTab" data-url="/store/billManagement/billManagement">
+			账单管理
+		</view>
+		<view class="option-item " bindtap="goTab" data-url="/store/SetUpThe/SetUpThe">设置</view>
+		<view class="option-item " bindtap="goTab" data-url="/store/myStore/myStore">
+			我的概况
+		</view>
+    </view>
+    <view class="time-option">
+        <picker mode="date" value="x" start="2020-05-01" end="2030-09-01" bindchange="bindDateChange" wx:if="{{!checked}}">
+            <view class="start-time time-item">
+                <text>2020年04月01日</text>
+                <image src="/static/image/daolisanjiao.png" />
+            </view>
+        </picker>
+        <text class="separator">~</text>
+        <picker mode="date" value="x" start="2020-05-01" end="2030-09-01" bindchange="bindDateChange" wx:if="{{!checked}}">
+            <view class="end-time time-item">
+                <text>2020年04月30日</text>
+                <image src="/static/image/daolisanjiao.png" />
+            </view>
+        </picker>
+    </view>
+    <view class="trading-comprehensive">
+        <view class="trading-num">
+            <text class="trading-title">交易完成次数</text>
+            <view class="line_1">473333333333333333</view>
+        </view>
+        <view class="trading-price">
+            <text class="trading-title">总交易额</text>
+            <view class="price-info">
+                <text class="price-font-icon">￥</text>
+                <view class="line_1">95000.001111111111111111111</view>
+            </view>
+        </view>
+    </view>
+    <view class="trading-info-list">
+        <view class="top-bor"></view>
+        <view class="list-item">
+            <view class="list-item--childer-noe">
+                <text>英国留学申请</text>
+                <text class="trading-complete">交易完成次数</text>
+            </view>
+            <view class="list-item--childer-two">
+                <text>金额</text>
+                <text>5次</text>
+            </view>
+            <view class="list-item--childer-three">
+                <text>+20000.00</text>
+                <text class="details-btn">详情</text>
+            </view>
+        </view>
+        <view class="list-item">
+            <view class="list-item--childer-noe">
+                <text>英国留学申请</text>
+                <text class="trading-complete">交易完成次数</text>
+            </view>
+            <view class="list-item--childer-two">
+                <text>金额</text>
+                <text>5次</text>
+            </view>
+            <view class="list-item--childer-three">
+                <text>+20000.00</text>
+                <text class="details-btn">详情</text>
+            </view>
+        </view>
+        <view class="list-item">
+            <view class="list-item--childer-noe">
+                <text>英国留学申请</text>
+                <text class="trading-complete">交易完成次数</text>
+            </view>
+            <view class="list-item--childer-two">
+                <text>金额</text>
+                <text>5次</text>
+            </view>
+            <view class="list-item--childer-three">
+                <text>+20000.00</text>
+                <text class="details-btn">详情</text>
+            </view>
+        </view>
+    </view>
+    <navigator url="/store/withdrawal/withdrawal">
+        <view class="withdrawal">提现</view>
+    </navigator>
+    <view class="can-withdrawal-price">可提现金额 20000元</view>
+</view>

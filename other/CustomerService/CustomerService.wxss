@@ -1,0 +1,119 @@
+/* pages/CustomerService/CustomerService.wxss */
+page{
+    background: #f5f5f5;
+}
+.CustomerService{
+    padding:26rpx  40rpx 124rpx 40rpx;
+    height:calc(100% - 124rpx);
+    overflow-y: scroll;
+}
+.user-info,.reply-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+.reply-info {
+    align-items: flex-end;
+}
+.user-tx{
+	width: 84rpx;
+    height: 84rpx;
+    border-radius: 84rpx;
+}
+.user-chat-info,.reply-chat-info{
+    display: flex;
+    margin-bottom: 30rpx;
+    justify-content: end;
+}
+.reply-chat-info .chat-content{
+    border-radius: 30rpx 0rpx 30rpx 30rpx; 
+    margin-right: 20rpx;
+    margin-left: 0rpx;
+    background-color: #3b5370;
+    color: #ffffff;
+}
+
+.chat-content{
+    margin-left: 20rpx;
+    background-color: #ffffff;
+    border-radius: 0rpx 30rpx 30rpx 30rpx;
+    font-size: 26rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0rpx;
+    color: #333333;
+    padding: 28rpx 24rpx;
+}
+.btnsend{
+    width: 80rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+    text-align: center;
+    background-color: limegreen;
+    color: #fff;
+    border-radius: 6rpx;
+    font-size: 26rpx;
+    margin-right: 6rpx;
+}
+.right{
+    width: 157rpx;
+    display: flex;
+    justify-content: space-around;
+}
+.end-time{
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 10rpx;
+	background-color: #999999;
+    border-radius: 5rpx;
+    margin: 0 auto;
+    margin-bottom: 30rpx;
+    font-size: 18rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0rpx;
+    color: #ffffff;
+    margin-top: 10rpx;
+}
+.bot_fixed{
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fafafa;
+    z-index: 100;
+    padding: 18rpx 0 18rpx 40rpx ;
+}
+.bot_fixed input {
+    width: 553rpx;
+    height: 88rpx;
+	background-color: #ffffff;
+	border-radius: 10rpx;
+    border: solid 1rpx #dadada;
+    font-size: 30rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0rpx;
+    color: #9f9fa0;
+    padding:0 30rpx;
+}
+.add-info{
+    width: 58rpx;
+	height: 58rpx;
+    background-color: #e9a431;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+.add-info image{
+    width: 29rpx;
+	height: 30rpx;
+}
+input{
+    box-sizing: border-box;
+}

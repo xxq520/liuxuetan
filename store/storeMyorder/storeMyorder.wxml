@@ -1,0 +1,92 @@
+<!-- 我得店铺订单管理页面 -->
+<view class="myStore">
+	<view class="top-option">
+		<view class="option-item " bindtap="goTab" data-url="/store/product/product">我的产品</view>
+		<view class="option-item  bor_bom current_ot" bindtap="goTab" data-url="/store/storeMyorder/storeMyorder">
+			订单管理
+		</view>
+		<view class="option-item" bindtap="goTab" data-url="/store/billManagement/billManagement">
+			账单管理
+		</view>
+		<view class="option-item " bindtap="goTab" data-url="/store/SetUpThe/SetUpThe">设置</view>
+		<view class="option-item " bindtap="goTab" data-url="/store/myStore/myStore">
+			我的概况
+		</view>
+	</view>
+	<!-- 订单搜索框 -->
+	<view class="searchOrder">
+		<input type="text" name="" id="" />
+		<image src="/static/image/search.png" />
+	</view>
+	<!-- 订单筛选 -->
+	<view class="filterOrder">
+		<picker class="filter" range="{{filterArr}}">
+			<text>排列筛选</text>
+			<image src="/static/image/downjt.png" />
+		</picker>
+		<navigator url="/store/createOrder/createOrder">
+			<view class="createOrder">
+				<text>自建订单</text>
+				<image src="/static/image/createOrder.png" />
+			</view>
+		</navigator>
+	</view>
+	<!-- 订单列表 -->
+	<view class="orderList">
+		<view class="orderTop">
+			<view class="orderName">
+				客户名称:
+				<text>刘佳宇</text>
+			</view>
+			<view class="createTime">创建时间: 2020-01-02</view>
+		</view>
+		<view class="orderCenter">
+			<view class="orderTitle">英国留学服务</view>
+			<view class="orderStatus">未支付</view>
+		</view>
+		<view class="orderBottom">
+			<view>￥ 5000.00</view>
+			<navigator url="/other/orderDetail/orderDetail">
+				<text>订单详情</text>
+			</navigator>
+		</view>
+	</view>
+	<view class="orderList">
+		<view class="orderTop">
+			<view class="orderName">
+				客户名称:
+				<text>刘佳宇</text>
+			</view>
+			<view class="createTime">创建时间: 2020-01-02</view>
+		</view>
+		<view class="orderCenter">
+			<view class="orderTitle">英国留学服务</view>
+			<view class="orderStatus">已支付</view>
+		</view>
+		<view class="orderBottom">
+			<view>￥ 1000.00</view>
+			<navigator url="/other/orderDetail/orderDetail">
+				<text>订单详情</text>
+			</navigator>
+		</view>
+	</view>
+	<view class="orderList">
+		<view class="orderTop">
+			<view class="orderName">
+				客户名称:
+				<text>刘佳宇</text>
+			</view>
+			<view class="createTime">创建时间: 2020-01-02</view>
+		</view>
+		<view class="orderCenter">
+			<view class="orderTitle">英国留学服务</view>
+			<view class="orderStatus">已完成</view>
+		</view>
+		<view class="orderBottom">
+			<view>￥ 3000.00</view>
+			<navigator url="/other/orderDetail/orderDetail">
+				<text>订单详情</text>
+			</navigator>
+		</view>
+	</view>
+</view>

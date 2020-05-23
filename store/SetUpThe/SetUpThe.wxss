@@ -1,0 +1,160 @@
+/* store/SetUpThe/SetUpThe.wxss */
+.top-option{
+    white-space: nowrap;
+    padding-left: 28rpx;
+    overflow-x: scroll;
+    background: #fff;
+  }
+  .option-item{
+      margin-right:  60rpx;
+    display: inline-block;
+    font-size: 28rpx;
+      font-weight: normal;
+      font-stretch: normal;
+      letter-spacing: 0rpx;
+    color: #8c8c8c;
+    padding-bottom: 24rpx;
+    position: relative;
+  }
+  .option-item:last-child{
+  margin: 0;
+  }
+  .bor_bom::before{
+    content: "";
+    position: absolute;
+    width: 50%;
+    height: 4rpx;
+    background: #e9a431;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+  }
+  .current_ot{
+      font-size: 32rpx;
+      font-weight: normal;
+      font-stretch: normal;
+      letter-spacing: 0rpx;
+      color: #3b5370;
+  }
+  .input-info{
+      padding: 18rpx 0rpx 30rpx 0rpx;
+      background-color: #fff;
+  }
+  .info-item{
+    height: 88rpx;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+   border-bottom: solid 1rpx #dddddd;
+   font-size: 32rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0rpx;
+	color: #333333;
+  }
+  .info-item text{
+      margin-left: 30rpx;
+  }
+  .info-item input{
+      width: calc(100% - 260rpx);
+      font-size: 32rpx;
+      font-weight: normal;
+      font-stretch: normal;
+      letter-spacing: 0rpx;
+      color: #8c8c8c;
+      padding-right: 30rpx;
+  }
+  .upload-title{
+    height: 88rpx;
+    display: flex;
+    align-items: center;
+    font-size: 32rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0rpx;
+    color: #333333;
+    padding: 0 28rpx;
+  }
+  .Where-countries{
+    height: 88rpx;
+      padding: 0 4%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 32rpx;
+      font-weight: normal;
+      font-stretch: normal;
+      letter-spacing: 0rpx;
+      color: #333333;
+      border-bottom: solid 1rpx #dddddd;
+  }
+  .countries{
+      margin-left: 40rpx;
+      font-size: 32rpx;
+      font-weight: normal;
+      font-stretch: normal;
+      letter-spacing: 0rpx;
+      color: #8c8c8c;
+  }
+  .Where-countries image{
+    width: 15rpx;
+	height: 25rpx;
+  }
+  .classify-title,.context-item{
+    height: 88rpx;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    font-size: 32rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0rpx;
+    color: #333333;
+
+  }
+  .classify-title,.context-list{
+    border-bottom: solid 1rpx #dddddd;
+  }
+  .context-list{
+      padding-bottom: 100rpx;
+  }
+.classify-context,.study-abroad,.status{
+    width: 33.3333333333%;
+    text-align: center;
+    font-size: 32rpx;
+    color: #333333;
+}
+.picker {
+    width: 100%;
+    height: 364rpx;
+    background: #fff;
+    text-align: center;
+}
+.cover_container{
+    flex-direction: column;
+     justify-content: flex-end;
+     align-items: stretch;
+}
+.operation{
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 35rpx;
+
+}
+.time-title{
+    font-size: 36rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0rpx;
+	color: #333333;
+}
+.cancel,.determine{
+    font-size: 32rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	line-height: 42rpx;
+	letter-spacing: 0rpx;
+	color: #333333;
+}

@@ -1,0 +1,147 @@
+<!-- pages/answer/answer.wxml -->
+<view class="answer">
+        <!-- 下拉显示置顶问题 -->
+    <view class="top_fixed"  wx:if="{{scollHeight>100}}">
+        <view class="problem_title">
+            <view class="left_problem">
+                <view class="ask">问</view>
+                <text class="txt_title">{{newContent.new_header}}</text>
+            </view>
+            <view class="right_answer">
+                <image src="../../static/image/search.png" />
+                <text class="dot_three">···</text>
+            </view>
+        </view>
+    </view>
+
+    <view class="ask_container">
+        <view class="is_show">
+                <view class="top_search">
+        <image class="logo" src="../../static/image/logo_2.png" />
+        <view class="search-box">
+            <input type="text" placeholder="SEARCH" />
+            <image src="../../static/image/search.png" />
+        </view>
+        <view class="dot_three pd_16">···</view>
+    </view>
+            <view class="left_problem">
+                <view class="ask">问</view>
+                <text class="txt_title">{{newContent.new_header}}</text>
+            </view>
+            <view class="article_txt mar_top_20">
+                {{newContent.new_content}}
+            </view>
+            <view class="flow_list">
+                <view class="flow_item">
+                    <text>0</text>
+                    <text>关注</text>
+                </view>
+                <view class="flow_item">
+                    <text>{{comment.length}}</text>
+                    <text>评论</text>
+                </view>
+                <view class="flow_item">
+                    <text>{{newContent.new_visit}}</text>
+                    <text>浏览</text>
+                </view>
+            </view>
+            <view class="label_list">
+                <view class="label_item" wx:for="{{newContent.new_tags}}">{{item}}</view>
+            </view>
+            <view class="options">
+                <view class="options_item"  bindtap="likeNew" data-type="favourite">
+                    <image src="../../static/image/aixin.png" wx:if="{{!newContent.isFavourite}}" />
+                    <text>{{newContent.isFavourite?'已收藏问题':'收藏问题'}}</text>
+                </view>
+                <view class="options_item" bindtap="showPopup">
+                    <image src="../../static/image/bianji.png" />
+                    <text>我来回答</text>
+                </view>
+                <view class="options_item">
+                    <image src="../../static/image/wenti_yellow.png" />
+                    <text>关注问题</text>
+                </view>
+            </view>
+        </view>
+        <view class="card_topic" bindtap="gotopic">
+            <view class="topic_info_left" >
+                <image src="https://t1.picb.cc/uploads/2020/05/02/kzt0le.png" />
+                <view class="topic_txt">
+                    <text class="topic_title">进入我们的话题讨论区...</text>
+                    <text class="topic_context">每日打卡，赶紧进入话题讨论区吧...</text>
+                </view>
+            </view>
+            <view class="topic_info_right">
+                <view class="topic_right_image">
+                    <image src="https://t1.picb.cc/uploads/2020/05/02/kzt0le.png" />
+                    <image src="https://t1.picb.cc/uploads/2020/05/02/kzt0le.png" />
+                    <image src="https://t1.picb.cc/uploads/2020/05/02/kzt0le.png" />
+                </view>
+                <image class="jiantou_right" src="../../static/image/jiantou_you.png" />
+            </view>
+        </view>
+        <view class="answer_container">
+            <view class="sorting">
+                <view class="Question_answer">回答</view>
+                <view class="sorting_way">
+                    <text>默认排序</text>
+                    <image src="../../static/image/xiala_3.png" />
+                </view>
+            </view>
+            <view class="answer_list">
+                <view class="answer_item" wx:for="{{comment}}"> 
+                    <view class="context line_4" >
+                       <rich-text nodes="{{item.ncm_comment}}"></rich-text>
+                    </view>
+                    <view class="published_status">
+                        <view class="left_status">
+                            <image src="http://www.liuxuetalk.com/{{item.usr_profile_image_tn}}" />
+                            <text class="user_name">{{item.usr_display_name}}</text>
+                            <text class="published_time">刚刚发表</text>
+                        </view>
+                        <view class="right_status">
+                            <view class="right_status_item">
+                                <image src="../../static/image/zhuanfa.png" />
+                                <text class="">888</text>
+                            </view>
+                            <view class="right_status_item">
+                                <image src="../../static/image/dianzan.png" />
+                                <text class="zt_color">{{item.ncm_like}}</text>
+                            </view>
+                            <view class="right_status_item">
+                                <image src="../../static/image/liuyan.png" />
+                                <text class="">{{item.ncm_comment_count}}</text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <!-- 底部定位条 -->
+    <view class="bottom_fixed">
+        <view class="left_problem">
+            <view class="problem_item" bindtap="likeNew" data-type="favourite">
+                <image src="{{newContent.isFavourite?'../../static/image/aixin.png':'../../static/image/bottom_sc.png'}}" />
+                <text class="{{newContent.isFavourite?'active':''}}">收藏问题</text>
+            </view>
+            <view class="problem_item">
+                <image src="../../static/image/bottom_wtpng.png" />
+                <text>关注问题</text>
+            </view>
+        </view>
+        <view class="Question_answer" bindtap="showPopup">问答</view>
+    </view>
+</view>
+<van-popup
+  show="{{ show }}"
+  closeable
+  position="bottom"
+  custom-style="height: 20%"
+  bind:close="onClose"
+>
+<view class="alertInput">
+ <input placeholder="添加评论..."  bindinput="changeComment" />
+ <button size="mini" type="primary" bindtap="SaveNewsCommentRecord">发送</button>
+</view>
+</van-popup>

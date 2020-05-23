@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "van-dropdown-menu": "/dist/dropdown-menu/index",
+    "van-dropdown-item": "/dist/dropdown-item/index"
+  },
+  "backgroundTextStyle": "light",
+  "navigationBarBackgroundColor": "#3b5370",
+  "navigationBarTitleText": "服务",
+  "navigationBarTextStyle": "white"
+}

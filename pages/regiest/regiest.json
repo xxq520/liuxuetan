@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "van-count-down": "/dist/count-down/index"
+  },
+  "navigationBarTitleText": "注册"
+}

@@ -1,0 +1,216 @@
+/* pages/myStore/myStore.wxss */
+page{
+  background: #fff;
+}
+.box {
+	width: 690rpx;
+	height: 360rpx;
+	background-color: #ffffff;
+	box-shadow: 0rpx 5rpx 24rpx 0rpx 
+		rgba(0, 0, 0, 0.15);
+	border-radius: 20rpx;
+  margin: 0 auto;
+}   
+.top-option{
+  white-space: nowrap;
+  padding-left: 28rpx;
+  overflow-x: scroll;
+  background: #fff;
+}
+.option-item{
+    margin-right:  60rpx;
+  display: inline-block;
+  font-size: 28rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0rpx;
+  color: #8c8c8c;
+  padding-bottom: 24rpx;
+  position: relative;
+}
+.option-item:last-child{
+margin: 0;
+}
+.bor_bom::before{
+  content: "";
+  position: absolute;
+  width: 50%;
+  height: 4rpx;
+  background: #e9a431;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+}
+.current_ot{
+	font-size: 32rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0rpx;
+	color: #3b5370;
+}
+.order-status{
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 4%;
+  padding-top: 48rpx;
+  padding-bottom: 58rpx;
+}
+.searchOrder{
+  width: 650rpx;
+  height: 50rpx;
+  margin: 0 auto;
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+  position: relative;
+}
+.searchOrder input{
+  width: 650rpx;
+	height: 60rpx;
+	background-color: #f5f5f5;
+	border-radius: 30rpx;
+}
+.searchOrder image{
+  width: 28rpx;
+  height: 32rpx;
+  position: absolute;
+  right: 20rpx;
+  top: 14rpx;
+}
+.filterOrder{
+  display: flex;
+  justify-content: space-between;
+  padding: 10rpx 40rpx 0 40rpx;
+  /* margin-top: 20rpx; */
+  align-items: center;
+}
+
+.filterOrder .filter,.filterOrder .createOrder{
+  display: flex;
+  align-items: center;
+}
+.van-ellipsis{
+  color: #e9a431;
+}
+.van-dropdown-menu__title:after {
+  border-color: transparent transparent #e9a431 #e9a431 !important;
+}
+.filter,.createOrder{
+	font-family: PingFang-SC-Medium;
+	font-size: 24rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0rpx;
+  color: #e9a431;
+}
+.filter image{
+  width: 16rpx;
+  height: 10rpx;
+  vertical-align: center;
+}
+.createOrder{
+	color: #3b5370;
+}
+.createOrder image{
+  width: 24rpx;
+	height: 24rpx;
+}
+.filterOrder image{
+  margin-left: 12rpx;
+}
+.xiaoliang{
+  margin-left: -238rpx;
+  font-family: PingFang-SC-Medium;
+	font-size: 24rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0rpx;
+	color: #333333;
+}
+.product{
+  width: 690rpx;
+	height: 236rpx;
+	background-color: #ffffff;
+	box-shadow: 0rpx 5rpx 24rpx 0rpx 
+		rgba(0, 0, 0, 0.15);
+  border-radius: 10rpx;
+  margin: 0 auto;
+  margin-top: 6rpx;
+  margin-bottom: 24rpx;
+  padding: 30rpx;
+  box-sizing: border-box;
+}
+.productCon{
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.productImg{
+  width: 120rpx;
+	height: 120rpx;
+	border-radius: 10rpx;
+	border: solid 1rpx #dddddd;
+}
+.productContent{
+  padding-left: 28rpx;
+}
+.productTitle{
+  width: 166rpx;
+	font-family: PingFang-SC-Bold;
+	font-size: 28rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0rpx;
+  color: #333333;
+  font-weight: bold;
+}
+.price{
+	font-family: PingFang-SC-Bold;
+	font-size: 28rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0rpx;
+  color: #e9a431;
+  margin-top: 16rpx;
+}
+.num{
+	font-family: PingFang-SC-Medium;
+	font-size: 20rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0rpx;
+	color: #8c8c8c;
+}
+.productutil{
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16rpx;
+}
+.productutil text{
+  font-size: 22rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0rpx;
+  color: #8c8c8c;
+  width: 93rpx;
+	height: 36rpx;
+	border-radius: 4rpx;
+  border: solid 1rpx #8c8c8c;
+  text-align: center;
+  line-height: 36rpx;
+  margin-left: 26rpx;
+}
+.right{
+  width: 15rpx;
+  height: 25rpx;
+  position: absolute;
+  right: 0rpx;
+  top: 50rpx;
+}
+.select{
+  color: #e9a431 !important;
+  border: 1rpx solid #e9a431 !important;
+}
+.van-ellipsis{
+  font-size: 24rpx;
+}
