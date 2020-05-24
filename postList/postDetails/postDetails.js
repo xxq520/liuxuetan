@@ -229,7 +229,7 @@ Page({
         // 用户的登录id
         usr_id : this.data.userInfo.usr_id || 0, 
         // 如果不搜索特定的新闻/帖子记录，则为0
-        en_fav_usr_id: e.currentTarget.dataset.id, 
+        fav_usr_id: e.currentTarget.dataset.id, 
       },
       type:"POST",
       url:url.SaveUserFavForumAdmin,

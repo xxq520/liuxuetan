@@ -25,7 +25,9 @@ Page({
     // 用户关注的类型
     follow: [],
     // 当前点击的关注的下标
-    followIndex: 0
+    followIndex: 0,
+     // 用户的信息
+     userInfo:   wx.getStorageSync('userInfo'),
   },
   // 点击加号发布按钮事件
   changeMessage(){
@@ -130,5 +132,30 @@ Page({
       })
       console.log(res,"获取用户关注的标签")
     })
-  }
+  },
+  // 点赞或收藏文章
+  likeNew(e){
+    var data = {
+      toast: false,// 是否显示加载动画
+      data:{
+        // 用户的登录id
+        usr_id : this.data.userInfo.usr_id || 0, 
+        // 如果不搜索特定的新闻/帖子记录，则为0
+        en_new_id: e.currentTarget.dataset.id, 
+        // 是收藏还是点赞
+        option: e.currentTarget.dataset.type,
+      },
+      type:"POST",
+      url:url.SaveUserNewOption,
+      header:{"Content-Type":"application/json; charset=utf-8"}
+    }
+    var that = this;
+    request.getReq(data).then(res=>{
+      var changeData = "indexData[" + e.currentTarget.dataset.index + "].isFavourite";
+      // 判断当前的点击的是收藏还是点赞
+        that.setData({
+          [changeData] : !that.data.indexData[e.currentTarget.dataset.index].isFavourite
+        })
+    })
+  },
 })

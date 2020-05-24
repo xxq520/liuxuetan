@@ -18,6 +18,24 @@ Page({
   onLoad: function (options) {
     
   },
+  // 点击发表或关注跳转至相应的页面
+  goDetail(e){
+    console.log(e)
+    var type = e.currentTarget.dataset.type;
+    switch(type) {
+      case "1":
+        wx.navigateTo({
+          url: '/other/myNews/myNews',
+        })
+        break;
+      case "2":
+        break;
+      case "3":
+        wx.navigateTo({
+          url: '/other/favNews/favNews',
+        })
+    }
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

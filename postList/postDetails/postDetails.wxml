@@ -75,7 +75,7 @@
             <view class="right_comment_praise">
               <view class="right_top_comment">
                 <view class="right_praise_num" bindtap="LikeComment" data-index="0" data-item="{{comment[0]}}">
-                  <image src="{{comment[0].isLiked?'../../static/image/dianzan.png':'../../static/image/dianzan.png'}}" />
+                  <image src="{{comment[0].isLiked?'../../static/image/dianzan.png':'../../static/image/dianzan_gray.png'}}" />
                   <text>{{comment[0].ncm_like}}</text>
                 </view>
               </view>
@@ -203,7 +203,7 @@
               <view class="right_comment_praise">
                 <view class="right_top_comment">
                   <view class="right_praise_num" bindtap="LikeComment" data-index="{{index}}" data-item="{{item}}">
-                    <image src="../../static/image/dianzan.png" />
+                    <image src="{{item.isLiked?'../../static/image/dianzan.png':'../../static/image/dianzan_gray.png'}}" />
                     <text>{{item.ncm_like}}</text>
                   </view>
                 </view>

@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/my/my",
     "pages/index/index",
+    "pages/my/my",
     "pages/regiest/regiest",
     "pages/login/login",
     "pages/message/message",
@@ -28,7 +28,8 @@
         "release/release",
         "CustomerService/CustomerService",
         "setting/setting",
-        "myNews/myNews"
+        "myNews/myNews",
+        "favNews/favNews"
       ]
     },
     {

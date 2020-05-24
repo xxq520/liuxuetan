@@ -25,19 +25,19 @@
                     </view>
                 </view>
                 <view class="bottom_info">
-                    <view class="info_item shugang">
+                    <view class="info_item shugang" bindtap="goDetail" data-type="1">
                         <text>{{userInfo.usr_post+userInfo.usr_question}}</text>
                         <text>我的发表</text>
                     </view>
-                    <view class="info_item shugang">
+                    <view class="info_item shugang" bindtap="goDetail" data-type="2"> 
                         <text>{{userInfo.usr_like}}</text>
                         <text>关注</text>
                     </view>
-                    <view class="info_item shugang">
+                    <view class="info_item shugang" bindtap="goDetail" data-type="3">
                         <text>{{userInfo.usr_like}}</text>
                         <text>收藏</text>
                     </view>
-                    <view class="info_item ">
+                    <view class="info_item " bindtap="goDetail" data-type="4">
                         <text>{{userInfo.usr_visit}}</text>
                         <text>最近浏览</text>
                     </view>

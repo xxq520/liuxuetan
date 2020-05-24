@@ -14,7 +14,9 @@ Page({
     // tab选项卡的内容
     searchTag:[],
     // 当前页面展示的文章
-    newList: []
+    newList: [],
+     // 用户的信息
+     userInfo:   wx.getStorageSync('userInfo'),
   },
 
   /**
@@ -76,7 +78,8 @@ Page({
         // 新闻/帖子类型，“文章”或“问题”
         post_type: "",
         // 在HTML中显示返回的新闻/帖子内容
-        showHtml: false
+        showHtml: false,
+        
       },
       type:"get",
       url:url.indexNews,
@@ -95,6 +98,44 @@ Page({
    */
   onReady: function () {
 
+  },
+  // 跳转至问题详情或者普通帖子详情页面
+  goPostdetails(e){
+    // 如果是普通帖子
+    if (e.currentTarget.dataset.type==1){
+      wx.navigateTo({
+        url: '/postList/postDetails/postDetails?id='+e.currentTarget.dataset.id,
+      })
+    } else {
+      wx.navigateTo({
+        url: '/postList/problemDetails/problemDetails?id='+e.currentTarget.dataset.id,
+      })
+    }
+  },
+   // 点赞或收藏文章
+   likeNew(e){
+    var data = {
+      toast: false,// 是否显示加载动画
+      data:{
+        // 用户的登录id
+        usr_id : this.data.userInfo.usr_id || 0, 
+        // 如果不搜索特定的新闻/帖子记录，则为0
+        en_new_id: e.currentTarget.dataset.id, 
+        // 是收藏还是点赞
+        option: e.currentTarget.dataset.type,
+      },
+      type:"POST",
+      url:url.SaveUserNewOption,
+      header:{"Content-Type":"application/json; charset=utf-8"}
+    }
+    var that = this;
+    request.getReq(data).then(res=>{
+      var changeData = "newList[" + e.currentTarget.dataset.index + "].isFavourite";
+      // 判断当前的点击的是收藏还是点赞
+        that.setData({
+          [changeData] : !that.data.newList[e.currentTarget.dataset.index].isFavourite
+        })
+    })
   },
 
   /**

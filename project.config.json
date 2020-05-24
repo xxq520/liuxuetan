@@ -62,7 +62,7 @@
 				{
 					"id": 0,
 					"name": "other/favNews/favNews",
-					"pathName": "other/myNews/myNews",
+					"pathName": "other/favNews/favNews",
 					"query": "id=18",
 					"scene": null
 				},
@@ -91,6 +91,7 @@
 					"id": -1,
 					"name": "pages/login/login",
 					"pathName": "pages/login/login",
+					"query": "",
 					"scene": null
 				}
 			]

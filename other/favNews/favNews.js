@@ -10,20 +10,60 @@ Page({
    */
   data: {
     // 当前页面展示的文章
-    newList: []
+    newList: [],
+    // 用户的信息
+    userInfo:   wx.getStorageSync('userInfo'),
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getIndexData();
+   
   },
   // 去搜索
   goSearch(){
     wx.navigateTo({
       url:"/other/search/search"
     })
+  },
+   // 点赞或收藏文章
+   likeNew(e){
+    var data = {
+      toast: false,// 是否显示加载动画
+      data:{
+        // 用户的登录id
+        usr_id : this.data.userInfo.usr_id || 0, 
+        // 如果不搜索特定的新闻/帖子记录，则为0
+        en_new_id: e.currentTarget.dataset.id, 
+        // 是收藏还是点赞
+        option: e.currentTarget.dataset.type,
+      },
+      type:"POST",
+      url:url.SaveUserNewOption,
+      header:{"Content-Type":"application/json; charset=utf-8"}
+    }
+    var that = this;
+    request.getReq(data).then(res=>{
+      var changeData = "newList[" + e.currentTarget.dataset.index + "].isFavourite";
+      // 判断当前的点击的是收藏还是点赞
+        that.setData({
+          [changeData] : !that.data.newList[e.currentTarget.dataset.index].isFavourite
+        })
+    })
+  },
+  // 跳转至问题详情或者普通帖子详情页面
+  goPostdetails(e){
+    // 如果是普通帖子
+    if (e.currentTarget.dataset.type==1){
+      wx.navigateTo({
+        url: '/postList/postDetails/postDetails?id='+e.currentTarget.dataset.id,
+      })
+    } else {
+      wx.navigateTo({
+        url: '/postList/problemDetails/problemDetails?id='+e.currentTarget.dataset.id,
+      })
+    }
   },
   //  初始化首页数据
   getIndexData() {
@@ -61,7 +101,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getIndexData();
   },
 
   /**

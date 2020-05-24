@@ -7,10 +7,10 @@
                     <view class="wen_ti" wx:if="{{item.ntp_type=='问题'}}">问</view>
                     <text class="title_txt">{{item.new_header}}</text>
                 </view>
-                <view class="collect_btn">
-                    <image src="../../static/image/aixin.png" />
-                    <text>收藏</text>
-                </view>
+            <!-- <view class="collect_btn" catchtap="likeNew" data-type="favourite" data-id="{{item.en_new_id}}" data-index="{{index}}">
+                <image src="../../static/image/aixin.png" wx:if="{{!item.isFavourite}}"/>
+                <text>{{item.isFavourite?'已收藏':'收藏'}}</text>
+            </view> -->
             </view>
             <view class="article_context">
                {{item.new_content}}
