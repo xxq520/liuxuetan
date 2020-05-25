@@ -42,5 +42,7 @@ module.exports = {
     // 获取用户发表的文章或问题
     GetUserQuestionItems : url + "/wsNewsDatabind.asmx/GetUserQuestionItems",
     // 用户收藏的文章或问题
-    GetUserFavNewsItems : url + "/wsNewsDatabind.asmx/GetUserFavNewsItems"
+    GetUserFavNewsItems : url + "/wsNewsDatabind.asmx/GetUserFavNewsItems",
+    // 获取发布文章或问题作者的信息
+    GetNewUserProfilePopupDetails : url + "/wsForumDatabind.asmx/GetNewUserProfilePopupDetails"
 };

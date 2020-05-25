@@ -18,7 +18,7 @@
 		</view>
 	</view> -->
 	<view class="bot_fixed">
-		<input type="text" placeholder="请输入您想说的话…" bindinput="changeChatContent" value='{{chatContent}}'/>
+		<input type="text" placeholder="请输入您想说的话…" bindinput="changeChatContent" value='{{chatContent}}' bindconfirm="sendMessage"/>
 		<view class="right">
         <view class="add-info">
 			<image src="/static/image/jiahao.png" />

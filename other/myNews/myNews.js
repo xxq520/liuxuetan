@@ -32,7 +32,7 @@ Page({
       toast: true,// 是否显示加载动画
       data:{
         // 用户的登录id
-        usr_id : userInfo.usr_id || 0, 
+        usr_id : 5 || 0, 
         // 返回数据页码. 1=归还所有记录
         pageSize: "1",
         // 每个数据页的记录数量 1=归还所有记录
@@ -44,12 +44,33 @@ Page({
     }
     var that = this;
     request.getReq(data).then(res=>{
-      console.log(res,888)
+      var resData = JSON.parse(res.data.replace(/\]\[/g,","));
+      var newArray = [];
+      var index = []
+      for(var i=0; i<resData.length; i++){
+        if(index.indexOf(resData[i].new_id)==-1){
+          newArray.push(resData[i])
+          index.push(resData[i].new_id)
+        }
+      }
       that.setData({
-        newList : res.data.splice(0,10)
+        newList :newArray 
       })
     })
   },
+    // 跳转至问题详情或者普通帖子详情页面
+    goPostdetails(e){
+      // 如果是普通帖子
+      if (e.currentTarget.dataset.type==1){
+        wx.navigateTo({
+          url: '/postList/postDetails/postDetails?id='+e.currentTarget.dataset.id,
+        })
+      } else {
+        wx.navigateTo({
+          url: '/postList/problemDetails/problemDetails?id='+e.currentTarget.dataset.id,
+        })
+      }
+    },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -6,18 +6,23 @@ Page({
   data: {
     formats: {},
     readOnly: false,
-    placeholder: '在这里补充问题的详细信息...',
+    placeholder: '',
     editorHeight: 300,
     keyboardHeight: 0,
     isIOS: false,
-    title:""
+    title:"",
+    // 发布的类型
+    type:0
   },
   readOnlyChange() {
     this.setData({
       readOnly: !this.data.readOnly
     })
   },
-  onLoad() {
+  onLoad(options) {
+    this.setData({
+      type:options.type
+    })
     const platform = wx.getSystemInfoSync().platform
     const isIOS = platform === 'ios'
     this.setData({ isIOS})
@@ -37,7 +42,6 @@ Page({
           }
         })
       }, duration)
-
     })
   },
   updatePosition(keyboardHeight) {
@@ -154,7 +158,7 @@ Page({
           // 如果不搜索特定的新闻/帖子记录，则为0
           new_content: content.html, 
           // 文章的类型
-          new_type:"文章",
+          new_type:that.data.type==1?"文章":'问题',
           // 文章是否有效
           new_valid:true,
           // 新闻id

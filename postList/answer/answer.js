@@ -64,7 +64,7 @@ Page({
         // 新闻/帖子类型，“文章”或“问题”
         post_type: "",
         // 在HTML中显示返回的新闻/帖子内容
-        showHtml: false
+        showHtml: true
       },
       type:"get",
       url:url.indexNews,
@@ -73,7 +73,26 @@ Page({
     var that = this;
     request.getReq(data).then(res=>{
       console.log(res)
-      res.data[0].new_tags =res.data[0].new_tags.split(",")
+      res.data[0].new_tags =res.data[0].new_tags?res.data[0].new_tags.split(","):[];
+      const replaceDetail = function(details){
+        var texts='';//待拼接的内容
+        while(details.indexOf('<img')!=-1){//寻找img 循环
+          texts+=details.substring('0',details.indexOf('<img')+4);//截取到<img前面的内容
+          details = details.substring(details.indexOf('<img')+4);//<img 后面的内容
+          if(details.indexOf('style=')!=-1 && details.indexOf('style=')<details.indexOf('>')){
+            texts+=details.substring(0,details.indexOf('style="')+7)+"max-width:100%;height:auto !important;margin:0 auto;";//从 <img 后面的内容 截取到style= 加上自己要加的内容
+            details=details.substring(details.indexOf('style="')+7); //style后面的内容拼接
+          }else{
+            texts+=' style="max-width:100%;height:auto;margin:0 auto;" ';
+          }
+        }
+        texts+=details;//最后拼接的内容
+        return texts
+      }
+      while(res.data[0].new_content.indexOf('src="/Uploads')!=-1){
+        res.data[0].new_content= res.data[0].new_content.replace('src="/Uploads','src="http://www.liuxuetalk.com/Uploads')
+        res.data[0].new_content= replaceDetail(res.data[0].new_content)
+      }
       that.setData({
         newContent : res.data[0],
         newsId : res.data[0].en_new_id

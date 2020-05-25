@@ -29,7 +29,7 @@
                 <text class="txt_title">{{newContent.new_header}}</text>
             </view>
             <view class="article_txt mar_top_20">
-                {{newContent.new_content}}
+                 <rich-text nodes=" {{newContent.new_content}}"></rich-text>
             </view>
             <view class="flow_list">
                 <view class="flow_item">

@@ -116,8 +116,8 @@
                     </view>
                 </view>
                 <view class="guanzhu_btm" bindtap="SaveUserFavForumAdmin" data-id="{{newContent.id}}">
-                    <image src="../../static/image/guanzhu_2.png" />
-                    <text>关注</text>
+                     <image src="../../static/image/guanzhu_2.png" wx:if="{{!author.is_like}}"/>
+                      <text>{{author.is_like?"已关注":"关注"}}</text>
                 </view>
             </view>
             <view class="card_bottom_info">

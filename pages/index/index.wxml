@@ -14,13 +14,13 @@
         <view class="jia_bg">
           <image src="{{sendMessage?'../../static/image/jia_select.png':'../../static/image/jia.png'}}" />
           <view class="sendMessage" wx:if="{{sendMessage}}">
-            <navigator url="/other/release/release">
+            <navigator url="/other/release/release?type=1">
               <view>
                 <image src="/static/image/xie.png"></image>
                 <text>发布文章</text>
               </view>
             </navigator>
-            <navigator url="/other/release/release">
+            <navigator url="/other/release/release?type=2">
               <view>
                 <image src="/static/image/wenhao.png"></image>
                 <text>发布问题</text>

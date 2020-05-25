@@ -181,7 +181,6 @@ justify-content: center;
 .article_txt{
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
     overflow: hidden;
     font-size: 24rpx;
 	letter-spacing: 1rpx;
