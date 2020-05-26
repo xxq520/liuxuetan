@@ -44,5 +44,12 @@ module.exports = {
     // 用户收藏的文章或问题
     GetUserFavNewsItems : url + "/wsNewsDatabind.asmx/GetUserFavNewsItems",
     // 获取发布文章或问题作者的信息
-    GetNewUserProfilePopupDetails : url + "/wsForumDatabind.asmx/GetNewUserProfilePopupDetails"
+    GetNewUserProfilePopupDetails : url + "/wsForumDatabind.asmx/GetNewUserProfilePopupDetails",
+    // 获取某个热门标签的关注数或浏览量
+    GetTagStatistics : url + "/wsNewsDatabind.asmx/GetTagStatistics",
+    // 判断是否是当前用户关注的标签
+    CheckUserFavTopic : url + "/wsNewsDatabind.asmx/CheckUserFavTopic",
+    // 关注某一个标签或取消关注，用于话题专栏
+    SaveUserFavTags : url + "/wsNewsOptionDatatrans.asmx/SaveUserFavTags"
+
 };

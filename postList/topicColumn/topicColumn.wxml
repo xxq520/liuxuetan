@@ -9,15 +9,15 @@
       </view>
       <image class="fenxiang" src="../../static/image/fenxiang.png" />
     </view>
-    <view class="Focus-box">
-      <view class="Focus-btn">关注</view>
+    <view class="Focus-box" bindtap="changeFavourite">
+      <view class="Focus-btn">{{isFavourite.isFavourite?'已关注':'关注'}}</view>
     </view>
     <view class="topicColumn_info">
-      <image src="https://t1.picb.cc/uploads/2020/05/02/kzt94F.png" />
+       <image src="http://www.liuxuetalk.com/{{text.uni_logo}}" />
       <view class="topicColumn_right_info">
         <view class="henggang"></view>
-        <text class="topicColumn_title">英国大学</text>
-        <text class="Focus_num">6860人关注</text>
+        <text class="topicColumn_title">{{id}}</text>
+        <text class="Focus_num">{{tagNum.count_favourite}}人关注</text>
       </view>
     </view>
   </view>
@@ -29,12 +29,7 @@
   </view>
   <!-- 简介内容 -->
   <view class="jianjie" wx:if="{{tabNum==1}}">
-    <view>英国大学指称大不列颠及北爱尔兰联合王国的大学，是全世界教学及研究的整体水平和平均水平最高的大学群体之一。英国大学拥有 英国皇家特许状、教宗诏书和议会法案，并有在英国枢密院备案，英 国政府规定只有这样的机构才能颁发学位。
-    </view>
-    <view> 截止到2016年，英国共有163所公立高等教育院校。 根据2016 年QS世界大学排名，共有10所英国大学进入世界前50，18所进入世 界前100，30所进入世界前200名。
-    </view>
-    <view>英国大学都是独立自治的机构，尽管它们主要的经费是由英国的 高等教育拨款委员资助，但是它们不属于任何政府部门的管辖和控制。 它们拥有皇家宪章或议会法案给与的特权，可以自身决定自己招收的 学生和应聘的职员。但是现在政府在某些方面已经开始干涉，比如大 学经费是受到政府严格规定的。
-    </view>
+    <rich-text nodes=" {{text.uni_description}}"></rich-text>
   </view>
   <!-- 讨论内容 -->
   <view class="taolun" wx:if="{{tabNum==2}}">
@@ -47,48 +42,25 @@
       </view>
     </view>
     <view class="answer_list">
-      <view class="answer_item">
-        <view class="answer_title">英国什么城市好玩？</view>
+      <view class="answer_item" wx:for="{{indexData}}" bindtap="goPostdetails" data-type="{{item.ntp_type=='问题'?2:1}}" data-id="{{item.new_id}}">
+        <view class="answer_title">{{item.new_header}}</view>
         <view class="context line_4">
-          这是一篇不一样的干货篇！有些东西你想都可能没想过要用到！ 当前国内疫情有所减缓！！ 可是英国疫情加重！好多东西后悔 没有带过来伯明翰，为了不让来英国的同学陷入我这样尴尬的处 境，我决定分享一些值得带！不对是一定要带的东西，拿本本...
+          {{item.new_content}}
         </view>
         <view class="published_status">
           <view class="left_status">
-            <image src="https://t1.picb.cc/uploads/2020/05/02/kzt0le.png" />
-            <text class="user_name">Green</text>
+            <image src="http://www.liuxuetalk.com/{{item.usr_profile_image_tn}}" />
+            <text class="user_name">{{item.usr_display_name}}</text>
             <text class="published_time">刚刚发表</text>
           </view>
           <view class="right_status">
             <view class="right_status_item">
               <image src="../../static/image/dianzan.png" />
-              <text class="zt_color">2000</text>
+              <text class="zt_color">{{item.new_like}}</text>
             </view>
             <view class="right_status_item">
               <image src="../../static/image/liuyan.png" />
-              <text class="">10</text>
-            </view>
-          </view>
-        </view>
-      </view>
-      <view class="answer_item">
-        <view class="answer_title">英国什么城市好玩？</view>
-        <view class="context line_4">
-          这是一篇不一样的干货篇！有些东西你想都可能没想过要用到！ 当前国内疫情有所减缓！！ 可是英国疫情加重！好多东西后悔 没有带过来伯明翰，为了不让来英国的同学陷入我这样尴尬的处 境，我决定分享一些值得带！不对是一定要带的东西，拿本本...
-        </view>
-        <view class="published_status">
-          <view class="left_status">
-            <image src="https://t1.picb.cc/uploads/2020/05/02/kzt0le.png" />
-            <text class="user_name">Green</text>
-            <text class="published_time">刚刚发表</text>
-          </view>
-          <view class="right_status">
-            <view class="right_status_item">
-              <image src="../../static/image/dianzan.png" />
-              <text class="zt_color">2000</text>
-            </view>
-            <view class="right_status_item">
-              <image src="../../static/image/liuyan.png" />
-              <text class="">10</text>
+              <text class="">{{item.new_comment}}</text>
             </view>
           </view>
         </view>
@@ -195,7 +167,7 @@
     </view>
   </view>
   <view class="bottom_fiexd">
-    <view class="quiz_btn">提问</view>
-    <view class="issue_btn">发布</view>
+    <view class="quiz_btn" bindtap="goRelease">提问</view>
+    <view class="issue_btn" bindtap="goRelease">发布</view>
   </view>
 </view>

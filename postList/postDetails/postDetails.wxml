@@ -26,9 +26,9 @@
 <view class="problem_list">
     <view class="left_problem flex_right">
         <text class="txt_title current_color">英国什么城市好玩？</text>
-        <view class="collect_btn">
-            <image src="../../static/image/aixin.png" />
-            <text>收藏</text>
+        <view class="collect_btn" bindtap="likeNew" data-type="favourite">
+            <image src="../../static/image/aixin.png" wx:if="{{!newContent.isFavourite}}"/>
+        <text>{{newContent.isFavourite?'已收藏':'收藏'}}</text>
         </view>
     </view>
     <view class="label_list">

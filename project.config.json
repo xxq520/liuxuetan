@@ -75,10 +75,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 2,
 					"name": "postList/topicColumn/topicColumn",
 					"pathName": "postList/topicColumn/topicColumn",
-					"query": "id=英国旅游",
+					"query": "id=美国",
 					"scene": null
 				},
 				{
@@ -93,6 +93,13 @@
 					"name": "pages/login/login",
 					"pathName": "pages/login/login",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "other/settingInfo/settingInfo",
+					"pathName": "other/settingInfo/settingInfo",
+					"query": "id=美国",
 					"scene": null
 				}
 			]

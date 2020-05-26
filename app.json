@@ -29,7 +29,8 @@
         "CustomerService/CustomerService",
         "setting/setting",
         "myNews/myNews",
-        "favNews/favNews"
+        "favNews/favNews",
+        "settingInfo/settingInfo"
       ]
     },
     {

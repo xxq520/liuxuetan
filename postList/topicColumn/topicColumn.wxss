@@ -79,6 +79,7 @@ page{
 	height: 171rpx;
     border-radius: 20rpx;
     margin-right: 38rpx;
+    background-color: #fff;
 }
 .topicColumn_right_info{
     display: flex;
@@ -140,7 +141,6 @@ page{
 }
 .answer_list{
     width: 100%;
-    height: 671rpx;
     padding:0 3%;
 	background-color: #ffffff;
     border-radius: 10rpx;
