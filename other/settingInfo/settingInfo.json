@@ -1,3 +1,7 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "van-field": "/dist/field/index",
+    "van-switch": "/dist/switch/index"
+  },
+  "navigationBarTitleText": "个人信息"
 }

@@ -7,10 +7,12 @@
         <text >隐私</text>
         <image src="/static/image/right.png" />
     </view>
-    <view class="contentItem">
-        <text >通用</text>
-        <image src="/static/image/right.png" />
-    </view>
+    <navigator url="/other/settingInfo/settingInfo">
+        <view class="contentItem">
+            <text >通用</text>
+            <image src="/static/image/right.png" />
+        </view>
+    </navigator>
 </view>
 <view class="exit">
     退出我的账号

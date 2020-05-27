@@ -16,8 +16,34 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    if(this.data.userInfo.usr_id){
+      this.getIndexData()
+    }
   },
+  //  初始化首页数据
+  getIndexData() {
+      var userInfo = wx.getStorageSync('userInfo');
+      var data = {
+        toast: true,// 是否显示加载动画
+        data:{
+          // 用户的登录id
+          usr_id : userInfo.usr_id || 0, 
+          // 返回数据页码. 1=归还所有记录
+          pageSize: "1",
+          // 每个数据页的记录数量 1=归还所有记录
+          pageNumber: "1",
+        },
+        type:"get",
+        url:url.GetUserFavNewsItems,
+        header:{"Content-Type":"application/json; charset=utf-8"}
+      }
+      var that = this;
+      request.getReq(data).then(res=>{
+        that.setData({
+          newList : res.data.splice(0,10)
+        })
+      })
+    },
   // 点击发表或关注跳转至相应的页面
   goDetail(e){
     console.log(e)
@@ -48,7 +74,15 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    if(!wx.getStorageSync('userInfo')){
+      wx.navigateTo({
+        url: '/pages/login/login',
+      })
+    }else{
+      this.setData({
+        userInfo : wx.getStorageSync('userInfo') || {}
+      })
+    }
   },
 
   /**

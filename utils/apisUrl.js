@@ -50,6 +50,9 @@ module.exports = {
     // 判断是否是当前用户关注的标签
     CheckUserFavTopic : url + "/wsNewsDatabind.asmx/CheckUserFavTopic",
     // 关注某一个标签或取消关注，用于话题专栏
-    SaveUserFavTags : url + "/wsNewsOptionDatatrans.asmx/SaveUserFavTags"
-
+    SaveUserFavTags : url + "/wsNewsOptionDatatrans.asmx/SaveUserFavTags",
+    // 更新用户中心的数据
+    UpdateUserDetailsRecord : url + "/wsNewsOptionDatatrans.asmx/UpdateUserDetailsRecord",
+    // 获取用户未读信息数
+    GetUserUnreadMessageCount : url + "/wsGenericDatabind.asmx/GetUserUnreadMessageCount"
 };

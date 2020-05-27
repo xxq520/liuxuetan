@@ -1,2 +1,45 @@
-<!--other/settingInfo/settingInfo.wxml-->
-<text>other/settingInfo/settingInfo.wxml</text>
+<view class="set">
+<view class="tx">
+  <view>头像</view>
+  <image src="http://www.liuxuetalk.com/{{userInfo.usr_profile_image}}"></image>
+</view>
+<view class="xb">
+  <view>性别</view>
+  <view class="xb-v">
+    <van-switch checked="{{ checked }}" size="24px" bind:change="onChange"/><text>{{checked?"男":'女'}}</text>
+  </view>
+</view>
+<van-cell-group>
+  <van-field
+    model:value="{{ username }}"
+    label="用户名"
+    placeholder="请输入用户名"
+    input-align="right"
+  />
+   <!-- <van-field
+    model:value="{{ password }}"
+    label="用户密码"
+    placeholder="请输入用户密码"
+    input-align="right"
+  />
+   <van-field
+     model:value="{{ password2 }}"
+    label="确认密码"
+    placeholder="请再次输入密码"
+    input-align="right"
+  /> -->
+  <van-field
+     model:value="{{ email }}"
+    label="邮箱地址"
+    placeholder="请输入邮箱地址"
+    input-align="right"
+  />
+    <van-field
+     model:value="{{ author }}"
+    label="个人简介"
+    placeholder="请输入个人简介"
+    input-align="right"
+  />
+</van-cell-group>
+</view>
+<view class="asve" bindtap="saveUserInfo">保存信息</view>

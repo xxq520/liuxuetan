@@ -2,7 +2,7 @@
 <view class="">
 	<view class="release_title_box">
 		<view class="wen-inco" wx:if="{{type==2}}">问</view>
-		<input class="release_title" type="text" bindinput="changeHeaderTit" placeholder="{{type==1?'请输入标题（5-30个字':'请在这里简要描述您的问题（5-30个字）'}}" />
+		<input class="release_title" type="text" value="{{title}}" bindinput="changeHeaderTit" placeholder="{{type==1?'请输入标题（5-30个字)':'请在这里简要描述您的问题（5-30个字）'}}" />
 	</view>
 	<!-- <textarea class="release_info" placeholder="在这里补充问题的详细信息..."></textarea> -->
 	<view class="container" style="height:{{500}}rpx;">

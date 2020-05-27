@@ -10,9 +10,14 @@ Page({
     editorHeight: 300,
     keyboardHeight: 0,
     isIOS: false,
+    // 文章的标题
     title:"",
     // 发布的类型
-    type:0
+    type:0,
+    // 需要修改文章的id
+    id:0,
+    // 话题的标签
+    tag:"美国"
   },
   readOnlyChange() {
     this.setData({
@@ -20,6 +25,13 @@ Page({
     })
   },
   onLoad(options) {
+    if(options.id){
+      this.setData({
+        id:options.id
+      })
+      // 获取文章内容
+      this.getNews()
+    }
     this.setData({
       type:options.type
     })
@@ -43,6 +55,7 @@ Page({
         })
       }, duration)
     })
+    
   },
   updatePosition(keyboardHeight) {
     const toolbarHeight = 50
@@ -61,8 +74,14 @@ Page({
     const that = this
     wx.createSelectorQuery().select('#editor').context(function (res) {
       that.editorCtx = res.context
+      // 是否是修改内容
     }).exec()
-    
+
+  },
+  // 设置默认内容
+  editNews(text){
+    var that = this;
+    that.editorCtx.setContents({ html:text})
   },
   blur() {
     this.editorCtx.blur()
@@ -162,10 +181,10 @@ Page({
           // 文章是否有效
           new_valid:true,
           // 新闻id
-          en_new_id:"",
+          en_new_id:that.data.newContent.en_new_id||"",
           new_header_image:userInfo.usr_profile_image_tn,
           new_header:that.data.title,
-          new_tags:"美国"
+          new_tags:that.data.tag
         },
         type:"POST",
         url:url.SaveNewsRecord,
@@ -184,5 +203,65 @@ Page({
         }
       })
     }})
-  }
+  },
+  // 获取需要修改的文章
+  getNews(){
+    var userInfo = wx.getStorageSync('userInfo');
+    var data = {
+      toast: true,// 是否显示加载动画
+      data:{
+        // 用户的登录id
+        usr_id : userInfo.usr_id, 
+        // 如果不搜索特定的新闻/帖子记录，则为0
+        new_id: this.data.id, 
+        // 返回数据页码. 1=归还所有记录
+        pageSize: "1",
+        // 每个数据页的记录数量 1=归还所有记录
+        pageNumber: "1",
+        // 按标签名称搜索新闻/帖子
+        search_tags:"",
+        // 通过任何文本搜索新闻/帖子
+        search_term: "",
+        // 新闻/帖子类型，“文章”或“问题”
+        post_type: "",
+        // 在HTML中显示返回的新闻/帖子内容
+        showHtml: true
+      },
+      type:"get",
+      url:url.indexNews,
+      header:{"Content-Type":"application/json; charset=utf-8"}
+    }
+    var that = this;
+    request.getReq(data).then(res=>{
+      console.log(res)
+      res.data[0].new_tags =res.data[0].new_tags?res.data[0].new_tags.split(","):[];
+      const replaceDetail = function(details){
+        var texts='';//待拼接的内容
+        while(details.indexOf('<img')!=-1){//寻找img 循环
+          texts+=details.substring('0',details.indexOf('<img')+4);//截取到<img前面的内容
+          details = details.substring(details.indexOf('<img')+4);//<img 后面的内容
+          if(details.indexOf('style=')!=-1 && details.indexOf('style=')<details.indexOf('>')){
+            texts+=details.substring(0,details.indexOf('style="')+7)+"max-width:100%;height:auto !important;margin:0 auto;";//从 <img 后面的内容 截取到style= 加上自己要加的内容
+            details=details.substring(details.indexOf('style="')+7); //style后面的内容拼接
+          }else{
+            texts+=' style="max-width:100%;height:auto;margin:0 auto;" ';
+          }
+        }
+        texts+=details;//最后拼接的内容
+        return texts
+      }
+      while(res.data[0].new_content.indexOf('src="/Uploads')!=-1){
+        res.data[0].new_content= res.data[0].new_content.replace('src="/Uploads','src="http://www.liuxuetalk.com/Uploads')
+        res.data[0].new_content= replaceDetail(res.data[0].new_content)
+      }
+      that.setData({
+        newContent : res.data[0],
+      })
+      that.editNews(res.data[0].new_content)
+      that.setData({
+        title:res.data[0].new_header,
+        type:res.data[0].ntp_type
+      })
+    })
+  },
 })

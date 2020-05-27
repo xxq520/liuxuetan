@@ -43,12 +43,15 @@ Page({
   // 点击用户关注新闻标签的某一项的时候
   seacrchFollow(e){
     this.setData({
-      searchContent: e.currentTarget.dataset.text,
+      // searchContent: e.currentTarget.dataset.text,
       isShow: !this.data.isShow,
-      followIndex: e.currentTarget.dataset.num
+      // followIndex: e.currentTarget.dataset.num
+    })
+    wx.navigateTo({
+      url: '/postList/topicColumn/topicColumn?id='+e.currentTarget.dataset.text,
     })
     // 重新请求数据
-    this.getIndexData();
+    // this.getIndexData();
   },
   // 跳转至问题详情或者普通帖子详情页面
   goPostdetails(e){
@@ -72,6 +75,7 @@ Page({
     this.getIndexData()
     // 获取用户关注的新闻项目
     this.getUserLick()
+   
   },
   //  初始化首页数据
   getIndexData() {

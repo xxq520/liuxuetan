@@ -101,6 +101,13 @@
 					"pathName": "other/settingInfo/settingInfo",
 					"query": "id=美国",
 					"scene": null
+				},
+				{
+					"id": 6,
+					"name": "other/release/release",
+					"pathName": "other/release/release",
+					"query": "id=32",
+					"scene": null
 				}
 			]
 		}

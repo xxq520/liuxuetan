@@ -90,7 +90,7 @@ page{
   z-index: 100;
 }
 .denger text{
-  width: 163rpx;
+  width: 22%;
 	height: 66rpx;
 	background-color: #e6e4e2;
   border-radius: 4rpx;
@@ -103,6 +103,8 @@ page{
   color: #333333;
   line-height: 66rpx;
   margin-top: 20rpx;
+  margin-right: 1.5%;
+  margin-left: 1.5%;
 }
 .denger  .selectYellow{
   color: #e9a431;
@@ -121,7 +123,6 @@ page{
   width: 100%;
   flex-wrap: wrap;
   text-align: center;
-  justify-content: space-between;
 }
 .html{
   font-family: PingFang-SC-Medium;
