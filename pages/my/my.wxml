@@ -1,5 +1,5 @@
 <!-- pages/my/my.wxml -->
-<view class="container">
+<view class="container" wx:if="{{userInfo.usr_id}}">
     <view class="bg_ff">
         <view class="top_search">
             <view class="search_box">
@@ -96,4 +96,7 @@
             </view>
         </view>
     </view>
+</view>
+<view class="noneLogin" wx:if="{{!userInfo.usr_id}}">
+    <navigator url="/pages/login/login" hover-class="noshadow"><view>请先登录</view></navigator>
 </view>

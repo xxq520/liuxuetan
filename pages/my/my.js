@@ -74,15 +74,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    if(!wx.getStorageSync('userInfo')){
-      wx.navigateTo({
-        url: '/pages/login/login',
-      })
-    }else{
-      this.setData({
-        userInfo : wx.getStorageSync('userInfo') || {}
-      })
-    }
+    this.setData({
+      userInfo : wx.getStorageSync('userInfo') || {}
+    })
   },
 
   /**

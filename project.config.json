@@ -108,6 +108,13 @@
 					"pathName": "other/release/release",
 					"query": "id=32",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/my",
+					"pathName": "pages/my/my",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

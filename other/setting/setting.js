@@ -8,7 +8,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    array:["英国留学申请","英国留学申请","英国留学申请","英国留学申请"]
+    array:["英国留学申请","英国留学申请","英国留学申请","英国留学申请"],
+     // 用户的信息
+     userInfo:   wx.getStorageSync('userInfo'),
   },
 
   /**
@@ -17,7 +19,21 @@ Page({
   onLoad: function (options) {
 
   },
-
+  exit:function(){
+    if(this.data.userInfo){
+      wx.showModal({
+        title:"是否退出当前账号",
+        success:function(res){
+          if(res.confirm){
+            wx.clearStorageSync("userInfo");
+            wx.switchTab({
+              url: "/pages/index/index",
+            })
+          }
+        }
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

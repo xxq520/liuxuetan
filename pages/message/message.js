@@ -43,10 +43,11 @@ Page({
           res.data[i].last_chat_date=that.formatDate(res.data[i].last_chat_date)
         }
       }
-      that.setData({
-        messageList: res.data
-      })
-     
+      if(!res.data[0].Exception){
+        that.setData({
+          messageList: res.data
+        })
+      }
     })
   },
   formatDate(now) { 
@@ -71,7 +72,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getMessageList()
   },
 
   /**

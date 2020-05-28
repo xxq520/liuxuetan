@@ -9,7 +9,29 @@ page{
  background-size: 100% 100%;
 
 }
-
+.noneLogin{
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    z-index: 100000;
+}
+.noneLogin view{
+    width: 80%;
+    height: 80rpx;
+    background-color: green;
+    color: #fff;
+    text-align: center;
+    line-height: 80rpx;
+    margin: 0 auto;
+    margin-top: 400rpx;
+    border-radius: 10rpx;
+}
+.noshadow{
+    hover-class:none;
+}
 .search_box {
     display: flex;
     align-items: center;

@@ -6,7 +6,7 @@
         <image class="logo" src="../../static/image/logo.png"></image>
       </view>
       <view class="search-box">
-        <input type="text" placeholder="SEARCH"></input>
+        <input type="text" placeholder="SEARCH" model:value="{{search}}" bindconfirm="getIndexData"></input>
         <image class="search_btn" src="../../static/image/search.png" />
       </view>
       <van-overlay show="{{ sendMessage }}" bind:click="changeMessage" />
@@ -42,7 +42,7 @@
       <view class="html">默认标签</view>
       <view class="alertbox">
         <text class="{{followIndex==0?'selectYellow':''}}" data-text="" data-num="0"  bindtap="seacrchFollow">全部关注</text>
-        <text class="{{followIndex==index+1?'selectYellow':''}}"   wx:for="{{follow}}" wx:key="index"  bindtap="seacrchFollow" data-num="{{index+1}}"  data-text="{{item.new_tags}}">{{item.new_tags}}</text>
+        <text class="{{followIndex==index+1?'selectYellow':''}}"    wx:for="{{follow}}" wx:key="index"  bindtap="seacrchFollow" data-num="{{index+1}}"  data-text="{{item.new_tags}}">{{item.new_tags}}</text>
       </view>
     </view>
     <view class="ceng" wx:if="{{isShow}}" catchtap="guanzhu"></view>
@@ -73,7 +73,8 @@
   usr_display_name: "juneasix"
   usr_profile_image_tn: "/Uploads/Profile/Thumbnails/monkey.jpg"
   utp_badge: null -->
-   <view class="article_item" bindtap="goPostdetails" data-type="{{item.ntp_type=='问题'?2:1}}" data-id="{{item.new_id}}" wx:for="{{indexData}}"  wx:key="index"> 
+  
+   <view class="article_item" bindtap="goPostdetails" data-type="{{item.ntp_type=='问题'?2:1}}" data-index="{{index}}" data-id="{{item.new_id}}" wx:for="{{indexData}}"  wx:key="index"> 
       <view class="article_title">
         <view class="title_box">
           <view class="wen_ti" wx:if="{{item.ntp_type=='问题'}}">问</view>
@@ -85,7 +86,7 @@
         </view>
       </view>
       <view class="article_context">
-       {{item.new_content}}
+       <rich-text nodes=" {{item.new_content}}"></rich-text>
       </view>
        <text class="full_text" wx:if="{{item.new_content.length>10}}">阅读全文</text>
       <view class="user_info">
@@ -123,5 +124,11 @@
         </view>
       </view>
     </view>
+  </view>
+  <view wx:if="{{!indexData.length&&!noinfo}}">
+    <i-load-more />
+  </view>
+  <view wx:if="{{noinfo}}">
+    <i-load-more tip="没有更多了" loading="{{ false }}" />
   </view>
 </view>

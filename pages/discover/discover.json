@@ -1,5 +1,7 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "i-load-more": "/component/load-more/index"
+  },
   "backgroundTextStyle": "light",
   "navigationBarBackgroundColor": "#3b5370",
   "navigationBarTitleText": "发现",

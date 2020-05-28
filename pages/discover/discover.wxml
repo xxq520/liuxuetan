@@ -38,7 +38,7 @@
             <text class="hot_title">国外必备哪些东西呢？</text>
         </view>
     </view>
-    <view class="article_list mrg_top_20" bindtap="goPostdetails" data-type="{{item.ntp_type=='问题'?2:1}}" data-id="{{item.new_id}}" wx:for="{{newList}}"  wx:key="index">
+    <view class="article_list mrg_top_20" bindtap="goPostdetails" data-index="{{index}}" data-type="{{item.ntp_type=='问题'?2:1}}" data-id="{{item.new_id}}" wx:for="{{newList}}"  wx:key="index">
         <view class="article_item">
             <view class="article_title">
                 <view class="title_box">
@@ -51,7 +51,7 @@
                 </view>
             </view>
             <view class="article_context">
-               {{item.new_content}}
+               <rich-text nodes=" {{item.new_content}}"></rich-text>
                 <text class="full_text" wx:if="{{item.new_content.length>10}}">阅读全文</text>
             </view>
             <view class="issue_image_list">
@@ -95,4 +95,10 @@
             </view>
         </view>
     </view>
+    <view wx:if="{{!newList.length&&!noinfo}}">
+    <i-load-more />
+  </view>
+  <view wx:if="{{noinfo}}">
+    <i-load-more tip="没有更多了" loading="{{ false }}" />
+  </view>
 </view>

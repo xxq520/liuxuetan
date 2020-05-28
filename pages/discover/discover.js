@@ -17,6 +17,8 @@ Page({
     newList: [],
      // 用户的信息
      userInfo:   wx.getStorageSync('userInfo'),
+     // 是否显示暂无更多数据
+     noinfo:false
   },
 
   /**
@@ -89,7 +91,8 @@ Page({
     request.getReq(data).then(res=>{
       console.log(res,888)
       that.setData({
-        newList : res.data.splice(0,10)
+        newList : res.data.splice(0,10),
+        noinfo:true
       })
     })
   },
@@ -104,11 +107,11 @@ Page({
     // 如果是普通帖子
     if (e.currentTarget.dataset.type==1){
       wx.navigateTo({
-        url: '/postList/postDetails/postDetails?id='+e.currentTarget.dataset.id,
+        url: '/postList/postDetails/postDetails?id='+e.currentTarget.dataset.id+"&index="+e.currentTarget.dataset.index,
       })
     } else {
       wx.navigateTo({
-        url: '/postList/problemDetails/problemDetails?id='+e.currentTarget.dataset.id,
+        url: '/postList/problemDetails/problemDetails?id='+e.currentTarget.dataset.id+"&index="+e.currentTarget.dataset.index,
       })
     }
   },

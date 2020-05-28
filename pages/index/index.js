@@ -28,6 +28,10 @@ Page({
     followIndex: 0,
      // 用户的信息
      userInfo:   wx.getStorageSync('userInfo'),
+     // 搜索的内容
+     search:"",
+     // 是否显示暂无更多
+     noinfo:false
   },
   // 点击加号发布按钮事件
   changeMessage(){
@@ -58,11 +62,11 @@ Page({
     // 如果是普通帖子
     if (e.currentTarget.dataset.type==1){
       wx.navigateTo({
-        url: '/postList/postDetails/postDetails?id='+e.currentTarget.dataset.id,
+        url: '/postList/postDetails/postDetails?id='+e.currentTarget.dataset.id+"&index="+e.currentTarget.dataset.index,
       })
     } else {
       wx.navigateTo({
-        url: '/postList/problemDetails/problemDetails?id='+e.currentTarget.dataset.id,
+        url: '/postList/problemDetails/problemDetails?id='+e.currentTarget.dataset.id+"&index="+e.currentTarget.dataset.index,
       })
     }
   },
@@ -74,8 +78,6 @@ Page({
     // 初始化首页数据
     this.getIndexData()
     // 获取用户关注的新闻项目
-    this.getUserLick()
-   
   },
   //  初始化首页数据
   getIndexData() {
@@ -94,7 +96,7 @@ Page({
         // 按标签名称搜索新闻/帖子
         search_tags: this.data.searchContent,
         // 通过任何文本搜索新闻/帖子
-        search_term: "",
+        search_term: this.data.search,
         // 新闻/帖子类型，“文章”或“问题”
         post_type: "",
         // 在HTML中显示返回的新闻/帖子内容
@@ -108,7 +110,8 @@ Page({
     request.getReq(data).then(res=>{
       console.log(res)
       that.setData({
-        indexData : res.data
+        indexData : res.data,
+        noinfo:true
       })
     })
   },
@@ -131,10 +134,11 @@ Page({
     }
     var that = this;
     request.getReq(data).then(res=>{
-      that.setData({
-        follow: res.data
-      })
-      console.log(res,"获取用户关注的标签")
+      if(!res.data[0].Exception){
+        that.setData({
+          follow: res.data
+        })
+      }
     })
   },
   // 点赞或收藏文章
@@ -162,4 +166,20 @@ Page({
         })
     })
   },
+  onPullDownRefresh:function(){
+    wx.showNavigationBarLoading() //在标题栏中显示加载
+    //模拟加载
+    // 初始化首页数据
+    this.getIndexData()
+    // 获取用户关注的新闻项目
+    this.getUserLick()
+    setTimeout(function(){
+    // complete
+    wx.hideNavigationBarLoading() //完成停止加载
+    wx.stopPullDownRefresh() //停止下拉刷新
+    },1500);
+  },
+  onShow(){
+    this.getUserLick()
+  }
 })

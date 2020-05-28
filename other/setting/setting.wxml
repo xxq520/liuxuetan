@@ -14,6 +14,6 @@
         </view>
     </navigator>
 </view>
-<view class="exit">
+<view class="exit" bindtap="exit">
     退出我的账号
 </view>

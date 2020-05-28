@@ -35,6 +35,17 @@ Page({
     this.setData({
       type:options.type
     })
+    if(options.type==2){
+      wx.setNavigationBarTitle({
+        title: '发布问题'
+      })
+    }
+    // 判断是否是话题专栏跳转过来的
+    if(options.tag){
+      this.setData({
+        tag:options.tag
+      })
+    }
     const platform = wx.getSystemInfoSync().platform
     const isIOS = platform === 'ios'
     this.setData({ isIOS})

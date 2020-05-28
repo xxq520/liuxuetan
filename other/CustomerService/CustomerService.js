@@ -22,7 +22,7 @@ Page({
     // 是否加载默认聊天数据
     isLoad:true
   },
-  // 获取文章
+  // 历史记录
   getHistory() {
     var userInfo = wx.getStorageSync('userInfo');
     var data = {
@@ -51,13 +51,13 @@ Page({
           chatList:that.data.chatList.concat(res.data.reverse().splice(that.data.chatList.length,res.data.length)),
         },()=>{
           if(that.data.isLoad){
+            that.setData({
+              isLoad:false
+            })
             wx.createSelectorQuery().select('#j_page').boundingClientRect(function(rect){
               // 使页面滚动到底部
               wx.pageScrollTo({
                 scrollTop: rect.bottom
-              })
-              that.setData({
-                isLoad:false
               })
             }).exec()
           }
@@ -115,6 +115,7 @@ Page({
       that.setData({
         chatContent:""
       })
+      that.getHistory()
     })
   },
   /**

@@ -29,7 +29,7 @@
   </view>
   <!-- 简介内容 -->
   <view class="jianjie" wx:if="{{tabNum==1}}">
-    <rich-text nodes=" {{text.uni_description}}"></rich-text>
+    <rich-text nodes=" {{text.uni_description||'暂无简介...'}}"></rich-text>
   </view>
   <!-- 讨论内容 -->
   <view class="taolun" wx:if="{{tabNum==2}}">
@@ -42,10 +42,10 @@
       </view>
     </view>
     <view class="answer_list">
-      <view class="answer_item" wx:for="{{indexData}}" bindtap="goPostdetails" data-type="{{item.ntp_type=='问题'?2:1}}" data-id="{{item.new_id}}">
+      <view class="answer_item" wx:for="{{indexData}}" bindtap="goPostdetails" data-index="{{index}}" data-type="{{item.ntp_type=='问题'?2:1}}" data-id="{{item.new_id}}">
         <view class="answer_title">{{item.new_header}}</view>
         <view class="context line_4">
-          {{item.new_content}}
+          <rich-text nodes=" {{item.new_content}}"></rich-text>
         </view>
         <view class="published_status">
           <view class="left_status">
@@ -167,7 +167,7 @@
     </view>
   </view>
   <view class="bottom_fiexd">
-    <view class="quiz_btn" bindtap="goRelease">提问</view>
-    <view class="issue_btn" bindtap="goRelease">发布</view>
+    <view class="quiz_btn" bindtap="goRelease" data-type="2">提问</view>
+    <view class="issue_btn" bindtap="goRelease" data-type="1">发布</view>
   </view>
 </view>

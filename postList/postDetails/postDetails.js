@@ -29,7 +29,9 @@ Page({
        // 是否点赞文章
       isActive : false,
       // 文章作者的信息
-      author : {}
+      author : {},
+      // 上个页面传递过来的文章下标
+      index:0
   },
    // 获取发布文章的用户信息
    getAuthor() {
@@ -68,7 +70,8 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      id:options.id
+      id:options.id,
+      index:options.index
     })
     this.getNews();
   },
@@ -358,7 +361,33 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+     var that =this
+    //获取已经打开的页面的数组
+      var pages = getCurrentPages();
+      //获取上一个页面的所有的方法和data中的数据
+      var lastpage = pages[pages.length - 2]
+     //改变上一个页面中的data中的数据
+console.log(lastpage,666)
+      switch(lastpage.route){
+        case "pages/index/index":
+          var indexData = `indexData[${this.data.index}]`
+          lastpage.setData({
+            [indexData]:that.data.newContent
+          });
+          break;
+        case "pages/discover/discover":
+          var indexData = `newList[${this.data.index}]`
+          lastpage.setData({
+            [indexData]:that.data.newContent
+          });
+          break; 
+        case "postList/topicColumn/topicColumn":
+          var indexData = `indexData[${this.data.index}]`
+          lastpage.setData({
+            [indexData]:that.data.newContent
+          });
+          break;  
+      }
   },
 
   /**

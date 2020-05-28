@@ -191,14 +191,14 @@ Page({
   },
   // 跳转至问题详情或者普通帖子详情页面
   goPostdetails(e){
-    // 如果是普通帖子
-    if (e.currentTarget.dataset.type==1){
+     // 如果是普通帖子
+     if (e.currentTarget.dataset.type==1){
       wx.navigateTo({
-        url: '/postList/postDetails/postDetails?id='+e.currentTarget.dataset.id,
+        url: '/postList/postDetails/postDetails?id='+e.currentTarget.dataset.id+"&index="+e.currentTarget.dataset.index,
       })
     } else {
       wx.navigateTo({
-        url: '/postList/problemDetails/problemDetails?id='+e.currentTarget.dataset.id,
+        url: '/postList/problemDetails/problemDetails?id='+e.currentTarget.dataset.id+"&index="+e.currentTarget.dataset.index,
       })
     }
   },
@@ -209,9 +209,9 @@ Page({
 
   },
   // 跳转提问发布页面
-  goRelease(){
+  goRelease(e){
     wx.navigateTo({
-      url: '/other/release/release',
+      url: `/other/release/release?type=${e.currentTarget.dataset.type}&tag=${this.data.id}`,
     })
   },
 

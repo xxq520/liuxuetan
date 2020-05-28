@@ -1,5 +1,7 @@
 {
   "usingComponents": {
-    "van-overlay": "/dist/overlay/index"
-  }
+    "van-overlay": "/dist/overlay/index",
+    "i-load-more": "/component/load-more/index"
+  },
+  "enablePullDownRefresh": true
 }
