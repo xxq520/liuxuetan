@@ -159,6 +159,18 @@ page{
   .user_tx{
       width: 56rpx;
       height: 56rpx;
+      border-radius: 56rpx;
+  }
+  .newUtil{
+    display: flex;
+    font-size: 28rpx;
+    color: #8c8c8c;
+    margin-top: 20rpx;
+  }
+  .newUtil>view{
+    margin-right: 60rpx;
+    display: flex;
+    align-items: center;
   }
   .user_name{
     font-size: 22rpx;

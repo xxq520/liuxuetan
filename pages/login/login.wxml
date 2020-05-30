@@ -8,7 +8,7 @@
     <view class="regiestBg">
         <view class="user AccountPassword">
             <image src="../../static/image/user.png"></image>
-            <input type="text" value="{{phone}}" placeholder="请输入手机号" bindinput="changeInput" data-type="phone"></input>
+            <input type="text" value="{{phone}}" placeholder="请输入用户名" bindinput="changeInput" data-type="phone"></input>
         </view>
         <view class="Password AccountPassword">
             <image src="../../static/image/Password.png"></image>

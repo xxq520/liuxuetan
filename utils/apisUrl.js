@@ -54,5 +54,8 @@ module.exports = {
     // 更新用户中心的数据
     UpdateUserDetailsRecord : url + "/wsNewsOptionDatatrans.asmx/UpdateUserDetailsRecord",
     // 获取用户未读信息数
-    GetUserUnreadMessageCount : url + "/wsGenericDatabind.asmx/GetUserUnreadMessageCount"
+    GetUserUnreadMessageCount : url + "/wsGenericDatabind.asmx/GetUserUnreadMessageCount",
+    // 删除某一文章
+    DeleteNewsRecord : url + "/wsNewsDatatrans.asmx/DeleteNewsRecord"
+
 };

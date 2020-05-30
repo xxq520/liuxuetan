@@ -10,7 +10,8 @@ Page({
    */
   data: {
     // 当前页面展示的文章
-    newList: []
+    newList: [],
+    noinfo:false
   },
 
   /**
@@ -32,11 +33,13 @@ Page({
       toast: true,// 是否显示加载动画
       data:{
         // 用户的登录id
-        usr_id : 5 || 0, 
+        usr_id : userInfo.usr_id || 0, 
         // 返回数据页码. 1=归还所有记录
         pageSize: "1",
         // 每个数据页的记录数量 1=归还所有记录
         pageNumber: "1",
+         // 在HTML中显示返回的新闻/帖子内容
+         showHtml: true
       },
       type:"get",
       url:url.GetUserQuestionItems,
@@ -44,6 +47,12 @@ Page({
     }
     var that = this;
     request.getReq(data).then(res=>{
+      if(res.data[0].Code){
+        that.setData({
+          noinfo:true
+        })
+        return false
+      }
       var resData = JSON.parse(res.data.replace(/\]\[/g,","));
       var newArray = [];
       var index = []
@@ -54,12 +63,13 @@ Page({
         }
       }
       that.setData({
-        newList :newArray 
+        newList :newArray,
+        noinfo:true
       })
     })
   },
-    // 跳转至问题详情或者普通帖子详情页面
-    goPostdetails(e){
+  // 跳转至问题详情或者普通帖子详情页面
+  goPostdetails(e){
       // 如果是普通帖子
       if (e.currentTarget.dataset.type==1){
         wx.navigateTo({
@@ -70,7 +80,77 @@ Page({
           url: '/postList/problemDetails/problemDetails?id='+e.currentTarget.dataset.id,
         })
       }
-    },
+  },
+  // 编辑文章
+  edit(e) {
+    // 获取当前的编辑文章的元素
+    var item = this.data.newList[e.currentTarget.dataset.index];
+    wx.navigateTo({
+      url: `/other/release/release?id=${item.new_id}&type=${item.ntp_type=='问题'?2:1}`,
+    })
+  },
+  //  删除文章
+  delete(e) { 
+    var that = this;
+    var userInfo = wx.getStorageSync('userInfo')
+    // 获取当前的编辑文章的元素
+    var item = this.data.newList[e.currentTarget.dataset.index];
+    var data = {
+      toast: true,// 是否显示加载动画
+      data:{
+        // 用户的登录id
+        usr_id : userInfo.usr_id || 0, 
+        // 如果不搜索特定的新闻/帖子记录，则为0
+        new_id: item.new_id, 
+        // 返回数据页码. 1=归还所有记录
+        pageSize: 1,
+        // 每个数据页的记录数量 1=归还所有记录
+        pageNumber: 1,
+        // 按标签名称搜索新闻/帖子
+        search_tags: "",
+        // 通过任何文本搜索新闻/帖子
+        search_term: "",
+        // 新闻/帖子类型，“文章”或“问题”
+        post_type: "",
+        // 在HTML中显示返回的新闻/帖子内容
+        showHtml: false
+      },
+      type:"get",
+      url:url.indexNews,
+      header:{"Content-Type":"application/json; charset=utf-8"}
+    }
+    var that = this;
+    request.getReq(data).then(res=>{
+      if(res.data[0].en_new_id){
+        var delData = {
+          toast: false,// 是否显示加载动画
+          data:{
+            // 用户的登录id
+            usr_id : userInfo.usr_id || 0, 
+            // 新闻id
+            en_new_id : res.data[0].en_new_id,
+          },
+          type:"POST",
+          url:url.DeleteNewsRecord,
+          header:{"Content-Type":"application/json; charset=utf-8"}
+        }
+        request.getReq(delData).then(delres=>{
+          console.log(delres,745689)
+          if(res.data[0].response=="储存成功"){
+            wx.showToast({
+              title: '删除成功'
+            })
+            that.getIndexData()
+          }
+        })
+      } else {
+        wx.showToast({
+          title: '删除失败',
+          icon:"none"
+        })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

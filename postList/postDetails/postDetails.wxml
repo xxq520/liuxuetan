@@ -130,7 +130,7 @@
                     <text>收藏</text>
                 </view>
                 <view class="card_bottm_info-item">
-                    <text>{{newContent.new_favourite}}</text>
+                    <text>{{newContent.new_like}}</text>
                     <text>关注</text>
                 </view>
             </view>
@@ -138,29 +138,24 @@
     </view>
 </view>
 <view class="answer_list">
-    <view class="answer_item">
+    <view class="answer_item" bindtap="goPostdetails" data-type="{{item.ntp_type=='问题'?2:1}}" data-index="{{index}}" data-id="{{item.new_id}}" wx:for="{{indexData}}"  wx:key="index">
         <view class="context line_2">
-            这是一篇不一样的干货篇！有些东西你想都可能没想过要用到！
-当前国内疫情有所减缓！！ 可是英国疫情加重！好多东西后悔
-没有带过来伯明翰，为了不让来英国的同学陷入我这样尴尬的处
-境，我决定分享一些值得带！不对是一定要带的东西，拿本本...
-境，我决定分享一些值得带！不对是一定要带的东西，拿本本...
-境，我决定分享一些值得带！不对是一定要带的东西，拿本本...
-境，我决定分享一些值得带！不对是一定要带的东西，拿本本...
+          {{item.new_content}}
         </view>
         <view class="published_status">
             <view class="left_status">
-                <image class="user_tx" src="https://t1.picb.cc/uploads/2020/05/02/kzt0le.png" />
-                <text class="user_name">Green</text>
+                <image class="user_tx" src="http://www.liuxuetalk.com/{{item.usr_profile_image_tn}}" />
+                <text class="user_name">{{item.usr_display_name}}</text>
                 <text class="published_time">刚刚发表</text>
-                  <view class="right_bottom published_Focus ">
+                 <!-- bindtap="SaveUserFavForumAdmin" data-id="{{item.id}}" -->
+                  <view class="right_bottom published_Focus">
                     <image src="../../static/image/guanzhu.png" />
                     <text>关注</text>
                 </view>
             </view>
         </view>
     </view>
-    <view class="answer_item">
+    <!-- <view class="answer_item">
         <view class="recommended-title ">
             <view class="line_2">这是一篇不一样的干货篇！有些东西你想都可能没想过要用到！是一篇不一样的干货篇！有些东西你是一篇不一样的干货篇！有些东西你</view>
             <view class="recommended_tietu">
@@ -178,7 +173,7 @@
                 </view>
             </view>
         </view>
-    </view>
+    </view> -->
 </view>
 <van-transition show="{{ watch }}" name="fade-up" custom-class="block">
     <view class="cover_container">
@@ -233,7 +228,7 @@
       </view>
       <view class="cz_item"  bindtap="watchOlder">
         <image src="../../static/image/pinglun_2.png" />
-        <text class="">评论{{newContent.new_comment}}</text>
+        <text class="">评论{{comment.length}}</text>
       </view>
     </view>
   </view>

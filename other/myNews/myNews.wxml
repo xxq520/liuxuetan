@@ -7,22 +7,22 @@
                     <view class="wen_ti" wx:if="{{item.ntp_type=='问题'}}">问</view>
                     <text class="title_txt">{{item.new_header}}</text>
                 </view>
-                <view class="collect_btn">
+                <!-- <view class="collect_btn">
                     <image src="../../static/image/aixin.png" />
                     <text>收藏</text>
-                </view>
+                </view> -->
             </view>
             <view class="article_context">
                {{item.new_content}}
-                <text class="full_text" wx:if="{{item.new_content.length>10}}">阅读全文</text>
             </view>
-            <view class="issue_image_list">
+            <text class="full_text" wx:if="{{item.new_content.length>10}}">阅读全文</text>
+            <!-- <view class="issue_image_list">
                 <image src="../../static/image/wenti_tietu.png" />
                 <image src="../../static/image/wenti_tietu.png" />
                 <image src="../../static/image/wenti_tietu.png" />
-            </view>
+            </view> -->
             <view class="user_info">
-                <image class="user_tx" src="../../static/image/kouzhao.png" />
+                <image class="user_tx" src="http://www.liuxuetalk.com/{{item.usr_profile_image_tn}}" />
                 <view class="info_content">
                     <view class="top_info">
                         <text class="user_name">{{item.usr_display_name}}</text>
@@ -34,10 +34,10 @@
                             <text class="browse_context">浏览量</text>
                             <text class="browse_num">{{item.new_visit}}</text>
                         </view>
-                        <view class="attention">
+                        <!-- <view class="attention">
                             <image src="../../static/image/guanzhu.png" />
                             <text class="attention_btn">关注</text>
-                        </view>
+                        </view> -->
                     </view>
                 </view>
             </view>
@@ -55,6 +55,20 @@
                     <text>{{item.new_comment}}</text>
                 </view>
             </view>
+            <!-- 对文章的操作 -->
+            <view class="newUtil">
+                <view catchtap="edit" data-index="{{index}}"><van-icon name="edit" /><text>编辑</text></view>
+                <view catchtap="delete" data-index="{{index}}"><van-icon name="delete" /><text>删除</text></view>
+            </view>
         </view>
     </view>
+    <view wx:if="{{!newList.length&&!noinfo}}">
+    <i-load-more />
+  </view>
+  <view wx:if="{{noinfo&&!newList.length}}">
+    <i-load-more tip="暂无数据" loading="{{ false }}" />
+  </view>
+  <view wx:if="{{noinfo&&newList.length}}">
+    <i-load-more tip="暂无更多数据" loading="{{ false }}" />
+  </view>
 </view>

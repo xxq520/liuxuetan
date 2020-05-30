@@ -53,6 +53,19 @@ Page({
       })
     })
   },
+   // 跳转至问题详情或者普通帖子详情页面
+  goPostdetails(e){
+    // 如果是普通帖子
+    if (e.currentTarget.dataset.type==1){
+      wx.navigateTo({
+        url: '/postList/postDetails/postDetails?id='+e.currentTarget.dataset.id+"&index="+e.currentTarget.dataset.index,
+      })
+    } else {
+      wx.navigateTo({
+        url: '/postList/problemDetails/problemDetails?id='+e.currentTarget.dataset.id+"&index="+e.currentTarget.dataset.index,
+      })
+    }
+  },
   // 查看全部评论
   watchOlder() {
     this.setData({
@@ -74,12 +87,47 @@ Page({
       index:options.index
     })
     this.getNews();
+    
   },
   showPopup() {
     this.setData({ show: true });
   },
   onClose() {
     this.setData({ show: false });
+  },
+   //  初始化首页数据
+  getIndexData() {
+    var userInfo = wx.getStorageSync('userInfo');
+    var data = {
+      toast: true,// 是否显示加载动画
+      data:{
+        // 用户的登录id
+        usr_id : 0, 
+        // 如果不搜索特定的新闻/帖子记录，则为0
+        new_id: 0 , 
+        // 返回数据页码. 1=归还所有记录
+        pageSize: 3,
+        // 每个数据页的记录数量 1=归还所有记录
+        pageNumber: 1,
+        // 按标签名称搜索新闻/帖子
+        search_tags: this.data.newContent.new_tags[0],
+        // 通过任何文本搜索新闻/帖子
+        search_term: "",
+        // 新闻/帖子类型，“文章”或“问题”
+        post_type: "",
+        // 在HTML中显示返回的新闻/帖子内容
+        showHtml: false
+      },
+      type:"get",
+      url:url.indexNews,
+      header:{"Content-Type":"application/json; charset=utf-8"}
+    }
+    var that = this;
+    request.getReq(data).then(res=>{
+      that.setData({
+        indexData : res.data.splice(1),
+      })
+    })
   },
   // 获取文章
   getNews(){
@@ -110,7 +158,6 @@ Page({
     }
     var that = this;
     request.getReq(data).then(res=>{
-      console.log(res)
       res.data[0].new_tags =res.data[0].new_tags?res.data[0].new_tags.split(","):[];
       const replaceDetail = function(details){
         var texts='';//待拼接的内容
@@ -141,6 +188,8 @@ Page({
       that.getComment()
       // 获取文章作者
       that.getAuthor()
+      // 获取相关的文章
+     this.getIndexData()
     })
   },
   // 获取新闻评论列表项目

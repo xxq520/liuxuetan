@@ -1,5 +1,8 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "i-load-more": "/component/load-more/index",
+    "van-icon": "/dist/icon/index"
+  },
   "backgroundTextStyle": "light",
   "navigationBarBackgroundColor": "#3b5370",
   "navigationBarTitleText": "发现",

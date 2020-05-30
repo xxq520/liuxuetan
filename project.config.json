@@ -115,6 +115,12 @@
 					"pathName": "pages/my/my",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "other/myNews/myNews",
+					"pathName": "other/myNews/myNews",
+					"scene": null
 				}
 			]
 		}
