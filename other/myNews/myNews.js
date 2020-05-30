@@ -95,61 +95,71 @@ Page({
     var userInfo = wx.getStorageSync('userInfo')
     // 获取当前的编辑文章的元素
     var item = this.data.newList[e.currentTarget.dataset.index];
-    var data = {
-      toast: true,// 是否显示加载动画
-      data:{
-        // 用户的登录id
-        usr_id : userInfo.usr_id || 0, 
-        // 如果不搜索特定的新闻/帖子记录，则为0
-        new_id: item.new_id, 
-        // 返回数据页码. 1=归还所有记录
-        pageSize: 1,
-        // 每个数据页的记录数量 1=归还所有记录
-        pageNumber: 1,
-        // 按标签名称搜索新闻/帖子
-        search_tags: "",
-        // 通过任何文本搜索新闻/帖子
-        search_term: "",
-        // 新闻/帖子类型，“文章”或“问题”
-        post_type: "",
-        // 在HTML中显示返回的新闻/帖子内容
-        showHtml: false
-      },
-      type:"get",
-      url:url.indexNews,
-      header:{"Content-Type":"application/json; charset=utf-8"}
-    }
-    var that = this;
-    request.getReq(data).then(res=>{
-      if(res.data[0].en_new_id){
-        var delData = {
-          toast: false,// 是否显示加载动画
-          data:{
-            // 用户的登录id
-            usr_id : userInfo.usr_id || 0, 
-            // 新闻id
-            en_new_id : res.data[0].en_new_id,
-          },
-          type:"POST",
-          url:url.DeleteNewsRecord,
-          header:{"Content-Type":"application/json; charset=utf-8"}
-        }
-        request.getReq(delData).then(delres=>{
-          console.log(delres,745689)
-          if(res.data[0].response=="储存成功"){
-            wx.showToast({
-              title: '删除成功'
-            })
-            that.getIndexData()
+    wx.showModal({
+      title:"是否确认删除",
+      success:function(con){
+        if(con.confirm){
+          var data = {
+            toast: true,// 是否显示加载动画
+            data:{
+              // 用户的登录id
+              usr_id : userInfo.usr_id || 0, 
+              // 如果不搜索特定的新闻/帖子记录，则为0
+              new_id: item.new_id, 
+              // 返回数据页码. 1=归还所有记录
+              pageSize: 1,
+              // 每个数据页的记录数量 1=归还所有记录
+              pageNumber: 1,
+              // 按标签名称搜索新闻/帖子
+              search_tags: "",
+              // 通过任何文本搜索新闻/帖子
+              search_term: "",
+              // 新闻/帖子类型，“文章”或“问题”
+              post_type: "",
+              // 在HTML中显示返回的新闻/帖子内容
+              showHtml: false
+            },
+            type:"get",
+            url:url.indexNews,
+            header:{"Content-Type":"application/json; charset=utf-8"}
           }
-        })
-      } else {
-        wx.showToast({
-          title: '删除失败',
-          icon:"none"
-        })
+          request.getReq(data).then(res=>{
+            that.delNew(res,e)
+          })
+        }
       }
     })
+  },
+  delNew(res,e){
+    var that = this;
+    var userInfo = wx.getStorageSync('userInfo')
+    // 获取当前的编辑文章的元素
+    var item = this.data.newList[e.currentTarget.dataset.index];
+    if(res.data[0].en_new_id){
+      var delData = {
+        toast: false,// 是否显示加载动画
+        data:{
+          // 用户的登录id
+          usr_id : userInfo.usr_id || 0, 
+          // 新闻id
+          en_new_id : res.data[0].en_new_id,
+        },
+        type:"POST",
+        url:url.DeleteNewsRecord,
+        header:{"Content-Type":"application/json; charset=utf-8"}
+      }
+      request.getReq(delData).then(delres=>{
+        console.log(delres,745689)
+        if(delres.data[0].response=="储存成功"){
+          that.getIndexData()
+        }
+      })
+    } else {
+      wx.showToast({
+        title: '删除失败',
+        icon:"none"
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

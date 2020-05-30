@@ -390,7 +390,9 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    return {
+      title:this.data.newContent.new_header
+    }
   },
    // 页面的滚动条事件
    onPageScroll:function(e){

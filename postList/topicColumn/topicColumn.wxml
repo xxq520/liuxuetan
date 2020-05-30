@@ -7,7 +7,7 @@
         <input placeholder="SEARCH" placeholder-style="color:#fff;" />
         <image src="../../static/image/white_search.png" />
       </view>
-      <image class="fenxiang" src="../../static/image/fenxiang.png" />
+      <button open-type="share" size="mini" class="btn"><image class="fenxiang" src="../../static/image/fenxiang.png" /></button>
     </view>
     <view class="Focus-box" bindtap="changeFavourite">
       <view class="Focus-btn">{{isFavourite.isFavourite?'已关注':'关注'}}</view>

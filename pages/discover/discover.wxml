@@ -54,13 +54,13 @@
                <rich-text nodes=" {{item.new_content}}"></rich-text>
                 <text class="full_text" wx:if="{{item.new_content.length>10}}">阅读全文</text>
             </view>
-            <view class="issue_image_list">
+            <!-- <view class="issue_image_list">
                 <image src="../../static/image/wenti_tietu.png" />
                 <image src="../../static/image/wenti_tietu.png" />
                 <image src="../../static/image/wenti_tietu.png" />
-            </view>
+            </view> -->
             <view class="user_info">
-                <image class="user_tx" src="../../static/image/kouzhao.png" />
+                <image class="user_tx" src="http://www.liuxuetalk.com/{{item.usr_profile_image_tn}}" />
                 <view class="info_content">
                     <view class="top_info">
                         <text class="user_name">{{item.usr_display_name}}</text>

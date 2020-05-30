@@ -147,6 +147,9 @@ page{
     display: flex;
     flex-direction: column;
 }
+.btn{
+  background-color: transparent;
+}
 .van-dropdown-menu{
   background-color: transparent !important;
 }

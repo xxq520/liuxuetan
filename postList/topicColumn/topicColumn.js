@@ -254,6 +254,8 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    return {
+      title:'你的好友给你分享了话题：'+this.data.id
+    }
   }
 })

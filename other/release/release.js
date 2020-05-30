@@ -192,7 +192,7 @@ Page({
           // 文章是否有效
           new_valid:true,
           // 新闻id
-          en_new_id:that.data.newContent.en_new_id||"",
+          en_new_id:that.data.newContent?that.data.newContent.en_new_id:"",
           new_header_image:userInfo.usr_profile_image_tn,
           new_header:that.data.title,
           new_tags:that.data.tag

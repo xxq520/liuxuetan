@@ -159,6 +159,7 @@ page{
   .user_tx{
       width: 56rpx;
       height: 56rpx;
+      border-radius: 56rpx;
   }
   .user_name{
     font-size: 22rpx;

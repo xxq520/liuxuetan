@@ -66,6 +66,49 @@ Page({
       }
     })
   },
+  getHistory2() {
+    var userInfo = wx.getStorageSync('userInfo');
+    var data = {
+      toast: false, // 是否显示加载动画
+      data: {
+        // 用户的登录id
+        usr_id: userInfo.usr_id || 0,
+        // 如果不搜索特定的新闻/帖子记录，则为0
+        en_grp_id: this.data.id,
+        // 返回数据页码. 1=归还所有记录
+        pageSize: "1",
+        // 每个数据页的记录数量 1=归还所有记录
+        pageNo: "1",
+        grp_type: this.data.grp_type
+      },
+      type: "get",
+      url: url.GetChatGroupHistory,
+      header: {
+        "Content-Type": "application/json; charset=utf-8"
+      }
+    }
+    var that = this;
+    request.getReq(data).then(res => {
+      if (res.data.length != that.data.chatList) {
+        that.setData({
+          chatList:that.data.chatList.concat(res.data.reverse().splice(that.data.chatList.length,res.data.length)),
+        },()=>{
+          if(that.data.isLoad){
+            that.setData({
+              isLoad:false
+            })
+            wx.createSelectorQuery().select('#j_page').boundingClientRect(function(rect){
+              // 使页面滚动到底部
+              wx.pageScrollTo({
+                scrollTop: rect.bottom
+              })
+            }).exec()
+          }
+          // 获取容器高度，使页面滚动到容器底部
+        })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -79,7 +122,7 @@ Page({
     var that = this;
     this.setData({
       timer: setInterval(() => {
-        that.getHistory()
+        that.getHistory2()
       }, 5000)
     })
   },
@@ -115,7 +158,7 @@ Page({
       that.setData({
         chatContent:""
       })
-      that.getHistory()
+      that.getHistory2()
     })
   },
   /**
