@@ -20,7 +20,7 @@
   <view class="top_search">
     <image class="logo" src="../../static/image/logo_2.png" />
     <view class="search-box">
-      <input type="text" placeholder="SEARCH" />
+      <input type="text" placeholder="SEARCH" disabled="disabled" bindtap="goSearch"/>
       <image src="../../static/image/search.png" />
     </view>
     <view class="dot_three pd_16">···</view>

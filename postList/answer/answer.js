@@ -21,6 +21,12 @@ Page({
     commentContent:""
 
   },
+   // 去搜索
+   goSearch(){
+    wx.navigateTo({
+      url:"/other/search/search"
+    })
+  },
   // 跳转至分类专题页面 
   gotopic(){
     wx.navigateTo({

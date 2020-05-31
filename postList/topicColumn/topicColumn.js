@@ -147,7 +147,7 @@ Page({
       console.log(res,"change")
       if(res.data[0].response=="储存成功"){
         var num = that.data.tagNum;
-        num.count_favourite = !that.data.isFavourite.isFavourite?num.count_favourite += 1: num.count_favourite -= 1
+        num.count_favourite = !that.data.isFavourite.isFavourite?num.count_favourite=Number(num.count_favourite+1):num.count_favourite= Number(num.count_favourite-1)
         that.setData({
           isFavourite:{isFavourite:!that.data.isFavourite.isFavourite},
           tagNum:num

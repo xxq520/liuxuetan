@@ -187,6 +187,9 @@ justify-content: center;
     color: #8c8c8c;
     margin-bottom: 28rpx;
 }
+.context{
+    max-width: 703rpx;
+}
 .open_details{
     font-size: 24rpx;
 	letter-spacing: 1rpx;

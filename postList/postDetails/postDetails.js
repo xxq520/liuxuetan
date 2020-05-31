@@ -33,6 +33,12 @@ Page({
       // 上个页面传递过来的文章下标
       index:0
   },
+  // 去搜索
+  goSearch(){
+    wx.navigateTo({
+      url:"/other/search/search"
+    })
+  },
    // 获取发布文章的用户信息
    getAuthor() {
     var that = this;
