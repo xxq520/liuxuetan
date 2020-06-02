@@ -394,7 +394,7 @@ Page({
       that.setData({
         scollHeight:e.scrollTop
       })
-      console.log(123)
+      console.log(123,e.scrollTop)
     },300)
   },
   /**
@@ -441,6 +441,7 @@ console.log(lastpage,666)
           lastpage.setData({
             [indexData]:that.data.newContent
           });
+          lastpage.getIndexData&&lastpage.getIndexData();
           break;  
       }
   },

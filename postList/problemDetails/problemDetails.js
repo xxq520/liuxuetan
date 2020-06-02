@@ -300,8 +300,8 @@ Page({
       commentContent:e.detail.value
     })
   },
-  // 点赞评论事件
-  LikeComment(e){
+   // 点赞评论事件
+   LikeComment(e){
     // 当前点赞评论的列表下标
     var index = e.currentTarget.dataset.index;
     // 当前点赞评论的元素
@@ -320,7 +320,6 @@ Page({
       header:{"Content-Type":"application/json; charset=utf-8"}
     }
     request.getReq(data).then(res=>{
-      var comment = that.data.comment;
       if(res.data[0].response=="储存成功") {
         that.getComment();
       } else {
@@ -374,6 +373,7 @@ Page({
             lastpage.setData({
               [indexData]:that.data.newContent
             });
+            lastpage.getIndexData&&lastpage.getIndexData()
             break;  
         }
   },

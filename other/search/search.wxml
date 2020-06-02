@@ -1,7 +1,7 @@
 <!-- pages/discover/discover.wxml -->
 <view class="container">
     <view class="top_search">
-        <input type="text"></input>
+        <input type="text" model:value="{{search}}"></input>
         <image class="search_btn" src="../../static/image/search.png" />
     </view>
     <view class="roll_nav">
@@ -42,43 +42,39 @@
             <text class="hot_title">国外必备哪些东西呢？</text>
         </view>
     </view>
-    <view class="article_list mrg_top_20">
+    <view class="article_list mrg_top_20" bindtap="goPostdetails" data-index="{{index}}" data-type="{{item.ntp_type=='问题'?2:1}}" data-id="{{item.new_id}}" wx:for="{{newList}}" >
         <view class="article_item">
             <view class="article_title">
                 <view class="title_box">
-                    <view class="wen_ti">问</view>
-                    <text class="title_txt">英国留学必带清单（意想不到）</text>
+                    <view class="wen_ti" wx:if="{{item.ntp_type=='问题'}}">问</view>
+                    <text class="title_txt">{{item.new_header}}</text>
                 </view>
-                <view class="collect_btn">
-                    <image src="../../static/image/aixin.png" />
-                    <text>收藏</text>
+                <view class="collect_btn" catchtap="likeNew" data-type="favourite" data-id="{{item.en_new_id}}" data-index="{{index}}">
+                     <image src="../../static/image/aixin.png" wx:if="{{!item.isFavourite}}"/>
+                    <text>{{item.isFavourite?'已收藏':'收藏'}}</text>
                 </view>
             </view>
             <view class="article_context">
-                这是一篇不一样的干货篇！有些东西你想都可能没想过要用到！
-                当前国内疫情有所减缓！！ 可是英国疫情加重！好多东西后悔
-                没有带过来伯明翰，为了不让来英国的同学陷入我这样尴尬的处
-                境，我决定分享一些值得带！不对是一定要带的东西，拿本本记
-				好！补充加祈祷
+                 <rich-text nodes=" {{item.new_content}}"></rich-text>
                 <text class="full_text">阅读全文</text>
             </view>
-            <view class="issue_image_list">
+            <!-- <view class="issue_image_list">
                 <image src="../../static/image/wenti_tietu.png" />
                 <image src="../../static/image/wenti_tietu.png" />
                 <image src="../../static/image/wenti_tietu.png" />
-            </view>
+            </view> -->
             <view class="user_info">
                 <image class="user_tx" src="../../static/image/kouzhao.png" />
                 <view class="info_content">
                     <view class="top_info">
-                        <text class="user_name">Green</text>
+                        <text class="user_name">{{item.usr_display_name}}</text>
                         <text class="publish_time">刚刚发表</text>
                     </view>
                     <view class="bottom_info">
                         <view class="browse">
                             <image src="../../static/image/year.png" />
                             <text class="browse_context">浏览量</text>
-                            <text class="browse_num">31</text>
+                            <text class="browse_num">{{item.new_visit}}</text>
                         </view>
                         <view class="attention">
                             <image src="../../static/image/guanzhu.png" />
@@ -90,15 +86,15 @@
             <view class="status">
                 <view class="status_item">
                     <image src="../../static/image/zhuanfa.png" />
-                    <text>800</text>
+                    <text>{{item.new_forward}}</text>
                 </view>
                 <view class="status_item">
                     <image src="../../static/image/dianzan.png" />
-                    <text class="zan_color">2000</text>
+                    <text class="zan_color">{{item.new_like}}</text>
                 </view>
                 <view class="status_item">
                     <image src="../../static/image/liuyan.png" />
-                    <text>10</text>
+                    <text>{{item.new_comment}}</text>
                 </view>
             </view>
         </view>

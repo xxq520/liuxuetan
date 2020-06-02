@@ -53,9 +53,9 @@ module.exports = {
     SaveUserFavTags : url + "/wsNewsOptionDatatrans.asmx/SaveUserFavTags",
     // 更新用户中心的数据
     UpdateUserDetailsRecord : url + "/wsNewsOptionDatatrans.asmx/UpdateUserDetailsRecord",
-    // 获取用户未读信息数
-    GetUserUnreadMessageCount : url + "/wsGenericDatabind.asmx/GetUserUnreadMessageCount",
-    // 删除某一文章
+    // 获取用户未读信息数m0..0.
+   GetUserUnreadMessageCount : url + "/wsGenericDatabind.asmx/GetUserUnreadMessageCount",
+    // 删除某一文章87
     DeleteNewsRecord : url + "/wsNewsDatatrans.asmx/DeleteNewsRecord"
 
 };

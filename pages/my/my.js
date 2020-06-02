@@ -19,6 +19,7 @@ Page({
     if(this.data.userInfo.usr_id){
       this.getIndexData()
     }
+    this.getGetHotTagsGroup();
   },
   //  初始化首页数据
   getIndexData() {
@@ -62,12 +63,40 @@ Page({
         })
     }
   },
+  // 获取tab选项卡标签
+  getGetHotTagsGroup() {
+    var that = this;
+    var data = {
+      toast: true,// 是否显示加载动画
+      data:{
+        // 用户的登录id
+        ntg_group : "", 
+        // 如果不搜索特定的新闻/帖子记录，则为0
+        pageSize: "1",
+        // 每个数据页的记录数量 1=归还所有记录
+        pageNumber: "1",
+      },
+      type:"get",
+      url:url.GetHotTagsGroup,
+      header:{"Content-Type":"application/json; charset=utf-8"}
+    }
+    request.getReq(data).then(res=>{
+      that.setData({
+        searchTag: res.data
+      })
+    })
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
 
+  },
+  goSearch(e){
+    wx.navigateTo({
+      url: `/other/search/search?tag=${e.currentTarget.dataset.tag}`,
+    })
   },
 
   /**

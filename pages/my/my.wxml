@@ -79,19 +79,9 @@
     <view class="recommend">
         <view class="recommend_title">推介内容</view>
         <view class="recommend_list">
-            <view class="recommend_item">
+            <view class="recommend_item" wx:for="{{searchTag}}" bindtap="goSearch" data-tag="{{item.tag_name}}">
                 <image class="cover_img" src="https://t1.picb.cc/uploads/2020/05/02/kztXL7.png" />
-                <view class="title_info">中央兰开夏大学</view>
-                <image class="lianjie_img" src="../../static/image/lianjie.png" />
-            </view>
-            <view class="recommend_item">
-                <image class="cover_img" src="https://t1.picb.cc/uploads/2020/05/02/kztXL7.png" />
-                <view class="title_info">中央兰开夏大学</view>
-                <image class="lianjie_img" src="../../static/image/lianjie.png" />
-            </view>
-            <view class="recommend_item">
-                <image class="cover_img" src="https://t1.picb.cc/uploads/2020/05/02/kztXL7.png" />
-                <view class="title_info">中央兰开夏大学</view>
+                <view class="title_info line_1">{{item.tag_name}}</view>
                 <image class="lianjie_img" src="../../static/image/lianjie.png" />
             </view>
         </view>

@@ -257,7 +257,13 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    var that =this
+    //获取已经打开的页面的数组
+      var pages = getCurrentPages();
+      //获取上一个页面的所有的方法和data中的数据
+      var lastpage = pages[pages.length - 2]
+     //改变上一个页面中的data中的数据
+     lastpage.getNews();
   },
 
   /**

@@ -9,7 +9,7 @@ Page({
    */
   data: {
       // 点击tab选项卡下标
-      tabNum:1,
+      tabNum:3,
       // 动态筛选数据
       option1: [
         { text: '全部商品', value: 0 },
@@ -176,7 +176,7 @@ Page({
         // 新闻/帖子类型，“文章”或“问题”
         post_type: "",
         // 在HTML中显示返回的新闻/帖子内容
-        showHtml: false
+        showHtml: true
       },
       type:"get",
       url:url.indexNews,

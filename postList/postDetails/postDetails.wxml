@@ -15,7 +15,7 @@
         <view class="label_item" wx:for="{{new_tags}}">{{item}}</view>
     </view>
 </view>
-<view class="top_search" wx:else>
+<view class="top_search" >
     <image class="logo" src="../../static/image/logo_2.png" />
     <view class="search-box">
         <input type="text" disabled="disabled" placeholder="SEARCH"  bindtap="goSearch"/>
@@ -175,7 +175,7 @@
         </view>
     </view> -->
 </view>
-<van-transition show="{{ watch }}" name="fade-up" custom-class="block">
+<van-transition show="{{ watch }}" name="fade-down" custom-class="block" duration="80">
     <view class="cover_container">
       <view class="arr_comment">
         <view class="arr_comment_title">
