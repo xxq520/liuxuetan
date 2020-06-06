@@ -108,11 +108,11 @@
             </view>
           </view>
         </view>
-        <view class="view_arr" bindtap="watchOlder">查看全部{{comment.length}}条评论>></view>
+        <view class="view_arr" bindtap="watchOlder">查看全部{{comment.length}}个回答>></view>
         <view class="comment_info">
           <view class="left_comment">
             <image src="http://www.liuxuetalk.com/{{userInfo.usr_profile_image}}"  />
-            <input disabled="disabled" placeholder="添加评论..." bindtap="showPopup"/>
+            <input disabled="disabled" placeholder="添加回答..." bindtap="showPopup"/>
           </view>
           <view class="right_cz">
             <view class="cz_item">
@@ -127,7 +127,7 @@
             </view>
             <view class="cz_item" bindtap="watchOlder">
               <image src="../../static/image/pinglun_gray.png" />
-              <text class="">评论{{comment.length}}</text>
+              <text class="">回答{{comment.length}}</text>
             </view>
           </view>
         </view>
@@ -169,7 +169,7 @@
       <view class="arr_comment">
         <view class="arr_comment_title">
           <image class="close" src="../../static/image/guanbi.png" bindtap="watchOlder" />
-          <text>全部{{comment.length}}条评论</text>
+          <text>全部{{comment.length}}个回答</text>
         </view>
         <view class="comment">
           <view class="arr_comment_list" wx:for="{{comment}}">
@@ -218,7 +218,7 @@
       </view>
       <view class="cz_item" bindtap="watchOlder">
         <image src="../../static/image/pinglun_2.png" />
-        <text class="">评论{{comment.length}}</text>
+        <text class="">回答{{comment.length}}</text>
       </view>
     </view>
   </view>
@@ -231,7 +231,7 @@
   bind:close="onClose"
 >
 <view class="alertInput">
- <input placeholder="添加评论..."  bindinput="changeComment" />
+ <input placeholder="添加回答..."  bindinput="changeComment" />
  <button size="mini" type="primary" bindtap="SaveNewsCommentRecord">发送</button>
 </view>
 </van-popup>

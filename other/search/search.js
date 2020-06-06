@@ -65,7 +65,6 @@ Page({
         newList: res.data,
         noinfo: true
       })
-      
      }
     })
   },

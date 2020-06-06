@@ -134,8 +134,18 @@ page{
     width: 19rpx;
     height: 19rpx;
   }
-  
+  .haveTx{
+    display: flex;
+    align-items: center;
+  }
+  .haveTx image{
+    width: 150rpx;
+    max-height: 150rpx;
+    margin-right: 10rpx;
+    vertical-align: middle;
+  }
   .article_context {
+    max-width: 600rpx;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 5;

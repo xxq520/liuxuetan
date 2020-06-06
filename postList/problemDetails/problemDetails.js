@@ -143,7 +143,7 @@ Page({
       console.log(res)
       for(var i=0; i<res.data.length; i++){
        var content = res.data[i].ncm_comment;
-       var newContent = content.replace(/<img/gi, '<img style="max-width:50%;height:auto;display:block" ')
+       var newContent = content.replace(/<img/gi, '<img style="max-width:50% !important;height:auto;display:block" ')
         .replace(/&lt;/g, '<')
         .replace(/\/Uploads/g,"http://www.liuxuetalk.com/Uploads")
         .replace(/&gt;/g, '>')
