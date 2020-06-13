@@ -6,19 +6,19 @@
             <image src="../../static/image/white_search.png"></image>
         </view>
         <view class="dynamic">
-            <view class="dynamic-item">
+            <view class="dynamic-item" bindtap="goDetail" data-type="my">
                 <view class="gradual_at gradual_item">
                     <image src="../../static/image/@.png" />
                 </view>
                 <text>@我的</text>
             </view>
-            <view class="dynamic-item">
+            <view class="dynamic-item"  bindtap="goDetail" data-type="comment">
                 <view class="gradual_pl gradual_item">
                     <image src="../../static/image/pinglun.png" />
                 </view>
                 <text>评论</text>
             </view>
-            <view class="dynamic-item">
+            <view class="dynamic-item"  bindtap="goDetail" data-type="like">
                 <view class="gradual_dz gradual_item">
                     <image src="../../static/image/dianzan_2.png" />
                 </view>

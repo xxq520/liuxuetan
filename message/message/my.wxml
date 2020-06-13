@@ -1,0 +1,89 @@
+<view class="mod">
+  <view class="hd">
+    <image index="3" src="/static/image/kouzhao.png" class="large-icon" />
+    <view class="wrap">
+      <text index="1" lines="1" class="green">Green</text>
+      <text index="0" lines="1" class="green-next">6天前发表</text>
+    </view>
+    <view  bindtap="showPopup">
+      <image index="2" src="/static/image/click.png" class="icon" />
+      <image index="1" src="/static/image/click.png" bindtap="showPopup" class="icon-2" />
+      <image index="0" src="/static/image/click.png" bindtap="showPopup" class="icon-3" />
+    </view>
+  </view>
+  <text index="5" lines="1" class="bd">@幕言,这是一篇不一样的干货篇！</text>
+  <view class="main">
+    <image index="0" src="/static/image/logo_2.png" class="logo" />
+    <view class="block">
+      <text index="3" lines="1" class="desc line_1">英国留学必带清单（意想不到）</text>
+      <text index="4" lines="2" class="summary line_2">这是一篇不一样的干货篇！有些东西你想都可能没想过要用
+到！当前国内疫情有所减缓..</text>
+    </view>
+  </view>
+  <view class="ft">
+    <image index="1" src="/static/image/zhuanfa.png" class="icon-4" />
+    <text index="0" lines="1" class="num">888</text>
+    <image index="1" src="/static/image/dianzan.png" class="icon-5" />
+    <text index="0" lines="1" class="num-2">2000</text>
+    <image index="1" src="/static/image/liuyan.png" class="icon-6" />
+    <text index="0" lines="1" class="num-3">10</text>
+  </view>
+</view>
+<view class="mod">
+  <view class="hd">
+    <image index="3" src="/static/image/kouzhao.png" class="large-icon" />
+    <view class="wrap">
+      <text index="1" lines="1" class="green">Green</text>
+      <text index="0" lines="1" class="green-next">6天前发表</text>
+    </view>
+    <image index="2" src="/static/image/click.png" class="icon" />
+    <image index="1" src="/static/image/click.png" class="icon-2" />
+    <image index="0" src="/static/image/click.png" class="icon-3" />
+  </view>
+  <text index="5" lines="1" class="bd">@幕言,这是一篇不一样的干货篇！</text>
+  <view class="main">
+    <image index="0" src="/static/image/logo_2.png" class="logo" />
+    <view class="block">
+      <text index="3" lines="1" class="desc">英国留学必带清单（意想不到）</text>
+      <text index="4" lines="2" class="summary">这是一篇不一样的干货篇！有些东西你想都可能没想过要用到！当前国内疫情有所减缓..</text>
+    </view>
+  </view>
+  <view class="ft">
+    <image index="1" src="/static/image/zhuanfa.png" class="icon-4" />
+    <text index="0" lines="1" class="num">888</text>
+    <image index="1" src="/static/image/dianzan.png" class="icon-5" />
+    <text index="0" lines="1" class="num-2">2000</text>
+    <image index="1" src="/static/image/liuyan.png" class="icon-6" />
+    <text index="0" lines="1" class="num-3">10</text>
+  </view>
+</view>
+<van-popup
+  show="{{show1}}"
+  closeable
+  position="bottom"
+  custom-style="height: 20%"
+  bind:close="onClose1"
+>
+<view class="alertInput">
+ <input placeholder="添加回复..."  bindinput="changeComment" />
+ <button size="mini" type="primary" bindtap="SaveNewsCommentRecord">发送</button>
+</view>
+</van-popup>
+<van-popup
+  show="{{show}}"
+  round
+  position="bottom"
+  custom-style="height: 26%"
+  bind:close="onCloseTwo"
+>
+  <view class="huifu" bindtap="showPopup1">
+    回复
+  </view>
+  <view class="pinbi">
+    屏蔽
+  </view>
+  <view class="none"></view>
+  <view class="quxiao" bindtap="onClose">
+    取消
+  </view>
+</van-popup>

@@ -19,6 +19,26 @@ Page({
   onLoad: function (options) {
     this.getMessageList()
   },
+  // 点击@我的或者评论或点赞
+  goDetail:function(e){
+    switch(e.currentTarget.dataset.type){
+      case "my":
+        wx.navigateTo({
+          url: '/message/message/my',
+        })
+        break;
+      case "like" :
+        wx.navigateTo({
+          url: '/message/message/like',
+        })
+        break;  
+      case "comment" :
+        wx.navigateTo({
+          url: '/message/message/comment',
+        })
+        break;  
+    }
+  },
   // 获取当前聊天组列表数据
   getMessageList() {
     var that = this;

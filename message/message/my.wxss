@@ -1,0 +1,235 @@
+page{
+  background-color: #f8f8f8;
+}
+.mod {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 710rpx;
+  height: 310rpx;
+  margin: 0 20rpx;
+  background-color: #fff;
+  border-radius: 10rpx;
+  padding: 0 20rpx;
+  margin-top: 20rpx;
+}
+.hd {
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-direction: row;
+  margin-top: 21rpx;
+  height: 58rpx;
+  width: 100%;
+}
+.huifu{
+  text-align: center;
+  height: 90rpx;
+  line-height: 90rpx;
+  border-bottom: 1rpx solid #ccc;
+}
+.pinbi{
+  text-align: center;
+  height: 90rpx;
+  line-height: 90rpx;
+}
+.none{
+  height: 20rpx;
+  background-color: #f8f8f8;
+}
+.quxiao{
+  text-align: center;
+  height: 90rpx;
+  line-height: 90rpx;
+}
+.large-icon {
+  opacity: 1;
+  margin-right: 15rpx;
+  width: 59rpx;
+  height: 58rpx;
+}
+.wrap {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  margin-top: 7rpx;
+  margin-right: 462rpx;
+  height: 42rpx;
+}
+.green {
+  position: relative;
+  text-decoration: none;
+  line-height: 21rpx;
+  white-space: nowrap;
+  color: #333333;
+  font-size: 21rpx;
+  font-weight: 400;
+  font-style: normal;
+}
+.green-next {
+  position: relative;
+  margin-top: 6rpx;
+  margin-left: 1rpx;
+  text-decoration: none;
+  line-height: 15rpx;
+  white-space: nowrap;
+  color: #8b8b8b;
+  font-size: 15rpx;
+  font-weight: 400;
+  font-style: normal;
+}
+.icon {
+  opacity: 1;
+  margin-top: 20rpx;
+  margin-right: 1rpx;
+  width: 9rpx;
+  height: 9rpx;
+}
+.icon-2 {
+  opacity: 1;
+  margin-top: 20rpx;
+  margin-right: 1rpx;
+  width: 9rpx;
+  height: 9rpx;
+}
+.icon-3 {
+  opacity: 1;
+  margin-top: 20rpx;
+  width: 9rpx;
+  height: 9rpx;
+}
+.bd {
+  position: relative;
+  margin-top: 22rpx;
+  max-width: 690rpx;
+  height: 27rpx;
+  overflow: hidden;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  line-height: 27rpx;
+  white-space: nowrap;
+  color: #3b536f;
+  font-size: 27rpx;
+  font-weight: 400;
+  font-style: normal;
+}
+.main {
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  align-self: center;
+  flex-direction: row;
+  margin-top: 16rpx;
+  width: 670rpx;
+  height: 104rpx;
+}
+.floor-bg {
+  position: absolute;
+  top: 0rpx;
+  left: 0rpx;
+  opacity: 1;
+  width: 675rpx;
+  height: 104rpx;
+}
+.logo {
+  position: relative;
+  opacity: 1;
+  margin-top: 2rpx;
+  margin-right: 29rpx;
+  margin-left: 2rpx;
+  width: 159rpx;
+  height: 101rpx;
+}
+.block {
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-direction: column;
+  padding-left: 10rpx;
+  padding-top: 16rpx;
+  height: 100%;
+  width: 522rpx;
+  background-color: #3b5370;
+}
+.desc {
+  position: relative;
+  max-width: 473rpx;
+  color: #e9a331;
+  font-size: 23rpx;
+  font-weight: 400;
+  font-style: normal;
+  margin-top: -6rpx;
+}
+.summary {
+  position: relative;
+  width: 465rpx;
+  color: #ffffff;
+  font-size: 19rpx;
+  font-weight: 400;
+  font-style: normal;
+}
+.alertInput{
+  display: flex;
+  margin-top: 100rpx;
+}
+.alertInput input{
+  width: 80%;
+  padding-left: 10rpx;
+}
+.ft {
+  display: flex;
+  position: relative;
+  align-items: center;
+  align-self: center;
+  flex-direction: row;
+  margin-top: 17rpx;
+  width: 554rpx;
+  height: 25rpx;
+}
+.icon-4 {
+  opacity: 1;
+  margin-right: 20rpx;
+  width: 24rpx;
+  height: 17rpx;
+}
+.num {
+  margin-right: 141rpx;
+  text-decoration: none;
+  line-height: 25rpx;
+  white-space: nowrap;
+  color: #8b8b8b;
+  font-size: 25rpx;
+  font-weight: 400;
+  font-style: normal;
+}
+.icon-5 {
+  opacity: 1;
+  margin-right: 21rpx;
+  width: 21rpx;
+  height: 18rpx;
+}
+.num-2 {
+  margin-right: 150rpx;
+  text-decoration: none;
+  line-height: 25rpx;
+  white-space: nowrap;
+  color: #a5d8e0;
+  font-size: 25rpx;
+  font-weight: 400;
+  font-style: normal;
+}
+.icon-6 {
+  opacity: 1;
+  margin-right: 21rpx;
+  width: 21rpx;
+  height: 19rpx;
+}
+.num-3 {
+  text-decoration: none;
+  line-height: 25rpx;
+  white-space: nowrap;
+  color: #8b8b8b;
+  font-size: 25rpx;
+  font-weight: 400;
+  font-style: normal;
+}

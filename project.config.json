@@ -120,6 +120,14 @@
 					"id": -1,
 					"name": "other/myNews/myNews",
 					"pathName": "other/myNews/myNews",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "message/message/my",
+					"pathName": "message/message/my",
+					"query": "id=32",
 					"scene": null
 				}
 			]
