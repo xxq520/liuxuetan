@@ -56,6 +56,12 @@ module.exports = {
     // 获取用户未读信息数m0..0.
    GetUserUnreadMessageCount : url + "/wsGenericDatabind.asmx/GetUserUnreadMessageCount",
     // 删除某一文章87
-    DeleteNewsRecord : url + "/wsNewsDatatrans.asmx/DeleteNewsRecord"
+    DeleteNewsRecord : url + "/wsNewsDatatrans.asmx/DeleteNewsRecord",
+    // 查询用户是否是顾问身份
+    GetUserAgent : url + "/wsAgentDatabind.asmx/GetUserAgent",
+    // 获取本月收益和本年收益
+    GetAgentMonthlyTransaction : url +"/wsAgentDatabind.asmx/GetAgentMonthlyTransaction",
+    // 获取当前顾问的概括信息(未完成订单/全部订单)
+    GetAgentOverviewDetails : url +"/wsAgentDatabind.asmx/GetAgentOverviewDetails",
 
 };

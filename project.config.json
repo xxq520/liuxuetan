@@ -129,6 +129,33 @@
 					"pathName": "message/message/my",
 					"query": "id=32",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "store/myStore/myStore",
+					"pathName": "store/myStore/myStore",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/my",
+					"pathName": "pages/my/my",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "store/myStore/myStore",
+					"pathName": "store/myStore/myStore",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "store/createProduct/product",
+					"pathName": "store/createProduct/product",
+					"scene": null
 				}
 			]
 		}

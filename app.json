@@ -30,7 +30,8 @@
         "setting/setting",
         "myNews/myNews",
         "favNews/favNews",
-        "settingInfo/settingInfo"
+        "settingInfo/settingInfo",
+        "orderDetails/orderDetails"
       ]
     },
     {
@@ -53,7 +54,8 @@
         "product/product",
         "noticeDetails/noticeDetails",
         "Addremind/Addremind",
-        "SetUpThe/SetUpThe"
+        "SetUpThe/SetUpThe",
+        "createProduct/product"
       ]
     }
   ],

@@ -23,7 +23,7 @@
 			<van-dropdown-item value="{{ 0 }}" options="{{ option1 }}" />
 		</van-dropdown-menu>
 		<text class="xiaoliang">销量</text>
-		<navigator url="/store/createOrder/createOrder">
+		<navigator url="/store/createProduct/product">
 			<view class="createOrder">
 				<text>创建产品</text>
 				<image src="/static/image/createOrder.png" />

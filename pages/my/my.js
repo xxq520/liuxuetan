@@ -20,6 +20,7 @@ Page({
       this.getIndexData()
     }
     this.getGetHotTagsGroup();
+    this.GetUserAgent()
   },
   //  初始化首页数据
   getIndexData() {
@@ -84,6 +85,27 @@ Page({
       that.setData({
         searchTag: res.data
       })
+    })
+  },
+  // 判断当前用户是否是顾问
+  GetUserAgent(){
+    var userInfo = wx.getStorageSync('userInfo');
+    var data = {
+      toast: true,// 是否显示加载动画
+      data:{
+        // 用户的登录id
+        usr_key :userInfo.usr_key, 
+      },
+      type:"get",
+      url:url.GetUserAgent,
+      header:{"Content-Type":"application/json; charset=utf-8"}
+    }
+    var that = this;
+    request.getReq(data).then(res=>{
+      if(res.data[0]){
+        userInfo.store = res.data[0].return;
+        wx.setStorageSync('userInfo', userInfo)
+      }
     })
   },
 

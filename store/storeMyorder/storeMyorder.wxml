@@ -46,7 +46,7 @@
 		</view>
 		<view class="orderBottom">
 			<view>￥ 5000.00</view>
-			<navigator url="/other/orderDetail/orderDetail">
+			<navigator url="/store/orderDetail/orderDetail">
 				<text>订单详情</text>
 			</navigator>
 		</view>
@@ -65,7 +65,7 @@
 		</view>
 		<view class="orderBottom">
 			<view>￥ 1000.00</view>
-			<navigator url="/other/orderDetail/orderDetail">
+			<navigator url="/store/orderDetail/orderDetail">
 				<text>订单详情</text>
 			</navigator>
 		</view>

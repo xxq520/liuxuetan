@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "van-uploader": "/dist/uploader/index"
+  },
+  "navigationBarTitleText": "创建产品",
+  "backgroundTextStyle": "light",
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle": "black"
+}

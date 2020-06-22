@@ -5,7 +5,91 @@ const url = require("../../utils/apisUrl.js");
 const app = getApp();
 
 let chart = null;
-
+var option = {
+  legend: {
+    top:0,
+    right:0,
+    data: ['本月收入', '本年累计']
+  },
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      type: 'cross',
+      label: {
+        backgroundColor: '#6a7985'
+      }
+    }
+  },
+  toolbox: {
+    feature: {
+      saveAsImage: {
+        show: false,
+      }
+    }
+  },
+  grid: {
+    left: '3%',
+    right: '4%',
+    bottom: '3%',
+    containLabel: true
+  },
+  xAxis: [
+    {
+      axisLabel: {
+        formatter: '{value}',
+        textStyle: {
+          color: '#8c8c8c'
+        }
+      },
+      type: 'category',
+      boundaryGap: false,
+      data: []
+    }
+  ],
+  yAxis: {
+    splitLine: {
+      show: true,
+      lineStyle: {
+        type: 'dashed'
+      }
+    },
+    axisLabel: {
+      formatter: '{value}',
+      textStyle: {
+        color: '#8c8c8c'
+      }
+    }
+  },
+  series: [
+    {
+      name: '2019年',
+      type: 'line',
+      stack: '总量',
+      areaStyle: {},
+      data: []
+    },
+    {
+      name: '2020年',
+      type: 'line',
+      stack: '总量',
+      areaStyle: {},
+      data: []
+    },
+    {
+      name: '搜索引擎',
+      type: 'line',
+      stack: '总量',
+      label: {
+        normal: {
+          show: true,
+          position: 'top'
+        }
+      },
+      areaStyle: {},
+      // data: [820, 932, 901, 934, 1290, 1330, 1320]
+    }
+  ]
+};
 // 2、进行初始化数据
 function initChart(canvas, width, height) {
   chart = echarts.init(canvas, null, {
@@ -13,103 +97,87 @@ function initChart(canvas, width, height) {
     height: height
   });
   canvas.setChart(chart);
-
-  var option = {
-    legend: {
-      top:0,
-      right:0,
-      data: ['2011年', '2012年']
-    },
-    tooltip: {
-      trigger: 'axis',
-      axisPointer: {
-        type: 'cross',
-        label: {
-          backgroundColor: '#6a7985'
-        }
-      }
-    },
-
-    toolbox: {
-      feature: {
-
-        saveAsImage: {
-          show: false,
-        }
-      }
-    },
-    grid: {
-      left: '3%',
-      right: '4%',
-      bottom: '3%',
-      containLabel: true
-    },
-    xAxis: [
-      {
-        axisLabel: {
-          formatter: '{value}',
-          textStyle: {
-            color: '#8c8c8c'
-          }
-        },
-        type: 'category',
-        boundaryGap: false,
-        data: ['2月', '3月', '4月', '5月', '6月']
-      }
-    ],
-    yAxis: {
-      splitLine: {
-        show: true,
-        lineStyle: {
-          type: 'dashed'
-        }
-      },
-      axisLabel: {
-        formatter: '{value}',
-        textStyle: {
-          color: '#8c8c8c'
-        }
-      }
-    },
-    series: [
-      {
-        name: '2011年',
-        type: 'line',
-        stack: '总量',
-        areaStyle: {},
-        data: [0, 200000, 101, 134, 90]
-      },
-      {
-        name: '2012年',
-        type: 'line',
-        stack: '总量',
-        areaStyle: {},
-        data: [0, 100000, 10000, 134000]
-      },
-
-      {
-        name: '搜索引擎',
-        type: 'line',
-        stack: '总量',
-        label: {
-          normal: {
-            show: true,
-            position: 'top'
-          }
-        },
-        areaStyle: {},
-        // data: [820, 932, 901, 934, 1290, 1330, 1320]
-      }
-    ]
-  };
-
-
   chart.setOption(option);
   return chart;
 }
 
 Page({
-
+  data: {
+    status:30,
+    ec: {
+      onInit: initChart, // 3、将数据放入到里面
+    },
+    priceList: [], // 收入列表数据
+    total : 0 , // 本年收入金额
+    store: {}, // 当前顾问数据
+  },
+  onLoad(){
+    // 获取近一年销售情况
+    this.getGetAgentMonthlyTransaction();
+    // 获取当前顾问的店铺数据
+    this.GetAgentOverviewDetails();
+  },
+  // 获取当前顾问的店铺数据
+  GetAgentOverviewDetails(){
+    var userInfo = wx.getStorageSync('userInfo');
+    var data = {
+      toast: true,// 是否显示加载动画
+      data:{
+        // 用户的登录id
+        agt_key :userInfo.store, 
+      },
+      type:"get",
+      url:url.GetAgentOverviewDetails,
+      header:{"Content-Type":"application/json; charset=utf-8"}
+    }
+    var that = this;
+    request.getReq(data).then(res=>{
+      console.log(res,666666)
+      if(!res.data[0].code){
+        this.setData({
+          store:res.data[0]
+        })
+      }
+    })
+  },
+  // 获取本月收益和本年收益
+  getGetAgentMonthlyTransaction(){
+    var userInfo = wx.getStorageSync('userInfo');
+    var data = {
+      toast: true,// 是否显示加载动画
+      data:{
+        // 用户的登录id
+        agt_key :userInfo.usr_key, 
+      },
+      type:"get",
+      url:url.GetAgentMonthlyTransaction,
+      header:{"Content-Type":"application/json; charset=utf-8"}
+    }
+    var that = this;
+    request.getReq(data).then(res=>{
+      console.log(res,666)
+      if(res.data.length){
+        var num = 0;
+        for(var i=0; i<res.data.length; i++){
+          res.data[i].CumulativeTransaction = 2;
+          res.data[i].MonthlyTransaction = 5;
+          num += res.data[i].MonthlyTransaction 
+          option.xAxis[0].data.push(res.data[i].StrMonth.split("年")[1])
+          option.series[0].name = "本年累计"
+          option.series[1].name = "本月收入"
+          option.series[0].data.push(Number(Math.random()*10+res.data[i].MonthlyTransaction).toFixed(1))
+          option.series[1].data.push(Number(Math.random()*10+res.data[i].CumulativeTransaction).toFixed(1))
+        }
+        this.setData({
+          priceList: res.data,
+          total: num,
+          ec: {
+            onInit: initChart, // 3、将数据放入到里面
+          }
+        }) 
+      }
+    })
+  },
   onShareAppMessage: function (res) {
     return {
       title: 'ECharts',
@@ -118,12 +186,7 @@ Page({
       fail: function () { }
     }
   },
-  data: {
-    status:30,
-    ec: {
-      onInit: initChart // 3、将数据放入到里面
-    }
-  },
+
   onReady() {
     setTimeout(function () {
       // 获取 chart 实例的方式
