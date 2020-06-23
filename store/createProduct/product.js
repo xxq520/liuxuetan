@@ -15,16 +15,61 @@ Page({
         name: '图片2',
         isImage: true
       }
-    ]
+    ],
+    // 商品的名称
+    goodName: "",
+    // 商品的价格
+    price: "",
+    // 商品的描述
+    miaoshu: "",
+    // 服务分类选择
+    fuwu: ""
   },
-
+  // 服务分类选择事件
+  bindMultiPickerChange(e){
+    this.setData({
+      fuwu:e.detail.value
+    })
+    console.log(e,6)
+  },
+  // 点击取消
+  cancel() {
+    wx.navigateBack();
+  },
+  // 点击确认并发送事件
+  submit() {
+    var {goodName,price,miaoshu,fuwu} = this.data;
+    console.log(goodName,price,miaoshu,fuwu)
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.GetAgentProductTypeList()
   },
-
+  // 获取当前用户可以申请的产品列表
+  GetAgentProductTypeList(){
+    var userInfo = wx.getStorageSync('userInfo');
+    var data = {
+      toast: true,// 是否显示加载动画
+      data:{
+        // 用户的登录id
+        apt_id :0, 
+      },
+      type:"get",
+      url:url.GetAgentProductTypeList,
+      header:{"Content-Type":"application/json; charset=utf-8"}
+    }
+    var that = this;
+    request.getReq(data).then(res=>{
+      console.log(res,666666)
+      if(!res.data[0].code){
+        this.setData({
+          store:res.data[0]
+        })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

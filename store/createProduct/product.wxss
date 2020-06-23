@@ -57,6 +57,13 @@ page {
     border: none;
     outline: none;
 }
+.select1{
+    width: 300rpx;
+    display: flex;
+    justify-content: flex-end;
+    height: 80rpx;
+    align-items: center;
+}
 .none{
     display: flex;
     align-items: center;

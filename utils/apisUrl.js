@@ -63,5 +63,10 @@ module.exports = {
     GetAgentMonthlyTransaction : url +"/wsAgentDatabind.asmx/GetAgentMonthlyTransaction",
     // 获取当前顾问的概括信息(未完成订单/全部订单)
     GetAgentOverviewDetails : url +"/wsAgentDatabind.asmx/GetAgentOverviewDetails",
-
+    // 获取当前可以申请的产品服务分类选择
+    GetAgentProductTypeList : url + "/wsAgentDatabind.asmx/GetAgentProductTypeList",
+    // 获取我的产品下的查询商品分类选择
+    GetAgentProductType : url + "/wsAgentDatabind.asmx/GetAgentProductType",
+    // 获取当前销售中的产品
+    GetAgentProductItems : url + "/wsAgentDatabind.asmx/GetAgentProductItems"  
 };
