@@ -68,5 +68,17 @@ module.exports = {
     // 获取我的产品下的查询商品分类选择
     GetAgentProductType : url + "/wsAgentDatabind.asmx/GetAgentProductType",
     // 获取当前销售中的产品
-    GetAgentProductItems : url + "/wsAgentDatabind.asmx/GetAgentProductItems"  
+    GetAgentProductItems : url + "/wsAgentDatabind.asmx/GetAgentProductItems",
+    // 获取管理员的通知
+    GetAdminToAgentNotification : url + "/wsAgentDatabind.asmx/GetAdminToAgentNotification",
+    // 获取当前用户的提示事项
+    GetAgentNotification : url + "/wsAgentDatabind.asmx/GetAgentNotification",
+    // 获取订单列表数据
+    GetAgentOrderItems : url + "/wsAgentDatabind.asmx/GetAgentOrderItems",
+    // 获取当前顾问交易额和次数
+    GetAgentOrderProductTypeTransaction : url + "/wsAgenttransDatabind.asmx/GetAgentOrderProductTypeTransaction",
+    // 保存 管理员通知
+    SaveAgentNotify : url + "/wsAgentDatatrans.asmx/SaveAgentNotify",
+    // 顾问创建产品
+    SaveAgentProductRecord : url + "/wsAgentDatatrans.asmx/SaveAgentProductRecord"
 };

@@ -3,9 +3,9 @@
     <form>
     <view class="selectShop">
         <text class="title">服务分类选择</text>
-        <picker mode="selector" header-text="" value="x" range="{{array}}" bindchange="bindMultiPickerChange">
-             <view class="select">
-                <text >{{array[fuwu]}}</text>
+        <picker mode="selector" header-text="" value="x" range="{{arrayFs}}" bindchange="bindMultiPickerChange">
+             <view class="select select1">
+                <text >{{array[fuwu].apt_type}}</text>
                 <image src="/static/image/right.png" />
             </view>
         </picker>

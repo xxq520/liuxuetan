@@ -110,12 +110,70 @@ Page({
     priceList: [], // 收入列表数据
     total : 0 , // 本年收入金额
     store: {}, // 当前顾问数据
+    messageAdmin:[], // 管理员通知数据
+    message: [], // 信息列表
   },
   onLoad(){
     // 获取近一年销售情况
     this.getGetAgentMonthlyTransaction();
     // 获取当前顾问的店铺数据
     this.GetAgentOverviewDetails();
+    // 获取管理员的通知
+    this.GetAdminToAgentNotification();
+    // 获取当前管理员的提示事项
+    this.GetAgentNotification();
+  },
+  // 获取当前管理员的提示事项
+  GetAgentNotification(){
+    var userInfo = wx.getStorageSync('userInfo');
+    var data = {
+      toast: true,// 是否显示加载动画
+      data:{
+        // 用户的登录id
+        usr_key :userInfo.usr_key, 
+        ntc_key:"",
+        pageSize:1,
+        pageNumber:1
+      },
+      type:"get",
+      url:url.GetAdminToAgentNotification,
+      header:{"Content-Type":"application/json; charset=utf-8"}
+    }
+    var that = this;
+    request.getReq(data).then(res=>{
+      console.log(res,8889)
+      if(!res.data[0].code){
+        this.setData({
+          message:res.data
+        })
+      }
+    })
+  },
+  // 获取管理员通知
+  GetAdminToAgentNotification(){
+    var userInfo = wx.getStorageSync('userInfo');
+    var data = {
+      toast: true,// 是否显示加载动画
+      data:{
+        // 用户的登录id
+        usr_key :userInfo.usr_key, 
+        ntc_key:"",
+        pageSize:1,
+        pageNumber:1
+      },
+      type:"get",
+      url:url.GetAdminToAgentNotification,
+      header:{"Content-Type":"application/json; charset=utf-8"}
+    }
+    var that = this;
+    request.getReq(data).then(res=>{
+      console.log(res,7778)
+      if(!res.data[0].code){
+        this.setData({
+          messageAdmin:res.data
+        })
+      }
+    })
   },
   // 获取当前顾问的店铺数据
   GetAgentOverviewDetails(){
