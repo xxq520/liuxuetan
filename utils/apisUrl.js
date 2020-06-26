@@ -80,5 +80,11 @@ module.exports = {
     // 保存 管理员通知
     SaveAgentNotify : url + "/wsAgentDatatrans.asmx/SaveAgentNotify",
     // 顾问创建产品
-    SaveAgentProductRecord : url + "/wsAgentDatatrans.asmx/SaveAgentProductRecord"
+    SaveAgentProductRecord : url + "/wsAgentDatatrans.asmx/SaveAgentProductRecord",
+    // 保存可查询的产品类型选项
+    SaveAgentProductTypeApplication : url + "/wsAgentDatatrans.asmx/SaveAgentProductTypeApplication",
+    // 设置产品是否有效
+    SetAgentProductValid : url + "/wsAgentDatatrans.asmx/SetAgentProductValid",
+    // 新建订单记录
+    SaveAgentOrderRecord : url + "/wsAgentDatatrans.asmx/SaveAgentOrderRecord",
 };

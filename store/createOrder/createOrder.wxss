@@ -22,8 +22,23 @@ page {
 	letter-spacing: 0rpx;
 	color: #333333;
 }
+.title text{
+    color: #ff301e !important;
+}
 .selectShop .select{
     
+}
+.background-image {
+    padding: 20rpx 0 0 20rpx;
+}
+.upload-title{
+    padding-bottom: 20rpx;
+    font-family: PingFang-SC-Medium;
+    font-size: 32rpx;
+    font-weight: normal;
+    font-stretch: normal;
+    letter-spacing: 0rpx;
+    color: #333333;
 }
 .selectShop text{
 	font-family: PingFang-SC-Medium;
@@ -41,6 +56,13 @@ page {
 .select{
     border: none;
     outline: none;
+}
+.select1{
+    width: 300rpx;
+    display: flex;
+    justify-content: flex-end;
+    height: 80rpx;
+    align-items: center;
 }
 .none{
     display: flex;

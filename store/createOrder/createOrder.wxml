@@ -1,10 +1,11 @@
 <!-- other/withdrawal/withdrawal.wxml -->
 <view class="create">
+    <form>
     <view class="selectShop">
         <text class="title">商品</text>
-        <picker mode="selector" header-text="选择商品" value="x" range="{{array}}">
-            <view class="select">
-                <text >英国留学申请</text>
+        <picker mode="selector" header-text="" value="x" range="{{arrayFs}}" bindchange="bindMultiPickerChange">
+             <view class="select select1">
+                <text >{{array[fuwu].apd_name}}</text>
                 <image src="/static/image/right.png" />
             </view>
         </picker>
@@ -12,14 +13,14 @@
     <view class="selectShop">
         <text class="title">价格</text>
         <view class="select none">
-            <input type="text"/>
-            <text >元</text>
-             <image src="/static/image/right.png" />
+            <input type="text" model:value="{{price}}" placeholder=""/>
+            <text>元</text>
         </view>
     </view>
-    <view class="message">订单备注</view>
-    <textarea name="" id="" cols="30" rows="10">
+    <view class="message title">订单备注</view>
+    <textarea name="" id="" cols="30" rows="10" model:value="{{miaoshu}}">
     </textarea>
-    <view class="btn send">确认并发送</view>
-    <view class="btn close">取消</view>
+    <view class="btn send" bindtap="submit">确认并发送</view>
+    <view class="btn close" bindtap="cancel">取消</view>
+    </form>
 </view>

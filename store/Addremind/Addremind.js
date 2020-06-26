@@ -64,7 +64,7 @@ Page({
         agt_key :userInfo.store, 
         nta_key:"", //加密通知观众UID密钥 如果创建新通知，则清空，否则提供特定用户UID密钥以更新通知记录
         audience_key: userInfo.usr_key, //加密通知观众UID密钥 i.e. 用户记录UID键
-        ntp_type:"alladmin",  // 通知类型(用户/alladmin/order/indadmin).
+        ntp_type:"user",  // 通知类型(user/alladmin/order/indadmin).
         ntc_header :this.data.text, //通知标题内容
         ntc_content : this.data.text, //通知正文内容
         str_notify_date: this.data.selectDate?this.data.selectDate:date.getFullYear()+"-"+date.getMonth()+1+'-'+date.getDate(), // 以字符串格式通知日期，即。 2020-01-01

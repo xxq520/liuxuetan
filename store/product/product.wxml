@@ -31,58 +31,22 @@
 		</navigator>
 	</view>
 	<!-- 产品列表 -->
-	<view class="product">
+	<view class="product" wx:for="{{productList}}">
 		<view class="productCon">
-			<image class="productImg" />
+			<image class="productImg" src="{{item.apd_image_url}}"/>
 			<view class="productContent">
 				<view class="productTitle line_1">
-					英国留学申请
+					{{item.apd_name}}
 				</view>
-				<view class="price">￥ 3000.00</view>
-				<view class="num">销量 : 14 2020.01.02 </view>
+				<view class="price">￥{{item.apd_price}}</view>
+				<view class="num">销量 : {{item.apd_product_sales_count}} {{item.apd_created_date}} </view>
 			</view>
 			<image class="right" src="/static/image/right.png" />
 		</view>
 		<view class="productutil">
 			<text >下架</text>
-			<text class="select">修改</text>
-			<text >删除</text>
-		</view>
-	</view>
-	<view class="product">
-		<view class="productCon">
-			<image class="productImg" />
-			<view class="productContent">
-				<view class="productTitle line_1">
-					英国留学申请
-				</view>
-				<view class="price">￥ 3000.00</view>
-				<view class="num">销量 : 14 2020.01.02 </view>
-			</view>
-			<image class="right" src="/static/image/right.png" />
-		</view>
-		<view class="productutil">
-			<text >下架</text>
-			<text class="select">修改</text>
-			<text >删除</text>
-		</view>
-	</view>
-	<view class="product">
-		<view class="productCon">
-			<image class="productImg" />
-			<view class="productContent">
-				<view class="productTitle line_1">
-					英国留学申请
-				</view>
-				<view class="price">￥ 3000.00</view>
-				<view class="num">销量 : 14 2020.01.02 </view>
-			</view>
-			<image class="right" src="/static/image/right.png" />
-		</view>
-		<view class="productutil">
-			<text >下架</text>
-			<text class="select">修改</text>
-			<text >删除</text>
+			<text class="select" bindtap="edit" data-index="{{index}}">修改</text>
+			<text bindtap="delete" data-index="{{index}}">删除</text>
 		</view>
 	</view>
 </view>
