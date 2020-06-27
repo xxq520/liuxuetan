@@ -41,6 +41,18 @@ Page({
   },
   // 点击确认并发送事件
   async submit() {
+    // var resData = {
+    //   data:{
+    //     aos_Id:0
+    //   },
+    //   type:"get",
+    //   url:url.GetAgentOrderStatus,
+    //   header:{"Content-Type":"application/json; charset=utf-8"}
+    // }
+    // request.getReq(resData).then(res=>{
+    //   console.log(res,666666)
+    // })
+    // return
     var {goodName,price,miaoshu,fuwu} = this.data;
     var userInfo = wx.getStorageSync('userInfo');
     var data = {
@@ -49,14 +61,14 @@ Page({
         // 用户的登录id
         agt_key :userInfo.store,  // 加密代理UID密钥
         aod_key :"" , // 加密代理产品记录UID密钥仅用于更新钱包
-        apd_key: "", // 加密代理订单产品记录UID键
-        client_usr_key: "" ,//  客户端用户UID加密密钥
+        apd_key: this.data.array[this.data.fuwu].apd_key, // 加密代理订单产品记录UID键
+        client_usr_key: userInfo.usr_key ,//  客户端用户UID加密密钥
         aod_order_ref: "", //  代理订单参考
-        new_aos_status: "已开通", // 新代理订单状态（见3.1.1.12）
+        new_aos_status: "拟定订单中", // 新代理订单状态（见3.1.1.12）
         aod_price: price ,//  代理订单价格
         aod_remark: miaoshu, // 代理订单备注
         act_type: "", // 代理订单佣金类型（百分比/金额）
-        aod_commission: "", // 代理订单佣金价值
+        aod_commission: 0, // 代理订单佣金价值
         usr_key: userInfo.usr_key, //密用户记录UID密钥用于保存用户
       },
       type:"post",

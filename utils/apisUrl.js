@@ -87,4 +87,6 @@ module.exports = {
     SetAgentProductValid : url + "/wsAgentDatatrans.asmx/SetAgentProductValid",
     // 新建订单记录
     SaveAgentOrderRecord : url + "/wsAgentDatatrans.asmx/SaveAgentOrderRecord",
+    // 获取订单的状态
+    GetAgentOrderStatus : url + "/wsAgentDatabind.asmx/GetAgentOrderStatus"
 };

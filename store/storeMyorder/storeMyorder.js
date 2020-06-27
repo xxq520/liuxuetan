@@ -46,6 +46,13 @@ Page({
     request.getReq(data).then(res=>{
       console.log(res,8889)
       if(res.data[0].code!=404){
+        for (var i = 0; i < res.data.length; i++) {
+          res.data[i].aod_created_date = res.data[i].aod_created_date.split("(")[1];
+          res.data[i].aod_created_date = res.data[i].aod_created_date.split(")")[0];
+          res.data[i].aod_created_date = request.format(res.data[i].aod_created_date, "YYYY-MM-dd");
+          res.data[i].aod_created_date = res.data[i].aod_created_date.replace(/\-/g, ".");
+          console.log(res.data[i], 88, res.data[i].aod_created_date)
+        }
         this.setData({
           order:res.data
         })

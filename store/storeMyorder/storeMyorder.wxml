@@ -32,59 +32,21 @@
 		</navigator>
 	</view>
 	<!-- 订单列表 -->
-	<view class="orderList">
+	<view class="orderList" wx:for="{{order}}">
 		<view class="orderTop">
 			<view class="orderName">
 				客户名称:
-				<text>刘佳宇</text>
+				<text>{{item.cusr_display_name}}</text>
 			</view>
-			<view class="createTime">创建时间: 2020-01-02</view>
+			<view class="createTime">创建时间: {{item.apd_created_date}}</view>
 		</view>
 		<view class="orderCenter">
-			<view class="orderTitle">英国留学服务</view>
-			<view class="orderStatus">未支付</view>
+			<view class="orderTitle">{{item.apt_type}}</view>
+			<view class="orderStatus">{{item.aos_status}}</view>
 		</view>
 		<view class="orderBottom">
-			<view>￥ 5000.00</view>
-			<navigator url="/store/orderDetail/orderDetail">
-				<text>订单详情</text>
-			</navigator>
-		</view>
-	</view>
-	<view class="orderList">
-		<view class="orderTop">
-			<view class="orderName">
-				客户名称:
-				<text>刘佳宇</text>
-			</view>
-			<view class="createTime">创建时间: 2020-01-02</view>
-		</view>
-		<view class="orderCenter">
-			<view class="orderTitle">英国留学服务</view>
-			<view class="orderStatus">已支付</view>
-		</view>
-		<view class="orderBottom">
-			<view>￥ 1000.00</view>
-			<navigator url="/store/orderDetail/orderDetail">
-				<text>订单详情</text>
-			</navigator>
-		</view>
-	</view>
-	<view class="orderList">
-		<view class="orderTop">
-			<view class="orderName">
-				客户名称:
-				<text>刘佳宇</text>
-			</view>
-			<view class="createTime">创建时间: 2020-01-02</view>
-		</view>
-		<view class="orderCenter">
-			<view class="orderTitle">英国留学服务</view>
-			<view class="orderStatus">已完成</view>
-		</view>
-		<view class="orderBottom">
-			<view>￥ 3000.00</view>
-			<navigator url="/other/orderDetail/orderDetail">
+			<view>￥ {{item.aod_price}}</view>
+			<navigator url="/store/orderDetail/orderDetail?id={{item.aod_key}}">
 				<text>订单详情</text>
 			</navigator>
 		</view>

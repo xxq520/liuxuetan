@@ -123,6 +123,11 @@ Page({
           setTimeout(()=>{
             wx.navigateBack();
           },1000);
+        }else{
+          wx.showToast({
+            title: '创建失败，稍后再试',
+            icon: "none"
+          })
         }
       })
     }
