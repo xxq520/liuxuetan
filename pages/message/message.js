@@ -17,7 +17,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getMessageList()
+   
   },
   // 点击@我的或者评论或点赞
   goDetail:function(e){
@@ -66,6 +66,10 @@ Page({
       if(!res.data[0].Exception){
         that.setData({
           messageList: res.data
+        })
+      }else{
+        that.setData({
+          messageList: []
         })
       }
     })
