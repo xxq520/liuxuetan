@@ -1,2 +1,35 @@
-<!--other/createProduct/product.wxml-->
-<text>other/createProduct/product.wxml</text>
+<!-- other/withdrawal/withdrawal.wxml -->
+<view class="create">
+    <form>
+    <view class="selectShop">
+        <text class="title">服务分类选择</text>
+        <picker mode="selector" header-text="" value="x" range="{{arrayFs}}" bindchange="bindMultiPickerChange">
+             <view class="select select1">
+                <text >{{array[fuwu].apt_type}}</text>
+                <image src="/static/image/right.png" />
+            </view>
+        </picker>
+    </view>
+     <view class="selectShop">
+        <text class="title">商品名称<text>*</text></text>
+        <view class="select none">
+            <input type="text" model:value="{{goodName}}" placeholder="请输入商品名称"/>
+        </view>
+    </view>
+    <view class="selectShop">
+        <text class="title">价格</text>
+        <view class="select none">
+            <input type="text" model:value="{{price}}" placeholder="请输入金额或自定"/>
+        </view>
+    </view>
+    <view class="message title">描述<text>*</text></view>
+    <textarea name="" id="" cols="30" rows="10" model:value="{{miaoshu}}">
+    </textarea>
+    	<view class="background-image">
+		<view class="upload-title">上传照片</view>
+		<van-uploader file-list="{{fileList}}" />
+	</view>
+    <view class="btn send" bindtap="submit">创建确认</view>
+    <view class="btn close" bindtap="cancel">取消</view>
+    </form>
+</view>

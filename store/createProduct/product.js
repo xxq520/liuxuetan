@@ -182,6 +182,7 @@ Page({
    */
   onLoad: function (options) {
     this.GetAgentProductTypeList();
+    // 如果是修改商品的话
     if(options.id){
       this.setData({
         edit: options.id

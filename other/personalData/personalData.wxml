@@ -4,7 +4,7 @@
     <image class="personalBg" src="https://t1.picb.cc/uploads/2020/05/02/kzihfe.jpg"></image>
     <view class="arrow1 jianto">
       <image src="../../static/image/arrow.png"></image>
-      <text>出国留学</text>
+      <text>{{store.cou_name}}</text>
     </view>
     <view class="arrow2 jianto">
       <image src="../../static/image/arrow.png"></image>
@@ -21,21 +21,21 @@
 </view>
 <view class="toBottom">
   <view class="name">
-    <text>夏威宇</text>
+    <text>{{store.agt_name}}</text>
   </view>
   <view class="authentication">
     <image src="../../static/image/authentication.png"></image>
     <text>已实名认证</text>
     <text>|</text>
-    <text>6人关注</text>
+    <text>{{store.agt_visit_count}}人关注</text>
   </view>
   <view class="pingfen">
     <text>评分</text>
-    <image src="../../static/image/xingxing.png"></image>
-    <image src="../../static/image/xingxing.png"></image>
-    <image src="../../static/image/xingxing.png"></image>
-    <image src="../../static/image/xingxing.png"></image>
-    <image src="../../static/image/xingxing2.png"></image>
+     <image  src="{{store.agt_rate>=1?'/static/image/xingxing.png':'/static/image/xingxing2.png'}}" ></image>
+      <image  src="{{store.agt_rate>=2?'/static/image/xingxing.png':'/static/image/xingxing2.png'}}" ></image>
+      <image  src="{{store.agt_rate>=3?'/static/image/xingxing.png':'/static/image/xingxing2.png'}}" ></image>
+      <image  src="{{store.agt_rate>=4?'/static/image/xingxing.png':'/static/image/xingxing2.png'}}" ></image>
+      <image  src="{{store.agt_rate>=5?'/static/image/xingxing.png':'/static/image/xingxing2.png'}}" ></image>
   </view>
   <view class="follow">
     <image src="../../static/image/follow.png"></image>
@@ -46,8 +46,8 @@
 <van-tabs swipeable class="tab" active="{{3}}">
   <van-tab title="主页">
     <view class="hotfix"></view>
-    <view class="page">
-      <view class="top clearfix">
+    <view class="page conter">
+      <!-- <view class="top clearfix">
         <view class="xiaoxing">
           <image src="../../static/image/toxian.png"></image>
         </view>
@@ -66,7 +66,8 @@
         <text class="conter">
           擅长给学生梳理申请难点，帮学生长线规划，引领学生通过语言提分，背景提升一步步帮学生拿到心仪的offer.很多学生都有名校梦，但竟争力不足。大一开始长骊规划，通过我的指导都如愿进入梦校。成功帮学生拿到加州大学洛杉矶分校、伯克利分校、康奈尔大学、哥伦比亚大学、东北大学等名校录取。
         </text>
-      </view>
+      </view> -->
+      {{store.agt_description}}
     </view>
     <view class="contact">
       <image src="../../static/image/contact.png"></image>
@@ -184,44 +185,17 @@
         <image src="../../static/image/classification1.png"></image>
         <text class="xiaolian">销量</text>
       </view>
-      <view class="class1">
+      <view class="class1" bindtap="goGoodsDetail" data-index="{{index}}" wx:for="{{productList}}">
         <view class="xianmu">
-              <image class="tupian" src="../../static/image/wenti_tietu.png"></image>
+              <image class="tupian" src="http://www.liuxuetalk.com/{{item.apd_image_url}}"></image>
               <view class="liuxue">
-                <text>英国留学申请</text>
-                <text>留学申请</text>
-                <text decode='true'>销量 : 21&nbsp;&nbsp;2020.01.02</text>
+                <text>{{item.apd_name}}</text>
+                <text>{{item.apt_type}}</text>
+                <text decode='true'>销量 : {{item.apd_product_sales_count}}&nbsp;&nbsp;{{item.apd_created_date}}</text>
                  <image class="details" src="../../static/image/details.png"></image>
               </view>
         </view>
          <text class="xianqing">详情咨询</text>
-      </view>
-
-
-       <view class="class1">
-        <view class="xianmu">
-              <image class="tupian" src="../../static/image/wenti_tietu.png"></image>
-              <view class="liuxue">
-                <text>英国留学申请</text>
-                <text>留学申请</text>
-                <text decode='true'>销量 : 21&nbsp;&nbsp;2020.01.02</text>
-                 <image class="details" src="../../static/image/details.png"></image>
-              </view>
-        </view>
-         <text class="xianqing">详情咨询</text>
-      </view>
-       
-
-        <view class="class1">
-        <view class="xianmu">
-              <image class="tupian" src="../../static/image/wenti_tietu.png"></image>
-              <view class="liuxue">
-                <text>英国留学申请</text>
-                <text>留学申请</text>
-                <text decode='true'>销量 : 21&nbsp;&nbsp;2020.01.02</text>
-                 <image class="details" src="../../static/image/details.png"></image>
-              </view>
-        </view>
          <text class="xianqing">详情咨询</text>
       </view>
     </view>

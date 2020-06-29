@@ -32,94 +32,24 @@
         </view>
     </view>
     <!-- 每位商家展示 -->
-    <view class="shopList" bindtap="gopreploData">
-      <image mode="aspectFill" class="avart" src="https://t1.picb.cc/uploads/2020/05/02/kztvAG.png"></image>
+    <view class="shopList" bindtap="gopreploData" data-index="{{index}}" wx:for="{{storeList}}">
+      <image mode="aspectFill" class="avart" src="http://www.liuxuetalk.com{{item.agt_background_image_url}}"></image>
       <view class="shopListCenter">
-        <view class="shopTitle">Swapnil P.</view>
+        <view class="shopTitle">{{item.agt_name}}</view>
         <view class="shopStar">
           <view class="Star">
             <text>评分</text>
-            <image src="/static/image/star_select.png"></image>
-            <image src="/static/image/star_select.png"></image>
-            <image src="/static/image/star_select.png"></image>
-            <image src="/static/image/star.png"></image>
-            <image src="/static/image/star.png"></image>
+            <image  src="{{item.agt_rate>=1?'/static/image/star_select.png':'/static/image/star.png'}}" ></image>
+             <image  src="{{item.agt_rate>=2?'/static/image/star_select.png':'/static/image/star.png'}}" ></image>
+              <image  src="{{item.agt_rate>=3?'/static/image/star_select.png':'/static/image/star.png'}}" ></image>
+               <image  src="{{item.agt_rate>=4?'/static/image/star_select.png':'/static/image/star.png'}}" ></image>
+                <image  src="{{item.agt_rate>=5?'/static/image/star_select.png':'/static/image/star.png'}}" ></image>
           </view>
           <view class="line"></view>
-          <view class="comment">1950条评论</view>
+          <view class="comment">{{item.filtered_record}}条评论</view>
         </view>
         <view class="shopType">
-          <text>英国大学申请</text>
-          <text>语言培训</text>
-        </view>
-      </view>
-      <image class="right"  src="/static/image/right.png"></image>
-    </view>
-    <view class="shopList" bindtap="gopreploData">
-      <image mode="aspectFill" class="avart" src="https://t1.picb.cc/uploads/2020/05/02/kztvAG.png"></image>
-      <view class="shopListCenter">
-        <view class="shopTitle">Swapnil P.</view>
-        <view class="shopStar">
-          <view class="Star">
-            <text>评分</text>
-            <image src="/static/image/star_select.png"></image>
-            <image src="/static/image/star_select.png"></image>
-            <image src="/static/image/star_select.png"></image>
-            <image src="/static/image/star.png"></image>
-            <image src="/static/image/star.png"></image>
-          </view>
-          <view class="line"></view>
-          <view class="comment">1950条评论</view>
-        </view>
-        <view class="shopType">
-          <text>英国大学申请</text>
-          <text>语言培训</text>
-        </view>
-      </view>
-      <image class="right"  src="/static/image/right.png"></image>
-    </view>
-    <view class="shopList" bindtap="gopreploData">
-      <image mode="aspectFill" class="avart" src="https://t1.picb.cc/uploads/2020/05/02/kztvAG.png"></image>
-      <view class="shopListCenter">
-        <view class="shopTitle">Swapnil P.</view>
-        <view class="shopStar">
-          <view class="Star">
-            <text>评分</text>
-            <image src="/static/image/star_select.png"></image>
-            <image src="/static/image/star_select.png"></image>
-            <image src="/static/image/star_select.png"></image>
-            <image src="/static/image/star.png"></image>
-            <image src="/static/image/star.png"></image>
-          </view>
-          <view class="line"></view>
-          <view class="comment">1950条评论</view>
-        </view>
-        <view class="shopType">
-          <text>英国大学申请</text>
-          <text>语言培训</text>
-        </view>
-      </view>
-      <image class="right"  src="/static/image/right.png"></image>
-    </view>
-    <view class="shopList" bindtap="gopreploData">
-      <image mode="aspectFill" class="avart" src="https://t1.picb.cc/uploads/2020/05/02/kztvAG.png"></image>
-      <view class="shopListCenter">
-        <view class="shopTitle">Swapnil P.</view>
-        <view class="shopStar">
-          <view class="Star">
-            <text>评分</text>
-            <image src="/static/image/star_select.png"></image>
-            <image src="/static/image/star_select.png"></image>
-            <image src="/static/image/star_select.png"></image>
-            <image src="/static/image/star.png"></image>
-            <image src="/static/image/star.png"></image>
-          </view>
-          <view class="line"></view>
-          <view class="comment">1950条评论</view>
-        </view>
-        <view class="shopType">
-          <text>英国大学申请</text>
-          <text>语言培训</text>
+          <text>{{item.cou_name}}</text>
         </view>
       </view>
       <image class="right"  src="/static/image/right.png"></image>
