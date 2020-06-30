@@ -20,7 +20,7 @@
       <image src="/static/image/downjt.png" />
     </picker> -->
 		<van-dropdown-menu class="filter">
-			<van-dropdown-item value="{{ 0 }}" options="{{ option1 }}" />
+			<van-dropdown-item value="{{ 1 }}" options="{{ option1 }}" />
 		</van-dropdown-menu>
 		<text class="xiaoliang">销量</text>
 		<navigator url="/store/createProduct/product">

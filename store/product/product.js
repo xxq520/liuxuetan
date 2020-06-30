@@ -29,6 +29,34 @@ Page({
   },
   onLoad() {
     this.GetAgentProductType();
+    this.GetAgentProductTypeList();
+  },
+   // 获取当前用户可以申请的产品列表
+   GetAgentProductTypeList(){
+    var userInfo = wx.getStorageSync('userInfo');
+    var data = {
+      toast: true,// 是否显示加载动画
+      data:{
+        // 用户的登录id
+        apt_id :0, 
+      },
+      type:"get",
+      url:url.GetAgentProductTypeList,
+      header:{"Content-Type":"application/json; charset=utf-8"}
+    }
+    var that = this;
+    request.getReq(data).then(res=>{
+      console.log(res,666666)
+      if(!res.data[0].code){
+        var arr = [];
+        for(var i=0; i<res.data.length; i++){
+          arr.push({value:res.data[i].apt_id,text:res.data[i].apt_type})
+        }
+        this.setData({
+          option1:arr,
+        })
+      }
+    })
   },
   // 获取当前可以查询的规则
   GetAgentProductType() {

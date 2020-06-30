@@ -16,15 +16,15 @@
 	<view class="input-info">
 		<view class="info-item">
 			<text>副标题</text>
-			<input type="text" placeholder="请输入副标题" />
+			<input type="text" model:value="{{storeName}}" placeholder="请输入副标题" />
 		</view>
 		<view class="info-item">
 			<text>简介内容</text>
-			<input type="text" placeholder="请输入简介内容" />
+			<input type="text"  model:value="{{jianjie}}" placeholder="请输入简介内容" />
 		</view>
 		<view class="info-item">
 			<text>详细介绍</text>
-			<input type="text" placeholder="请输入详细内容介绍" />
+			<input type="text"  model:value="{{content}}" placeholder="请输入详细内容介绍" />
 		</view>
 	</view>
 	<view class="background-image">
@@ -39,7 +39,7 @@
 		<view class="Where-countries">
 			<view class="countries-info">
 				<text>商家所在国家</text>
-				<text class="countries">英国</text>
+				<text class="countries">{{ferfu}}</text>
 			</view>
 
 			<image src="/static/ima1ge/jiantou_you.png" />

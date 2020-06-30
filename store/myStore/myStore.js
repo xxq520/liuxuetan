@@ -122,6 +122,35 @@ Page({
     this.GetAdminToAgentNotification();
     // 获取当前管理员的提示事项
     this.GetAgentNotification();
+    // 获取当前顾问
+    this.GetAgentDetailsList()
+  },
+  // 获取顾问列表数据
+  GetAgentDetailsList() {
+    var that = this;
+    var userInfo = wx.getStorageSync('userInfo');
+    var data = {
+      toast: true,// 是否显示加载动画
+      data:{
+        // 用户的登录id
+        agt_key : "",  // 加密代理UID密钥
+        cou_name: "", // 代理地点名称中文
+        search_agt : "", //  通过代理名称或代理描述筛选代理返回列表
+      },
+      type:"get",
+      url:url.GetAgentDetailsList,
+      header:{"Content-Type":"application/json; charset=utf-8"}
+    }
+    request.getReq(data).then(res=>{
+      // 格式化最后聊天的时间
+      if(res.statusCode==200){
+        wx.setStorageSync('store', res.data[0])
+      }else {
+        wx.showToast({
+          title: '加载失败，稍后再试！',
+        })
+      }
+    })
   },
   // 获取当前管理员的提示事项
   GetAgentNotification(){
