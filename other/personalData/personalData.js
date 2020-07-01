@@ -18,47 +18,78 @@ Page({
   onLoad: function (options) {
     this.getProduct();
   },
-    // 获取产品列表数据
-    getProduct() {
-      var userInfo = wx.getStorageSync('nowStore');
+  // 在线联系
+  CreateChatDirectGroup(){
+    var userInfo = wx.getStorageSync('userInfo');
       var data = {
         toast: true, // 是否显示加载动画
         data: {
           // 用户的登录id
-          agt_key: userInfo.agt_key,
-          apd_key: "",
-          agt_name: "",
-          apd_name: "",
-          cou_name: "",
-          apt_type: "",
-          apd_ref: "",
-          pds_status: "",
-          str_created_date: "",
-          pageSize: 1,
-          pageNumber: 1
+          chat_usr_id: userInfo.usr_id,
+          usr_id: userInfo.usr_id
         },
-        type: "get",
-        url: url.GetAgentProductItems,
+        type: "post",
+        url: url.CreateChatDirectGroup,
         header: {
           "Content-Type": "application/json; charset=utf-8"
         }
       }
       var that = this;
       request.getReq(data).then(res => {
-        for (var i = 0; i < res.data.length; i++) {
-          res.data[i].apd_created_date = res.data[i].apd_created_date.split("(")[1];
-          res.data[i].apd_created_date = res.data[i].apd_created_date.split(")")[0];
-          res.data[i].apd_created_date = request.format(res.data[i].apd_created_date, "YYYY-MM-dd");
-          res.data[i].apd_created_date = res.data[i].apd_created_date.replace(/\-/g, ".");
-          console.log(res.data[i], 88, res.data[i].apd_created_date)
-        }
-        if (!res.data[0].code) {
-          this.setData({
-            productList: res.data
+        console.log(res,"厉害")
+        if(res.data[0]&&res.data[0].response=="储存成功"){
+          wx.switchTab({
+            url: '/pages/message/message',
+          })
+        }else{
+          wx.showToast({
+            title: '发起失败，稍后再试。',
+            icon: "none"
           })
         }
       })
-    },
+  },
+  // 获取产品列表数据
+  getProduct() {
+    var userInfo = wx.getStorageSync('nowStore');
+    var data = {
+      toast: true, // 是否显示加载动画
+      data: {
+        // 用户的登录id
+        agt_key: userInfo.agt_key,
+        apd_key: "",
+        agt_name: "",
+        apd_name: "",
+        cou_name: "",
+        apt_type: "",
+        apd_ref: "",
+        pds_status: "",
+        str_created_date: "",
+        pageSize: 1,
+        pageNumber: 1
+      },
+      type: "get",
+      url: url.GetAgentProductItems,
+      header: {
+        "Content-Type": "application/json; charset=utf-8"
+      }
+    }
+    var that = this;
+    request.getReq(data).then(res => {
+      for (var i = 0; i < res.data.length; i++) {
+        res.data[i].apd_created_date = res.data[i].apd_created_date.split("(")[1];
+        res.data[i].apd_created_date = res.data[i].apd_created_date.split(")")[0];
+        res.data[i].apd_created_date = request.format(res.data[i].apd_created_date, "YYYY-MM-dd");
+        res.data[i].apd_created_date = res.data[i].apd_created_date.replace(/\-/g, ".");
+        console.log(res.data[i], 88, res.data[i].apd_created_date)
+      }
+      if (!res.data[0].code) {
+        this.setData({
+          productList: res.data
+        })
+      }
+    })
+  },
     // 跳转商品详情
     goGoodsDetail(e) {
       var index = e.currentTarget.dataset.index;
@@ -78,7 +109,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      store: wx.getStorageSync('nowStore')
+    })
   },
 
   /**

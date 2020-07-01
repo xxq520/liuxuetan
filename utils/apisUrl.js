@@ -91,4 +91,6 @@ module.exports = {
     GetAgentOrderStatus : url + "/wsAgentDatabind.asmx/GetAgentOrderStatus",
     // 获取顾问商家列表数据
     GetAgentDetailsList : url + "/wsAgentDatabind.asmx/GetAgentDetailsList",
+    // 创建聊天组信息
+    CreateChatDirectGroup : url +"/wsMessageDatatrans.asmx/CreateChatDirectGroup"
 };

@@ -17,6 +17,7 @@ Page({
         isImage: true
       }
     ],
+    apt_type:"",
     // 商品的名称
     goodName: "",
     // 商品的价格
@@ -74,65 +75,44 @@ Page({
   },
   // 点击确认并发送事件
   async submit() {
-    var {goodName,price,miaoshu,fuwu} = this.data;
-    if(!goodName){
-      wx.showToast({
-        title: '请输入商品名称',
-        icon: "none"
-      })
-      return
-    }
-    if(!miaoshu){
-      wx.showToast({
-        title: '请输入描述内容',
-        icon: "none"
-      })
-      return
-    }
+    var product = this.data.product;
     var userInfo = wx.getStorageSync('userInfo');
     var data = {
       toast: true,// 是否显示加载动画
       data:{
         // 用户的登录id
-        agt_key :userInfo.store,  // 加密代理UID密钥
-        apd_key : this.data.product?this.data.product.apd_key:"" , // 加密代理产品记录UID密钥仅用于更新钱包
-        apd_name : goodName, // 代理产品名称
-        new_pds_status: '新产品审批完成', // 新代理产品中文状态（见3.1.1.7）
-        apd_ref : "", // 代理产品参考
-        apd_image_url :'http://iph.href.lu/60x60?text=default', // 代理产品图像URL
-        apd_description : miaoshu, // 代理产品说明
-        apd_price : price, // 代理产品价格
-        apd_commission: 0, // 代理产品粉碎价值 *创建新代理产品时为0
-        act_type: "", // 代理产品粉碎类型（百分比/金额） *创建新代理产品时为空
-        pdt_remark : "", // 代理产品批准备注
+        agt_key :product.agt_key,  // 加密代理UID密钥
+        aod_key :"" , // 加密代理产品记录UID密钥仅用于更新钱包
+        apd_key: product.apd_key, // 加密代理订单产品记录UID键
+        client_usr_key: userInfo.usr_key ,//  客户端用户UID加密密钥
+        aod_order_ref: "", //  代理订单参考
+        new_aos_status: "拟定订单中", // 新代理订单状态（见3.1.1.12）
+        aod_price: product.apd_price ,//  代理订单价格
+        aod_remark: product.apd_description, // 代理订单备注
+        act_type: "", // 代理订单佣金类型（百分比/金额）
+        aod_commission: 0, // 代理订单佣金价值
         usr_key: userInfo.usr_key, //密用户记录UID密钥用于保存用户
-        apt_id : this.data.array[this.data.fuwu||0].apt_id ,
       },
       type:"post",
-      url:url.SaveAgentProductRecord,
+      url:url.SaveAgentOrderRecord,
       header:{"Content-Type":"application/json; charset=utf-8"}
     }
     var that = this;
-    var saveType = await this.saveType();
-    console.log(saveType,888)
-    if(this.data.product||saveType[0].response=="储存成功"){
-      request.getReq(data).then(res=>{
-        if(res.data[0].response == "储存成功"){
-          wx.showToast({
-            title: '创建成功',
-            icon: "none"
+    request.getReq(data).then(res=>{
+      console.log(res,8889899)
+      if(res.data[0].response == "储存成功"){
+        wx.showToast({
+          title: '创建成功',
+          icon: "none"
+        })
+        setTimeout(()=>{
+          wx.navigateBack();
+          wx.navigateTo({
+            url: '/other/myOrder/myOrder',
           })
-          setTimeout(()=>{
-            wx.navigateBack();
-          },1000);
-        }else{
-          wx.showToast({
-            title: '创建失败，稍后再试',
-            icon: "none"
-          })
-        }
-      })
-    }
+        },1000);
+      }
+    })
   },
   // 获取产品列表数据
   getProduct(){
@@ -189,36 +169,7 @@ Page({
         edit: options.id
       })
       this.getProduct();
-      this.GetAgentProductTypeList();
     }
-  },
-  // 获取当前用户可以申请的产品列表
-  GetAgentProductTypeList(){
-    var userInfo = wx.getStorageSync('userInfo');
-    var data = {
-      toast: true,// 是否显示加载动画
-      data:{
-        // 用户的登录id
-        apt_id :0, 
-      },
-      type:"get",
-      url:url.GetAgentProductTypeList,
-      header:{"Content-Type":"application/json; charset=utf-8"}
-    }
-    var that = this;
-    request.getReq(data).then(res=>{
-      console.log(res,666666)
-      if(!res.data[0].code){
-        var arr = [];
-        for(var i=0; i<res.data.length; i++){
-          arr.push(res.data[i].apt_type)
-        }
-        this.setData({
-          array:res.data,
-          arrayFs:arr
-        })
-      }
-    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

@@ -20,7 +20,7 @@ Page({
       this.getIndexData()
     }
     this.getGetHotTagsGroup();
-    this.GetUserAgent()
+    
   },
   //  初始化首页数据
   getIndexData() {
@@ -128,6 +128,7 @@ Page({
     this.setData({
       userInfo : wx.getStorageSync('userInfo') || {}
     })
+    this.GetUserAgent()
   },
 
   /**

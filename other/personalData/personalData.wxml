@@ -69,7 +69,7 @@
       </view> -->
       {{store.agt_description}}
     </view>
-    <view class="contact">
+    <view class="contact" bindtap="CreateChatDirectGroup">
       <image src="../../static/image/contact.png"></image>
       <text>在线联系</text>
     </view>
