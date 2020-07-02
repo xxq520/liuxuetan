@@ -31,13 +31,13 @@
     <view class="trading-comprehensive">
         <view class="trading-num">
             <text class="trading-title">交易完成次数</text>
-            <view class="line_1">473333333333333333</view>
+            <view class="line_1">{{storeDetail.aod_completed||0}}</view>
         </view>
         <view class="trading-price">
             <text class="trading-title">总交易额</text>
             <view class="price-info">
                 <text class="price-font-icon">￥</text>
-                <view class="line_1">95000.001111111111111111111</view>
+                <view class="line_1">{{storeDetail.year_income||0}}</view>
             </view>
         </view>
     </view>

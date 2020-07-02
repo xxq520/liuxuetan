@@ -14,6 +14,7 @@ Page({
       { text: '活动商品', value: 2 }
     ],
     storeList: [], // 顾问列表数据
+    searchVal:"", // 搜索的内容
   },
 
   /**
@@ -40,7 +41,7 @@ Page({
         // 用户的登录id
         agt_key : "",  // 加密代理UID密钥
         cou_name: "", // 代理地点名称中文
-        search_agt : "", //  通过代理名称或代理描述筛选代理返回列表
+        search_agt : that.data.searchVal, //  通过代理名称或代理描述筛选代理返回列表
       },
       type:"get",
       url:url.GetAgentDetailsList,
@@ -49,13 +50,17 @@ Page({
     request.getReq(data).then(res=>{
       // 格式化最后聊天的时间
       console.log(res,666)
-      if(res.statusCode==200){
+      if(!res.data[0].Code){
         this.setData({
           storeList:res.data||[]
         })
       }else {
+        this.setData({
+          storeList:[]
+        })
         wx.showToast({
-          title: '加载失败，稍后再试！',
+          title: '暂无数据！',
+          icon:"none"
         })
       }
     })

@@ -22,8 +22,8 @@
     </view>
     <view class="hot_search">
         <view class="search">
-            <input placeholder="商家搜索"></input>
-            <image src="/static/image/search.png" ></image>
+            <input model:value="{{searchVal}}" placeholder="商家搜索"></input>
+            <image src="/static/image/search.png" bindtap="GetAgentDetailsList"></image>
         </view>
         <view class="filter">
         <van-dropdown-menu>
@@ -32,7 +32,7 @@
         </view>
     </view>
     <!-- 每位商家展示 -->
-    <view class="shopList" bindtap="gopreploData" data-index="{{index}}" wx:for="{{storeList}}">
+    <view class="shopList" bindtap="gopreploData" data-index="{{index}}" wx:for="{{storeList}}" wx:if="{{storeList.length}}">
       <image mode="aspectFill" class="avart" src="http://www.liuxuetalk.com{{item.agt_background_image_url}}"></image>
       <view class="shopListCenter">
         <view class="shopTitle">{{item.agt_name}}</view>

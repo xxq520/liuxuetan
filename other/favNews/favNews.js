@@ -13,6 +13,7 @@ Page({
     newList: [],
     // 用户的信息
     userInfo: wx.getStorageSync('userInfo'),
+    noinfo:false,
   },
 
   /**
@@ -89,9 +90,15 @@ Page({
     var that = this;
     request.getReq(data).then(res => {
       console.log(res, 888)
-      that.setData({
-        newList: res.data.splice(0, 10)
-      })
+      if(res.data[0].Code&&res.data[0].Code==404){
+          this.setData({
+            noinfo:true
+          })
+      }else{
+        that.setData({
+          newList: res.data.splice(0, 10)
+        })
+      }
     })
   },
   // 点赞或收藏文章

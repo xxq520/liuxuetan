@@ -160,8 +160,10 @@ min-width: 0;
 .hot_search{
   display: flex;
   padding: 30rpx 20rpx 0 20rpx;
+  align-items: center;
   
 }
+
 .search { 
   position: relative;
 }
@@ -180,4 +182,5 @@ min-width: 0;
   position: absolute;
   right: 26rpx;
   top: 12rpx;
+  z-index: 100;
 }

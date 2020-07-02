@@ -221,6 +221,7 @@ Page({
     request.getReq(data).then(res=>{
       console.log(res,666666)
       if(!res.data[0].code){
+        wx.setStorageSync('storeDetail', res.data[0])
         this.setData({
           store:res.data[0]
         })
