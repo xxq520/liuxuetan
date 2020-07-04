@@ -29,6 +29,48 @@ Page({
       this.GetAgentOrderItems();
     }
   },
+  // 发表提醒事项
+  send(){
+    var userInfo = wx.getStorageSync('userInfo');
+    var data = {
+      toast: true,// 是否显示加载动画
+      data:{
+        // 用户的登录id
+        agt_key :userInfo.store, 
+        nta_key:"", //加密通知观众UID密钥 如果创建新通知，则清空，否则提供特定用户UID密钥以更新通知记录
+        audience_key: userInfo.usr_key, //加密通知观众UID密钥 i.e. 用户记录UID键
+        ntp_type:"user",  // 通知类型(user/alladmin/order/indadmin).
+        ntc_header :this.data.text, //通知标题内容
+        ntc_content : this.data.text, //通知正文内容
+        str_notify_date: this.data.selectDate?this.data.selectDate:date.getFullYear()+"-"+date.getMonth()+1+'-'+date.getDate(), // 以字符串格式通知日期，即。 2020-01-01
+        ntc_valid : true , //  如果通知记录有效 
+        ref_key: "", //  *这是专为保存订单通知，包括加密订单记录UID键，以供参考
+        usr_key :  userInfo.usr_key, // 
+        pageSize:1,
+        pageNumber:1
+      },
+      type:"post",
+      url:url.SaveAgentNotify,
+      header:{"Content-Type":"application/json; charset=utf-8"}
+    }
+    var that = this;
+    request.getReq(data).then(res=>{
+      console.log(res,8889)
+      if(res.data[0].code==404){
+        this.setData({
+          message:res.data
+        })
+      }else{
+        wx.showToast({
+          title:"添加成功",
+          icon:"none"
+        })
+        setTimeout(()=>{
+          wx.navigateBack()
+        },1000)
+      }
+    })
+  },
    // 获取当前订单列表数据
    GetAgentOrderItems(){
     var userInfo = wx.getStorageSync('userInfo');

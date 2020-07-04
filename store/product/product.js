@@ -26,10 +26,19 @@ Page({
     typeList: [],
     // 当前销售的产品
     productList: [],
+    // 筛选产品的
+    type: "",
   },
   onLoad() {
     this.GetAgentProductType();
     this.GetAgentProductTypeList();
+  },
+  // 筛选产品列表数据
+  changeP(e){
+    this.setData({
+      type:this.data.option1[e.detail-1].text
+    })
+    this.getProduct();
   },
    // 获取当前用户可以申请的产品列表
    GetAgentProductTypeList(){
@@ -101,7 +110,7 @@ Page({
         agt_name: "",
         apd_name: "",
         cou_name: "",
-        apt_type: "",
+        apt_type: this.data.type,
         apd_ref: "",
         pds_status: "",
         str_created_date: "",
@@ -116,16 +125,20 @@ Page({
     }
     var that = this;
     request.getReq(data).then(res => {
-      for (var i = 0; i < res.data.length; i++) {
-        res.data[i].apd_created_date = res.data[i].apd_created_date.split("(")[1];
-        res.data[i].apd_created_date = res.data[i].apd_created_date.split(")")[0];
-        res.data[i].apd_created_date = request.format(res.data[i].apd_created_date, "YYYY-MM-dd");
-        res.data[i].apd_created_date = res.data[i].apd_created_date.replace(/\-/g, ".");
-        console.log(res.data[i], 88, res.data[i].apd_created_date)
-      }
-      if (!res.data[0].code) {
+      if(!res.data[0].Code){
+        for (var i = 0; i < res.data.length; i++) {
+          res.data[i].apd_created_date = res.data[i].apd_created_date.split("(")[1];
+          res.data[i].apd_created_date = res.data[i].apd_created_date.split(")")[0];
+          res.data[i].apd_created_date = request.format(res.data[i].apd_created_date, "YYYY-MM-dd");
+          res.data[i].apd_created_date = res.data[i].apd_created_date.replace(/\-/g, ".");
+          console.log(res.data[i], 88, res.data[i].apd_created_date)
+        }
         this.setData({
           productList: res.data
+        })
+      } else {
+        this.setData({
+          productList: []
         })
       }
     })

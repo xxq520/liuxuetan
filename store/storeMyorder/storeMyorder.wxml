@@ -15,13 +15,13 @@
 	</view>
 	<!-- 订单搜索框 -->
 	<view class="searchOrder">
-		<input type="text" name="" id="" />
-		<image src="/static/image/search.png" />
+		<input type="text" model:value="{{search}}" placeholder="输入产品名称" name="" id="" />
+		<image src="/static/image/search.png" bindtap="GetAgentOrderItems"/>
 	</view>
 	<!-- 订单筛选 -->
 	<view class="filterOrder">
-		<picker class="filter" range="{{filterArr}}">
-			<text>排列筛选</text>
+		<picker class="filter" range="{{filterArr}}" bindchange="changeType">
+			<text>{{type||'全部'}}</text>
 			<image src="/static/image/downjt.png" />
 		</picker>
 		<navigator url="/store/createOrder/createOrder">

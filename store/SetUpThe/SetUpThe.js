@@ -5,12 +5,7 @@ Page({
   data: {
     filterArr:["英国","中国"],
     fileList: [
-      { url: 'https://img.yzcdn.cn/vant/leaf.jpg', name: '图片1',isImage: true },
-      {
-        url: 'http://iph.href.lu/60x60?text=default',
-        name: '图片2',
-        isImage: true
-      }
+      { url:  wx.getStorageSync('store').agt_background_image_url, name: '图片1',isImage: true },
     ],
     store: wx.getStorageSync('store'), // 获取缓存的店铺
     storeName: "", // 店铺
@@ -25,6 +20,14 @@ Page({
       jianjie: store.agt_description, // 简介
       content: store.agt_description, // 内容
       ferfu: store.cou_name
+    })
+  },
+  // 删除图片
+  delete(e){
+    var arr = this.data.fileList;
+    arr.splice(e.detail.index,1)
+    this.setData({
+      fileList:arr
     })
   },
     // tab选项卡切换

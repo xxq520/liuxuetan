@@ -26,7 +26,9 @@ Page({
     // 是否修改产品
     edit : "",
     // 修改的产品信息
-    product: {}
+    product: {},
+    // 聊天好友列表数据
+    messageList:[]
   },
   // 服务分类选择事件
   bindMultiPickerChange(e){
@@ -38,6 +40,41 @@ Page({
   // 点击取消
   cancel() {
     wx.navigateBack();
+  },
+   // 获取当前聊天组列表数据
+  getMessageList() {
+    var that = this;
+    var userInfo = wx.getStorageSync('userInfo');
+    var data = {
+      toast: true,// 是否显示加载动画
+      data:{
+        // 用户的登录id
+        usr_id : userInfo.usr_id || 0, 
+      },
+      type:"get",
+      url:url.getMessageList,
+      header:{"Content-Type":"application/json; charset=utf-8"}
+    }
+    request.getReq(data).then(res=>{
+      // 格式化最后聊天的时间
+      console.log(res,666)
+      for(var i=0; i<res.data.length; i++){
+        if(res.data[i].last_chat_date){
+          res.data[i].last_chat_date = res.data[i].last_chat_date .replace("/Date(","");
+          res.data[i].last_chat_date = res.data[i].last_chat_date .replace(")/","");
+          res.data[i].last_chat_date=that.formatDate(res.data[i].last_chat_date)
+        }
+      }
+      if(!res.data[0].Exception){
+        that.setData({
+          messageList: res.data
+        })
+      }else{
+        that.setData({
+          messageList: []
+        })
+      }
+    })
   },
   // 点击确认并发送事件
   async submit() {
@@ -178,6 +215,7 @@ Page({
    */
   onLoad: function (options) {
     this.getProduct();
+    this.getMessageList();
     if(options.id){
       this.setData({
         edit: options.id

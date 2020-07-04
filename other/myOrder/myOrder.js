@@ -33,7 +33,7 @@ Page({
         aod_order_ref: "", // 代理订单参考过滤
         aos_status: "", // 代理订单状态过滤
         cusr_fullname: "", // 代理订购客户端用户名进行过滤
-        ausr_fullname: "", // 代理订单处理代理用户名进行筛选
+        ausr_fullname: userInfo.usr_display_name, // 代理订单处理代理用户名进行筛选
         str_created_date: "", // 代理订单创建日期的字符串格式过滤
         pageSize:1,
         pageNumber:1

@@ -78,7 +78,7 @@
             <textarea >提醒客户提供成绩单</textarea>
             <view class="sendMemo">
                 <text >2020-04-03 22:43</text>
-                <view >发表</view>
+                <view bindtap="send">发表</view>
             </view>
         </view>
         <view class="MemoList">
