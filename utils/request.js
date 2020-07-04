@@ -22,6 +22,45 @@ function getRequest(requestParameter) {
             title: '加载中',
         })
     }
+    // 做需要登录的接口验证
+    var urlArr = [
+        apisUrl.SaveNewsCommentRecord,
+        apisUrl.SaveUserNewOption,
+        apisUrl.SaveUserFavForumAdmin,
+        apisUrl.GetChatGroupHistory,
+        apisUrl.SaveChatGroupMessage,
+        apisUrl.SaveNewsRecord,
+        apisUrl.LikeNewsCommentRecord,
+        apisUrl.GetUserQuestionItems,
+        apisUrl.UpdateUserDetailsRecord,
+        apisUrl.DeleteNewsRecord,
+        apisUrl.CreateChatDirectGroup,
+        apisUrl.SaveAgentOrderRecord,
+    ]
+    var userInfo = wx.getStorageSync('userInfo');
+    if(urlArr.indexOf(requestParameter.url)!=-1&&!userInfo) {
+        wx.showModal({
+            title: '请先登录！',
+            content: '该功能需要登录后即可正常使用',
+            showCancel: false,//是否显示取消按钮
+            confirmText:"确认",//默认是“确定”
+            confirmColor: 'skyblue',//确定文字的颜色
+            success: function (res) {
+               if (res.cancel) {
+                  //点击取消,默认隐藏弹框
+               } else {
+                  //点击确定
+                  wx.navigateTo({
+                    url: '/pages/login/login',
+                  })
+               }
+            },
+            fail: function (res) { },//接口调用失败的回调函数
+            complete: function (res) { },//接口调用结束的回调函数（调用成功、失败都会执行）
+         })
+         wx.hideLoading({})
+         return false;
+    }
     // 返回的是一个promise对像
     return new Promise((resolve, reject) => {
         // 获取Access Key

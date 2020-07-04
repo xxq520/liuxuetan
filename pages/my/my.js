@@ -22,6 +22,20 @@ Page({
     this.getGetHotTagsGroup();
     
   },
+  // 点击个人主页事件
+  goStore(){
+    if(!wx.getStorageSync('userInfo').store) {
+      wx.showToast({
+        title: '仅对顾问开发此功能!',
+        icon: "none"
+      })
+      return false;
+    }else{
+      wx.navigateTo({
+        url: '/store/myStore/myStore',
+      })
+    }
+  },
   //  初始化首页数据
   getIndexData() {
       var userInfo = wx.getStorageSync('userInfo');

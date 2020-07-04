@@ -12,12 +12,12 @@
                     <view class="top_right_abs">
                         <view class="top_abs">
                             <text class="user_name">{{userInfo.usr_display_name}}</text>
-                            <navigator url="/store/myStore/myStore">
+                            <view bindtap="goStore">
                                 <view class="homepage_btn red_dot">
                                     <text>个人主页</text>
                                     <image src="../../static/image/sm_jiantou_you.png" />
                                 </view>
-                            </navigator>
+                            </view>
                         </view>
                         <view class="bottom_abs">
                             <text class="mobile">134****9975</text>
