@@ -15,7 +15,15 @@ Page({
     // 当前订单详情的id
     orderId:"",
     // 当前订单的数据
-    order: {}
+    order: {},
+    // 订单提醒记录
+    tixing:[],
+    // 提醒内容
+    text:"",
+    // 任务列表
+    taskList: [],
+    showrRenwu:false,
+    renwuVal:""
   },
 
   /**
@@ -28,10 +36,55 @@ Page({
       })
       this.GetAgentOrderItems();
     }
+    this.GetAgentOrderTaskStatus();
+    this.GetAgentOrderTaskList();
+  },
+  // 发送任务
+  sendRenwu(){
+    if(!this.data.renwuVal){
+      wx.showToast({
+        title: '请输入任务内容',
+        icon:"none"
+      })
+      return;
+    }
+    var userInfo = wx.getStorageSync('userInfo');
+    var data = {
+      toast: false,// 是否显示加载动画
+      data:{
+        agt_key :userInfo.store, 
+        aod_key: this.data.orderId, // 加密代理订单UID密钥
+        delimited_ata_task:this.data.renwuVal,
+        new_ats_status:"未完成",
+        delimiter:1,
+        usr_key:userInfo.usr_key
+      },
+      type:"post",
+      url:url.SaveAgentOrderTasksArrayList,
+      header:{"Content-Type":"application/json; charset=utf-8"}
+    }
+    var that = this;
+    request.getReq(data).then(res=>{
+      console.log(res,445566)
+      if(res.data[0].Code!=404){
+        wx.showToast({
+          title: '成功',
+          icon:"none"
+        })
+        this.GetAgentOrderTaskList()
+      }
+    })
+  },
+  // 更改任务输入框
+  changeshowrRenwu(){
+    this.setData({
+      showrRenwu:!this.data.showrRenwu
+    })
   },
   // 发表提醒事项
   send(){
     var userInfo = wx.getStorageSync('userInfo');
+    var date = new Date();
     var data = {
       toast: true,// 是否显示加载动画
       data:{
@@ -39,12 +92,12 @@ Page({
         agt_key :userInfo.store, 
         nta_key:"", //加密通知观众UID密钥 如果创建新通知，则清空，否则提供特定用户UID密钥以更新通知记录
         audience_key: userInfo.usr_key, //加密通知观众UID密钥 i.e. 用户记录UID键
-        ntp_type:"user",  // 通知类型(user/alladmin/order/indadmin).
+        ntp_type:"order",  // 通知类型(user/alladmin/order/indadmin).
         ntc_header :this.data.text, //通知标题内容
         ntc_content : this.data.text, //通知正文内容
-        str_notify_date: this.data.selectDate?this.data.selectDate:date.getFullYear()+"-"+date.getMonth()+1+'-'+date.getDate(), // 以字符串格式通知日期，即。 2020-01-01
+        str_notify_date: this.data.date?this.data.date:date.getFullYear()+"-"+date.getMonth()+1+'-'+date.getDate(), // 以字符串格式通知日期，即。 2020-01-01
         ntc_valid : true , //  如果通知记录有效 
-        ref_key: "", //  *这是专为保存订单通知，包括加密订单记录UID键，以供参考
+        ref_key: this.data.orderId, //  *这是专为保存订单通知，包括加密订单记录UID键，以供参考
         usr_key :  userInfo.usr_key, // 
         pageSize:1,
         pageNumber:1
@@ -56,7 +109,7 @@ Page({
     var that = this;
     request.getReq(data).then(res=>{
       console.log(res,8889)
-      if(res.data[0].code==404){
+      if(res.data[0].Code==404){
         this.setData({
           message:res.data
         })
@@ -99,7 +152,7 @@ Page({
     var that = this;
     request.getReq(data).then(res=>{
       console.log(res,8889)
-      if(res.data[0].code!=404){
+      if(res.data[0].Code!=404){
         for (var i = 0; i < res.data.length; i++) {
           res.data[i].aod_created_date = res.data[i].aod_created_date.split("(")[1];
           res.data[i].aod_created_date = res.data[i].aod_created_date.split(")")[0];
@@ -115,6 +168,32 @@ Page({
         this.setData({
           order:res.data[0]
         })
+        this.GetAgentOrderNotification();
+      }
+    })
+  },
+  // 获取订单提醒记录
+  GetAgentOrderNotification() {
+    var userInfo = wx.getStorageSync('userInfo');
+    var data = {
+      toast: true,// 是否显示加载动画
+      data:{
+        // 用户的登录id
+        aod_key: this.data.orderId, // 加密代理订单UID密钥
+        pageSize:1,
+        pageNumber:1
+      },
+      type:"get",
+      url:url.GetAgentOrderNotification,
+      header:{"Content-Type":"application/json; charset=utf-8"}
+    }
+    var that = this;
+    request.getReq(data).then(res=>{
+      console.log(res,8889110)
+      if(res.data[0].Code!=404){
+        this.setData({
+          tixing:res.data
+        })
       }
     })
   },
@@ -129,6 +208,54 @@ Page({
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       date: e.detail.value
+    })
+  },
+  // 获取订单任务状态
+  GetAgentOrderTaskStatus:function() {
+    var userInfo = wx.getStorageSync('userInfo');
+    var data = {
+      toast: false,// 是否显示加载动画
+      data:{
+        // 用户的登录id
+        ata_id: 0, // 加密代理订单UID密钥
+        ats_id:"0"
+      },
+      type:"get",
+      url:url.GetAgentOrderTaskStatus,
+      header:{"Content-Type":"application/json; charset=utf-8"}
+    }
+    var that = this;
+    request.getReq(data).then(res=>{
+      console.log(res,8889110110)
+      if(res.data[0].Code!=404){
+        this.setData({
+          tixing:res.data
+        })
+      }
+    })
+  },
+  // 获取订单任务列表
+  GetAgentOrderTaskList:function() {
+    var userInfo = wx.getStorageSync('userInfo');
+    var data = {
+      toast: false,// 是否显示加载动画
+      data:{
+        aod_key: this.data.orderId, // 加密代理订单UID密钥
+        pageSize:1,
+        pageNumber:1,
+      },
+      type:"get",
+      url:url.GetAgentOrderTaskList,
+      header:{"Content-Type":"application/json; charset=utf-8"}
+    }
+    var that = this;
+    request.getReq(data).then(res=>{
+      console.log(res,445566)
+      if(res.data[0].Code!=404){
+        this.setData({
+          taskList:res.data
+        })
+      }
     })
   },
   /**

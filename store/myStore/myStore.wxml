@@ -24,7 +24,7 @@
 		<view class="right-echarts">
 			<van-circle value="{{(store.agt_rate/5)*100}}" size="80 " layer-color="#ddd" color="#e9a431" text="" />
 			<view class="score">
-				<text class="score_num">{{store.agt_rate}}/5</text>
+				<text class="score_num">{{store.agt_rate||0}}/5</text>
 				<text class="score_txt">综合评分</text>
 			</view>
 		</view>

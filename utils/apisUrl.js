@@ -92,5 +92,14 @@ module.exports = {
     // 获取顾问商家列表数据
     GetAgentDetailsList : url + "/wsAgentDatabind.asmx/GetAgentDetailsList",
     // 创建聊天组信息
-    CreateChatDirectGroup : url +"/wsMessageDatatrans.asmx/CreateChatDirectGroup"
+    CreateChatDirectGroup : url +"/wsMessageDatatrans.asmx/CreateChatDirectGroup",
+
+    // 获取订单提醒记录
+    GetAgentOrderNotification : url +"/wsAgentDatabind.asmx/GetAgentOrderNotification",
+    // 获取订单任务状态  例如：未完成  处理中 已完成名称
+    GetAgentOrderTaskStatus : url +"/wsAgentDatabind.asmx/GetAgentOrderTaskStatus",
+    // 获取订单任务列表
+    GetAgentOrderTaskList  : url +"/wsAgentDatabind.asmx/GetAgentOrderTaskList",
+    // 保存任务订单列表数据
+    SaveAgentOrderTasksArrayList : url+"/wsAgentDatabind.asmx/SaveAgentOrderTasksArrayList",
 };

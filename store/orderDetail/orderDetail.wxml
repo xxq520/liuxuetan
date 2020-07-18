@@ -33,32 +33,21 @@
     <!-- 订单备注 -->
     <view class="remarks">
         <view class="orderrRemarks">订单备注</view>
-        <textarea class="content" value="{{order.aod_remark}}">
-        {{order.aod_remark}}
-        </textarea>
-        <view class="orderrRemarks task">
+        <textarea class="content" disabled="disabled" value=""> {{order.aod_remark}}</textarea>
+        <view class="orderrRemarks task" bindtap="changeshowrRenwu">
             <text>添加任务项</text>
             <image src="/static/image/addicon.png" />
         </view>
-        <view class="orderPre taskList">
-            <view class="namepreson">曼彻斯特大学</view>
-            <view class="nameData">
-                <image src="/static/image/select.png" />
-                完成
-            </view>
+        <view class="inputRw" wx:if="{{showrRenwu}}">
+            <input type="text" model:value="{{renwuVal}}"></input>
+            <button bindtap="sendRenwu">确认</button>
         </view>
-        <view class="orderPre taskList b-t">
-            <view class="namepreson">伯明翰大学</view>
+        <view class="orderPre taskList b-t" wx:for="{{taskList}}" >
+            <view class="namepreson">{{item.aod_remark}}</view>
             <view class="nameData">
-                <image src="/static/image/nook.png" />
-                未完成
-            </view>
-        </view>
-        <view class="orderPre taskList b-t">
-            <view class="namepreson">谢菲尔特大学</view>
-            <view class="nameData">
-                <image src="/static/image/nook.png" />
-                未完成
+                 <image wx:if="{{item.ats_status!='未完成'}}" src="/static/image/select.png" />
+                  <image wx:else src="/static/image/nook.png" />
+                {{item.ats_status}}
             </view>
         </view>
     </view>
@@ -75,7 +64,7 @@
             </view>
         </view>
         <view class="MemoTetx">
-            <textarea >提醒客户提供成绩单</textarea>
+            <textarea model:value="{{text}}">提醒客户提供成绩单</textarea>
             <view class="sendMemo">
                 <text >2020-04-03 22:43</text>
                 <view bindtap="send">发表</view>

@@ -273,3 +273,22 @@ page{
 .select{
     color: #e9a431 !important; 
 }
+.inputRw{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20rpx;
+}
+.inputRw input{
+    height: 76rpx;
+    border: 1rpx solid #ccc;
+}
+.inputRw button{
+    width: 200rpx !important;
+    margin-left: 20rpx;
+    background-color: #f8f8f8;
+}
+.inputRw button:not{
+    width: 160rpx;
+    margin-left: 20rpx;
+    background-color: #f8f8f8;
+}
