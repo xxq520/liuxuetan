@@ -4,10 +4,10 @@
 		<view class="user-chat-info" wx:if="{{item.usr_profile_image_tn!=userInfo.usr_profile_image_tn}}">
 			<image class="user-tx" src="http://www.liuxuetalk.com/{{item.usr_profile_image_tn}}" />
 			<!-- /Uploads/Profile/Thumbnails/profile.jpg -->
-			<view class="chat-content"><rich-text nodes="{{item.cha_message}}"></rich-text></view>
+			<view class="chat-content"><rich-text class="fsont" nodes="{{item.cha_message}}"></rich-text></view>
 		</view>
         <view class="reply-chat-info" wx:else>
-			<view class="chat-content"><rich-text nodes="{{item.cha_message}}"></rich-text></view>
+			<view class="chat-content"><rich-text class="fsont" nodes="{{item.cha_message}}"></rich-text></view>
 			<image class="user-tx" src="http://www.liuxuetalk.com/{{item.usr_profile_image_tn}}" />
 		</view>
         <!-- <view class="end-time" >10月10日 10:48</view> -->

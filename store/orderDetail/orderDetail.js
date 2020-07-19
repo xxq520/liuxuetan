@@ -90,6 +90,7 @@ Page({
       data:{
         // 用户的登录id
         agt_key :userInfo.store, 
+        aod_key:this.data.orderId,
         nta_key:"", //加密通知观众UID密钥 如果创建新通知，则清空，否则提供特定用户UID密钥以更新通知记录
         audience_key: userInfo.usr_key, //加密通知观众UID密钥 i.e. 用户记录UID键
         ntp_type:"order",  // 通知类型(user/alladmin/order/indadmin).

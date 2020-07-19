@@ -25,12 +25,16 @@ page{
     margin-bottom: 30rpx;
     justify-content: end;
 }
+.fsont{
+    word-break:break-all;
+}
 .reply-chat-info .chat-content{
     border-radius: 30rpx 0rpx 30rpx 30rpx; 
     margin-right: 20rpx;
     margin-left: 0rpx;
     background-color: #3b5370;
     color: #ffffff;
+    max-width: 84%;
 }
 
 .chat-content{
@@ -43,6 +47,7 @@ page{
 	letter-spacing: 0rpx;
     color: #333333;
     padding: 28rpx 24rpx;
+    max-width: 84%;
 }
 .btnsend{
     width: 80rpx;

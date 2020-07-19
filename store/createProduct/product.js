@@ -93,7 +93,7 @@ Page({
       data:{
         // 用户的登录id
         agt_key :userInfo.store,  // 加密代理UID密钥
-        apd_key : this.data.product?this.data.product.apd_key:"" , // 加密代理产品记录UID密钥仅用于更新钱包
+        apd_key : this.data.product.apd_key||"" , // 加密代理产品记录UID密钥仅用于更新钱包
         apd_name : goodName, // 代理产品名称
         new_pds_status: '新产品审批完成', // 新代理产品中文状态（见3.1.1.7）
         apd_ref : "", // 代理产品参考
@@ -169,6 +169,7 @@ Page({
         }
         if(!res.data[0].code){
           this.setData({
+            fuwu:this.data.arrayFs.indexOf(res.data[0].apt_type)!=-1?this.data.arrayFs.indexOf(res.data[0].apt_type):"",
             product:res.data[0],
             miaoshu: res.data[0].apd_description,
             price: res.data[0].apd_price,

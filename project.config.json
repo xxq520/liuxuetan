@@ -155,6 +155,181 @@
 					"id": -1,
 					"name": "store/createProduct/product",
 					"pathName": "store/createProduct/product",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "store/createProduct/product",
+					"pathName": "store/createProduct/product",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "store/product/product",
+					"pathName": "store/product/product",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "store/createProduct/product",
+					"pathName": "store/createProduct/product",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "store/myStore/myStore",
+					"pathName": "store/myStore/myStore",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "store/storeMyorder/storeMyorder",
+					"pathName": "store/storeMyorder/storeMyorder",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "store/billManagement/billManagement",
+					"pathName": "store/billManagement/billManagement",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "store/Addremind/Addremind",
+					"pathName": "store/Addremind/Addremind",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "store/createOrder/createOrder",
+					"pathName": "store/createOrder/createOrder",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "store/createOrder/createOrder",
+					"pathName": "store/createOrder/createOrder",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "store/storeMyorder/storeMyorder",
+					"pathName": "store/storeMyorder/storeMyorder",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "store/orderDetail/orderDetail",
+					"pathName": "store/orderDetail/orderDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/service/service",
+					"pathName": "pages/service/service",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "other/personalData/personalData",
+					"pathName": "other/personalData/personalData",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "store/myStore/myStore",
+					"pathName": "store/myStore/myStore",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "store/product/product",
+					"pathName": "store/product/product",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "other/personalData/personalData",
+					"pathName": "other/personalData/personalData",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/service/service",
+					"pathName": "pages/service/service",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "store/product/product",
+					"pathName": "store/product/product",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "store/storeMyorder/storeMyorder",
+					"pathName": "store/storeMyorder/storeMyorder",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "store/SetUpThe/SetUpThe",
+					"pathName": "store/SetUpThe/SetUpThe",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "store/storeMyorder/storeMyorder",
+					"pathName": "store/storeMyorder/storeMyorder",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "store/createOrder/createOrder",
+					"pathName": "store/createOrder/createOrder",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "other/myOrder/myOrder",
+					"pathName": "other/myOrder/myOrder",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "store/storeMyorder/storeMyorder",
+					"pathName": "store/storeMyorder/storeMyorder",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/index",
+					"pathName": "pages/index/index",
 					"scene": null
 				}
 			]
