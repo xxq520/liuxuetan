@@ -6,10 +6,16 @@
     top: 0;
     border-left: solid 2rpx #e9a431;
 }
+.orderMy{
+    margin-top: -108rpx;
+}
+.orderMy navigator{
+    display: block;
+    margin: 0 auto;
+}
 .top_bg{
     height: 140rpx;
     background-color: #3b5370;
-    position: relative;
 }
 .order_item{
     width: 690rpx;
@@ -18,14 +24,11 @@
 		rgba(0, 0, 0, 0.1);
     border-radius: 10rpx;
     padding: 18rpx 30rpx 0rpx 30rpx;
+    margin: 0 auto;
     margin-top: 40rpx;
 
 }
 .current_order{
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%);
     margin: 0;
 }
 
@@ -87,8 +90,8 @@
 .complete-order{
     display: flex;
     justify-content: center;
-    margin-top: 120rpx;
-    padding-bottom: 100rpx;
+    margin-top: -20rpx;
+    padding-bottom: 35rpx;
 }
 .complete_color{
     color: #e9a431;

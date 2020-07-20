@@ -1,43 +1,30 @@
 <!-- pages/myOrder/myOrder.wxml -->
 <view class="myOrder">
     <view class="top_bg">
-        <navigator url="/other/orderDetails/orderDetails">
-            <view class="current_order order_item">
-                <view class="top_order_info">
-                    <view class="top_order_number">订单号：202004220000000001</view>
-                    <view class="create_date">创建时间：2020-01-12</view>
-                </view>
-                <view class="order_title">
-                    <view class="title">2021英国大学硕士申请</view>
-                    <!-- <image src="../../static/image/jiantou_you.png" /> -->
-                    <view class="status_or red">进行中</view>
-                </view>
-                <view class="order_status">
-                    <text class="complete_color">￥5000.00</text>
-                    <text class="orderStatus">退款申请</text>
+    </view>
+    <view class="orderMy">
+        <navigator url="/other/orderDetails/orderDetails?id={{item.aod_key}}" wx:for="{{order}}">
+            <view class="complete-order">
+                <view class=" order_item">
+                    <view class="top_order_info">
+                        <view class="top_order_number">订单号：{{item.aod_key}}</view>
+                        <view class="create_date">创建时间：{{item.aod_created_date}}</view>
+                    </view>
+                    <view class="order_title">
+                        <view class="title">
+                        {{item.apd_name}}
+                        </view>
+                        <view class="status_or" wx:if='{{item.aos_status=="已完成"}}'>完成</view>
+                        <view class="status_or red" wx:else>{{item.aos_status}}</view>
+                        <!-- <image src="../../static/image/jiantou_you.png" /> -->
+                    </view>
+                    <view class="order_status">
+                        <text class=" complete_color">￥ {{item.aod_price}}</text>
+                        <text class="noneDate">完成时间：{{item.aod_mod_date}}</text>
+                        <text class="orderStatus" wx:if="{{item.aos_status!='已完成'&&item.aos_status!='未付款'&&item.aos_status!='拟定订单中'}}">退款申请</text>
+                    </view>
                 </view>
             </view>
         </navigator>
     </view>
-    <navigator url="/other/orderDetails/orderDetails">
-        <view class="complete-order">
-            <view class=" order_item">
-                <view class="top_order_info">
-                    <view class="top_order_number">订单号：202004220000000001</view>
-                    <view class="create_date">创建时间：2020-01-12</view>
-                </view>
-                <view class="order_title">
-                    <view class="title">
-                        2021英国大学硕士申请2021英国大学硕士申请2021英国大学硕士申请2021英国大学硕士申请2021英国大学硕士申请
-                    </view>
-                    <view class="status_or">完成</view>
-                    <!-- <image src="../../static/image/jiantou_you.png" /> -->
-                </view>
-                <view class="order_status">
-                    <text class=" complete_color">￥5000.00</text>
-                    <text class="noneDate">完成时间：2020年01月18日</text>
-                </view>
-            </view>
-        </view>
-    </navigator>
 </view>

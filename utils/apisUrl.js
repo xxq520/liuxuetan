@@ -93,7 +93,8 @@ module.exports = {
     GetAgentDetailsList : url + "/wsAgentDatabind.asmx/GetAgentDetailsList",
     // 创建聊天组信息
     CreateChatDirectGroup : url +"/wsMessageDatatrans.asmx/CreateChatDirectGroup",
-
+    // 获取客户端订单列表数据
+    GetUserAgentOrderList : url +"/wsAgentDatabind.asmx/GetUserAgentOrderList",
     // 获取订单提醒记录
     GetAgentOrderNotification : url +"/wsAgentDatabind.asmx/GetAgentOrderNotification",
     // 获取订单任务状态  例如：未完成  处理中 已完成名称
