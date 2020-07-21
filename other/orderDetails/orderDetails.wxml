@@ -5,19 +5,19 @@
             <view class="order-status">
                 <view class="left-title-info">
                     <image class="return" src="/static/image/return.png" />
-                    <text class="order-title line_1">2021英国大学硕士申请</text>
+                    <text class="order-title line_1">{{order.apd_name}}</text>
                 </view>
                 <text class="context-status">订单状态</text>
             </view>
             <view class="order-list">
                 <view class="consultant">
                     <view class="left-consultant-info">
-                        <image src="/static/image/toxian.png" />
+                        <image src="{{order.apd_image_url}}" />
                         <view class="certification">机构认证</view>
                     </view>
                     <view class="right-consultant-info">
                         <view class="right-private">
-                            <view class="consultant-name line_1">夏威宇顾问</view>
+                            <view class="consultant-name line_1">{{order.agt_name}}</view>
                             <view class="private">私信</view>
                         </view>
                         <view class="right-status">
@@ -37,7 +37,7 @@
                 </view>
                 <view class="status-item">
                     <text class="school">曼彻斯特大学申请</text>
-                    <text class="time">状态更新时间：2020年01月12日</text>
+                    <text class="time">状态更新时间：{{order.aod_mod_date}}</text>
                 </view>
             </view>
             <view class="order-list">
@@ -50,11 +50,11 @@
                     <view class="order-information-title">订单信息</view>
                     <view class="order-number">
                         <text>订单号:</text>
-                        <text>202004220000000001</text>
+                        <text>{{order.aod_key}}</text>
                     </view>
                     <view class="create-time">
                         <text>创建时间:</text>
-                        <text>2020年01月12日  15:59:44</text>
+                        <text>{{order.aod_created_date}}</text>
                     </view>
                 </view>
                 <view class="right-copy">复制</view>

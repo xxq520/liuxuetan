@@ -3,7 +3,7 @@
     <view class="top_bg">
     </view>
     <view class="orderMy">
-        <navigator url="/other/orderDetails/orderDetails?id={{item.aod_key}}" wx:for="{{order}}">
+        <navigator url="/other/orderDetails/orderDetails?id={{item.aod_key}}&agt={{item.agt_key}}" wx:for="{{order}}">
             <view class="complete-order">
                 <view class=" order_item">
                     <view class="top_order_info">
