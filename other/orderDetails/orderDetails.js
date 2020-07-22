@@ -15,7 +15,9 @@ Page({
     // 订单数据
     order: {},
     // 附件信息
-    fujian: []
+    fujian: [],
+    // 附件类型列表
+    fujianType: []
   },
 
   /**
@@ -74,6 +76,29 @@ Page({
           order:res.data[0]
         })
         this.GetAgentOrderAttachmentList()
+        this.GetAgentOrderAttachmentType()
+      }
+    })
+  },
+  // 获取可以存储的附件类型
+  GetAgentOrderAttachmentType() {
+    var userInfo = wx.getStorageSync('userInfo');
+    var data = {
+      toast: true,// 是否显示加载动画
+      data:{
+        aat_id: 0,  // 代理订单附件类型UID *0返回所有记录
+      },
+      type:"get",
+      url:url.GetAgentOrderAttachmentType,
+      header:{"Content-Type":"application/json; charset=utf-8"}
+    }
+    var that = this;
+    request.getReq(data).then(res=>{
+      console.log(res,787878787)
+      if(res.data[0].Code!=404){
+        this.setData({
+          fujianType:res.data
+        })
       }
     })
   },
@@ -83,18 +108,12 @@ Page({
     var data = {
       toast: true,// 是否显示加载动画
       data:{
+        aoa_key: "",  // 加密代理订单缓存记录UID密钥
+        aod_key: this.data.orderId, // 加密代理订单UID密钥
         // 用户的登录id
         agt_key :this.data.agtId, 
-        aod_key: this.data.orderId, // 加密代理订单UID密钥
-        aoa_key: "",  // 加密代理订单缓存记录UID密钥
         agt_name: "", // 过滤代理名称
         aat_type: "", // 代理订单附件类型过滤
-        apt_type: "", // 代理订购产品类型过滤
-        aod_order_ref: "", // 代理订单参考过滤
-        aos_status: "", // 代理订单状态过滤
-        cusr_fullname: "", // 代理订购客户端用户名进行过滤
-        ausr_fullname: "", // 代理订单处理代理用户名进行筛选
-        str_created_date: "", // 代理订单创建日期的字符串格式过滤
         pageSize:1,
         pageNumber:1
       },
@@ -106,8 +125,14 @@ Page({
     request.getReq(data).then(res=>{
       console.log(res,8889)
       if(res.data[0].Code!=404){
+        for (var i = 0; i < res.data.length; i++) {
+          res.data[i].aoa_created_date = res.data[i].aoa_created_date.split("(")[1];
+          res.data[i].aoa_created_date = res.data[i].aoa_created_date.split(")")[0];
+          res.data[i].aoa_created_date = request.format(res.data[i].aoa_created_date, "YYYY-MM-dd HH-mm-ss");
+        }
+        
         this.setData({
-          fujian:res.data
+          fujian: res.data
         })
       }
     })
@@ -117,6 +142,42 @@ Page({
    */
   onReady: function () {
 
+  },
+  // 保存订单附件
+  SaveAgentOrderAttachment() {
+    var userInfo = wx.getStorageSync('userInfo');
+    var data = {
+      toast: true,// 是否显示加载动画
+      data:{
+        // 用户的登录id
+        agt_key :this.data.agtId, 
+        aod_key: this.data.orderId, // 加密代理订单UID密钥
+        aoa_key: "",  // 加密代理订单缓存记录UID密钥
+        aoa_url: "http:baidu.com", // 代理订单缓存URL
+        aat_type: this.data.fujianType[0].aat_type, // 代理订单附件类型过滤
+        aoa_is_valid:true,  // 如果代理订单附件有效
+        usr_key : userInfo.usr_key 
+      },
+      type:"post",
+      url:url.SaveAgentOrderAttachment,
+      header:{"Content-Type":"application/json; charset=utf-8"}
+    }
+    var that = this;
+    request.getReq(data).then(res=>{
+      console.log(res,88891111)
+      if(res.data[0].Code!=404){
+        wx.showToast({
+          title: '发表成功!',
+          icon:"none"
+        })
+        this.GetAgentOrderAttachmentList()
+      }else{
+        wx.showToast({
+          title: '发表失败!稍后重试。',
+          icon:"none"
+        })
+      }
+    })
   },
 
   /**

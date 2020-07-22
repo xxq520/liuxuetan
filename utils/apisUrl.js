@@ -105,5 +105,8 @@ module.exports = {
     SaveAgentOrderTasksArrayList : url+"/wsAgentDatabind.asmx/SaveAgentOrderTasksArrayList",
     // 获取代理订单附件
     GetAgentOrderAttachmentList : url+"/wsAgentDatabind.asmx/GetAgentOrderAttachmentList",
-
+    // c端保存订单附件
+    SaveAgentOrderAttachment : url+"/wsAgentDatatrans.asmx/SaveAgentOrderAttachment",
+    // 获取附件类型，用于保存附件
+    GetAgentOrderAttachmentType : url+"/wsAgentDatabind.asmx/GetAgentOrderAttachmentType",
 };

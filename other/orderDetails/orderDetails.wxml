@@ -21,7 +21,7 @@
                             <view class="private">私信</view>
                         </view>
                         <view class="right-status">
-                            <view class="status">进行中</view>
+                            <view class="status">{{order.aos_status}}</view>
                             <view class="refund">退款申请</view>
                         </view>
                     </view>
@@ -33,7 +33,7 @@
             </view>
             <view class="order-list">
                 <view class="right-status">
-                    <view class="status">进行中</view>
+                    <view class="status">{{order.aos_status}}</view>
                 </view>
                 <view class="status-item">
                     <text class="school">曼彻斯特大学申请</text>
@@ -42,7 +42,7 @@
             </view>
             <view class="order-list">
                 <view class="right-status">
-                            <view class="status">进行中</view>
+                            <view class="status">{{order.aos_status}}</view>
                         </view>
             </view>
             <view class="order-information">
@@ -68,18 +68,18 @@
                 <view class="Leave-message-info">
                     <image src="/static/image/fujianshangchuan.png" />
                     <text>附件上传</text>
-                    <view class="published">发表</view>
+                    <view  bindtap="SaveAgentOrderAttachment" class="published">发表</view>
                 </view>
             </view>
             <view class="Leave-message-list">
-                <view class="Leave-message-item">
+                <view class="Leave-message-item" wx:for="{{fujian}}">
                     <view class="user-info">
                         <image src="/static/image/pinglun_tx.png" />
-                        <text>我已经要了老师推荐信</text>
+                        <text>{{item.agt_name}}</text>
                     </view>
                     <view class="upload-info">
-                        <text class="upload-ts">“杨老师推荐信”已上传</text>
-                        <text class="upload-time">2020-04-03 22:43</text>
+                        <text class="upload-ts">“{{item.aat_type}}”已上传</text>
+                        <text class="upload-time">{{item.aoa_created_date}}</text>
                     </view>
                 </view>
             </view>
