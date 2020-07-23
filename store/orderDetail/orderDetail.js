@@ -49,14 +49,20 @@ Page({
       return;
     }
     var userInfo = wx.getStorageSync('userInfo');
+    var str = "";
+    for(let i=0;i<this.data.tixing.length; i++){
+      str += this.data.tixing[i].ntc_content?this.data.tixing[i].ntc_content+"|":""
+    }
+    console.log(str)
+    return
     var data = {
       toast: false,// 是否显示加载动画
       data:{
         agt_key :userInfo.store, 
         aod_key: this.data.orderId, // 加密代理订单UID密钥
-        delimited_ata_task:this.data.renwuVal,
-        new_ats_status:"未完成",
-        delimiter:1,
+        delimited_ata_task:str?str+this.data.renwuVal:this.data.renwuVal,
+        new_ats_status:this.data.orderStatus[0].ats_status,
+        delimiter:"|",
         usr_key:userInfo.usr_key
       },
       type:"post",
@@ -85,6 +91,9 @@ Page({
   send(){
     var userInfo = wx.getStorageSync('userInfo');
     var date = new Date();
+    if(!this.data.date){
+      return false;
+    }
     var data = {
       toast: true,// 是否显示加载动画
       data:{
@@ -119,9 +128,7 @@ Page({
           title:"添加成功",
           icon:"none"
         })
-        setTimeout(()=>{
-          wx.navigateBack()
-        },1000)
+        this.GetAgentOrderNotification();
       }
     })
   },
@@ -192,6 +199,14 @@ Page({
     request.getReq(data).then(res=>{
       console.log(res,8889110)
       if(res.data[0].Code!=404){
+        for(var i=0;i<res.data.length; i++){
+          res.data[i].nta_created_date = res.data[i].nta_created_date.split("(")[1];
+        res.data[i].nta_created_date = res.data[i].nta_created_date.split(")")[0];
+        res.data[i].nta_created_date = request.format(res.data[i].nta_created_date, "YYYY-MM-dd HH-mm-ss");
+        res.data[i].nta_notify_date = res.data[i].nta_notify_date.split("(")[1];
+        res.data[i].nta_notify_date = res.data[i].nta_notify_date.split(")")[0];
+        res.data[i].nta_notify_date = request.format(res.data[i].nta_notify_date, "YYYY-MM-dd");
+        }
         this.setData({
           tixing:res.data
         })
@@ -219,7 +234,7 @@ Page({
       data:{
         // 用户的登录id
         ata_id: 0, // 加密代理订单UID密钥
-        ats_id:"0"
+        ats_id: 0
       },
       type:"get",
       url:url.GetAgentOrderTaskStatus,
@@ -230,7 +245,7 @@ Page({
       console.log(res,8889110110)
       if(res.data[0].Code!=404){
         this.setData({
-          tixing:res.data
+          orderStatus:res.data
         })
       }
     })

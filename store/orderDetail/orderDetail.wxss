@@ -186,7 +186,7 @@ page{
     margin-bottom: 20rpx;
 }
 .MemoTetx textarea{
-    height: auto;
+    height: 100rpx;
 }
 .sendMemo{
     display: flex;

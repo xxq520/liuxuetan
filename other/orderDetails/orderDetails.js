@@ -17,7 +17,9 @@ Page({
     // 附件信息
     fujian: [],
     // 附件类型列表
-    fujianType: []
+    fujianType: [],
+    // 订单提醒
+    tixing: []
   },
 
   /**
@@ -30,6 +32,41 @@ Page({
       agtId: options.agt
     })
     this.getOrderTiem()
+    this.GetAgentOrderTaskList()
+    this.GetAgentOrderNotification()
+  },
+   // 获取订单提醒记录
+  GetAgentOrderNotification() {
+    var userInfo = wx.getStorageSync('userInfo');
+    var data = {
+      toast: true,// 是否显示加载动画
+      data:{
+        // 用户的登录id
+        aod_key: this.data.orderId, // 加密代理订单UID密钥
+        pageSize:1,
+        pageNumber:1
+      },
+      type:"get",
+      url:url.GetAgentOrderNotification,
+      header:{"Content-Type":"application/json; charset=utf-8"}
+    }
+    var that = this;
+    request.getReq(data).then(res=>{
+      console.log(res,8889110)
+      if(res.data[0].Code!=404){
+        for(var i=0;i<res.data.length; i++){
+          res.data[i].nta_created_date = res.data[i].nta_created_date.split("(")[1];
+        res.data[i].nta_created_date = res.data[i].nta_created_date.split(")")[0];
+        res.data[i].nta_created_date = request.format(res.data[i].nta_created_date, "YYYY-MM-dd HH-mm-ss");
+        res.data[i].nta_notify_date = res.data[i].nta_notify_date.split("(")[1];
+        res.data[i].nta_notify_date = res.data[i].nta_notify_date.split(")")[0];
+        res.data[i].nta_notify_date = request.format(res.data[i].nta_notify_date, "YYYY-MM-dd");
+        }
+        this.setData({
+          tixing:res.data
+        })
+      }
+    })
   },
   // 获取订单数据
   getOrderTiem() {
@@ -175,6 +212,55 @@ Page({
         wx.showToast({
           title: '发表失败!稍后重试。',
           icon:"none"
+        })
+      }
+    })
+  },
+   // 获取订单任务列表
+   GetAgentOrderTaskList:function() {
+    var userInfo = wx.getStorageSync('userInfo');
+    var data = {
+      toast: false,// 是否显示加载动画
+      data:{
+        aod_key: this.data.orderId, // 加密代理订单UID密钥
+        pageSize:1,
+        pageNumber:1,
+      },
+      type:"get",
+      url:url.GetAgentOrderTaskList,
+      header:{"Content-Type":"application/json; charset=utf-8"}
+    }
+    var that = this;
+    request.getReq(data).then(res=>{
+      console.log(res,445566)
+      if(res.data[0].Code!=404){
+        this.setData({
+          taskList:res.data
+        })
+      }
+    })
+  },
+   // 获取订单提醒记录
+   GetAgentOrderNotification() {
+    var userInfo = wx.getStorageSync('userInfo');
+    var data = {
+      toast: true,// 是否显示加载动画
+      data:{
+        // 用户的登录id
+        aod_key: this.data.orderId, // 加密代理订单UID密钥
+        pageSize:1,
+        pageNumber:1
+      },
+      type:"get",
+      url:url.GetAgentOrderNotification,
+      header:{"Content-Type":"application/json; charset=utf-8"}
+    }
+    var that = this;
+    request.getReq(data).then(res=>{
+      console.log(res,8889110)
+      if(res.data[0].Code!=404){
+        this.setData({
+          tixing:res.data
         })
       }
     })

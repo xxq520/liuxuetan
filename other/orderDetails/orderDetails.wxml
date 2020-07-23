@@ -26,18 +26,9 @@
                         </view>
                     </view>
                 </view>
-                <view class="status-item">
-                    <text class="school">曼彻斯特大学申请</text>
-                    <text class="time">状态更新时间：2020年01月12日</text>
-                </view>
-            </view>
-            <view class="order-list">
-                <view class="right-status">
-                    <view class="status">{{order.aos_status}}</view>
-                </view>
-                <view class="status-item">
-                    <text class="school">曼彻斯特大学申请</text>
-                    <text class="time">状态更新时间：{{order.aod_mod_date}}</text>
+                <view class="status-item" wx:for="{{tixing}}">
+                    <text class="school">{{item.ntc_content}}</text>
+                    <text class="time">状态更新时间：{{item.str_nta_notify_date}}</text>
                 </view>
             </view>
             <view class="order-list">
