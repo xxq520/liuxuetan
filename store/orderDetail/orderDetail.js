@@ -53,8 +53,6 @@ Page({
     for(let i=0;i<this.data.tixing.length; i++){
       str += this.data.tixing[i].ntc_content?this.data.tixing[i].ntc_content+"|":""
     }
-    console.log(str)
-    return
     var data = {
       toast: false,// 是否显示加载动画
       data:{

@@ -43,7 +43,7 @@
             <button bindtap="sendRenwu">确认</button>
         </view>
         <view class="orderPre taskList b-t" wx:for="{{taskList}}" >
-            <view class="namepreson">{{item.aod_remark}}</view>
+            <view class="namepreson">{{item.ata_task}}</view>
             <view class="nameData">
                  <image wx:if="{{item.ats_status!='未完成'}}" src="/static/image/select.png" />
                   <image wx:else src="/static/image/nook.png" />

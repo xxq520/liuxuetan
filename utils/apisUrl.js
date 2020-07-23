@@ -102,7 +102,7 @@ module.exports = {
     // 获取订单任务列表
     GetAgentOrderTaskList  : url +"/wsAgentDatabind.asmx/GetAgentOrderTaskList",
     // 保存任务订单列表数据
-    SaveAgentOrderTasksArrayList : url+"/wsAgentDatabind.asmx/SaveAgentOrderTasksArrayList",
+    SaveAgentOrderTasksArrayList : url+"/wsAgentDatatrans.asmx/SaveAgentOrderTasksArrayList",
     // 获取代理订单附件
     GetAgentOrderAttachmentList : url+"/wsAgentDatabind.asmx/GetAgentOrderAttachmentList",
     // c端保存订单附件
