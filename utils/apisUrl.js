@@ -109,4 +109,6 @@ module.exports = {
     SaveAgentOrderAttachment : url+"/wsAgentDatatrans.asmx/SaveAgentOrderAttachment",
     // 获取附件类型，用于保存附件
     GetAgentOrderAttachmentType : url+"/wsAgentDatabind.asmx/GetAgentOrderAttachmentType",
+    // 聊天中创建订单
+    SaveNewAgentOrderRecord : url+"/SaveNewAgentOrderRecord",
 };

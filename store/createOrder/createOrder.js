@@ -28,7 +28,9 @@ Page({
     // 修改的产品信息
     product: {},
     // 聊天好友列表数据
-    messageList:[]
+    messageList:[],
+    // 聊天的chat数据
+    chat: {}
   },
   // 服务分类选择事件
   bindMultiPickerChange(e){
@@ -62,7 +64,6 @@ Page({
         if(res.data[i].last_chat_date){
           res.data[i].last_chat_date = res.data[i].last_chat_date .replace("/Date(","");
           res.data[i].last_chat_date = res.data[i].last_chat_date .replace(")/","");
-          res.data[i].last_chat_date=that.formatDate(res.data[i].last_chat_date)
         }
       }
       if(!res.data[0].Exception){
@@ -78,52 +79,136 @@ Page({
   },
   // 点击确认并发送事件
   async submit() {
-    // var resData = {
-    //   data:{
-    //     aos_Id:0
-    //   },
-    //   type:"get",
-    //   url:url.GetAgentOrderStatus,
-    //   header:{"Content-Type":"application/json; charset=utf-8"}
-    // }
-    // request.getReq(resData).then(res=>{
-    //   console.log(res,666666)
-    // })
-    // return
     var {goodName,price,miaoshu,fuwu} = this.data;
+    if(!this.data.array[this.data.fuwu]){
+      wx.showToast({
+        title: '请选择商品',
+        icon:"none"
+      })
+      return
+    }
+    if(!this.data.array[this.data.fuwu].apd_key){
+      wx.showToast({
+        title: '商品有误',
+        icon:"none"
+      })
+      return
+    }
+    if(isNaN(price)||price<=0){
+      wx.showToast({
+        title: '价格有误',
+        icon:"none"
+      })
+      return
+    }
+    var userInfo = wx.getStorageSync('userInfo');
+    if(this.data.chat.usr_id) {
+      var data = {
+        toast: true,// 是否显示加载动画
+        data:{
+          // 用户的登录id
+          agt_key :userInfo.store,  // 加密代理UID密钥
+          aod_key :"" , // 加密代理产品记录UID密钥仅用于更新钱包
+          apd_key: this.data.array[this.data.fuwu].apd_key, // 加密代理订单产品记录UID键
+          client_usr_key: userInfo.usr_key ,//  客户端用户UID加密密钥
+          aod_order_ref: "", //  代理订单参考
+          new_aos_status: "未付款", // 新代理订单状态（见3.1.1.12）
+          aod_price: price ,//  代理订单价格
+          aod_remark: miaoshu, // 代理订单备注
+          act_type: "", // 代理订单佣金类型（百分比/金额）
+          aod_commission: 0, // 代理订单佣金价值
+          usr_key: userInfo.usr_key, //密用户记录UID密钥用于保存用户
+        },
+        type:"post",
+        url:url.SaveNewAgentOrderRecord,
+        header:{"Content-Type":"application/json; charset=utf-8"}
+      }
+      var that = this;
+      request.getReq(data).then(res=>{
+        console.log(res,8889899)
+        if(res.data[0].response == "储存成功"){
+          // 是否聊天过来创建数据的
+          if(this.data.chat.usr_id){
+            this.sendMessage(res.data[0].aod_key)
+          } else {
+            wx.showToast({
+              title: '创建成功',
+              icon: "none"
+            })
+            setTimeout(()=>{
+              wx.navigateBack();
+            },1000);
+          }
+        }
+      })
+    } else {
+      var data = {
+        toast: true,// 是否显示加载动画
+        data:{
+          // 用户的登录id
+          agt_key :userInfo.store,  // 加密代理UID密钥
+          aod_key :"" , // 加密代理产品记录UID密钥仅用于更新钱包
+          apd_key: this.data.array[this.data.fuwu].apd_key, // 加密代理订单产品记录UID键
+          client_usr_key: userInfo.usr_key ,//  客户端用户UID加密密钥
+          aod_order_ref: "", //  代理订单参考
+          new_aos_status: "拟定订单中", // 新代理订单状态（见3.1.1.12）
+          aod_price: price ,//  代理订单价格
+          aod_remark: miaoshu, // 代理订单备注
+          act_type: "", // 代理订单佣金类型（百分比/金额）
+          aod_commission: 0, // 代理订单佣金价值
+          usr_key: userInfo.usr_key, //密用户记录UID密钥用于保存用户
+        },
+        type:"post",
+        url:url.SaveAgentOrderRecord,
+        header:{"Content-Type":"application/json; charset=utf-8"}
+      }
+      var that = this;
+      request.getReq(data).then(res=>{
+        console.log(res,8889899)
+        if(res.data[0].response == "储存成功"){
+          // 是否聊天过来创建数据的
+            wx.showToast({
+              title: '创建成功',
+              icon: "none"
+            })
+            setTimeout(()=>{
+              wx.navigateBack();
+            },1000);
+        }
+      })
+    }
+  },
+  // 发送订单信息给聊天
+  sendMessage(aod_key) {
     var userInfo = wx.getStorageSync('userInfo');
     var data = {
-      toast: true,// 是否显示加载动画
-      data:{
+      toast: true, // 是否显示加载动画
+      data: {
         // 用户的登录id
-        agt_key :userInfo.store,  // 加密代理UID密钥
-        aod_key :"" , // 加密代理产品记录UID密钥仅用于更新钱包
-        apd_key: this.data.array[this.data.fuwu].apd_key, // 加密代理订单产品记录UID键
-        client_usr_key: userInfo.usr_key ,//  客户端用户UID加密密钥
-        aod_order_ref: "", //  代理订单参考
-        new_aos_status: "拟定订单中", // 新代理订单状态（见3.1.1.12）
-        aod_price: price ,//  代理订单价格
-        aod_remark: miaoshu, // 代理订单备注
-        act_type: "", // 代理订单佣金类型（百分比/金额）
-        aod_commission: 0, // 代理订单佣金价值
-        usr_key: userInfo.usr_key, //密用户记录UID密钥用于保存用户
+        usr_id: this.data.chat.usr_id || 0,
+        // 如果不搜索特定的新闻/帖子记录，则为0
+        en_grp_id: this.data.chat.en_grp_id,
+        // 聊天的类型
+        grp_type: this.data.chat.grp_type,
+        // 发送的消息
+        message: `http://liuxuetalk.com/confirmorder/${aod_key}`
       },
-      type:"post",
-      url:url.SaveAgentOrderRecord,
-      header:{"Content-Type":"application/json; charset=utf-8"}
+      type: "POST",
+      url: url.SaveChatGroupMessage,
+      header: {
+        "Content-Type": "application/json; charset=utf-8"
+      }
     }
     var that = this;
-    request.getReq(data).then(res=>{
-      console.log(res,8889899)
-      if(res.data[0].response == "储存成功"){
-        wx.showToast({
-          title: '创建成功',
-          icon: "none"
-        })
-        setTimeout(()=>{
-          wx.navigateBack();
-        },1000);
-      }
+    request.getReq(data).then(res => {
+      console.log(res, 110)
+      wx.showToast({
+        title: '创建发送成功',
+        icon: "none"
+      })
+      setTimeout(()=>{
+        wx.navigateBack();
+      },1000);
     })
   },
   // 获取产品列表数据
@@ -216,6 +301,12 @@ Page({
   onLoad: function (options) {
     this.getProduct();
     this.getMessageList();
+    // 是否聊天过来创建订单的
+    if(options.chat){
+      this.setData({
+        chat:wx.getStorageSync('chatP')
+      })
+    }
     if(options.id){
       this.setData({
         edit: options.id

@@ -161,6 +161,23 @@ Page({
       that.getHistory2()
     })
   },
+  // 点击创建订单的时候
+  addOrder() {
+    var userInfo = wx.getStorageSync('userInfo');
+    wx.setStorageSync('chatP', {
+      // 用户的登录id
+      usr_id: userInfo.usr_id || 0,
+      // 如果不搜索特定的新闻/帖子记录，则为0
+      en_grp_id: this.data.id,
+      // 聊天的类型
+      grp_type: this.data.grp_type,
+      // 发送的消息
+      message: this.data.chatContent
+    })
+    wx.navigateTo({
+      url: '/store/createOrder/createOrder?chat=true',
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -181,7 +198,6 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    clearInterval(this.data.timer)
   },
 
   /**

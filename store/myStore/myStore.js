@@ -120,8 +120,7 @@ Page({
     this.GetAgentOverviewDetails();
     // 获取管理员的通知
     this.GetAdminToAgentNotification();
-    // 获取当前管理员的提示事项
-    this.GetAgentNotification();
+    
     // 获取当前顾问
     this.GetAgentDetailsList()
   },
@@ -165,7 +164,7 @@ Page({
         pageNumber:1
       },
       type:"get",
-      url:url.GetAdminToAgentNotification,
+      url:url.GetAgentNotification,
       header:{"Content-Type":"application/json; charset=utf-8"}
     }
     var that = this;
@@ -287,6 +286,10 @@ Page({
     wx.reLaunch({
       url: e.currentTarget.dataset.url,
     })
+  },
+  onShow(){
+    // 获取当前管理员的提示事项
+    this.GetAgentNotification();
   }
 });
 

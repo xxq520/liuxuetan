@@ -46,17 +46,9 @@
 				<view class="time">提醒日期</view>
 			</view>
 			<view class="matters-info">
-				<view class="matters-item">
-					<view class="remind_info line_1">事提醒客户提供成客户提供成...</view>
-					<view class="remind_date line_1">2020年04月10日</view>
-				</view>
-				<view class="matters-item">
-					<view class="remind_info line_1">事提醒客户提供成客户提供成...</view>
-					<view class="remind_date line_1">2020年04月10日</view>
-				</view>
-				<view class="matters-item">
-					<view class="remind_info line_1">事提醒客户提供成客户提供成...</view>
-					<view class="remind_date line_1">2020年04月10日</view>
+				<view class="matters-item" wx:for="{{message}}">
+					<view class="remind_info line_1">{{item.ntc_content}}</view>
+					<view class="remind_date line_1">{{item.str_nta_notify_date}}</view>
 				</view>
 			</view>
 			<navigator url="/store/Addremind/Addremind">
