@@ -20,7 +20,9 @@ Page({
     // 当前聊天拉取数据的定时器
     timer: "",
     // 是否加载默认聊天数据
-    isLoad:true
+    isLoad:true,
+    // 对方的userID
+    chat:""
   },
   // 历史记录
   getHistory() {
@@ -117,6 +119,11 @@ Page({
       id: options.id + "==%^#%",
       grp_type: options.grp_type
     })
+    if(options.chat){
+      this.setData({
+        chat:options.chat
+      })
+    }
     this.getHistory();
     // 每五秒请求数据判断是否有新消息
     var that = this;
@@ -164,6 +171,9 @@ Page({
   // 点击创建订单的时候
   addOrder() {
     var userInfo = wx.getStorageSync('userInfo');
+    if(!userInfo.store){
+      return false;
+    }
     wx.setStorageSync('chatP', {
       // 用户的登录id
       usr_id: userInfo.usr_id || 0,
@@ -172,7 +182,8 @@ Page({
       // 聊天的类型
       grp_type: this.data.grp_type,
       // 发送的消息
-      message: this.data.chatContent
+      message: this.data.chatContent,
+      chat_user: this.data.chat
     })
     wx.navigateTo({
       url: '/store/createOrder/createOrder?chat=true',

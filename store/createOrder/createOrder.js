@@ -110,13 +110,14 @@ Page({
           agt_key :userInfo.store,  // 加密代理UID密钥
           aod_key :"" , // 加密代理产品记录UID密钥仅用于更新钱包
           apd_key: this.data.array[this.data.fuwu].apd_key, // 加密代理订单产品记录UID键
-          client_usr_key: userInfo.usr_key ,//  客户端用户UID加密密钥
+          client_usr_key: this.data.chat.chat_user ,//  客户端用户UID加密密钥
           aod_order_ref: "", //  代理订单参考
           new_aos_status: "未付款", // 新代理订单状态（见3.1.1.12）
           aod_price: price ,//  代理订单价格
           aod_remark: miaoshu, // 代理订单备注
-          act_type: "", // 代理订单佣金类型（百分比/金额）
-          aod_commission: 0, // 代理订单佣金价值
+          str_task_list:"", //  代理订单任务列表的分隔字符串（*用“|”分隔符分隔）
+          str_attachment_list:"", //  代理订单附件列表的分隔字符串（*用“|”分隔符分隔）
+          str_attachment_type_list:"", //  代理订单附件类型列表的分隔字符串
           usr_key: userInfo.usr_key, //密用户记录UID密钥用于保存用户
         },
         type:"post",
@@ -129,7 +130,7 @@ Page({
         if(res.data[0].response == "储存成功"){
           // 是否聊天过来创建数据的
           if(this.data.chat.usr_id){
-            this.sendMessage(res.data[0].aod_key)
+            this.sendMessage(res.data[0].return)
           } else {
             wx.showToast({
               title: '创建成功',
