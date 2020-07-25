@@ -10,13 +10,7 @@ Page({
   data: {
     array:[],
     arrayFs:[],
-    fileList: [
-      {
-        url: 'http://iph.href.lu/60x60?text=default',
-        name: '图片2',
-        isImage: true
-      }
-    ],
+    fileList: [],
     // 商品的名称
     goodName: "",
     // 商品的价格
@@ -70,6 +64,22 @@ Page({
       })
     })
   },
+  afterRead(event) {
+    const { file } = event.detail;
+    // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
+    request.uploadFile(file.path).then(res=>{
+      console.log(res)
+      let arr = this.data.fileList;
+      arr.push({
+        url: `http://www.liuxuetalk.com/${res}`,
+        name: '图片',
+        isImage: true
+      });
+      this.setData({
+        fileList: arr
+      })
+    }).catch(err=>{})
+  },
   // 点击确认并发送事件
   async submit() {
     var {goodName,price,miaoshu,fuwu} = this.data;
@@ -97,7 +107,7 @@ Page({
         apd_name : goodName, // 代理产品名称
         new_pds_status: '新产品审批完成', // 新代理产品中文状态（见3.1.1.7）
         apd_ref : "", // 代理产品参考
-        apd_image_url :'http://iph.href.lu/60x60?text=default', // 代理产品图像URL
+        apd_image_url :this.data.fileList[0]?this.data.fileList[0].url:'http://iph.href.lu/60x60?text=default', // 代理产品图像URL
         apd_description : miaoshu, // 代理产品说明
         apd_price : price, // 代理产品价格
         apd_commission: 0, // 代理产品粉碎价值 *创建新代理产品时为0

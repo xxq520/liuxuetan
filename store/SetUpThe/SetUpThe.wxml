@@ -29,11 +29,11 @@
 	</view>
 	<view class="background-image">
 		<view class="upload-title">背景图片上传</view>
-		<van-uploader file-list="{{fileList}}" bind:delete="delete" max-count="1"/>
+		<van-uploader file-list="{{fileList}}" bind:delete="delete" max-count="2" bind:after-read="afterRead"/>
 	</view>
 	<view class="intro-image">
 		<view class="upload-title">简介图片上传</view>
-		<van-uploader file-list="{{fileList}}"max-count="1" />
+		<van-uploader file-list="{{fileList}}"max-count="2" bind:after-read="afterRead"/>
 	</view>
 	<picker class="filter" range="{{filterArr}}">
 		<view class="Where-countries">

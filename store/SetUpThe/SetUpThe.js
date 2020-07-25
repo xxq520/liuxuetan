@@ -30,6 +30,13 @@ Page({
       fileList:arr
     })
   },
+  afterRead(event) {
+    const { file } = event.detail;
+    // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
+    request.uploadFile(file.path).then(res=>{
+      console.log(res,789);
+    }).catch(err=>{})
+  },
     // tab选项卡切换
     goTab(e) {
         console.log(e)

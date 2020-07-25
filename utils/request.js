@@ -38,28 +38,28 @@ function getRequest(requestParameter) {
         apisUrl.SaveAgentOrderRecord,
     ]
     var userInfo = wx.getStorageSync('userInfo');
-    if(urlArr.indexOf(requestParameter.url)!=-1&&!userInfo) {
+    if (urlArr.indexOf(requestParameter.url) != -1 && !userInfo) {
         wx.showModal({
             title: '请先登录！',
             content: '该功能需要登录后即可正常使用',
-            showCancel: false,//是否显示取消按钮
-            confirmText:"确认",//默认是“确定”
-            confirmColor: 'skyblue',//确定文字的颜色
+            showCancel: false, //是否显示取消按钮
+            confirmText: "确认", //默认是“确定”
+            confirmColor: 'skyblue', //确定文字的颜色
             success: function (res) {
-               if (res.cancel) {
-                  //点击取消,默认隐藏弹框
-               } else {
-                  //点击确定
-                  wx.navigateTo({
-                    url: '/pages/login/login',
-                  })
-               }
+                if (res.cancel) {
+                    //点击取消,默认隐藏弹框
+                } else {
+                    //点击确定
+                    wx.navigateTo({
+                        url: '/pages/login/login',
+                    })
+                }
             },
-            fail: function (res) { },//接口调用失败的回调函数
-            complete: function (res) { },//接口调用结束的回调函数（调用成功、失败都会执行）
-         })
-         wx.hideLoading({})
-         return false;
+            fail: function (res) {}, //接口调用失败的回调函数
+            complete: function (res) {}, //接口调用结束的回调函数（调用成功、失败都会执行）
+        })
+        wx.hideLoading({})
+        return false;
     }
     // 返回的是一个promise对像
     return new Promise((resolve, reject) => {
@@ -68,7 +68,9 @@ function getRequest(requestParameter) {
             wx.request({
                 url: apisUrl.getAccessKey,
                 method: 'post',
-                header: { "Content-Type": `application/x-www-form-urlencoded` },
+                header: {
+                    "Content-Type": `application/x-www-form-urlencoded`
+                },
                 data: {
                     apiKey,
                     security: securityKey
@@ -101,7 +103,7 @@ function getRequest(requestParameter) {
                     showModal('网络错误', '网络出错，请刷新重试', false)
                     reject(error);
                 },
-                complete: function(){
+                complete: function () {
                     if (requestParameter.toast) {
                         wx.hideLoading();
                     }
@@ -124,24 +126,54 @@ function showModal(title, content, showCancel) {
     });
 }
 // 时间格式化
-function add0(m){return m<10?'0'+m:m }
-function format(shijianchuo,type) {
+function add0(m) {
+    return m < 10 ? '0' + m : m
+}
+
+function format(shijianchuo, type) {
     var time = new Date(Number(shijianchuo));
     var y = time.getFullYear();
-    var m = time.getMonth()+1;
+    var m = time.getMonth() + 1;
     var d = time.getDate();
     var h = time.getHours();
     var mm = time.getMinutes();
     var s = time.getSeconds();
-    if(type=='YYYY-MM-dd'){
-        return y+'-'+add0(m)+'-'+add0(d)
+    if (type == 'YYYY-MM-dd') {
+        return y + '-' + add0(m) + '-' + add0(d)
     } else {
-        return y+'-'+add0(m)+'-'+add0(d)+' '+add0(h)+':'+add0(mm)+':'+add0(s);
+        return y + '-' + add0(m) + '-' + add0(d) + ' ' + add0(h) + ':' + add0(mm) + ':' + add0(s);
     }
+}
+// 上传文件
+function uploadFile(tempFilePaths) {
+    console.log(tempFilePaths)
+    return
+    return new Promise((resolve, reject) => {
+        wx.showLoading()
+        wx.uploadFile({
+            url: apisUrl.uploadFile + "?type=ProfilePic", // 仅为示例，非真实的接口地址
+            filePath: tempFilePaths,
+            name: 'Data',
+            formData: {},
+            success(res) {
+                if (res.data && JSON.parse(res.data)) {
+                    resolve(JSON.parse(res.data)[0].return)
+                } else {
+                    wx.showToast({
+                        title: '文件上传失败',
+                    })
+                }
+            },
+            complete(){
+                wx.hideLoading({})
+            }
+        });
+    })
 }
 module.exports = {
     getReq: getRequest,
-    format
+    format,
+    uploadFile
     // postReq: postReq,
     // header: header,
     // rootDocment: rootDocment,
