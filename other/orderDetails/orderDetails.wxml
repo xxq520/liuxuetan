@@ -54,11 +54,12 @@
         <view class="bj_f5"></view>
         <view class="Leave-message">
             <text class="Leave-message-title">留言</text>
+            <input readonly="readonly" value="{{aod_remark}}" /> 
             <view class="Leave-message-box">
-                <textarea maxlength="6940" class="Leave-message-context" placeholder=""></textarea>
+                <textarea maxlength="6940" value="{{aoa_url}}"  readonly="readonly"  class="Leave-message-context" placeholder=""></textarea>
                 <view class="Leave-message-info">
                     <image src="/static/image/fujianshangchuan.png" />
-                    <text>附件上传</text>
+                    <text bindtap="uploadFiles">附件上传</text>
                     <view  bindtap="SaveAgentOrderAttachment" class="published">发表</view>
                 </view>
             </view>

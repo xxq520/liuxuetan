@@ -142,29 +142,17 @@ Page({
     wx.chooseImage({
       count: 1,
       success: function (res) {
-        console.log(res.tempFilePaths[0],64);
-        wx.uploadFile({
-          url: url.uploadImg, //此处换上你的接口地址
-          filePath: res.tempFilePaths[0],
-          name: 'FileUpload',
-          header: {
-          "Content-Type": "multipart/form-data",
-          },
-          formData: { FileUpload: 1},     //需要传的关于这个图片的信息，比如这个图片属于哪个用户的
-          success: function (res) {
-            console.log(ok)  
-            if (ok) {  
-              that.upLoadImg()
-            }  
-          }  
-        }) 
+        request.uploadFile(res.tempFilePaths[0]).then(img=>{
+          that.upLoadImg(img)
+        }).catch(err=>{})
       }
     })
   },
-  upLoadImg(){
+  upLoadImg(res){
+    console.log(res,456)
     var that = this;
       that.editorCtx.insertImage({
-        src: res.tempFilePaths[0],
+        src: res,
         data: {
           id: 'abcd',
           role: 'god'

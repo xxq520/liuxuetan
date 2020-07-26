@@ -145,23 +145,25 @@ function format(shijianchuo, type) {
     }
 }
 // 上传文件
-function uploadFile(tempFilePaths) {
+function uploadFile(tempFilePaths,type) {
     return new Promise((resolve, reject) => {
         wx.showLoading()
         wx.uploadFile({
-            url: apisUrl.uploadFile + "?type=ProfilePic", // 仅为示例，非真实的接口地址
+            url: `${apisUrl.uploadFile}?type=${type?type:'ProfilePic'}`, // 仅为示例，非真实的接口地址
             filePath: tempFilePaths,
             name: 'Data',
             formData: {},
             success(res) {
                 if (res.data && JSON.parse(res.data)) {
-                    resolve(JSON.parse(res.data)[0].return)
+                    resolve("http://www.liuxuetalk.com/"+JSON.parse(res.data)[0].return)
                 } else {
                     wx.showToast({
                         title: '文件上传失败',
                     })
+                    reject()
                 }
             },
+            fail(){reject()},
             complete(){
                 wx.hideLoading({})
             }

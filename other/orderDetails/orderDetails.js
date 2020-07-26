@@ -19,7 +19,11 @@ Page({
     // 附件类型列表
     fujianType: [],
     // 订单提醒
-    tixing: []
+    tixing: [],
+    // 附件地址
+    aoa_url: "",
+    // 留言
+    aod_remark: ""
   },
 
   /**
@@ -110,7 +114,8 @@ Page({
           res.data[i].aod_mod_date += "日"
         }
         this.setData({
-          order:res.data[0]
+          order:res.data[0],
+          aod_remark:res.data[0].aod_remark
         })
         this.GetAgentOrderAttachmentList()
         this.GetAgentOrderAttachmentType()
@@ -180,6 +185,35 @@ Page({
   onReady: function () {
 
   },
+  // 附件上传
+  uploadFiles() {
+    var that = this
+    wx.chooseMessageFile({
+      count: 1,     //能选择文件的数量
+      type: 'file',   //能选择文件的类型,我这里只允许上传文件.还有视频,图片,或者都可以
+      success(res) { 
+        var size = res.tempFiles[0].size;
+        var filename = res.tempFiles[0].filename;
+        var newfilename = filename + "";  
+        console.log(res,456789)
+    if (size > 4194304){ //我还限制了文件的大小和具体文件类型
+          wx.showToast({
+            title: '文件大小不能超过4MB,格式必须为pdf！',
+            icon: "none",
+            duration: 2000,
+            mask: true
+          })
+        }else{
+          request.uploadFile(res.tempFiles[0].path,"AgentApplyDoc").then(file=>{
+            that.setData({
+              aoa_url:file
+            },()=>{
+            });
+          }).catch(err=>{})
+        }
+      }
+    })
+  },
   // 保存订单附件
   SaveAgentOrderAttachment() {
     var userInfo = wx.getStorageSync('userInfo');
@@ -190,8 +224,8 @@ Page({
         agt_key :this.data.agtId, 
         aod_key: this.data.orderId, // 加密代理订单UID密钥
         aoa_key: "",  // 加密代理订单缓存记录UID密钥
-        aoa_url: "http:baidu.com", // 代理订单缓存URL
-        aat_type: this.data.fujianType[0].aat_type, // 代理订单附件类型过滤
+        aoa_url: this.data.aoa_url, // 代理订单缓存URL
+        aat_type: this.data.fujianType[this.data.fujianType.length-1].aat_type, // 代理订单附件类型过滤
         aoa_is_valid:true,  // 如果代理订单附件有效
         usr_key : userInfo.usr_key 
       },

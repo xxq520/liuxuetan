@@ -80,7 +80,7 @@ Page({
       console.log(res)
       let arr = this.data.fileList;
       arr.push({
-        url: `http://www.liuxuetalk.com/${res}`,
+        url: `${res}`,
         name: '图片',
         isImage: true
       });
