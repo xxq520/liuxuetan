@@ -146,8 +146,6 @@ function format(shijianchuo, type) {
 }
 // 上传文件
 function uploadFile(tempFilePaths) {
-    console.log(tempFilePaths)
-    return
     return new Promise((resolve, reject) => {
         wx.showLoading()
         wx.uploadFile({

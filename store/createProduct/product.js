@@ -64,6 +64,15 @@ Page({
       })
     })
   },
+  // 图片删除
+  delete(e){
+      let index  = e.detail.index;
+      var arr = this.data.fileList;
+      arr.splice(index,1);
+      this.setData({
+          fileList:arr
+      })
+  },
   afterRead(event) {
     const { file } = event.detail;
     // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
@@ -179,6 +188,11 @@ Page({
         }
         if(!res.data[0].code){
           this.setData({
+              fileList:[{
+                  url: res.data[0].apd_image_url,
+                  name: '图片',
+                  isImage: true
+              }],
             fuwu:this.data.arrayFs.indexOf(res.data[0].apt_type)!=-1?this.data.arrayFs.indexOf(res.data[0].apt_type):"",
             product:res.data[0],
             miaoshu: res.data[0].apd_description,

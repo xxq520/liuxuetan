@@ -27,7 +27,7 @@
     </textarea>
     	<view class="background-image">
 		<view class="upload-title">上传照片</view>
-		<van-uploader file-list="{{fileList}}" bind:after-read="afterRead" max-count="1"/>
+		<van-uploader file-list="{{fileList}}" bind:after-read="afterRead" max-count="1" bind:delete="delete"/>
 	</view>
     <view class="btn send" bindtap="submit">创建确认</view>
     <view class="btn close" bindtap="cancel">取消</view>
