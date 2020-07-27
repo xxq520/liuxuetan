@@ -17,6 +17,55 @@ Page({
    */
   onLoad: function (options) {
     this.getProduct();
+    this.GetAgentOverviewDetails();
+  },
+   // 获取当前顾问的店铺数据
+   GetAgentOverviewDetails(){
+    var userInfo = wx.getStorageSync('userInfo');
+    var data = {
+      toast: true,// 是否显示加载动画
+      data:{
+        // 用户的登录id
+        agt_key :this.data.store.agt_key, 
+      },
+      type:"get",
+      url:url.GetAgentOverviewDetails,
+      header:{"Content-Type":"application/json; charset=utf-8"}
+    }
+    var that = this;
+    request.getReq(data).then(res=>{
+      console.log(res,666666)
+      if(!res.data[0].code){
+        wx.setStorageSync('storeDetail', res.data[0])
+        this.setData({
+          store:res.data[0]
+        })
+      }
+    })
+  },
+    // 获取当前聊天组列表数据
+  getMessageList(id) {
+    var that = this;
+    var userInfo = wx.getStorageSync('userInfo');
+    var data = {
+      toast: true,// 是否显示加载动画
+      data:{
+        // 用户的登录id
+        usr_id : userInfo.usr_id || 0, 
+      },
+      type:"get",
+      url:url.getMessageList,
+      header:{"Content-Type":"application/json; charset=utf-8"}
+    }
+    request.getReq(data).then(res=>{
+      // 格式化最后聊天的时间
+      if(res.data[0].Code!=404){
+        let chatGroup = res.data.data;
+        for(let i=0; i<chatGroup.length; i++){
+            console.log(chatGroup[i],12)
+        }
+      }
+    })
   },
   // 在线联系
   CreateChatDirectGroup(){
@@ -36,11 +85,8 @@ Page({
       }
       var that = this;
       request.getReq(data).then(res => {
-        console.log(res,"厉害")
         if(res.data[0]&&res.data[0].response=="储存成功"){
-          wx.switchTab({
-            url: '/pages/message/message',
-          })
+          this.getMessageList(userInfo.usr_id);
         }else{
           wx.showToast({
             title: '发起失败，稍后再试。',

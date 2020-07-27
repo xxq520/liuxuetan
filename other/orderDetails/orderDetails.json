@@ -1,5 +1,7 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "van-uploader": "/dist/uploader/index"
+  },
   "navigationBarTitleText": "订单详情",
   "backgroundTextStyle": "light",
   "navigationBarBackgroundColor": "#3b5370",

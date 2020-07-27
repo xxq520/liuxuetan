@@ -22,7 +22,7 @@
                         </view>
                         <view class="right-status">
                             <view class="status">{{order.aos_status}}</view>
-                            <view class="refund">退款申请</view>
+                            <view class="refund" wx:if="{{0>1}}">退款申请</view>
                         </view>
                     </view>
                 </view>
@@ -31,11 +31,11 @@
                     <text class="time">状态更新时间：{{item.str_nta_notify_date}}</text>
                 </view>
             </view>
-            <view class="order-list">
+            <!-- <view class="order-list">
                 <view class="right-status">
-                            <view class="status">{{order.aos_status}}</view>
-                        </view>
-            </view>
+                    <view class="status">{{order.aos_status}}</view>
+                </view>
+            </view> -->
             <view class="order-information">
                 <view class="left-information">
                     <view class="order-information-title">订单信息</view>
@@ -48,18 +48,21 @@
                         <text>{{order.aod_created_date}}</text>
                     </view>
                 </view>
-                <view class="right-copy">复制</view>
+                <view class="right-copy" bindtap='copyText' data-text="{{order.aod_key}}">复制</view>
             </view>
         </view>
         <view class="bj_f5"></view>
         <view class="Leave-message">
             <text class="Leave-message-title">留言</text>
-            <input readonly="readonly" value="{{aod_remark}}" /> 
+            <input readonly="readonly" disabled value="{{aod_remark}}" /> 
             <view class="Leave-message-box">
-                <textarea maxlength="6940" value="{{aoa_url}}"  readonly="readonly"  class="Leave-message-context" placeholder=""></textarea>
+                <textarea maxlength="6940" value="{{aoa_url}}"  disabled readonly="readonly"  class="Leave-message-context" placeholder=""></textarea>
                 <view class="Leave-message-info">
                     <image src="/static/image/fujianshangchuan.png" />
-                    <text bindtap="uploadFiles">附件上传</text>
+                     <picker mode="selector" header-text="" value="x" range="{{fujianType}}" bindchange="bindMultiPickerChange">
+                        <text >附件上传</text>
+                    </picker>
+                    
                     <view  bindtap="SaveAgentOrderAttachment" class="published">发表</view>
                 </view>
             </view>

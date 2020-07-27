@@ -86,9 +86,9 @@ Page({
         apd_key: product.apd_key, // 加密代理订单产品记录UID键
         client_usr_key: userInfo.usr_key ,//  客户端用户UID加密密钥
         aod_order_ref: "", //  代理订单参考
-        new_aos_status: "拟定订单中", // 新代理订单状态（见3.1.1.12）
+        new_aos_status: "未付款", // 新代理订单状态（见3.1.1.12）
         aod_price: product.apd_price ,//  代理订单价格
-        aod_remark: product.apd_description, // 代理订单备注
+        aod_remark: this.data.miaoshu, // 代理订单备注
         act_type: "", // 代理订单佣金类型（百分比/金额）
         aod_commission: 0, // 代理订单佣金价值
         usr_key: userInfo.usr_key, //密用户记录UID密钥用于保存用户

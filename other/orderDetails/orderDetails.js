@@ -22,6 +22,8 @@ Page({
     tixing: [],
     // 附件地址
     aoa_url: "",
+    // 選中的附件
+    selectfj: "",
     // 留言
     aod_remark: ""
   },
@@ -38,6 +40,21 @@ Page({
     this.getOrderTiem()
     this.GetAgentOrderTaskList()
     this.GetAgentOrderNotification()
+  },
+  // 複製
+  copyText: function (e) {
+    wx.setClipboardData({
+      data: e.currentTarget.dataset.text,
+      success: function (res) {
+        wx.getClipboardData({
+          success: function (res) {
+            wx.showToast({
+              title: '复制成功'
+            })
+          }
+        })
+      }
+    })
   },
    // 获取订单提醒记录
   GetAgentOrderNotification() {
@@ -71,6 +88,15 @@ Page({
         })
       }
     })
+  },
+   // 服务分类选择事件
+   bindMultiPickerChange(e){
+    const { picker, value, index } = e.detail;
+    this.setData({
+      selectfj:this.data.fujianType[value]
+    })
+    this.uploadFiles();
+    console.log(e,6)
   },
   // 获取订单数据
   getOrderTiem() {
@@ -138,8 +164,12 @@ Page({
     request.getReq(data).then(res=>{
       console.log(res,787878787)
       if(res.data[0].Code!=404){
+        let arr = [];
+        for(let i=0; i<res.data.length; i++){
+          arr.push(res.data[i].aat_type)
+        }
         this.setData({
-          fujianType:res.data
+          fujianType:arr
         })
       }
     })
@@ -225,7 +255,7 @@ Page({
         aod_key: this.data.orderId, // 加密代理订单UID密钥
         aoa_key: "",  // 加密代理订单缓存记录UID密钥
         aoa_url: this.data.aoa_url, // 代理订单缓存URL
-        aat_type: this.data.fujianType[this.data.fujianType.length-1].aat_type, // 代理订单附件类型过滤
+        aat_type: this.data.selectfj, // 代理订单附件类型过滤
         aoa_is_valid:true,  // 如果代理订单附件有效
         usr_key : userInfo.usr_key 
       },

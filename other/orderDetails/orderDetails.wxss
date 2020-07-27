@@ -200,7 +200,7 @@
 .bj_f5{
     height: 20rpx;
     background-color: #f5f5f5;
-    margin-top: 744rpx;
+    margin-top: 515rpx;
 }
 .Leave-message{
     padding: 0 4%;
