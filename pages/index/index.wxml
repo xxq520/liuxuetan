@@ -74,13 +74,13 @@
   usr_profile_image_tn: "/Uploads/Profile/Thumbnails/monkey.jpg"
   utp_badge: null -->
 
-		<view class="article_item" bindtap="goPostdetails" data-type="{{item.ntp_type=='问题'?2:1}}" data-index="{{index}}" data-id="{{item.new_id}}" wx:for="{{indexData}}" wx:key="index">
+		<view class="article_item" bindtap="goPostdetails" data-type="{{item.ntp_type=='问题'?2:1}}" data-index="{{index}}" data-id="{{item.new_key}}" wx:for="{{indexData}}" wx:key="index">
 			<view class="article_title">
 				<view class="title_box">
 					<view class="wen_ti" wx:if="{{item.ntp_type=='问题'}}">问</view>
 					<text class="title_txt">{{item.new_header}}</text>
 				</view>
-				<view class="collect_btn" catchtap="likeNew" data-type="favourite" data-id="{{item.en_new_id}}" data-index="{{index}}">
+				<view class="collect_btn" catchtap="likeNew" data-type="favourite" data-id="{{item.new_key}}" data-index="{{index}}">
 					<image src="../../static/image/aixin.png" wx:if="{{!item.isFavourite}}" />
 					<text>{{item.isFavourite?'已收藏':'收藏'}}</text>
 				</view>

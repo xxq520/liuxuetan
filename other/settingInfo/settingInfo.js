@@ -34,7 +34,7 @@ Page({
       toast: false,// 是否显示加载动画
       data:{
         // 用户的登录id
-        usr_id : this.data.userInfo.usr_id || 0, 
+        usr_key : this.data.userInfo.usr_key || "", 
         // 用户名
         usr_display_name:that.data.username, 
         // 用户全名

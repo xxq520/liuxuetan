@@ -51,7 +51,7 @@ Page({
       toast: true,// 是否显示加载动画
       data:{
         // 用户的登录id
-        usr_id : userInfo.usr_id || 0, 
+        usr_key : userInfo.usr_key || "", 
       },
       type:"get",
       url:url.getMessageList,
@@ -75,7 +75,7 @@ Page({
         data: {
           // 用户的登录id
           chat_usr_id: userInfo.usr_id,
-          usr_id: userInfo.usr_id
+          usr_key: userInfo.usr_key
         },
         type: "post",
         url: url.CreateChatDirectGroup,
@@ -86,7 +86,7 @@ Page({
       var that = this;
       request.getReq(data).then(res => {
         if(res.data[0]&&res.data[0].response=="储存成功"){
-          this.getMessageList(userInfo.usr_id);
+          this.getMessageList(userInfo.usr_key);
         }else{
           wx.showToast({
             title: '发起失败，稍后再试。',

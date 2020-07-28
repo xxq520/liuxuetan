@@ -31,9 +31,9 @@ Page({
       toast: false, // 是否显示加载动画
       data: {
         // 用户的登录id
-        usr_id: userInfo.usr_id || 0,
+        usr_key: userInfo.usr_key || "",
         // 如果不搜索特定的新闻/帖子记录，则为0
-        en_grp_id: this.data.id,
+        grp_key: this.data.chat,
         // 返回数据页码. 1=归还所有记录
         pageSize: "1",
         // 每个数据页的记录数量 1=归还所有记录
@@ -74,9 +74,9 @@ Page({
       toast: false, // 是否显示加载动画
       data: {
         // 用户的登录id
-        usr_id: userInfo.usr_id || 0,
+        usr_key: userInfo.usr_key || "",
         // 如果不搜索特定的新闻/帖子记录，则为0
-        en_grp_id: this.data.id,
+        grp_key: this.data.chat,
         // 返回数据页码. 1=归还所有记录
         pageSize: "1",
         // 每个数据页的记录数量 1=归还所有记录
@@ -145,9 +145,9 @@ Page({
       toast: true, // 是否显示加载动画
       data: {
         // 用户的登录id
-        usr_id: userInfo.usr_id || 0,
+        usr_key: userInfo.usr_key || "",
         // 如果不搜索特定的新闻/帖子记录，则为0
-        en_grp_id: this.data.id,
+        grp_key: this.data.chat,
         // 聊天的类型
         grp_type: this.data.grp_type,
         // 发送的消息
@@ -176,9 +176,9 @@ Page({
     }
     wx.setStorageSync('chatP', {
       // 用户的登录id
-      usr_id: userInfo.usr_id || 0,
+      usr_key: userInfo.usr_key || "",
       // 如果不搜索特定的新闻/帖子记录，则为0
-      en_grp_id: this.data.id,
+      en_grp_id: this.data.grp_key,
       // 聊天的类型
       grp_type: this.data.grp_type,
       // 发送的消息

@@ -34,7 +34,7 @@ App({
       toast: false, // 是否显示加载动画
       data: {
         // 用户的登录id
-        usr_id: wx.getStorageSync('userInfo').usr_id,
+        usr_key: wx.getStorageSync('userInfo').usr_key,
       },
       type: "get",
       url: url.GetUserUnreadMessageCount,

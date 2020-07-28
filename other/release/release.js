@@ -172,7 +172,7 @@ Page({
         toast: false,// 是否显示加载动画
         data:{
           // 用户的登录id
-          usr_id : userInfo.usr_id || 0, 
+          usr_key : userInfo.usr_key || "", 
           // 如果不搜索特定的新闻/帖子记录，则为0
           new_content: content.html, 
           // 文章的类型
@@ -210,7 +210,7 @@ Page({
       toast: true,// 是否显示加载动画
       data:{
         // 用户的登录id
-        usr_id : userInfo.usr_id, 
+        usr_key : userInfo.usr_key, 
         // 如果不搜索特定的新闻/帖子记录，则为0
         new_id: this.data.id, 
         // 返回数据页码. 1=归还所有记录

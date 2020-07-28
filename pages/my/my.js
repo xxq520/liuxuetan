@@ -16,7 +16,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if(this.data.userInfo.usr_id){
+    if(this.data.userInfo.usr_key){
       this.getIndexData()
     }
     this.getGetHotTagsGroup();
@@ -43,7 +43,7 @@ Page({
         toast: true,// 是否显示加载动画
         data:{
           // 用户的登录id
-          usr_id : userInfo.usr_id || 0, 
+          usr_key : userInfo.usr_key || "", 
           // 返回数据页码. 1=归还所有记录
           pageSize: "1",
           // 每个数据页的记录数量 1=归还所有记录

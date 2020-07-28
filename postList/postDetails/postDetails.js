@@ -46,7 +46,7 @@ Page({
       toast: false,// 是否显示加载动画
       data:{
         // 用户的登录id
-        usr_id : this.data.userInfo.usr_id || 0, 
+        usr_key : this.data.userInfo.usr_key || "", 
         // 新闻的加密key
         new_key: this.data.newContent.new_key, 
       },
@@ -108,9 +108,9 @@ Page({
       toast: true,// 是否显示加载动画
       data:{
         // 用户的登录id
-        usr_id : 0, 
+        usr_key : userInfo.usr_key||"", 
         // 如果不搜索特定的新闻/帖子记录，则为0
-        new_id: 0 , 
+        new_key: "", 
         // 返回数据页码. 1=归还所有记录
         pageSize: 3,
         // 每个数据页的记录数量 1=归还所有记录
@@ -142,9 +142,9 @@ Page({
       toast: true,// 是否显示加载动画
       data:{
         // 用户的登录id
-        usr_id : userInfo.usr_id || 0, 
+        usr_key : userInfo.usr_key || "", 
         // 如果不搜索特定的新闻/帖子记录，则为0
-        new_id: this.data.id, 
+        new_key: this.data.id, 
         // 返回数据页码. 1=归还所有记录
         pageSize: "1",
         // 每个数据页的记录数量 1=归还所有记录
@@ -205,10 +205,10 @@ Page({
       toast: true,// 是否显示加载动画
       data:{
         // 用户的登录id
-        usr_id : userInfo.usr_id || 0, 
+        usr_key : userInfo.usr_key || "", 
         // 如果不搜索特定的新闻/帖子记录，则为0
-        en_new_id: this.data.newsId, 
-        en_parent_ncm_id:"",
+        new_key: this.data.id, 
+        parent_ncm_key:"",
         // 返回数据页码. 1=归还所有记录
         pageSize: "1",
         // 每个数据页的记录数量 1=归还所有记录
@@ -259,10 +259,10 @@ Page({
       toast: false,// 是否显示加载动画
       data:{
         // 用户的登录id
-        usr_id : userInfo.usr_id || 0, 
+        usr_key : userInfo.usr_key || "", 
         // 如果不搜索特定的新闻/帖子记录，则为0
-        en_new_id: this.data.newsId, 
-        en_ncm_id:"",
+        new_key: this.data.id, 
+        ncm_key:"",
         // 新评论的内容
         new_comment:this.data.commentContent,
       },
@@ -294,9 +294,9 @@ Page({
       toast: false,// 是否显示加载动画
       data:{
         // 用户的登录id
-        usr_id : this.data.userInfo.usr_id || 0, 
+        usr_key : this.data.userInfo.usr_key || "", 
         // 如果不搜索特定的新闻/帖子记录，则为0
-        en_new_id: this.data.newsId, 
+        new_key: this.data.id, 
         // 是收藏还是点赞
         option: e.currentTarget.dataset.type,
       },
@@ -330,9 +330,9 @@ Page({
       toast: false,// 是否显示加载动画
       data:{
         // 用户的登录id
-        usr_id : this.data.userInfo.usr_id || 0, 
+        usr_key : this.data.userInfo.usr_key || "", 
         // 如果不搜索特定的新闻/帖子记录，则为0
-        fav_usr_id:that.data.author.usr_id, 
+        fav_usr_key:that.data.author.usr_key, 
       },
       type:"POST",
       url:url.SaveUserFavForumAdmin,
@@ -363,7 +363,7 @@ Page({
         // 用户的登录id
         en_ncm_id : item.ncm_key, 
         // 如果不搜索特定的新闻/帖子记录，则为0
-        usr_id: item.usr_id, 
+        usr_key: item.usr_key, 
       },
       type:"POST",
       url:url.LikeNewsCommentRecord,

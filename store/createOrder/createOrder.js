@@ -51,7 +51,7 @@ Page({
       toast: true,// 是否显示加载动画
       data:{
         // 用户的登录id
-        usr_id : userInfo.usr_id || 0, 
+        usr_key : userInfo.usr_key || "", 
       },
       type:"get",
       url:url.getMessageList,
@@ -102,7 +102,7 @@ Page({
       return
     }
     var userInfo = wx.getStorageSync('userInfo');
-    if(this.data.chat.usr_id) {
+    if(this.data.chat.usr_key) {
       var data = {
         toast: true,// 是否显示加载动画
         data:{
@@ -129,7 +129,7 @@ Page({
         console.log(res,8889899)
         if(res.data[0].response == "储存成功"){
           // 是否聊天过来创建数据的
-          if(this.data.chat.usr_id){
+          if(this.data.chat.usr_key){
             this.sendMessage(res.data[0].return)
           } else {
             wx.showToast({
@@ -186,9 +186,9 @@ Page({
       toast: true, // 是否显示加载动画
       data: {
         // 用户的登录id
-        usr_id: this.data.chat.usr_id || 0,
+        usr_key: this.data.chat.usr_key || "",
         // 如果不搜索特定的新闻/帖子记录，则为0
-        en_grp_id: this.data.chat.en_grp_id,
+        grp_key: this.data.chat.chat_user,
         // 聊天的类型
         grp_type: this.data.chat.grp_type,
         // 发送的消息

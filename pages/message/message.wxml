@@ -27,7 +27,7 @@
         </view>
     </view>
     <view class="message_list" wx:if="{{messageList.length}}">
-        <navigator url="/other/CustomerService/CustomerService?id={{item.en_grp_id}}&grp_type={{item.grp_type}}&chat={{item.chat_usr_key}}" wx:for="{{messageList}}" >
+        <navigator url="/other/CustomerService/CustomerService?id={{item.en_grp_id}}&grp_type={{item.grp_type}}&chat={{item.grp_key}}" wx:for="{{messageList}}" >
             <view class="message_item">
                 <image class="user_tx" src="http://www.liuxuetalk.com/{{item.grp_image_url}}" />
                 <view class="right_info">

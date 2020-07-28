@@ -114,7 +114,7 @@ Page({
     var data = {
       toast: false,// 是否显示加载动画
       data:{
-        usr_id:that.data.userInfo.usr_id,
+        usr_key:that.data.userInfo.usr_key,
         // 专栏的名称
         search_tags : this.data.id 
       },
@@ -134,7 +134,7 @@ Page({
     var data = {
       toast: false,// 是否显示加载动画
       data:{
-        usr_id:that.data.userInfo.usr_id,
+        usr_key:that.data.userInfo.usr_key,
         // 专栏的名称
         fav_tags : this.data.id,
         set_valid:true
@@ -162,7 +162,7 @@ Page({
       toast: true,// 是否显示加载动画
       data:{
         // 用户的登录id
-        usr_id : that.data.userInfo.usr_id || 0, 
+        usr_key : that.data.userInfo.usr_key || "", 
         // 如果不搜索特定的新闻/帖子记录，则为0
         new_id: 0 , 
         // 返回数据页码. 1=归还所有记录
