@@ -65,7 +65,7 @@ Page({
         // 用户的登录id
         usr_key : userInfo.usr_key || "", 
         // 如果不搜索特定的新闻/帖子记录，则为0
-        new_id: this.data.id, 
+        new_key: this.data.id, 
         // 返回数据页码. 1=归还所有记录
         pageSize: "1",
         // 每个数据页的记录数量 1=归还所有记录
@@ -109,7 +109,7 @@ Page({
       that.setData({
         newContent : res.data[0],
         isActive:res.data[0].isLiked,
-        newsId : res.data[0].en_new_id
+        newsId : res.data[0].new_key
       })
       // 获取新闻评论列表
       that.getComment()
@@ -126,8 +126,8 @@ Page({
         // 用户的登录id
         usr_key : userInfo.usr_key || "", 
         // 如果不搜索特定的新闻/帖子记录，则为0
-        en_new_id: this.data.newsId, 
-        en_parent_ncm_id:"",
+        new_key: this.data.newsId, 
+        parent_ncm_key:"",
         // 返回数据页码. 1=归还所有记录
         pageSize: "1",
         // 每个数据页的记录数量 1=归还所有记录
@@ -186,8 +186,8 @@ Page({
         // 用户的登录id
         usr_key : userInfo.usr_key || "", 
         // 如果不搜索特定的新闻/帖子记录，则为0
-        en_new_id: this.data.newsId, 
-        en_ncm_id:"",
+        new_key: this.data.newsId, 
+        ncm_key:"",
         // 新评论的内容
         new_comment:this.data.commentContent,
       },
@@ -220,7 +220,7 @@ Page({
         // 用户的登录id
         usr_key : this.data.userInfo.usr_key || "", 
         // 如果不搜索特定的新闻/帖子记录，则为0
-        en_new_id: this.data.newsId, 
+        new_key: this.data.newsId, 
         // 是收藏还是点赞
         option: e.currentTarget.dataset.type,
       },
@@ -256,7 +256,7 @@ Page({
         // 用户的登录id
         usr_key : this.data.userInfo.usr_key || "", 
         // 如果不搜索特定的新闻/帖子记录，则为0
-        fav_usr_id:that.data.author.usr_id, 
+        fav_usr_key:that.data.author.usr_key, 
       },
       type:"POST",
       url:url.SaveUserFavForumAdmin,

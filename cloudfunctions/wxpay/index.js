@@ -8,7 +8,7 @@ const tenpay = require('tenpay');
 const config = {
   appid: 'wxbef88a039a04ee2d', 
   mchid: '1601493285',
-  partnerKey: '微信支付安全密钥', 
+  partnerKey: 'HaiWaiLiuXueTalkpaykey2020081616', 
   notify_url: "http://baidu.com", 
   spbill_create_ip: '127.0.0.1' //这里填这个就可以
 };
@@ -21,7 +21,7 @@ exports.main = async(event, context) => {
   } = event;
   //3，初始化支付
   const api = tenpay.init(config);
-
+  
   let result = await api.getPayParams({
     out_trade_no: orderid,
     body: '商品简单描述',

@@ -20,7 +20,7 @@ App({
       })
     })
     wx.cloud.init({
-      release: true,
+      env: 'release-ivr8v',
     })
   },
   globalData: {
