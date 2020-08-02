@@ -1,12 +1,13 @@
-﻿{
-	"cloudfunctionRoot": "cloudfunctions/",
+{
 	"description": "项目配置文件",
+	"cloudfunctionRoot": "cloudfunctions/",
 	"packOptions": {
 		"ignore": []
 	},
 	"setting": {
 		"urlCheck": false,
 		"es6": true,
+		"enhance": true,
 		"postcss": true,
 		"preloadBackgroundData": false,
 		"minified": true,
@@ -16,16 +17,19 @@
 		"autoAudits": false,
 		"showShadowRootInWxmlPanel": true,
 		"scopeDataCheck": false,
+		"uglifyFileName": false,
 		"checkInvalidKey": true,
 		"checkSiteMap": true,
 		"uploadWithSourceMap": true,
+		"compileHotReLoad": false,
 		"babelSetting": {
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
 		},
+		"useIsolateContext": true,
 		"useCompilerModule": true,
-		"enhance": true
+		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.10.4",
@@ -37,6 +41,7 @@
 	"isGameTourist": false,
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
+	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",
 	"condition": {
 		"search": {
 			"current": -1,
@@ -60,280 +65,7 @@
 		},
 		"miniprogram": {
 			"current": -1,
-			"list": [
-				{
-					"id": 0,
-					"name": "other/favNews/favNews",
-					"pathName": "other/favNews/favNews",
-					"query": "id=18",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "postList/answer/answer",
-					"pathName": "postList/answer/answer",
-					"query": "id=17",
-					"scene": null
-				},
-				{
-					"id": 2,
-					"name": "postList/topicColumn/topicColumn",
-					"pathName": "postList/topicColumn/topicColumn",
-					"query": "id=美国",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "postList/problemDetails/problemDetails",
-					"pathName": "postList/problemDetails/problemDetails",
-					"query": "id=17",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/login/login",
-					"pathName": "pages/login/login",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "other/settingInfo/settingInfo",
-					"pathName": "other/settingInfo/settingInfo",
-					"query": "id=美国",
-					"scene": null
-				},
-				{
-					"id": 6,
-					"name": "other/release/release",
-					"pathName": "other/release/release",
-					"query": "id=32",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/my/my",
-					"pathName": "pages/my/my",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "other/myNews/myNews",
-					"pathName": "other/myNews/myNews",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "message/message/my",
-					"pathName": "message/message/my",
-					"query": "id=32",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "store/myStore/myStore",
-					"pathName": "store/myStore/myStore",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/my/my",
-					"pathName": "pages/my/my",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "store/myStore/myStore",
-					"pathName": "store/myStore/myStore",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "store/createProduct/product",
-					"pathName": "store/createProduct/product",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "store/createProduct/product",
-					"pathName": "store/createProduct/product",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "store/product/product",
-					"pathName": "store/product/product",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "store/createProduct/product",
-					"pathName": "store/createProduct/product",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "store/myStore/myStore",
-					"pathName": "store/myStore/myStore",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "store/storeMyorder/storeMyorder",
-					"pathName": "store/storeMyorder/storeMyorder",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "store/billManagement/billManagement",
-					"pathName": "store/billManagement/billManagement",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "store/Addremind/Addremind",
-					"pathName": "store/Addremind/Addremind",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "store/createOrder/createOrder",
-					"pathName": "store/createOrder/createOrder",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "store/createOrder/createOrder",
-					"pathName": "store/createOrder/createOrder",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "store/storeMyorder/storeMyorder",
-					"pathName": "store/storeMyorder/storeMyorder",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "store/orderDetail/orderDetail",
-					"pathName": "store/orderDetail/orderDetail",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/service/service",
-					"pathName": "pages/service/service",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "other/personalData/personalData",
-					"pathName": "other/personalData/personalData",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "store/myStore/myStore",
-					"pathName": "store/myStore/myStore",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "store/product/product",
-					"pathName": "store/product/product",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "other/personalData/personalData",
-					"pathName": "other/personalData/personalData",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/service/service",
-					"pathName": "pages/service/service",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "store/product/product",
-					"pathName": "store/product/product",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "store/storeMyorder/storeMyorder",
-					"pathName": "store/storeMyorder/storeMyorder",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "store/SetUpThe/SetUpThe",
-					"pathName": "store/SetUpThe/SetUpThe",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "store/storeMyorder/storeMyorder",
-					"pathName": "store/storeMyorder/storeMyorder",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "store/createOrder/createOrder",
-					"pathName": "store/createOrder/createOrder",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "other/myOrder/myOrder",
-					"pathName": "other/myOrder/myOrder",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "store/storeMyorder/storeMyorder",
-					"pathName": "store/storeMyorder/storeMyorder",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/index/index",
-					"pathName": "pages/index/index",
-					"scene": null
-				}
-			]
+			"list": []
 		}
 	}
 }
