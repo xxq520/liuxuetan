@@ -28,5 +28,16 @@ exports.main = async(event, context) => {
     total_fee: money, //订单金额(分),
     openid: wxContext.OPENID //付款用户的openid
   });
-  return result;
+  const res = await cloud.cloudPay.unifiedOrder({
+    "body" : "小秋TIT店-超市",
+    "outTradeNo" : orderid,
+    "nonceStr": result.nonceStr,
+    "spbillCreateIp" : "127.0.0.1",
+    "subMchId" : config.mchid,
+    "totalFee" : money,
+    "tradeType": "JSAPI",
+    "envId": "release-ivr8v",
+    "functionName": "getpayback"
+  })
+  return res;
 }

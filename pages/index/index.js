@@ -45,12 +45,12 @@ Page({
     wx.cloud.callFunction({
       name: "wxpay",
       data: {
-        orderid: "53517230565812",
-        money: 100
+        orderid: "pTCYB4i9z0TYGmH8pE9FkQ163",
+        money: 1
       },
       success(res) {
         console.log("提交成功", res.result)
-        that.pay(res.result)
+        that.pay(res.result.payment)
       },
       fail(res) {
         console.log("提交失败", res)
