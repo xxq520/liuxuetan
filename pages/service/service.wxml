@@ -2,23 +2,16 @@
 <view class="container">
     <view class="top_search">
         <image class="logo" src="../../static/image/logo_2.png" />
-        <view class="select">
-            <text>英国</text>
-            <image src="../../static/image/xiala_2.png" />
-        </view>
+        <picker mode="selector" header-text="" value="x" range="{{arrayFs}}" bindchange="bindMultiPickerChange">
+          <view class="select">
+              <text>{{Country||'国家'}}</text>
+              <image src="../../static/image/xiala_2.png" />
+          </view>
+        </picker>
         <image class="search_btn" src="../../static/image/search.png" />
     </view>
     <view class="roll_nav">
-        <view class="nav_item current_item current_color">留学申请</view>
-        <view class="nav_item">学术辅导</view>
-        <view class="nav_item">旅游签证</view>
-        <view class="nav_item">求职顾问</view>
-        <view class="nav_item">法律顾问</view>
-        <view class="nav_item">法律顾问</view>
-        <view class="nav_item">法律顾问</view>
-        <view class="nav_item">法律顾问</view>
-        <view class="nav_item">法律顾问</view>
-        <view class="nav_item">法律顾问</view>
+        <view bindtap="changeKey" data-item="{{item}}" class="nav_item {{item==key?'current_item current_color':''}}" wx:for="{{keyArr}}">{{item}}</view>
     </view>
     <view class="hot_search">
         <view class="search">

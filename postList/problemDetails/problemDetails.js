@@ -46,8 +46,8 @@ Page({
   },
   // 去搜索
   goSearch(){
-    wx.navigateTo({
-      url:"/other/search/search"
+    wx.switchTab({
+      url:"/pages/discover/discover"
     })
   },
   showPopup() {

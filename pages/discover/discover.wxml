@@ -2,10 +2,12 @@
 <view class="container">
     <view class="top_search">
         <image class="logo" src="../../static/image/logo_2.png" />
-        <view class="select">
-            <text>英国</text>
-            <image src="../../static/image/xiala_2.png" />
-        </view>
+        <picker mode="selector" header-text="" value="x" range="{{arrayFs}}" bindchange="bindMultiPickerChange">
+          <view class="select">
+              <text>{{Country||'国家'}}</text>
+              <image src="../../static/image/xiala_2.png" />
+          </view>
+        </picker>
         <view class="search_btnniew"><image bindtap="goSearch" class="search_btn" src="../../static/image/search.png" /></view>
     </view>
     <view class="roll_nav">

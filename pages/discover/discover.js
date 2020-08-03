@@ -15,12 +15,26 @@ Page({
     searchTag:[],
     // 当前页面展示的文章
     newList: [],
+    Country:"", // 选中的国家
+    arrayFs: app.globalData.Country, //国家
      // 用户的信息
      userInfo:   wx.getStorageSync('userInfo'),
      // 是否显示暂无更多数据
      noinfo:false
   },
-
+  // 服务分类选择事件
+  bindMultiPickerChange(e){
+    if(e.detail.value==0){
+      this.setData({
+        Country:""
+      })
+    } else {
+      this.setData({
+        Country:this.data.arrayFs[e.detail.value]
+      })
+    }
+    this.getIndexData();
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -74,7 +88,7 @@ Page({
         // 每个数据页的记录数量 1=归还所有记录
         pageNumber: "1",
         // 按标签名称搜索新闻/帖子
-        search_tags: "",
+        search_tags: this.data.Country,
         // 通过任何文本搜索新闻/帖子
         search_term: "",
         // 新闻/帖子类型，“文章”或“问题”

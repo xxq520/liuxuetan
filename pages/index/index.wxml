@@ -73,7 +73,7 @@
   usr_display_name: "juneasix"
   usr_profile_image_tn: "/Uploads/Profile/Thumbnails/monkey.jpg"
   utp_badge: null -->
-	<button bindtap="formSubmit">123</button>
+	<!-- <button bindtap="formSubmit">123</button> -->
 		<view class="article_item" bindtap="goPostdetails" data-type="{{item.ntp_type=='问题'?2:1}}" data-index="{{index}}" data-id="{{item.new_key}}" wx:for="{{indexData}}" wx:key="index">
 			<view class="article_title">
 				<view class="title_box">

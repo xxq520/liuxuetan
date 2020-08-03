@@ -9,14 +9,37 @@ Page({
    */
   data: {
     option1: [
-      { text: '全部商品', value: 0 },
-      { text: '新款商品', value: 1 },
-      { text: '活动商品', value: 2 }
+      // { text: '全部商品', value: 0 },
+      // { text: '新款商品', value: 1 },
+      // { text: '活动商品', value: 2 }
     ],
     storeList: [], // 顾问列表数据
     searchVal:"", // 搜索的内容
+    Country:"", // 选中的国家
+    arrayFs: app.globalData.Country, //国家
+    key : "全部" , // 关键字
+    keyArr: ['全部','留学申请','学术辅导','旅游签证','求职顾问','法律顾问'], // 关键字列表
   },
-
+  // 更改关键字
+  changeKey(e){
+    this.setData({
+      key: e.currentTarget.dataset.item=='全部'?'':e.currentTarget.dataset.item
+    })
+    this.GetAgentDetailsList();
+  },
+  // 服务分类选择事件
+  bindMultiPickerChange(e){
+    if(e.detail.value==0){
+      this.setData({
+        Country:""
+      })
+    } else {
+      this.setData({
+        Country:this.data.arrayFs[e.detail.value]
+      })
+    }
+    this.GetAgentDetailsList();
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -40,8 +63,8 @@ Page({
       data:{
         // 用户的登录id
         agt_key : "",  // 加密代理UID密钥
-        cou_name: "", // 代理地点名称中文
-        search_agt : that.data.searchVal, //  通过代理名称或代理描述筛选代理返回列表
+        cou_name: this.data.Country, // 代理地点名称中文
+        search_agt : that.data.searchVal || this.data.key=='全部'?'':this.data.key, //  通过代理名称或代理描述筛选代理返回列表
       },
       type:"get",
       url:url.GetAgentDetailsList,
