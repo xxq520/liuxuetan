@@ -8,7 +8,7 @@ const tenpay = require('tenpay');
 const config = {
   appid: 'wxbef88a039a04ee2d', 
   mchid: '1601493285',
-  partnerKey: 'HaiWaiLiuXueTalkpaykey2020081616', 
+  partnerKey: 'liuXue271talk321Haiwaistudy20611', 
   notify_url: "http://baidu.com", 
   spbill_create_ip: '127.0.0.1' //这里填这个就可以
 };
@@ -24,7 +24,7 @@ exports.main = async(event, context) => {
   
   let result = await api.getPayParams({
     out_trade_no: orderid,
-    body: '商品简单描述',
+    body: '666',
     total_fee: money, //订单金额(分),
     openid: wxContext.OPENID //付款用户的openid
   });

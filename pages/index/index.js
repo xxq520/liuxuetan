@@ -37,6 +37,7 @@ Page({
   formSubmit: function(e) {
     wx.cloud.init({
       env: 'release-ivr8v',
+      traceUser: true
     })
     let that = this;
     let formData = e.detail.value
@@ -44,7 +45,7 @@ Page({
     wx.cloud.callFunction({
       name: "wxpay",
       data: {
-        orderid: "5351723056581",
+        orderid: "53517230565812",
         money: 100
       },
       success(res) {
