@@ -57,7 +57,7 @@ Page({
       request.getReq(data).then(res=>{
         // 判断用户是否有数据
         console.log(res,888)
-        if(res.data && res.data[0] && res.data[0].usr_id) {
+        if(res.data && res.data[0] && res.data[0].usr_key) {
           // 将用户数据储存到缓存
           wx.setStorageSync("userInfo",  res.data[0])
           wx.showToast({
