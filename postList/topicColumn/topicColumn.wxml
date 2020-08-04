@@ -42,7 +42,7 @@
       </view>
     </view>
     <view class="answer_list">
-      <view class="answer_item" wx:for="{{indexData}}" bindtap="goPostdetails" data-index="{{index}}" wx:if="{{item.ntp_type=='问题'}}" data-type="{{item.ntp_type=='问题'?2:1}}" data-id="{{item.new_id}}">
+      <view class="answer_item" wx:for="{{indexData}}" bindtap="goPostdetails" data-index="{{index}}" wx:if="{{item.ntp_type=='问题'}}" data-type="{{item.ntp_type=='问题'?2:1}}" data-id="{{item.new_key}}">
         <view class="answer_title">{{item.new_header}}</view>
         <view class="context line_4">
           <rich-text nodes=" {{item.new_content}}"></rich-text>

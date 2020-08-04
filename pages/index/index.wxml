@@ -7,7 +7,7 @@
 			</view>
 			<view class="search-box">
 				<input type="text" placeholder="SEARCH" model:value="{{search}}" bindconfirm="getIndexData"></input>
-				<image class="search_btn" src="../../static/image/search.png" />
+				<image bindtap="getIndexData" class="search_btn" src="../../static/image/search.png" />
 			</view>
 			<van-overlay show="{{ sendMessage }}" bind:click="changeMessage" />
 			<view class="right_jia" bindtap="changeMessage">

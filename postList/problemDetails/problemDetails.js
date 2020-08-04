@@ -311,7 +311,7 @@ Page({
       toast: false,// 是否显示加载动画
       data:{
         // 用户的登录id
-        en_ncm_id : item.ncm_key, 
+        ncm_key : item.ncm_key, 
         // 如果不搜索特定的新闻/帖子记录，则为0
         usr_key: item.usr_key, 
       },
