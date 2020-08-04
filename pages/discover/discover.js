@@ -104,10 +104,17 @@ Page({
     var that = this;
     request.getReq(data).then(res=>{
       console.log(res,888)
-      that.setData({
-        newList : res.data.splice(0,10),
-        noinfo:true
-      })
+      if(res.data[0].Code!=404) {
+        that.setData({
+          newList : res.data.splice(0,10),
+          noinfo:true
+        })
+      } else {
+        that.setData({
+          newList :[],
+          noinfo:true
+        })
+      }
     })
   },
   /**
