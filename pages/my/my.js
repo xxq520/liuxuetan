@@ -130,8 +130,9 @@ Page({
 
   },
   goSearch(e){
-    wx.navigateTo({
-      url: `/other/search/search?tag=${e.currentTarget.dataset.tag}`,
+    app.globalData.discoverVal = e.currentTarget.dataset.tag
+    wx.switchTab({
+      url: `/pages/discover/discover`,
     })
   },
 

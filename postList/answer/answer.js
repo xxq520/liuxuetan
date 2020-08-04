@@ -24,7 +24,7 @@ Page({
    // 去搜索
    goSearch(){
     wx.navigateTo({
-      url:"/other/search/search"
+      url:"/pages/discover/discover"
     })
   },
   // 跳转至分类专题页面 

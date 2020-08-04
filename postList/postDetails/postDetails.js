@@ -36,7 +36,7 @@ Page({
   // 去搜索
   goSearch(){
     wx.navigateTo({
-      url:"/other/search/search"
+      url:"/pages/discover/discover"
     })
   },
    // 获取发布文章的用户信息

@@ -10,7 +10,7 @@ Page({
    */
   data: {
     // 搜索的内容 
-    searchText: "",
+    searchText: app.globalData.discoverVal ,
     // tab选项卡的内容
     searchTag:[],
     // 当前页面展示的文章
@@ -42,6 +42,7 @@ Page({
     this.getIndexData();
     // 获取tab选项卡标题
     this.getGetHotTagsGroup()
+    // 是否是从别的页面跳转过来查询某些数据的
   },
   // 获取tab选项卡标签
   getGetHotTagsGroup() {
@@ -90,7 +91,7 @@ Page({
         // 按标签名称搜索新闻/帖子
         search_tags: this.data.Country,
         // 通过任何文本搜索新闻/帖子
-        search_term: "",
+        search_term: app.globalData.discoverVal,
         // 新闻/帖子类型，“文章”或“问题”
         post_type: "",
         // 在HTML中显示返回的新闻/帖子内容
