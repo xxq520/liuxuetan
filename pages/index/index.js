@@ -33,51 +33,6 @@ Page({
      // 是否显示暂无更多
      noinfo:false
   },
-  //提交订单
-  formSubmit: function(e) {
-    wx.cloud.init({
-      env: 'release-ivr8v',
-      traceUser: true
-    })
-    let that = this;
-    let formData = e.detail.value
-    console.log('form发生了submit事件，携带数据为：', formData)
-    wx.cloud.callFunction({
-      name: "wxpay",
-      data: {
-        orderid: "pTCYB4i9z0TYGmH8pE9FkQ163",
-        money: 1
-      },
-      success(res) {
-        console.log("提交成功", res.result)
-        that.pay(res.result.payment)
-      },
-      fail(res) {
-        console.log("提交失败", res)
-      }
-    })
-  },
-
-  //实现小程序支付
-  pay(payData) {
-    //官方标准的支付方法
-    wx.requestPayment({
-      timeStamp: payData.timeStamp,
-      nonceStr: payData.nonceStr,
-      package: payData.package, //统一下单接口返回的 prepay_id 格式如：prepay_id=***
-      signType: 'MD5',
-      paySign: payData.paySign, //签名
-      success(res) {
-        console.log("支付成功", res)
-      },
-      fail(res) {
-        console.log("支付失败", res)
-      },
-      complete(res) {
-        console.log("支付完成", res)
-      }
-    })
-  },
   // 点击加号发布按钮事件
   changeMessage(){
     this.setData({

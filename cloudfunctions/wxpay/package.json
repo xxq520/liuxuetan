@@ -9,6 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "got": "^11.5.1",
+    "request-promise": "^4.2.6",
     "tenpay": "^2.1.18",
     "wx-server-sdk": "~2.1.2"
   }

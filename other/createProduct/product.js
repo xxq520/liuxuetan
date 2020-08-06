@@ -44,6 +44,83 @@ Page({
   cancel() {
     wx.navigateBack();
   },
+    //提交订单
+    formSubmit: function(item) {
+      wx.cloud.init({
+        env: 'release-ivr8v',
+        traceUser: true
+      })
+      let that = this;
+      // let formData = e.detail.value
+      // console.log('form发生了submit事件，携带数据为：', formData)
+      var userInfo = wx.getStorageSync('userInfo');
+      var data = {
+        toast: true,// 是否显示加载动画
+        data:{
+          // 用户的登录id
+          agt_key :item.agt_key, 
+          aod_key: item.aod_key, // 加密代理订单UID密钥
+          agt_name: "",  // 过滤代理名称
+          apd_name: "", // 代理订购产品名称过滤
+          cou_name: "", // 代理对应的Coutry名称进行过滤
+          apt_type: "", // 代理订购产品类型过滤
+          aod_order_ref: "", // 代理订单参考过滤
+          aos_status: "", // 代理订单状态过滤
+          cusr_fullname: "", // 代理订购客户端用户名进行过滤
+          ausr_fullname: "", // 代理订单处理代理用户名进行筛选
+          str_created_date: "", // 代理订单创建日期的字符串格式过滤
+          pageSize:1,
+          pageNumber:1
+        },
+        type:"get",
+        url:url.GetAgentOrderItems,
+        header:{"Content-Type":"application/json; charset=utf-8"}
+      }
+      request.getReq(data).then(order=>{
+        if(order.data[0].Code!=404){
+          wx.cloud.callFunction({
+            name: "wxpay",
+            data: {
+              orderid: order.data[0].aod_order_ref,
+              money: Number(order.data[0].aod_price)*100,
+              attach: `agt_key=${item.agt_key}&usr_key=${item.usr_key}&aod_key=${item.aod_key}`
+            },
+            success(res) {
+              console.log("提交成功", res.result)
+              that.pay(res.result.payment)
+            },
+            fail(res) {
+              console.log("提交失败", res)
+            }
+          })
+        }else{
+        }
+      })
+      
+    },
+  
+    //实现小程序支付
+    pay(payData) {
+      //官方标准的支付方法
+      wx.requestPayment({
+        timeStamp: payData.timeStamp,
+        nonceStr: payData.nonceStr,
+        package: payData.package, //统一下单接口返回的 prepay_id 格式如：prepay_id=***
+        signType: 'MD5',
+        paySign: payData.paySign, //签名
+        success(res) {
+          wx.navigateTo({
+            url: '/other/myOrder/myOrder',
+          })
+        },
+        fail(res) {
+          console.log("支付失败", res)
+        },
+        complete(res) {
+          console.log("支付完成", res)
+        }
+      })
+    },
   // 保存用户的产品类型
   saveType() {
     var that = this;
@@ -104,13 +181,9 @@ Page({
         wx.showToast({
           title: '创建成功',
           icon: "none"
-        })
-        setTimeout(()=>{
-          wx.navigateBack();
-          wx.navigateTo({
-            url: '/other/myOrder/myOrder',
-          })
-        },1000);
+        });
+        data.data.aod_key = res.data[0].return
+        that.formSubmit(data.data);
       }
     })
   },
