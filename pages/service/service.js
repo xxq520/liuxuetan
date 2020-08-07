@@ -74,6 +74,9 @@ Page({
       // 格式化最后聊天的时间
       console.log(res,666)
       if(!res.data[0].Code){
+        for(let i=0; i<res.data.length; i++) {
+          res.data[i].agt_tags = res.data[i].agt_tags.split(',')
+        }
         this.setData({
           storeList:res.data||[]
         })

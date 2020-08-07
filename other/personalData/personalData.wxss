@@ -453,7 +453,12 @@ font-size: 18rpx;
 .service{
   height: 90rpx;
   line-height: 90rpx;
-
+  display: flex;
+  padding-left: 26rpx;
+  align-items: center;
+}
+.van-ellipsis{
+  font-size: 26rpx;
 }
 .classification{
   font-size: 24rpx;

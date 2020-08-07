@@ -10,6 +10,8 @@ Page({
   data: {
     store: wx.getStorageSync('nowStore'), // 获取当前顾问信息
     productList : [], // 服务项目列表数据
+    option1: [], // 分类数据
+    type: "" // 分类的类型
   },
 
   /**
@@ -18,6 +20,7 @@ Page({
   onLoad: function (options) {
     this.getProduct();
     this.GetAgentOverviewDetails();
+    this.GetAgentProductTypeList();
   },
   // 获取发布文章的用户信息
   // getAuthor() {
@@ -78,9 +81,47 @@ Page({
     request.getReq(data).then(res=>{
       console.log(res,666666)
       if(!res.data[0].code){
+        for(let i=0; i<res.data.length; i++) {
+          res.data[i].agt_tags = res.data[i].agt_tags.split(',')
+        }
         wx.setStorageSync('storeDetail', res.data[0])
         this.setData({
           store:res.data[0]
+        })
+      }
+    })
+  },
+   // 筛选产品列表数据
+   changeP(e){
+    this.setData({
+      type: this.data.option1[e.detail].text=="全部"?"": this.data.option1[e.detail].text
+    })
+    this.getProduct();
+  },
+   // 获取当前用户可以申请的产品列表
+   GetAgentProductTypeList(){
+    var userInfo = wx.getStorageSync('userInfo');
+    var data = {
+      toast: true,// 是否显示加载动画
+      data:{
+        // 用户的登录id
+        apt_id :0, 
+      },
+      type:"get",
+      url:url.GetAgentProductTypeList,
+      header:{"Content-Type":"application/json; charset=utf-8"}
+    }
+    var that = this;
+    request.getReq(data).then(res=>{
+      console.log(res,666666)
+      if(!res.data[0].code){
+        var arr = [];
+        arr.push({value:0,text:'全部'})
+        for(var i=0; i<res.data.length; i++){
+          arr.push({value:res.data[i].apt_id,text:res.data[i].apt_type})
+        }
+        this.setData({
+          option1:arr,
         })
       }
     })
@@ -127,7 +168,7 @@ Page({
         agt_name: "",
         apd_name: "",
         cou_name: "",
-        apt_type: "",
+        apt_type: this.data.type,
         apd_ref: "",
         pds_status: "",
         str_created_date: "",

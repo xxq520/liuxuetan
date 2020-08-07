@@ -2,13 +2,13 @@
 <view class="personalDataBody">
   <view class="personal">
     <image class="personalBg" src="http://www.liuxuetalk.com/{{store.agt_background_image_url}}"></image>
-    <view class="arrow1 jianto">
+    <view class="arrow1 jianto" v-if="{{store.agt_tags[0]}}">
       <image src="../../static/image/arrow.png"></image>
-      <text>{{store.cou_name}}</text>
+      <text>{{store.agt_tags[0]}}</text>
     </view>
-    <view class="arrow2 jianto">
+    <view class="arrow2 jianto" v-if="{{store.agt_tags[1]}}">
       <image src="../../static/image/arrow.png"></image>
-      <text>留学规划师</text>
+      <text>{{store.agt_tags[1]}}</text>
     </view>
     <view class="more">
       <image src="../../static/image/more.png"></image>
@@ -167,11 +167,11 @@
           <view class="zantong pingfen">
             <text class="hui" decode='true'>赞同&nbsp;160</text>
             <text class="fen">评分</text>
-            <image src="../../static/image/xingxing.png"></image>
-            <image src="../../static/image/xingxing.png"></image>
-            <image src="../../static/image/xingxing.png"></image>
-            <image src="../../static/image/xingxing.png"></image>
-            <image src="../../static/image/xingxing2.png"></image>
+            <image src="{{store.agt_rate>=1?'/static/image/star_select.png':'/static/image/star.png'}}"></image>
+            <image src="{{store.agt_rate>=2?'/static/image/star_select.png':'/static/image/star.png'}}"></image>
+            <image src="{{store.agt_rate>=3?'/static/image/star_select.png':'/static/image/star.png'}}"></image>
+            <image src="{{store.agt_rate>=4?'/static/image/star_select.png':'/static/image/star.png'}}"></image>
+            <image src="{{store.agt_rate>=5?'/static/image/star_select.png':'/static/image/star.png'}}"></image>
           </view>
         </view>
       </view>
@@ -181,8 +181,11 @@
     <view class="hotfix"></view>
     <view class="serviceBg">
       <view class="service">
-        <text class="classification">全部分类</text>
-        <image src="../../static/image/classification1.png"></image>
+        <!-- <text class="classification">全部分类</text> -->
+        <van-dropdown-menu class="filter" >
+          <van-dropdown-item value="{{ 1 }}" options="{{ option1 }}" bind:change="changeP"/>
+        </van-dropdown-menu>
+        <!-- <image src="../../static/image/classification1.png"></image> -->
         <text class="xiaolian">销量</text>
       </view>
       <view class="class1" bindtap="goGoodsDetail" data-index="{{index}}" wx:for="{{productList}}">

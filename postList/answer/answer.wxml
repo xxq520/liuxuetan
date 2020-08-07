@@ -102,7 +102,7 @@
                         <view class="right_status">
                             <view class="right_status_item">
                                 <image src="../../static/image/zhuanfa.png" />
-                                <text class="">888</text>
+                                <text class="">0</text>
                             </view>
                             <view class="right_status_item">
                                 <image src="../../static/image/dianzan.png" />

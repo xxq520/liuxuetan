@@ -23,7 +23,7 @@ Page({
   },
    // 去搜索
    goSearch(){
-    wx.navigateTo({
+    wx.switchTab({
       url:"/pages/discover/discover"
     })
   },

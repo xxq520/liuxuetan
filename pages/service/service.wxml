@@ -42,7 +42,7 @@
           <view class="comment">{{item.filtered_record}}条评论</view>
         </view>
         <view class="shopType">
-          <text>{{item.cou_name}}</text>
+          <text wx:for="{{item.agt_tags}}" wx:for-item="data">{{data}}</text>
         </view>
       </view>
       <image class="right"  src="/static/image/right.png"></image>
