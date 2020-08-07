@@ -63,11 +63,12 @@ Page({
    // 获取当前顾问的店铺数据
    GetAgentOverviewDetails(){
     var userInfo = wx.getStorageSync('userInfo');
+    var store = wx.getStorageSync('nowStore');
     var data = {
       toast: true,// 是否显示加载动画
       data:{
         // 用户的登录id
-        agt_key :this.data.store.agt_key, 
+        agt_key : store.agt_key,
       },
       type:"get",
       url:url.GetAgentOverviewDetails,
@@ -174,9 +175,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.setData({
-      store: wx.getStorageSync('nowStore')
-    })
+  
   },
 
   /**
