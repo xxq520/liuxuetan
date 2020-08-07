@@ -123,7 +123,7 @@ Page({
         apd_name : goodName, // 代理产品名称
         new_pds_status: '新产品审批完成', // 新代理产品中文状态（见3.1.1.7）
         apd_ref : "", // 代理产品参考
-        apd_image_url :this.data.fileList[0]?(this.data.fileList[0].url.replace("ttp://www.liuxuetalk.com","")): this.data.product.apd_key?this.data.product.apd_image_url:'http://iph.href.lu/60x60?text=default', // 代理产品图像URL
+        apd_image_url :this.data.fileList[0]?(this.data.fileList[0].url.replace("http://www.liuxuetalk.com","")): this.data.product.apd_key?this.data.product.apd_image_url:'http://iph.href.lu/60x60?text=default', // 代理产品图像URL
         apd_description : miaoshu, // 代理产品说明
         apd_price : price, // 代理产品价格
         apd_commission: 0, // 代理产品粉碎价值 *创建新代理产品时为0
