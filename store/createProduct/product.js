@@ -196,7 +196,7 @@ Page({
         if(!res.data[0].code){
           this.setData({
               fileList:[{
-                  url: res.data[0].apd_image_url,
+                  url: `http://www.liuxuetalk.com${res.data[0].apd_image_url}`,
                   name: '图片',
                   isImage: true
               }],

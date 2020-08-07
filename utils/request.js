@@ -155,7 +155,7 @@ function uploadFile(tempFilePaths,type) {
             formData: {},
             success(res) {
                 if (res.data && JSON.parse(res.data)) {
-                    resolve("http://www.liuxuetalk.com/"+JSON.parse(res.data)[0].return)
+                    resolve("http://www.liuxuetalk.com"+JSON.parse(res.data)[0].return)
                 } else {
                     wx.showToast({
                         title: '文件上传失败',
