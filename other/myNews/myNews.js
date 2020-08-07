@@ -53,7 +53,7 @@ Page({
         })
         return false
       }
-      var resData = JSON.parse(res.data.replace(/\]\[/g,","));
+      var resData = res.data;
       var newArray = [];
       var index = []
       for(var i=0; i<resData.length; i++){
