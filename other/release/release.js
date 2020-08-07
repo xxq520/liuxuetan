@@ -180,7 +180,7 @@ Page({
           // 文章是否有效
           new_valid:true,
           // 新闻id
-          en_new_id:that.data.newContent?that.data.newContent.en_new_id:"",
+          new_key:that.data.newContent?that.data.newContent.en_new_id:"",
           new_header_image:userInfo.usr_profile_image_tn,
           new_header:that.data.title,
           new_tags:that.data.tag
@@ -212,7 +212,7 @@ Page({
         // 用户的登录id
         usr_key : userInfo.usr_key, 
         // 如果不搜索特定的新闻/帖子记录，则为0
-        new_id: this.data.id, 
+        new_key: this.data.id, 
         // 返回数据页码. 1=归还所有记录
         pageSize: "1",
         // 每个数据页的记录数量 1=归还所有记录

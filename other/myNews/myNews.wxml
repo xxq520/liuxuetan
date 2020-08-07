@@ -1,6 +1,6 @@
 <!-- pages/discover/discover.wxml -->
 <view class="container">
-    <view class="article_list mrg_top_20" bindtap="goPostdetails" data-type="{{item.ntp_type=='问题'?2:1}}" data-id="{{item.new_id}}" wx:for="{{newList}}"  wx:key="index">
+    <view class="article_list mrg_top_20" bindtap="goPostdetails" data-type="{{item.ntp_type=='问题'?2:1}}" data-id="{{item.new_key}}" wx:for="{{newList}}"  wx:key="index">
         <view class="article_item">
             <view class="article_title">
                 <view class="title_box">

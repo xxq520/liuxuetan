@@ -86,7 +86,7 @@ Page({
     // 获取当前的编辑文章的元素
     var item = this.data.newList[e.currentTarget.dataset.index];
     wx.navigateTo({
-      url: `/other/release/release?id=${item.new_id}&type=${item.ntp_type=='问题'?2:1}`,
+      url: `/other/release/release?id=${item.new_key}&type=${item.ntp_type=='问题'?2:1}`,
     })
   },
   //  删除文章
