@@ -79,10 +79,10 @@ Page({
     }
     var that = this;
     request.getReq(data).then(res=>{
-      console.log(res,666666)
       if(!res.data[0].code){
         for(let i=0; i<res.data.length; i++) {
-          res.data[i].agt_tags = res.data[i].agt_tags.split(',')
+          res.data[i].agt_tags = store.agt_tags&&store.agt_tags.indexOf(",") !=-1? store.agt_tags.split(',') : store.agt_tags
+          console.log(store.agt_tags,520)
         }
         wx.setStorageSync('storeDetail', res.data[0])
         this.setData({
@@ -113,7 +113,6 @@ Page({
     }
     var that = this;
     request.getReq(data).then(res=>{
-      console.log(res,666666)
       if(!res.data[0].code){
         var arr = [];
         arr.push({value:0,text:'全部'})
@@ -188,7 +187,6 @@ Page({
         res.data[i].apd_created_date = res.data[i].apd_created_date.split(")")[0];
         res.data[i].apd_created_date = request.format(res.data[i].apd_created_date, "YYYY-MM-dd");
         res.data[i].apd_created_date = res.data[i].apd_created_date.replace(/\-/g, ".");
-        console.log(res.data[i], 88, res.data[i].apd_created_date)
       }
       if (!res.data[0].code) {
         this.setData({

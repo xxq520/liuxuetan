@@ -2,11 +2,11 @@
 <view class="personalDataBody">
   <view class="personal">
     <image class="personalBg" src="http://www.liuxuetalk.com/{{store.agt_background_image_url}}"></image>
-    <view class="arrow1 jianto" v-if="{{store.agt_tags[0]}}">
+    <view class="arrow1 jianto" wx:if="{{store.agt_tags[0]}}">
       <image src="../../static/image/arrow.png"></image>
       <text>{{store.agt_tags[0]}}</text>
     </view>
-    <view class="arrow2 jianto" v-if="{{store.agt_tags[1]}}">
+    <view class="arrow2 jianto" wx:if="{{store.agt_tags[1]}}">
       <image src="../../static/image/arrow.png"></image>
       <text>{{store.agt_tags[1]}}</text>
     </view>
