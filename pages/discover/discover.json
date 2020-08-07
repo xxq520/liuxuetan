@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "i-load-more": "/component/load-more/index"
+    "i-load-more": "/component/load-more/index",
+    "active": "/component/active/index"
   },
   "backgroundTextStyle": "light",
   "navigationBarBackgroundColor": "#3b5370",

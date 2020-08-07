@@ -25,9 +25,40 @@ Page({
     // 選中的附件
     selectfj: "",
     // 留言
-    aod_remark: ""
+    aod_remark: "",
   },
-
+  CreateChatDirectGroup(){
+    var userInfo = wx.getStorageSync('userInfo');
+      var data = {
+        toast: true, // 是否显示加载动画
+        data: {
+          // 用户的登录id
+          chat_usr_key: this.data.order.agt_usr_key,
+          usr_key: userInfo.usr_key
+        },
+        type: "post",
+        url: url.CreateChatDirectGroup,
+        header: {
+          "Content-Type": "application/json; charset=utf-8"
+        }
+      }
+      var that = this;
+      request.getReq(data).then(res => {
+        if(res.data[0]&&res.data[0].response=="储存成功"){
+          console.log("创建聊天",res.data[0])
+          wx.navigateTo({
+            url: '/other/CustomerService/CustomerService?grp_type=Direct&chat='+res.data[0].return,
+          })
+          return
+          // this.getMessageList(userInfo.usr_key);
+        }else{
+          wx.showToast({
+            title: '发起失败，稍后再试。',
+            icon: "none"
+          })
+        }
+      })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

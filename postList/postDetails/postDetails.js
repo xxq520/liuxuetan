@@ -189,7 +189,6 @@ Page({
         isActive:res.data[0].isLiked,
         newsId : res.data[0].en_new_id
       })
-      console.log(that.data.newContent.new_content)
       // 获取新闻评论列表
       that.getComment()
       // 获取文章作者
@@ -221,7 +220,6 @@ Page({
     }
     var that = this;
     request.getReq(data).then(res=>{
-      console.log(res)
       for(var i=0; i<res.data.length; i++){
         var content = res.data[i].ncm_comment;
         var newContent = content.replace(/<img/gi, '<img style="max-width:50%;height:auto;display:block" ')
@@ -229,7 +227,6 @@ Page({
         .replace(/\/Uploads/g,"http://www.liuxuetalk.com/Uploads")
         .replace(/&gt;/g, '>')
         .replace(/&amp;nbsp;/g, ' ')
-        console.log( res.data[i].ncm_comment,898)
         // <img src="/Uploads/Posts/uk flag.jpg" style="width: 300px;"><p>test picture<br></p>
         res.data[i].ncm_comment = newContent
       }
@@ -272,7 +269,6 @@ Page({
     }
     var that = this;
     request.getReq(data).then(res=>{
-      console.log(res)
       if(res.data[0].response=="储存成功"){
         wx.showToast({
           title: '评论成功',
@@ -315,7 +311,6 @@ Page({
           newContent:changeData
         })
       } else {
-        console.log(!that.data.isFavourite,789)
         changeData.isFavourite = !changeData.isFavourite
         that.setData({
           newContent:changeData
@@ -345,7 +340,6 @@ Page({
   },
   // 评论内容更改事件
   changeComment(e){
-    console.log(e.detail.value)
     this.setData({
       commentContent:e.detail.value
     })
@@ -394,7 +388,6 @@ Page({
       that.setData({
         scollHeight:e.scrollTop
       })
-      console.log(123,e.scrollTop)
     },300)
   },
   /**
@@ -422,7 +415,6 @@ Page({
       //获取上一个页面的所有的方法和data中的数据
       var lastpage = pages[pages.length - 2]
      //改变上一个页面中的data中的数据
-console.log(lastpage,666)
       switch(lastpage.route){
         case "pages/index/index":
           var indexData = `indexData[${this.data.index}]`

@@ -154,6 +154,13 @@ Page({
   async submit() {
     var product = this.data.product;
     var userInfo = wx.getStorageSync('userInfo');
+    if(!Number(product.apd_price)){
+      wx.showToast({
+        title: '产品价格有误',
+        icon: "none"
+      })
+      return
+    }
     var data = {
       toast: true,// 是否显示加载动画
       data:{
@@ -223,7 +230,11 @@ Page({
           console.log(res.data[i],88,res.data[i].apd_created_date)
         }
         if(!res.data[0].code){
+          let fileList = this.data.fileList;
+          fileList[0].url = 'http://www.liuxuetalk.com/'+res.data[0].apd_image_url;
+          console.log(fileList[0].url,456)
           this.setData({
+            fileList: fileList,
             product:res.data[0],
             miaoshu: res.data[0].apd_description,
             price: res.data[0].apd_price,

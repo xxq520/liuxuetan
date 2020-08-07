@@ -47,87 +47,8 @@
 		</view>
 		<view class="ceng" wx:if="{{isShow}}" catchtap="guanzhu"></view>
 	</view>
-	<view class="article_list">
-		<!-- en_new_id: "uY3xOl6YjhwNcZKPbYeuuQ==%^#%"
-  filtered_record: 11
-  isFavourite: false
-  isLiked: false
-  new_comment: 4
-  new_content: "test"
-  new_favourite: 1
-  new_forward: 0
-  new_header: "英国什么城市好玩？"
-  new_header_image: ""
-  new_header_image_tn: ""
-  new_id: 17
-  new_key: "uY3xOl6YjhwNcZKPbYeuuQ%3d%3d"
-  new_like: 0
-  new_order: 234
-  new_tags: "英国旅游"
-  new_tags_index: "英国旅游"
-  new_valid: true
-  new_visit: 110
-  new_weight: 0
-  ntp_id: 2
-  ntp_type: "问题"
-  usr_display_name: "juneasix"
-  usr_profile_image_tn: "/Uploads/Profile/Thumbnails/monkey.jpg"
-  utp_badge: null -->
 	<!-- <button bindtap="formSubmit">123</button> -->
-		<view class="article_item" bindtap="goPostdetails" data-type="{{item.ntp_type=='问题'?2:1}}" data-index="{{index}}" data-id="{{item.new_key}}" wx:for="{{indexData}}" wx:key="index">
-			<view class="article_title">
-				<view class="title_box">
-					<view class="wen_ti" wx:if="{{item.ntp_type=='问题'}}">问</view>
-					<text class="title_txt">{{item.new_header}}</text>
-				</view>
-				<view class="collect_btn" catchtap="likeNew" data-type="favourite" data-id="{{item.new_key}}" data-index="{{index}}">
-					<image src="../../static/image/aixin.png" wx:if="{{!item.isFavourite}}" />
-					<text>{{item.isFavourite?'已收藏':'收藏'}}</text>
-				</view>
-			</view>
-			<view class="haveTx">
-				<image wx:if="{{item.new_header_image&&item.new_header_image!=item.usr_profile_image_tn}}" src="http://www.liuxuetalk.com/{{item.new_header_image}}"></image>
-				<view class="article_context">
-					<rich-text nodes=" {{item.new_content}}"></rich-text>
-				</view>
-			</view>
-			<text class="full_text" wx:if="{{item.new_content.length>10}}">阅读全文</text>
-			<view class="user_info">
-				<image class="user_tx" src="http://www.liuxuetalk.com/{{item.usr_profile_image_tn}}" />
-				<view class="info_content">
-					<view class="top_info">
-						<text class="user_name">{{item.usr_display_name}}</text>
-						<text class="publish_time">刚刚发表</text>
-					</view>
-					<view class="bottom_info">
-						<view class="browse">
-							<image src="../../static/image/year.png" />
-							<text class="browse_context">浏览量</text>
-							<text class="browse_num">{{item.new_visit}}</text>
-						</view>
-						<view class="attention">
-							<image src="../../static/image/guanzhu.png" />
-							<text class="attention_btn">关注</text>
-						</view>
-					</view>
-				</view>
-			</view>
-			<view class="status">
-				<view class="status_item">
-					<image src="../../static/image/zhuanfa.png" />
-					<text>{{item.new_forward}}</text>
-				</view>
-				<view class="status_item">
-					<image src="../../static/image/dianzan.png" />
-					<text class="zan_color">{{item.new_like}}</text>
-				</view>
-				<view class="status_item">
-					<image src="../../static/image/liuyan.png" />
-					<text>{{item.new_comment}}</text>
-				</view>
-			</view>
-		</view>
-	</view>
+	<active indexData="{{indexData}}"></active>
 	<view wx:if="{{!indexData.length&&!noinfo}}">
 		<i-load-more />
 	</view>

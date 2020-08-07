@@ -18,7 +18,7 @@
                     <view class="right-consultant-info">
                         <view class="right-private">
                             <view class="consultant-name line_1">{{order.agt_name}}</view>
-                            <view class="private">私信</view>
+                            <view bindtap="CreateChatDirectGroup" class="private">私信</view>
                         </view>
                         <view class="right-status">
                             <view class="status">{{order.aos_status}}</view>

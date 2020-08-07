@@ -141,31 +141,6 @@ Page({
       }
     })
   },
-  // 点赞或收藏文章
-  likeNew(e){
-    var data = {
-      toast: false,// 是否显示加载动画
-      data:{
-        // 用户的登录id
-        usr_key : this.data.userInfo.usr_key || "", 
-        // 如果不搜索特定的新闻/帖子记录，则为0
-        new_key: e.currentTarget.dataset.id, 
-        // 是收藏还是点赞
-        option: e.currentTarget.dataset.type,
-      },
-      type:"POST",
-      url:url.SaveUserNewOption,
-      header:{"Content-Type":"application/json; charset=utf-8"}
-    }
-    var that = this;
-    request.getReq(data).then(res=>{
-      var changeData = "indexData[" + e.currentTarget.dataset.index + "].isFavourite";
-      // 判断当前的点击的是收藏还是点赞
-        that.setData({
-          [changeData] : !that.data.indexData[e.currentTarget.dataset.index].isFavourite
-        })
-    })
-  },
   onPullDownRefresh:function(){
     wx.showNavigationBarLoading() //在标题栏中显示加载
     //模拟加载

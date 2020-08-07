@@ -106,6 +106,13 @@ Page({
       })
       return
     }
+    if(!Number(price)){
+      wx.showToast({
+        title: '产品价格有误',
+        icon: "none"
+      })
+      return
+    }
     var userInfo = wx.getStorageSync('userInfo');
     var data = {
       toast: true,// 是否显示加载动画
