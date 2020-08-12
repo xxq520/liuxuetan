@@ -357,10 +357,10 @@ Page({
       //       });
             break;
           case "pages/discover/discover":
-            var indexData = `newList[${this.data.index}]`
-            lastpage.setData({
-              [indexData]:that.data.newContent
-            });
+      //       var indexData = `newList[${this.data.index}]`
+      //       lastpage.setData({
+      //         [indexData]:that.data.newContent
+      //       });
             break; 
           case "postList/topicColumn/topicColumn":
             var indexData = `indexData[${this.data.index}]`
