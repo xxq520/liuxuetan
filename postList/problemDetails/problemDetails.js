@@ -351,10 +351,10 @@ Page({
        //改变上一个页面中的data中的数据
         switch(lastpage.route){
           case "pages/index/index":
-            var indexData = `indexData[${this.data.index}]`
-            lastpage.setData({
-              [indexData]:that.data.newContent
-            });
+            // var indexData = `indexData[${this.data.index}]`
+            // lastpage.setData({
+              // [indexData]:that.data.newContent
+      //       });
             break;
           case "pages/discover/discover":
             var indexData = `newList[${this.data.index}]`

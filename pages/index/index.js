@@ -75,9 +75,7 @@ Page({
     var data = {
       toast: true,// 是否显示加载动画
     }
-    // 初始化首页数据
-    this.getIndexData()
-    // 获取用户关注的新闻项目
+   
   },
   //  初始化首页数据
   getIndexData() {
@@ -109,10 +107,25 @@ Page({
     var that = this;
     request.getReq(data).then(res=>{
       console.log(res)
+      function unescapeHTML(a){
+           a = "" + a;
+           return a.replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&apos;/g, "'");
+      }
+      for(let i =0; i<res.data.length; i++){
+        res.data[i].ncm_comment = res.data[i].ncm_comment?res.data[i].ncm_comment.replace("/(↵)/g",""): res.data[i].new_content
+        res.data[i].ncm_comment = res.data[i].ncm_comment?res.data[i].ncm_comment.replace("/(\n)/g",""): res.data[i].new_content;
+        res.data[i].ncm_comment = unescapeHTML( res.data[i].ncm_comment)
+      }
       that.setData({
         indexData : res.data,
         noinfo:true
       })
+      setTimeout(()=>{
+        that.setData({
+          indexData : res.data,
+          noinfo:true
+        })
+      },500)
     })
   },
   // 获取用户关注的新闻项目
@@ -155,6 +168,9 @@ Page({
     },1500);
   },
   onShow(){
+     // 初始化首页数据
+     this.getIndexData()
+     // 获取用户关注的新闻项目
     this.getUserLick()
   }
 })

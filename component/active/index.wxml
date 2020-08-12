@@ -13,7 +13,7 @@
 			<view class="haveTx">
 				<image wx:if="{{item.new_header_image&&item.new_header_image!=item.usr_profile_image_tn}}" src="http://www.liuxuetalk.com/{{item.new_header_image}}"></image>
 				<view class="article_context">
-					<rich-text nodes=" {{item.new_content}}"></rich-text>
+					<rich-text nodes=" {{item.ntp_type=='问题' ? item.ncm_comment : item.new_content}}"></rich-text>
 				</view>
 			</view>
 			<text class="full_text" wx:if="{{item.new_content.length>10}}">阅读全文</text>
