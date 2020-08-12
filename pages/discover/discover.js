@@ -106,8 +106,18 @@ Page({
     request.getReq(data).then(res=>{
       console.log(res,888)
       if(res.data[0].Code!=404) {
+        function unescapeHTML(a){
+          a = "" + a;
+          return a.replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&apos;/g, "'");
+     }
+     let response  = res.data.splice(0,10);
+     for(let i =0; i<response.length; i++){
+      response[i].ncm_comment = response[i].ncm_comment?response[i].ncm_comment.replace("/(↵)/g",""): response[i].new_content
+      response[i].ncm_comment = response[i].ncm_comment?response[i].ncm_comment.replace("/(\n)/g",""): response[i].new_content;
+      response[i].ncm_comment = unescapeHTML( response[i].ncm_comment)
+     }
         that.setData({
-          newList : res.data.splice(0,10),
+          newList : response,
           noinfo:true
         })
       } else {
