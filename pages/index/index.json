@@ -4,5 +4,6 @@
     "i-load-more": "/component/load-more/index",
     "active": "/component/active/index"
   },
+  "onReachBottomDistance": 50,
   "enablePullDownRefresh": true
 }

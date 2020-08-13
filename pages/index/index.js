@@ -18,6 +18,8 @@ Page({
     // 是否显示关注遮罩层
     isShow: false,
     guanzhuNum: 0,
+    // 请求的数据的页数
+    pageNumber: 1,
     // 显示的推荐数据
     indexData: [],
     // 当前点击搜索的关注内容
@@ -31,7 +33,9 @@ Page({
      // 搜索的内容
      search:"",
      // 是否显示暂无更多
-     noinfo:false
+     noinfo:false,
+     // 每页数据的条数
+     pageSize: 5,
   },
   // 点击加号发布按钮事件
   changeMessage(){
@@ -88,9 +92,9 @@ Page({
         // 如果不搜索特定的新闻/帖子记录，则为0
         new_key: "" , 
         // 返回数据页码. 1=归还所有记录
-        pageSize: "1",
+        pageSize: this.data.pageSize,
         // 每个数据页的记录数量 1=归还所有记录
-        pageNumber: "1",
+        pageNumber: this.data.pageNumber,
         // 按标签名称搜索新闻/帖子
         search_tags: this.data.searchContent,
         // 通过任何文本搜索新闻/帖子
@@ -111,21 +115,20 @@ Page({
            a = "" + a;
            return a.replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&apos;/g, "'");
       }
-      for(let i =0; i<res.data.length; i++){
-        res.data[i].ncm_comment = res.data[i].ncm_comment?res.data[i].ncm_comment.replace("/(↵)/g",""): res.data[i].new_content
-        res.data[i].ncm_comment = res.data[i].ncm_comment?res.data[i].ncm_comment.replace("/(\n)/g",""): res.data[i].new_content;
-        res.data[i].ncm_comment = unescapeHTML( res.data[i].ncm_comment)
-      }
-      that.setData({
-        indexData : res.data,
-        noinfo:true
-      })
-      setTimeout(()=>{
+      if(res.data[0].Code != 404) {
         that.setData({
-          indexData : res.data,
+          pageNumber: that.data.pageNumber+1
+        })
+        for(let i =0; i<res.data.length; i++){
+          res.data[i].ncm_comment = res.data[i].ncm_comment?res.data[i].ncm_comment.replace("/(↵)/g",""): res.data[i].new_content
+          res.data[i].ncm_comment = res.data[i].ncm_comment?res.data[i].ncm_comment.replace("/(\n)/g",""): res.data[i].new_content;
+          res.data[i].ncm_comment = unescapeHTML( res.data[i].ncm_comment)
+        }
+        that.setData({
+          indexData : that.data.indexData.concat(res.data),
           noinfo:true
         })
-      },500)
+      }
     })
   },
   // 获取用户关注的新闻项目
@@ -154,11 +157,24 @@ Page({
       }
     })
   },
+  searchIndexData(){
+    this.setData({
+      pageNumber: 1,
+      indexData: []
+    })
+    //模拟加载
+    // 初始化首页数据
+    this.getIndexData();
+  },
   onPullDownRefresh:function(){
+    this.setData({
+      pageNumber: 1,
+      indexData: []
+    })
     wx.showNavigationBarLoading() //在标题栏中显示加载
     //模拟加载
     // 初始化首页数据
-    this.getIndexData()
+    this.getIndexData();
     // 获取用户关注的新闻项目
     this.getUserLick()
     setTimeout(function(){
@@ -172,5 +188,8 @@ Page({
      this.getIndexData()
      // 获取用户关注的新闻项目
     this.getUserLick()
-  }
+  },
+  onReachBottom: function () {
+    this.getIndexData();
+  },  
 })
