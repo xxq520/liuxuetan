@@ -93,9 +93,6 @@
               <image src="http://www.liuxuetalk.com/{{comment[0].usr_profile_image_tn}}" />
               <view>
                  <text class="comment_user_name">{{comment[0].usr_display_name}}</text>
-                 <view class="context">
-                 <rich-text nodes="{{comment[0].ncm_comment}}"></rich-text>
-              </view>
               </view>
             </view>
             <view class="right_comment_praise">
@@ -106,6 +103,9 @@
                 </view>
               </view>
             </view>
+          </view>
+          <view class="context">
+              <rich-text nodes="{{comment[0].ncm_comment}}"></rich-text>
           </view>
         </view>
         <view class="view_arr" bindtap="watchOlder">查看全部{{comment.length}}个回答>></view>
@@ -179,9 +179,7 @@
                 <image src="http://www.liuxuetalk.com/{{item.usr_profile_image_tn}}" />
                 <view>
                   <text class="comment_user_name">{{item.usr_display_name}}</text>
-                   <view class="context">
-                   <rich-text nodes="{{item.ncm_comment}}"></rich-text>
-                </view>
+                 
                 </view>
               </view>
               <view class="right_comment_praise">
@@ -193,6 +191,9 @@
                   </view>
                 </view>
               </view>
+            </view>
+            <view class="context">
+              <rich-text nodes="{{item.ncm_comment}}"></rich-text>
             </view>
           </view>
         </view>

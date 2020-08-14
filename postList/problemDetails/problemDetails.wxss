@@ -190,6 +190,9 @@ justify-content: center;
 .context{
     max-width: 703rpx;
 }
+.comment .context{
+    padding-left: 20rpx;
+}
 .open_details{
     font-size: 24rpx;
 	letter-spacing: 1rpx;
