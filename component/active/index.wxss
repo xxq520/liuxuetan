@@ -8,7 +8,16 @@
     border-radius: 10rpx;
     margin-bottom: 20rpx;
   }
-  
+  .imgList{
+    margin-top: 20rpx;
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 10rpx;
+  }
+  .imgList image{
+    max-width: 30%;
+    height: 200rpx;
+  }
   .article_title {
     display: flex;
     margin-bottom: 10rpx;

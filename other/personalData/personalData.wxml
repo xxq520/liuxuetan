@@ -67,7 +67,7 @@
           擅长给学生梳理申请难点，帮学生长线规划，引领学生通过语言提分，背景提升一步步帮学生拿到心仪的offer.很多学生都有名校梦，但竟争力不足。大一开始长骊规划，通过我的指导都如愿进入梦校。成功帮学生拿到加州大学洛杉矶分校、伯克利分校、康奈尔大学、哥伦比亚大学、东北大学等名校录取。
         </text>
       </view> -->
-      {{store.agt_description||'暂无更多介绍'}}
+      {{nowStore.agt_description||'暂无更多介绍'}}
     </view>
     <view class="contact" bindtap="CreateChatDirectGroup">
       <image src="../../static/image/contact.png"></image>

@@ -16,6 +16,9 @@
 					<rich-text nodes=" {{item.ntp_type=='问题' ? item.ncm_comment : item.new_content}}"></rich-text>
 				</view>
 			</view>
+			<view class="imgList">
+				<image wx:for="{{item.ncm_commentImg}}" wx:for-item="img" mode="aspectFill" src="{{img}}"></image>
+			</view>
 			<text class="full_text" wx:if="{{item.new_content.length>10}}">阅读全文</text>
 			<view class="user_info">
 				<image class="user_tx" src="http://www.liuxuetalk.com/{{item.usr_profile_image_tn}}" />

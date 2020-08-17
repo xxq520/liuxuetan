@@ -111,7 +111,7 @@ Page({
     var that = this;
     request.getReq(data).then(res=>{
       console.log(res)
-      function unescapeHTML(a){
+      function unescapeHTML1(a){
            a = "" + a;
            return a.replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&apos;/g, "'");
       }
@@ -119,11 +119,50 @@ Page({
         that.setData({
           pageNumber: that.data.pageNumber+1
         })
+        function getimgsrc(htmlstr) {
+          console.log(htmlstr,1)
+          var reg = /<img.+?src=('|")?([^'"]+)('|")?(?:\s+|>)/gim
+          var arr = []
+          var tem = null
+          while (tem = reg.exec(htmlstr)) {
+            if(tem[2].startsWith('http') || tem[2].startsWith('https')){
+              arr.push(tem[2])
+            } else {
+              arr.push(`http://www.liuxuetalk.com/${tem[2]}`)
+            }
+          }
+          return arr
+        }
+        var entityMap2 = {
+          '&amp;': '&',
+          '&lt;': '<',
+          '&gt;': '>',
+          '&quot;': '"',
+          '&#39;': "'",
+          '&#x2F;': '/',
+          '&#x60;': '`',
+          '&#x3D;': '='
+        };
+        function unescapeHtml (string) {
+          return String(string).replace(/&(amp|lt|gt|quot|#39|#x2F|#x60|#x3D);/ig, function (s) {
+            return entityMap2[s];
+          });
+        }
         for(let i =0; i<res.data.length; i++){
           res.data[i].ncm_comment = res.data[i].ncm_comment?res.data[i].ncm_comment.replace("/(↵)/g",""): res.data[i].new_content
           res.data[i].ncm_comment = res.data[i].ncm_comment?res.data[i].ncm_comment.replace("/(\n)/g",""): res.data[i].new_content;
-          res.data[i].ncm_comment = unescapeHTML( res.data[i].ncm_comment)
+          res.data[i].ncm_comment = unescapeHTML1(res.data[i].ncm_comment)
+          let str  = unescapeHtml( res.data[i].ncm_comment)
+          let commentImg = getimgsrc(str);
+          res.data[i].ncm_commentImg = commentImg.slice(0,3)
         }
+        // for(let i =0; i<res.data.length; i++){
+        //   res.data[i].ncm_comment = res.data[i].ncm_comment?res.data[i].ncm_comment.replace("/(↵)/g",""): res.data[i].new_content
+        //   res.data[i].ncm_comment = res.data[i].ncm_comment?res.data[i].ncm_comment.replace("/(\n)/g",""): res.data[i].new_content;
+        //   res.data[i].ncm_comment =  unescapeHTML( res.data[i].ncm_comment);
+        //   let commentImg = getimgsrc(res.data[i].ncm_comment);
+        //   res.data[i].ncm_commentImg = commentImg;
+        // }
         that.setData({
           indexData : that.data.indexData.concat(res.data),
           noinfo:true

@@ -9,6 +9,7 @@ Page({
    */
   data: {
     store: wx.getStorageSync('nowStore'), // 获取当前顾问信息
+    nowStore: wx.getStorageSync('nowStore'), // 获取当前顾问信息
     productList : [], // 服务项目列表数据
     option1: [], // 分类数据
     type: "" // 分类的类型
