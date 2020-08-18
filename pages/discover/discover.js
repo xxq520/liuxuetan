@@ -20,7 +20,9 @@ Page({
      // 用户的信息
      userInfo:   wx.getStorageSync('userInfo'),
      // 是否显示暂无更多数据
-     noinfo:false
+     noinfo:false,
+     // 热门的标题
+     strList: ['美国','大学论坛','巴斯大学','留学干货','英国留学','英国旅游','旅行','格拉斯哥大学']
   },
   // 服务分类选择事件
   bindMultiPickerChange(e){
@@ -89,9 +91,9 @@ Page({
         // 每个数据页的记录数量 1=归还所有记录
         pageNumber: "1",
         // 按标签名称搜索新闻/帖子
-        search_tags: this.data.Country,
+        search_tags: this.data.Country || app.globalData.discoverVal,
         // 通过任何文本搜索新闻/帖子
-        search_term: app.globalData.discoverVal,
+        search_term: "",
         // 新闻/帖子类型，“文章”或“问题”
         post_type: "",
         // 在HTML中显示返回的新闻/帖子内容
@@ -104,14 +106,12 @@ Page({
     }
     var that = this;
     request.getReq(data).then(res=>{
-      console.log(res,888)
       if(res.data[0].Code!=404) {
         function unescapeHTML1(a){
           a = "" + a;
           return a.replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&apos;/g, "'");
      }
        function getimgsrc(htmlstr) {
-         console.log(htmlstr,1)
          var reg = /<img.+?src=('|")?([^'"]+)('|")?(?:\s+|>)/gim
          var arr = []
          var tem = null
@@ -164,6 +164,10 @@ Page({
    */
   onReady: function () {
 
+  },
+  goSearch(e) {
+    app.globalData.discoverVal = e.currentTarget.dataset.item;
+    this.getIndexData();
   },
   // 跳转至问题详情或者普通帖子详情页面
   goPostdetails(e){

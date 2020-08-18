@@ -110,7 +110,6 @@ Page({
     }
     var that = this;
     request.getReq(data).then(res=>{
-      console.log(res)
       function unescapeHTML1(a){
            a = "" + a;
            return a.replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&apos;/g, "'");
@@ -120,7 +119,6 @@ Page({
           pageNumber: that.data.pageNumber+1
         })
         function getimgsrc(htmlstr) {
-          console.log(htmlstr,1)
           var reg = /<img.+?src=('|")?([^'"]+)('|")?(?:\s+|>)/gim
           var arr = []
           var tem = null
@@ -148,21 +146,31 @@ Page({
             return entityMap2[s];
           });
         }
+        const replaceDetail = function(details){
+          var texts='';//待拼接的内容
+          while(details.indexOf('<img')!=-1){//寻找img 循环
+            texts+=details.substring('0',details.indexOf('<img')+4);//截取到<img前面的内容
+            details = details.substring(details.indexOf('<img')+4);//<img 后面的内容
+            if(details.indexOf('style=')!=-1 && details.indexOf('style=')<details.indexOf('>')){
+              texts+=details.substring(0,details.indexOf('style="')+7)+"max-width:100%;height:auto !important;margin:0 auto;";//从 <img 后面的内容 截取到style= 加上自己要加的内容
+              details=details.substring(details.indexOf('style="')+7); //style后面的内容拼接
+            }else{
+              texts+=' style="max-width:100%;height:auto;margin:0 auto;" ';
+            }
+          }
+          texts+=details;//最后拼接的内容
+          return texts
+        }
         for(let i =0; i<res.data.length; i++){
           res.data[i].ncm_comment = res.data[i].ncm_comment?res.data[i].ncm_comment.replace("/(↵)/g",""): res.data[i].new_content
           res.data[i].ncm_comment = res.data[i].ncm_comment?res.data[i].ncm_comment.replace("/(\n)/g",""): res.data[i].new_content;
           res.data[i].ncm_comment = unescapeHTML1(res.data[i].ncm_comment)
+          res.data[i].ncm_comment = unescapeHtml( res.data[i].ncm_comment);
+          res.data[i].ncm_comment = replaceDetail(res.data[i].ncm_comment);
           let str  = unescapeHtml( res.data[i].ncm_comment)
           let commentImg = getimgsrc(str);
           res.data[i].ncm_commentImg = commentImg.slice(0,3)
         }
-        // for(let i =0; i<res.data.length; i++){
-        //   res.data[i].ncm_comment = res.data[i].ncm_comment?res.data[i].ncm_comment.replace("/(↵)/g",""): res.data[i].new_content
-        //   res.data[i].ncm_comment = res.data[i].ncm_comment?res.data[i].ncm_comment.replace("/(\n)/g",""): res.data[i].new_content;
-        //   res.data[i].ncm_comment =  unescapeHTML( res.data[i].ncm_comment);
-        //   let commentImg = getimgsrc(res.data[i].ncm_comment);
-        //   res.data[i].ncm_commentImg = commentImg;
-        // }
         that.setData({
           indexData : that.data.indexData.concat(res.data),
           noinfo:true

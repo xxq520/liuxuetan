@@ -12,8 +12,8 @@
                     <view class="top_right_abs">
                         <view class="top_abs">
                             <text class="user_name">{{userInfo.usr_display_name}}</text>
-                            <view bindtap="goStore">
-                                <view class="homepage_btn red_dot">
+                            <view >
+                                <view class="homepage_btn red_dot" bindtap="goStoreDetail">
                                     <text>个人主页</text>
                                     <image src="../../static/image/sm_jiantou_you.png" />
                                 </view>
@@ -56,6 +56,15 @@
                     </view>
                 </view>
             </navigator>
+             <view bindtap="goStore">
+                <view class="options_item">
+                    <image src="../../static/image/wenti_yellow.png" />
+                    <view class="item_contxt">
+                        <text>商家管理</text>
+                        <image src="../../static/image/jiantou_you.png" />
+                    </view>
+                </view>
+            </view>
             <navigator url="/other/setting/setting">
                 <view class="options_item">
                     <image src="../../static/image/shezhi.png" />

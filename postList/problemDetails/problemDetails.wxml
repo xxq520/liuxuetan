@@ -31,7 +31,7 @@
       <text class="txt_title">{{newContent.new_header}}</text>
     </view>
     <view class="label_list">
-      <view class="label_item" wx:for="{{newContent.new_tags}}">{{item}}</view>
+      <navigator class="label_item" wx:for="{{newContent.new_tags}}" url="/postList/topicColumn/topicColumn?id={{item}}">{{item}}</navigator>
     </view>
     <view class="user_info">
       <image class="user_tx" src="http://www.liuxuetalk.com/{{newContent.usr_profile_image_tn}}" />

@@ -15,29 +15,10 @@
         <view class="nav_item " wx:if="{{item.tag_is_group}}" wx:for="{{searchTag}}">{{item.tag_name}}</view>
     </view>
     <view class="hot_search">
-        <view class="hot_item">
-            <image src="../../static/image/zhiding.png" />
-            <text class="hot_title">剑桥大学</text>
-        </view>
-        <view class="hot_item">
-            <text class="ranking">1</text>
-            <text class="hot_title">剑桥大学</text>
-        </view>
-        <view class="hot_item">
-            <text class="ranking">2</text>
-            <text class="hot_title">2020英国大学排名</text>
-        </view>
-        <view class="hot_item">
-            <text class="ranking">3</text>
-            <text class="hot_title">英国疫情</text>
-        </view>
-        <view class="hot_item">
-            <text class="ranking">4</text>
-            <text class="hot_title">英国领事馆</text>
-        </view>
-        <view class="hot_item">
-            <text class="ranking">5</text>
-            <text class="hot_title">国外必备哪些东西呢？</text>
+        <view class="hot_item" wx:for="{{strList}}" bindtap="goSearch" data-item="{{item}}">
+            <image wx:if="{{index==0}}" src="../../static/image/zhiding.png" />
+            <text wx:else class="ranking">{{index}}</text>
+            <text class="hot_title">{{item}}</text>
         </view>
     </view>
     <active indexData="{{newList}}"></active>

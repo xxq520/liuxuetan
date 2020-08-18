@@ -22,6 +22,37 @@ Page({
     this.getGetHotTagsGroup();
     
   },
+  goStoreDetail() {
+    let that = this;
+    var userInfo = wx.getStorageSync('userInfo');
+    var data = {
+      toast: true,// 是否显示加载动画
+      data:{
+        // 用户的登录id
+        agt_key : userInfo.store,  // 加密代理UID密钥
+        cou_name: "", // 代理地点名称中文
+        search_agt : ""
+      },
+      type:"get",
+      url:url.GetAgentDetailsList,
+      header:{"Content-Type":"application/json; charset=utf-8"}
+    }
+    request.getReq(data).then(res=>{
+      // 格式化最后聊天的时间
+      console.log(res,666)
+      if(!res.data[0].Code){
+        wx.setStorageSync('nowStore', res.data[0]);
+        wx.navigateTo({
+          url: '/other/personalData/personalData',
+        })
+      }else {
+        wx.showToast({
+          title: '顾问信息有误',
+          icon: "none"
+        })
+      }
+    })
+  },
   // 点击个人主页事件
   goStore(){
     if(!wx.getStorageSync('userInfo').store) {

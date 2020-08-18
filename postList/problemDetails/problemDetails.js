@@ -139,14 +139,30 @@ Page({
     }
     var that = this;
     request.getReq(data).then(res=>{
+      const replaceDetail = function(details){
+        var texts='';//待拼接的内容
+        while(details.indexOf('<img')!=-1){//寻找img 循环
+          texts+=details.substring('0',details.indexOf('<img')+4);//截取到<img前面的内容
+          details = details.substring(details.indexOf('<img')+4);//<img 后面的内容
+          if(details.indexOf('style=')!=-1 && details.indexOf('style=')<details.indexOf('>')){
+            texts+=details.substring(0,details.indexOf('style="')+7)+"max-width:100%;height:auto !important;margin:0 auto;";//从 <img 后面的内容 截取到style= 加上自己要加的内容
+            details=details.substring(details.indexOf('style="')+7); //style后面的内容拼接
+          }else{
+            texts+=' style="max-width:100%;height:auto;margin:0 auto;" ';
+          }
+        }
+        texts+=details;//最后拼接的内容
+        return texts
+      }
       for(var i=0; i<res.data.length; i++){
        var content = res.data[i].ncm_comment;
-       var newContent = content.replace(/<img/gi, '<img style="max-width:50% !important;height:auto;display:block" ')
+       var newContent = content
         .replace(/&lt;/g, '<')
         .replace(/\/Uploads/g,"http://www.liuxuetalk.com/Uploads")
         .replace(/&gt;/g, '>')
         .replace(/&amp;nbsp;/g, ' ')
         // <img src="/Uploads/Posts/uk flag.jpg" style="width: 300px;"><p>test picture<br></p>
+        newContent = replaceDetail(newContent);
         res.data[i].ncm_comment = newContent
       }
       
