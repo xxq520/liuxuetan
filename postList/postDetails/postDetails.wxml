@@ -179,7 +179,7 @@
     <view class="cover_container">
       <view class="arr_comment">
         <view class="arr_comment_title">
-          <image class="close" src="../../static/image/guanbi.png" bindtap="watchOlder" />
+          <image class="close" src="../../static/image/guanbi.png" bindtap="closewatchOlder" />
           <text>全部{{comment.length}}条评论</text>
         </view>
         <view class="comment">

@@ -78,6 +78,11 @@ Page({
       watch: !this.data.watch
     })
   },
+  closewatchOlder() {
+    this.setData({
+      watch: false
+    })
+  },
   // 查看全部回答 
   golookPrpblem() {
     wx.navigateTo({

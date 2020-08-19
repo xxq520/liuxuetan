@@ -225,6 +225,11 @@ Page({
       watch: !this.data.watch
     })
   },
+  closewatchOlder() {
+    this.setData({
+      watch: false
+    })
+  },
   // 查看全部回答 
   golookPrpblem(){
     wx.navigateTo({
@@ -235,7 +240,7 @@ Page({
   saveHuida(){ 
     this.editorCtx.getContents({success:content=>{
       var userInfo = wx.getStorageSync('userInfo');
-      if(!content.html){
+      if(!content.html || content.html=="<p><br></p>"){
         wx.showToast({
           title: '请输入回答内容',
           icon:"none"
