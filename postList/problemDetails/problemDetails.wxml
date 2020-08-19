@@ -7,7 +7,7 @@
         <view class="ask">问</view>
         <text class="txt_title">{{newContent.new_header}}</text>
       </view>
-      <view class="right_answer" bindtap="showPopup">
+      <view class="right_answer" bindtap="showhuidaPopup">
         <text class="my_answer">我来回答</text>
         <text class="dot_three">···</text>
       </view>
@@ -61,7 +61,7 @@
         <image src="../../static/image/aixin.png" wx:if="{{!newContent.isFavourite}}"/>
         <text>{{newContent.isFavourite?'已收藏问题':'收藏问题'}}</text>
       </view>
-      <view class="btn_item"  bindtap="showPopup">
+      <view class="btn_item"  bindtap="showhuidaPopup">
         <image src="../../static/image/bianji.png" />
         <text>我来回答</text>
       </view>
@@ -112,7 +112,7 @@
         <view class="comment_info">
           <view class="left_comment">
             <image src="http://www.liuxuetalk.com/{{userInfo.usr_profile_image}}"  />
-            <input disabled="disabled" placeholder="添加回答..." bindtap="showPopup"/>
+            <input disabled="disabled" placeholder="添加回答..." bindtap="showhuidaPopup"/>
           </view>
           <view class="right_cz">
             <view class="cz_item">
@@ -148,15 +148,15 @@
           </view>
           <view class="card_bottom_info">
             <view class="card_bottm_info-item">
-              <text>{{author.usr_like}}</text>
+              <text>{{newContent.new_like}}</text>
               <text>赞</text>
             </view>
             <view class="card_bottm_info-item">
-              <text>{{newContent.usr_like}}</text>
+              <text>{{author.usr_like}}</text>
               <text>收藏</text>
             </view>
             <view class="card_bottm_info-item">
-              <text>{{newContent.usr_like}}</text>
+              <text>{{author.usr_like}}</text>
               <text>关注</text>
             </view>
           </view>
@@ -172,9 +172,9 @@
           <text>全部{{comment.length}}个回答</text>
         </view>
         <view class="comment">
-          <view class="arr_comment_list" wx:for="{{comment}}">
+          <view class="arr_comment_list" wx:for="{{comment}}" >
           <view class="comment_item">
-            <view class="comment_user_info">
+            <view class="comment_user_info" bindtap="showPopup" data-item="{{item}}">
               <view class="left_comment_user_info">
                 <image src="http://www.liuxuetalk.com/{{item.usr_profile_image_tn}}" />
                 <view>
@@ -192,9 +192,10 @@
                 </view>
               </view>
             </view>
-            <view class="context">
+            <view class="context" bindtap="showPopup" data-item="{{item}}">
               <rich-text nodes="{{item.ncm_comment}}"></rich-text>
             </view>
+            <view class="plCount" wx:if="{{item.ncm_comment_count}}"><image src="../../static/image/xiaoxi.png"></image> <text>显示回复({{item.ncm_comment_count}})</text></view>
           </view>
         </view>
         </view>
@@ -204,7 +205,7 @@
   <view class="bottom_fixed">
     <view class="left_comment">
       <image src="http://www.liuxuetalk.com/{{userInfo.usr_profile_image}}" />
-      <input disabled="disabled" placeholder="添加评论..."  bindtap="showPopup"/>
+      <input disabled="disabled" placeholder="添加评论..."  bindtap="showhuidaPopup"/>
     </view>
     <view class="right_cz">
       <view class="cz_item">
@@ -228,11 +229,35 @@
   show="{{ show }}"
   closeable
   position="bottom"
-  custom-style="height: 20%"
+  custom-style="height: 20%;z-index:200;background:#ccc"
   bind:close="onClose"
 >
+<view class="commentPL">回复: <text>@{{commentItem.usr_display_name}}</text></view>
 <view class="alertInput">
- <input placeholder="添加回答..."  bindinput="changeComment" />
+ <input placeholder="添加评论..."  bindinput="changeComment" />
  <button size="mini" type="primary" bindtap="SaveNewsCommentRecord">发送</button>
 </view>
+</van-popup>
+
+<van-popup
+  show="{{ huida }}"
+  closeable
+  position="bottom"
+  custom-style="height: 50%"
+  bind:close="onHuidaClose"
+>
+	<view class="container" style="height:{{400}}rpx;">
+		<editor id="editor" class="ql-container" placeholder="在这里填写回答的详细信息..." bindstatuschange="onStatusChange" bindready="onEditorReady">
+		</editor>
+	</view>
+
+	<view class="toolbar" catchtouchend="format" style="bottom: {{isIOS ? keyboardHeight : 0}}px">
+		<i class="iconfont icon-charutupian" catchtouchend="insertImage"></i>
+		<i class="iconfont icon-format-header-2 {{formats.header === 2 ? 'ql-active' : ''}}" data-name="header" data-value="{{2}}"></i>
+		<i class="iconfont icon-format-header-3 {{formats.header === 3 ? 'ql-active' : ''}}" data-name="header" data-value="{{3}}"></i>
+		<i class="iconfont icon-zitijiacu {{formats.bold ? 'ql-active' : ''}}" data-name="bold"></i>
+		<i class="iconfont icon-zitixieti {{formats.italic ? 'ql-active' : ''}}" data-name="italic"></i>
+		<i class="iconfont icon-zitixiahuaxian {{formats.underline ? 'ql-active' : ''}}" data-name="underline"></i>
+        <view class="upload-btn" bindtap="saveHuida">发布</view>
+	</view>
 </van-popup>

@@ -158,6 +158,39 @@ Page({
               texts+=' style="max-width:100%;height:auto;margin:0 auto;" ';
             }
           }
+         
+          texts+=details;//最后拼接的内容
+        
+          return texts
+        }
+        const formStr = function(details){
+          var texts='';//待拼接的内容
+          while(details.indexOf('<p')!=-1){//寻找img 循环
+            texts+=details.substring('0',details.indexOf('<p')+2);//截取到<img前面的内容
+            details = details.substring(details.indexOf('<p')+2);//<img 后面的内容
+            if(details.indexOf('style=')!=-1 && details.indexOf('style=')<details.indexOf('>')){
+              texts+=details.substring(0,details.indexOf('style="')+7)+"font-size:12px !important;";//从 <img 后面的内容 截取到style= 加上自己要加的内容
+              details=details.substring(details.indexOf('style="')+7); //style后面的内容拼接
+            }else{
+              texts+=' style="font-size:12px !important;" ';
+            }
+          }
+          texts+=details;//最后拼接的内容
+          return texts
+        }
+        const formSpan = function(details){
+          var texts='';//待拼接的内容
+          while(details.indexOf('<span')!=-1){//寻找img 循环
+            console.log(4455)
+            texts+=details.substring('0',details.indexOf('<span')+5);//截取到<img前面的内容
+            details = details.substring(details.indexOf('<span')+5);//<img 后面的内容
+            if(details.indexOf('style=')!=-1 && details.indexOf('style=')<details.indexOf('>')){
+              texts+=details.substring(0,details.indexOf('style="')+7)+"font-size:12px !important;";//从 <img 后面的内容 截取到style= 加上自己要加的内容
+              details=details.substring(details.indexOf('style="')+7); //style后面的内容拼接
+            }else{
+              texts+=' style="font-size:12px !important;" ';
+            }
+          }
           texts+=details;//最后拼接的内容
           return texts
         }
@@ -167,6 +200,8 @@ Page({
           res.data[i].ncm_comment = unescapeHTML1(res.data[i].ncm_comment)
           res.data[i].ncm_comment = unescapeHtml( res.data[i].ncm_comment);
           res.data[i].ncm_comment = replaceDetail(res.data[i].ncm_comment);
+          res.data[i].ncm_comment = formStr(res.data[i].ncm_comment)
+          res.data[i].ncm_comment = formSpan(res.data[i].ncm_comment)
           let str  = unescapeHtml( res.data[i].ncm_comment)
           let commentImg = getimgsrc(str);
           res.data[i].ncm_commentImg = commentImg.slice(0,3)

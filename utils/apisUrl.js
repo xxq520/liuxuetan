@@ -19,6 +19,8 @@ module.exports = {
     GetNewsItemCommentsItems: url + "/wsNewsDatabind.asmx/GetNewsItemCommentsItems",
     // 添加新闻评论
     SaveNewsCommentRecord :  url + "/wsNewsDatatrans.asmx/SaveNewsCommentRecord",
+    // 添加子评论
+    SaveNewsChildCommentRecord: url + "/wsNewsDatatrans.asmx/SaveNewsChildCommentRecord",
     // 收藏文章或点赞文章
     SaveUserNewOption : url + "/wsNewsOptionDatatrans.asmx/SaveUserNewOption",
     // 关注某个用户

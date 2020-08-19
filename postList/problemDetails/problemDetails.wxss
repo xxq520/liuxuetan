@@ -193,6 +193,124 @@ justify-content: center;
 .comment .context{
     padding-left: 20rpx;
 }
+.container {
+    width: 100%;
+  }
+  
+  .ql-container {
+    box-sizing: border-box;
+    width: 100%;
+    height: 500rpx;
+    font-size: 16px;
+    line-height: 1.5;
+    overflow: auto;
+    padding: 10px 10px 20px 10px;
+    background-color: #fff;
+    border: 1px solid #ECECEC;
+  }
+  .wen-inco{
+	width: 28rpx;
+	height: 25rpx;
+	background-color: #e9a431;
+    border-radius: 4rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 18rpx;
+    font-size: 18rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0rpx;
+	color: #ffffff;
+}
+.upload{
+display: flex;
+align-items: center;
+justify-content: space-between;
+background-color: #fbfbfb;
+padding: 22rpx 20rpx 12rpx 40rpx;
+}
+.upload-info{
+    display: flex;
+}
+.upload-item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 20rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0rpx;
+    color: #8c8c8c;
+    margin-right: 50rpx;
+}
+.upload-item image{
+    width: 38rpx;
+    height: 38rpx;
+    margin-bottom: 8rpx;
+}
+.upload-btn{
+padding: 14rpx 20rpx;
+	background-color: #e9a431;
+    border-radius: 10rpx;
+    font-size: 24rpx;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0rpx;
+	color: #ffffff;
+}
+@import "../common/lib/weui.wxss";
+@import "../assets/iconfont.wxss";
+
+.container {
+  width: 100%;
+}
+
+.ql-container {
+  box-sizing: border-box;
+  width: 100%;
+  height: 500rpx;
+  font-size: 16px;
+  line-height: 1.5;
+  overflow: auto;
+  padding: 10px 10px 20px 10px;
+  background-color: #fff;
+  border: 1px solid #ECECEC;
+}
+
+.ql-active {
+  color: #22C704;
+}
+
+.iconfont {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  font-size: 20px;
+}
+  .toolbar {
+    box-sizing: border-box;
+    padding: 0 10px;
+    height: 50px;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    right: 100%;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #ECECEC;
+    border-left: none;
+    border-right: none;
+  }
+  .ql-editor.ql-blank:before {
+      /* 此处设置 placeholder 样式 */
+      color: rgba(0, 0, 0, 0.5);
+      font-style: normal;
+    }
+  
 .open_details{
     font-size: 24rpx;
 	letter-spacing: 1rpx;
@@ -374,7 +492,24 @@ justify-content: center;
 }
 .alertInput{
     display: flex;
-    margin-top: 100rpx;
+    margin-top: 50rpx;
+}
+.commentPL{
+    padding-top: 10rpx;
+    padding-left: 10rpx;
+}
+.plCount{
+
+}
+.plCount image{
+    width: 26rpx;
+    height: 26rpx;
+}
+.plCount text{
+    font-size: 26rpx;
+}
+.commentPL text{
+    color: #337ab7;
 }
 .alertInput input{
     width: 80%;

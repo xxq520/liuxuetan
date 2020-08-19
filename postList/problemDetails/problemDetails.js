@@ -9,6 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    formats: {},
     // 是否显示全部
     watch:false,
     // 当前文章的id
@@ -25,15 +26,56 @@ Page({
     commentContent:"",
     // 是否显示评论输入框弹窗
     show: false,
+    // 回答
+    huida: false,
     // 滚动条的高度
     scollHeight:0,
     // 是否点赞文章
     isActive : false,
     // 文章作者的信息
     author : {},
-    index:0
+    index:0,
+    // 需要评论人的内容
+    commentItem: {}
   },
+  insertImage() {
+    const that = this
+    wx.chooseImage({
+      count: 1,
+      success: function (res) {
+        request.uploadFile(res.tempFilePaths[0]).then(img=>{
+          that.upLoadImg(img)
+        }).catch(err=>{})
+      }
+    })
+  },
+  onEditorReady() {
+    const that = this
+    wx.createSelectorQuery().select('#editor').context(function (res) {
+      that.editorCtx = res.context
+      // 是否是修改内容
+    }).exec()
 
+  },
+  onStatusChange(e) {
+    const formats = e.detail
+    this.setData({ formats })
+  },
+  upLoadImg(res){
+    console.log(res,456)
+    var that = this;
+      that.editorCtx.insertImage({
+        src: res,
+        data: {
+          id: 'abcd',
+          role: 'god'
+        },
+        width: '80%',
+        success: function () {
+          console.log('insert image success')
+        }
+      })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -50,11 +92,17 @@ Page({
       url:"/pages/discover/discover"
     })
   },
-  showPopup() {
-    this.setData({ show: true });
+  showPopup(e) {
+    this.setData({ show: true, commentItem:e.currentTarget.dataset.item});
   },
-  onClose() {
+  showhuidaPopup() {
+    this.setData({ huida: true });
+  },
+  onClose(type) {
     this.setData({ show: false });
+  },
+  onHuidaClose(type) {
+    this.setData({ huida: false });
   },
   // 获取文章
   getNews(){
@@ -183,6 +231,51 @@ Page({
       url: '/postList/answer/answer?id='+this.data.id,
     })
   },
+  // 保存回答
+  saveHuida(){ 
+    this.editorCtx.getContents({success:content=>{
+      var userInfo = wx.getStorageSync('userInfo');
+      if(!content.html){
+        wx.showToast({
+          title: '请输入回答内容',
+          icon:"none"
+        })
+        return
+      }
+      content.html = content.html.replace(/http:\/\/www.liuxuetalk.com/g,"")
+      var data = {
+        toast: false,// 是否显示加载动画
+        data:{
+          // 用户的登录id
+          usr_key : userInfo.usr_key || "", 
+          // 如果不搜索特定的新闻/帖子记录，则为0
+          new_key: this.data.newsId, 
+          ncm_key:"",
+          // 新评论的内容
+          new_comment: content.html,
+        },
+        type:"POST",
+        url:url.SaveNewsCommentRecord,
+        header:{"Content-Type":"application/json; charset=utf-8"}
+      }
+      var that = this;
+      request.getReq(data).then(res=>{
+        if(res.data[0].response=="储存成功"){
+          wx.showToast({
+            title: '回答成功',
+            icon:"none"
+          })
+           this.getComment()
+        } else {
+          wx.showToast({
+            title: '回答失败',
+            icon:"none"
+          })
+        }
+        that.onHuidaClose()
+      })
+    }})
+  },
   // 添加评论
   SaveNewsCommentRecord(){
     var userInfo = wx.getStorageSync('userInfo');
@@ -200,12 +293,13 @@ Page({
         usr_key : userInfo.usr_key || "", 
         // 如果不搜索特定的新闻/帖子记录，则为0
         new_key: this.data.newsId, 
-        ncm_key:"",
+        ncm_key: "",
+        parent_ncm_key: this.data.commentItem.ncm_key,
         // 新评论的内容
-        new_comment:this.data.commentContent,
+        ncm_comment:this.data.commentContent,
       },
       type:"POST",
-      url:url.SaveNewsCommentRecord,
+      url:url.SaveNewsChildCommentRecord,
       header:{"Content-Type":"application/json; charset=utf-8"}
     }
     var that = this;
@@ -215,6 +309,7 @@ Page({
           title: '评论成功',
           icon:"none"
         })
+        this.getComment()
       } else {
         wx.showToast({
           title: '评论失败',
