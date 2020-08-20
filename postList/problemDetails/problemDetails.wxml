@@ -86,28 +86,6 @@
     <view class="watching_item">
       <view class="publish_time_info" wx:if="{{comment[0]}}">编辑于 2018-05-03・著作权归作者所有</view>
       <view class="comment_list">
-        <text class="comment_title">评论</text>
-        <view class="comment_item" wx:if="{{comment[0]}}">
-          <view class="comment_user_info">
-            <view class="left_comment_user_info">
-              <image src="http://www.liuxuetalk.com/{{comment[0].usr_profile_image_tn}}" />
-              <view>
-                 <text class="comment_user_name">{{comment[0].usr_display_name}}</text>
-              </view>
-            </view>
-            <view class="right_comment_praise">
-              <view class="right_top_comment">
-                <view class="right_praise_num" bindtap="LikeComment" data-index="0" data-item="{{comment[0]}}">
-                  <image src="{{comment[0].isLiked?'../../static/image/dianzan.png':'../../static/image/dianzan_gray.png'}}" />
-                  <text>{{comment[0].ncm_like}}</text>
-                </view>
-              </view>
-            </view>
-          </view>
-          <view class="context">
-              <rich-text nodes="{{comment[0].ncm_comment}}"></rich-text>
-          </view>
-        </view>
         <view class="view_arr" bindtap="watchOlder">查看全部{{comment.length}}个回答>></view>
         <view class="comment_info">
           <view class="left_comment">
