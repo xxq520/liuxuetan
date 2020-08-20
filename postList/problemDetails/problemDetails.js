@@ -93,7 +93,13 @@ Page({
     })
   },
   showPopup(e) {
-    this.setData({ show: true, commentItem:e.currentTarget.dataset.item});
+    console.log(e,4546)
+    if(e.detail.currentTarget.dataset.type==3){
+      this.setData({ type: 3});  
+    } else {
+      this.setData({ type: 1});  
+    }
+    this.setData({ show: true, commentItem:e.detail.currentTarget.dataset.item});
   },
   showhuidaPopup() {
     this.setData({ huida: true });
@@ -160,8 +166,6 @@ Page({
       })
       // 获取新闻评论列表
       that.getComment()
-      // 获取文章作者
-      that.getAuthor()
     })
   },
   // 获取新闻评论列表项目
@@ -202,7 +206,8 @@ Page({
         texts+=details;//最后拼接的内容
         return texts
       }
-      for(var i=0; i<res.data.length; i++){
+      
+      for(let i=0; i<res.data.length; i++){
        var content = res.data[i].ncm_comment;
        var newContent = content
         .replace(/&lt;/g, '<')
@@ -211,12 +216,70 @@ Page({
         .replace(/&amp;nbsp;/g, ' ')
         // <img src="/Uploads/Posts/uk flag.jpg" style="width: 300px;"><p>test picture<br></p>
         newContent = replaceDetail(newContent);
-        res.data[i].ncm_comment = newContent
+        res.data[i].ncm_comment = newContent;
+        if(res.data[i].ncm_comment_count) {
+          let childData =  {
+            toast: false,// 是否显示加载动画
+            data:{
+              // 用户的登录id
+              usr_key : userInfo.usr_key || "", 
+              // 如果不搜索特定的新闻/帖子记录，则为0
+              new_key: this.data.newsId, 
+              parent_ncm_key: res.data[i].ncm_key,
+              // 返回数据页码. 1=归还所有记录
+              pageSize: "1",
+              // 每个数据页的记录数量 1=归还所有记录
+              pageNumber: "1",
+              showHtml: false
+            },
+            type:"get",
+            url:url.GetNewsItemCommentsItems,
+            header:{"Content-Type":"application/json; charset=utf-8"}
+          }
+          request.getReq(childData).then(res2=>{
+            const replaceDetail1 = function(details){
+              var texts='';//待拼接的内容
+              while(details.indexOf('<a')!=-1){//寻找img 循环
+                texts+=details.substring('0',details.indexOf('<a')+2);//截取到<img前面的内容
+                details = details.substring(details.indexOf('<a')+2);//<img 后面的内容
+                if(details.indexOf('style=')!=-1 && details.indexOf('style=')<details.indexOf('>')){
+                  texts+=details.substring(0,details.indexOf('style="')+7)+"color: #337ab7;";//从 <img 后面的内容 截取到style= 加上自己要加的内容
+                  details=details.substring(details.indexOf('style="')+7); //style后面的内容拼接
+                }else{
+                  texts+=' style="color: #337ab7;" ';
+                }
+              }
+              texts+=details;//最后拼接的内容
+              return texts
+            }
+            for(let m=0; m<res2.data.length; m++){
+             let content1 = res2.data[m].ncm_comment;
+             var newContent1 = content1
+              .replace(/&lt;/g, '<')
+              .replace(/\/Uploads/g,"http://www.liuxuetalk.com/Uploads")
+              .replace(/&gt;/g, '>')
+              .replace(/&amp;nbsp;/g, ' ')
+              // <img src="/Uploads/Posts/uk flag.jpg" style="width: 300px;"><p>test picture<br></p>
+              newContent1 = replaceDetail(newContent1);
+              newContent1 = replaceDetail1(newContent1);
+              res2.data[m].ncm_comment = newContent1
+              let str = `comment[${i}].childrenList`
+              if(!res2.data[0].Code) {
+                that.setData({
+                  [str] : res2.data || [],
+                })
+              }
+            }
+          })
+        }
       }
-      
       that.setData({
         comment : res.data,
       })
+     if(!res.data[0].Code){
+        // 获取文章作者
+      that.getAuthor()
+     }
     })
   },
   // 查看全部评论
@@ -291,6 +354,7 @@ Page({
       })
       return
     }
+    let str =  `回复 <a style=\"color: #337ab7;\"  class=\"lnkUserProfile\" >@${this.data.commentItem.usr_display_name}</a>&nbsp;: `
     var data = {
       toast: false,// 是否显示加载动画
       data:{
@@ -301,7 +365,7 @@ Page({
         ncm_key: "",
         parent_ncm_key: this.data.commentItem.ncm_key,
         // 新评论的内容
-        ncm_comment:this.data.commentContent,
+        ncm_comment: this.data.type==3?str+this.data.commentContent:this.data.commentContent,
       },
       type:"POST",
       url:url.SaveNewsChildCommentRecord,
@@ -413,9 +477,9 @@ Page({
    // 点赞评论事件
    LikeComment(e){
     // 当前点赞评论的列表下标
-    var index = e.currentTarget.dataset.index;
+    var index = e.detail.currentTarget.dataset.index;
     // 当前点赞评论的元素
-    var item = e.currentTarget.dataset.item;
+    var item = e.detail.currentTarget.dataset.item;
     var that = this; 
     var data = {
       toast: false,// 是否显示加载动画

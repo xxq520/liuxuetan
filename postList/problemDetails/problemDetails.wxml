@@ -172,32 +172,7 @@
           <text>全部{{comment.length}}个回答</text>
         </view>
         <view class="comment">
-          <view class="arr_comment_list" wx:for="{{comment}}" >
-          <view class="comment_item">
-            <view class="comment_user_info" bindtap="showPopup" data-item="{{item}}">
-              <view class="left_comment_user_info">
-                <image src="http://www.liuxuetalk.com/{{item.usr_profile_image_tn}}" />
-                <view>
-                  <text class="comment_user_name">{{item.usr_display_name}}</text>
-                 
-                </view>
-              </view>
-              <view class="right_comment_praise">
-                <view class="right_top_comment">
-                  <view class="right_praise_num" bindtap="LikeComment" data-index="{{index}}" data-item="{{item}}">
-                    <image src="{{item.isLiked?'../../static/image/dianzan.png':'../../static/image/dianzan_gray.png'}}" />
-                     <!-- <image src="../../static/image/dianzan_gray.png" /> -->
-                    <text>{{item.ncm_like}}</text>
-                  </view>
-                </view>
-              </view>
-            </view>
-            <view class="context" bindtap="showPopup" data-item="{{item}}">
-              <rich-text nodes="{{item.ncm_comment}}"></rich-text>
-            </view>
-            <view class="plCount" wx:if="{{item.ncm_comment_count}}"><image src="../../static/image/xiaoxi.png"></image> <text>显示回复({{item.ncm_comment_count}})</text></view>
-          </view>
-        </view>
+          <comment comment="{{comment}}" bind:callSomeFun="showPopup" bind:callLikeCommentFun="LikeComment"> </comment>
         </view>
       </view>
     </view>

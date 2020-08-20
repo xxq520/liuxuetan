@@ -1,7 +1,8 @@
 {
   "usingComponents": {
     "van-transition": "/dist/transition/index",
-    "van-popup": "/dist/popup/index"
+    "van-popup": "/dist/popup/index",
+    "comment" : "/component/comment/index"
   },
   "navigationBarTitleText": "问题详情",
   "backgroundTextStyle": "light",
