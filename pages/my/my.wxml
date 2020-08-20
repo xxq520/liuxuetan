@@ -38,7 +38,7 @@
                         <text>收藏</text>
                     </view>
                     <view class="info_item " bindtap="goDetail" data-type="4">
-                        <text>{{userInfo.usr_visit}}</text>
+                        <text>{{preview.length}}</text>
                         <text>最近浏览</text>
                     </view>
                 </view>

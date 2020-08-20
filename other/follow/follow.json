@@ -1,0 +1,7 @@
+{
+  "usingComponents": { "i-load-more": "/component/load-more/index"},
+  "backgroundTextStyle": "light",
+  "navigationBarBackgroundColor": "#3b5370",
+  "navigationBarTitleText": "关注",
+  "navigationBarTextStyle": "white"
+}

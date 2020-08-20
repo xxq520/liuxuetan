@@ -9,7 +9,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userInfo : wx.getStorageSync('userInfo') || {}
+    userInfo : wx.getStorageSync('userInfo') || {},
+    // 最近浏览的数量
+    preview : wx.getStorageSync('preview')||[]
   },
 
   /**
@@ -102,11 +104,20 @@ Page({
         })
         break;
       case "2":
+        wx.navigateTo({
+          url: '/other/follow/follow',
+        })
         break;
       case "3":
         wx.navigateTo({
           url: '/other/favNews/favNews',
         })
+        break;
+      case "4":
+        wx.navigateTo({
+          url: '/other/preview/preview',
+        })
+        break;  
     }
   },
   // 获取tab选项卡标签
@@ -172,7 +183,8 @@ Page({
    */
   onShow: function () {
     this.setData({
-      userInfo : wx.getStorageSync('userInfo') || {}
+      userInfo : wx.getStorageSync('userInfo') || {},
+      preview : wx.getStorageSync('preview')||[]
     })
     this.GetUserAgent()
   },

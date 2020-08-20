@@ -31,7 +31,9 @@
         "myNews/myNews",
         "favNews/favNews",
         "settingInfo/settingInfo",
-        "orderDetails/orderDetails"
+        "orderDetails/orderDetails",
+        "follow/follow",
+        "preview/preview"
       ]
     },
     {

@@ -84,6 +84,27 @@
 					"id": -1,
 					"name": "other/favNews/favNews",
 					"pathName": "other/favNews/favNews",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/my",
+					"pathName": "pages/my/my",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "other/follow/follow",
+					"pathName": "other/follow/follow",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "other/preview/preview",
+					"pathName": "other/preview/preview",
 					"scene": null
 				}
 			]

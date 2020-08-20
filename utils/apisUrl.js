@@ -45,6 +45,8 @@ module.exports = {
     GetUserQuestionItems : url + "/wsNewsDatabind.asmx/GetUserQuestionItems",
     // 用户收藏的文章或问题
     GetUserFavNewsItems : url + "/wsNewsDatabind.asmx/GetUserFavNewsItems",
+    // 获取某个用户的关注用户列表
+    CheckUserFavTopic : url + "/wsNewsDatabind.asmx/CheckUserFavTopic",
     // 获取发布文章或问题作者的信息
     GetNewUserProfilePopupDetails : url + "/wsForumDatabind.asmx/GetNewUserProfilePopupDetails",
     // 获取某个热门标签的关注数或浏览量

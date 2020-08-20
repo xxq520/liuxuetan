@@ -1,0 +1,13 @@
+<!-- pages/discover/discover.wxml -->
+<view class="container">
+	<active indexData="{{newList}}"></active>
+	<view wx:if="{{!newList.length&&!noinfo}}">
+		<i-load-more />
+	</view>
+	<view wx:if="{{noinfo&&!newList.length}}">
+		<i-load-more tip="暂无数据" loading="{{ false }}" />
+	</view>
+	<view wx:if="{{noinfo&&newList.length}}">
+		<i-load-more tip="暂无更多数据" loading="{{ false }}" />
+	</view>
+</view>
