@@ -201,7 +201,6 @@ Page({
             wx.switchTab({
               url: '/pages/index/index',
             })
-            
           },1000)
         } else {
           wx.showToast({
