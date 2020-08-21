@@ -92,7 +92,10 @@ Page({
   // 设置默认内容
   editNews(text){
     var that = this;
-    that.editorCtx.setContents({ html:text})
+    setTimeout(()=>{
+      console.log(that.editorCtx,45645645)
+      that.editorCtx.setContents({ html:text})
+    },100)
   },
   blur() {
     this.editorCtx.blur()
@@ -180,7 +183,7 @@ Page({
           // 文章是否有效
           new_valid:true,
           // 新闻id
-          new_key:that.data.newContent?that.data.newContent.en_new_id:"",
+          new_key:that.data.newContent?that.data.newContent.new_key:"",
           new_header_image:userInfo.usr_profile_image_tn,
           new_header:that.data.title,
           new_tags:that.data.tag
@@ -199,6 +202,11 @@ Page({
               url: '/pages/index/index',
             })
           },1000)
+        } else {
+          wx.showToast({
+            title: '网络错误,请稍后再试!',
+            icon: "none"
+          })
         }
       })
     }})
