@@ -1,53 +1,53 @@
 <!-- pages/personalData/personalData.wxml -->
 <view class="personalDataBody">
-  <view class="personal">
-    <image class="personalBg" src="http://www.liuxuetalk.com/{{store.agt_background_image_url}}"></image>
-    <view class="arrow1 jianto" wx:if="{{store.agt_tags[0]}}">
-      <image src="../../static/image/arrow.png"></image>
-      <text>{{store.agt_tags[0]}}</text>
-    </view>
-    <view class="arrow2 jianto" wx:if="{{store.agt_tags[1]}}">
-      <image src="../../static/image/arrow.png"></image>
-      <text>{{store.agt_tags[1]}}</text>
-    </view>
-    <view class="more">
-      <image src="../../static/image/more.png"></image>
-    </view>
-  </view>
-  <view class="toxian">
-    <image src="http://www.liuxuetalk.com/{{store.agt_profile_image}}"></image>
-    <text class="jig">机构认证</text>
-  </view>
+	<view class="personal">
+		<image class="personalBg" src="http://www.liuxuetalk.com/{{store.agt_background_image_url||store.usr_profile_image_tn}}"></image>
+		<view class="arrow1 jianto" wx:if="{{store.agt_tags[0]}}">
+			<image src="../../static/image/arrow.png"></image>
+			<text>{{store.agt_tags[0]}}</text>
+		</view>
+		<view class="arrow2 jianto" wx:if="{{store.agt_tags[1]}}">
+			<image src="../../static/image/arrow.png"></image>
+			<text>{{store.agt_tags[1]}}</text>
+		</view>
+		<view class="more">
+			<image src="../../static/image/more.png"></image>
+		</view>
+	</view>
+	<view class="toxian">
+		<image src="http://www.liuxuetalk.com/{{store.agt_profile_image || store.usr_profile_image}}"></image>
+		<text class="jig">机构认证</text>
+	</view>
 </view>
 <view class="toBottom">
-  <view class="name">
-    <text>{{store.agt_name}}</text>
-  </view>
-  <view class="authentication">
-    <image src="../../static/image/authentication.png"></image>
-    <text>已实名认证</text>
-    <text>|</text>
-    <text>{{store.agt_visit_count}}人关注</text>
-  </view>
-  <view class="pingfen">
-    <text>评分</text>
-     <image  src="{{store.agt_rate>=1?'/static/image/xingxing.png':'/static/image/xingxing2.png'}}" ></image>
-      <image  src="{{store.agt_rate>=2?'/static/image/xingxing.png':'/static/image/xingxing2.png'}}" ></image>
-      <image  src="{{store.agt_rate>=3?'/static/image/xingxing.png':'/static/image/xingxing2.png'}}" ></image>
-      <image  src="{{store.agt_rate>=4?'/static/image/xingxing.png':'/static/image/xingxing2.png'}}" ></image>
-      <image  src="{{store.agt_rate>=5?'/static/image/xingxing.png':'/static/image/xingxing2.png'}}" ></image>
-  </view>
-  <view class="follow" bindtap="SaveUserFavForumAdmin">
-    <image src="../../static/image/follow.png"></image>
-    <text>关注</text>
-  </view>
+	<view class="name">
+		<text>{{store.agt_name || store.usr_display_name}}</text>
+	</view>
+	<view class="authentication">
+		<image src="../../static/image/authentication.png"></image>
+		<text>已实名认证</text>
+		<text>|</text>
+		<text>{{store.agt_visit_count || store.usr_like}}人关注</text>
+	</view>
+	<view class="pingfen">
+		<text>评分</text>
+		<image src="{{store.agt_rate>=1?'/static/image/xingxing.png':'/static/image/xingxing2.png'}}"></image>
+		<image src="{{store.agt_rate>=2?'/static/image/xingxing.png':'/static/image/xingxing2.png'}}"></image>
+		<image src="{{store.agt_rate>=3?'/static/image/xingxing.png':'/static/image/xingxing2.png'}}"></image>
+		<image src="{{store.agt_rate>=4?'/static/image/xingxing.png':'/static/image/xingxing2.png'}}"></image>
+		<image src="{{store.agt_rate>=5?'/static/image/xingxing.png':'/static/image/xingxing2.png'}}"></image>
+	</view>
+	<view class="follow" bindtap="SaveUserFavForumAdmin">
+		<image src="../../static/image/follow.png"></image>
+		<text>关注</text>
+	</view>
 </view>
 <!-- 选项卡 -->
-<van-tabs swipeable class="tab" active="{{3}}">
-  <van-tab title="主页">
-    <view class="hotfix"></view>
-    <view class="page conter">
-      <!-- <view class="top clearfix">
+<van-tabs swipeable class="tab" active="{{0}}">
+	<van-tab title="主页">
+		<view class="hotfix"></view>
+		<view class="page conter">
+			<!-- <view class="top clearfix">
         <view class="xiaoxing">
           <image src="../../static/image/toxian.png"></image>
         </view>
@@ -67,140 +67,95 @@
           擅长给学生梳理申请难点，帮学生长线规划，引领学生通过语言提分，背景提升一步步帮学生拿到心仪的offer.很多学生都有名校梦，但竟争力不足。大一开始长骊规划，通过我的指导都如愿进入梦校。成功帮学生拿到加州大学洛杉矶分校、伯克利分校、康奈尔大学、哥伦比亚大学、东北大学等名校录取。
         </text>
       </view> -->
-      {{nowStore.agt_description||'暂无更多介绍'}}
-    </view>
-    <view class="contact" bindtap="CreateChatDirectGroup">
-      <image src="../../static/image/contact.png"></image>
-      <text>在线联系</text>
-    </view>
-  </van-tab>
-  <van-tab title="文章">
-    <view class="hotfix"></view>
-    <view class="page">
-      <view class="heat">
-        <image src="../../static/image/heat.png"></image>
-        <text>热</text>
-      </view>
-      <view class="articleTitle clearfix">
-        <text>英国留学必带清单（意想不到）</text>
-        <text>2020.4.22</text>
-      </view>
-      <view class="article">
-        这是一篇不一样的干货篇！有些东西你想都可能没想过要用到！当前国内疫情有所减缓！！可是英国疫情加重！好翰，为了不让来英国的同学陷入我这样尴尬的处境，我决定分享一些值得带！不对是一定要带的东西，拿本本记好！补充加祈祷：毕竟这是 一个比较魔幻的地方，带个口罩就被歧视了，希望我六月份能够安全踏上归乡的路。
-      </view>
-      <view class="comment">
-        <text decode='true'>1.1万&nbsp;关注</text>
-        <text class="line">|</text>
-        <text decode='true'>34&nbsp;评论</text>
-        <text class="line">|</text>
-        <text decode='true'>5400&nbsp;浏览</text>
-        <text class="line">|</text>
-        <text decode='true'>5400&nbsp;收藏</text>
-      </view>
-    </view>
-    <view class="page">
-      <view class="heat pageHeat">
-        <image src="../../static/image/heat2.png"></image>
-        <text>热</text>
-      </view>
-      <view class="articleTitle clearfix">
-        <text>英国留学必带清单（意想不到）</text>
-        <text>2020.4.22</text>
-      </view>
-      <view class="article">
-        这是一篇不一样的干货篇！有些东西你想都可能没想过要用到！当前国内疫情有所减缓！！可是英国疫情加重！好翰，为了不让来英国的同学陷入我这样尴尬的处境，我决定分享一些值得带！不对是一定要带的东西，拿本本记好！补充加祈祷：毕竟这是 一个比较魔幻的地方，带个口罩就被歧视了，希望我六月份能够安全踏上归乡的路。
-      </view>
-      <view class="comment">
-        <text decode='true'>1.1万&nbsp;关注</text>
-        <text class="line">|</text>
-        <text decode='true'>34&nbsp;评论</text>
-        <text class="line">|</text>
-        <text decode='true'>5400&nbsp;浏览</text>
-        <text class="line">|</text>
-        <text decode='true'>5400&nbsp;收藏</text>
-      </view>
-    </view>
-    <view class="page">
-      <!-- <view class="heat">
-                    <image src="../../static/image/heat.png"></image>
-                    <text> 热</text>
-              </view> -->
-      <view class="articleTitle clearfix">
-        <view class="ask">问</view>
-        <view class="ask_title">英国什么城市好玩？</view>
-        <view class="ask_timer">2020.4.22</view>
-      </view>
-      <view class="article">这是一篇不一样的干货篇！有些东西你想都可能没想过要用到！当前国内疫情有所减缓！！</view>
-      <view class="comment">
-        <text decode='true'>1.1万&nbsp;关注</text>
-        <text class="line">|</text>
-        <text decode='true'>34&nbsp;评论</text>
-        <text class="line">|</text>
-        <text decode='true'>5400&nbsp;浏览</text>
-        <text class="line">|</text>
-        <text decode='true'>5400&nbsp;收藏</text>
-        <view class="open">
-          <text>展开</text>
-          <image src="../../static/image/open.png"></image>
-        </view>
-      </view>
-    </view>
-  </van-tab>
-  <!-- 评价 -->
-  <van-tab title="评价">
-    <view class="hotfix"></view>
-    <view class="body">
-      <view class="evaluateBg">
-        <view class="evaluate">
-          <view class="lfet">
-            <image class="hua" src="../../static/image/evaluate.png"></image>
-            <text>对我评价</text>
-          </view>
-          <view class="right">
-            <text>2020.4.22</text>
-          </view>
-        </view>
-        <view class="name2">
-          <image class="topimg" src="../../static/image/xiaoxitouxiang.png"></image>
-          <text class="title">昵称</text>
-          <view class="txt">这是一篇不一样的干货篇！有些东西你想都可能没想过要用到！当前国内疫情有所减缓！！</view>
-          <view class="zantong pingfen">
-            <text class="hui" decode='true'>赞同&nbsp;160</text>
-            <text class="fen">评分</text>
-            <image src="{{store.agt_rate>=1?'/static/image/star_select.png':'/static/image/star.png'}}"></image>
-            <image src="{{store.agt_rate>=2?'/static/image/star_select.png':'/static/image/star.png'}}"></image>
-            <image src="{{store.agt_rate>=3?'/static/image/star_select.png':'/static/image/star.png'}}"></image>
-            <image src="{{store.agt_rate>=4?'/static/image/star_select.png':'/static/image/star.png'}}"></image>
-            <image src="{{store.agt_rate>=5?'/static/image/star_select.png':'/static/image/star.png'}}"></image>
-          </view>
-        </view>
-      </view>
-    </view>
-  </van-tab>
-  <van-tab title="服务项目">
-    <view class="hotfix"></view>
-    <view class="serviceBg">
-      <view class="service">
-        <!-- <text class="classification">全部分类</text> -->
-        <van-dropdown-menu class="filter" >
-          <van-dropdown-item value="{{ 1 }}" options="{{ option1 }}" bind:change="changeP"/>
-        </van-dropdown-menu>
-        <!-- <image src="../../static/image/classification1.png"></image> -->
-        <text class="xiaolian">销量</text>
-      </view>
-      <view class="class1" bindtap="goGoodsDetail" data-index="{{index}}" wx:for="{{productList}}">
-        <view class="xianmu">
-              <image class="tupian" src="http://www.liuxuetalk.com/{{item.apd_image_url}}"></image>
-              <view class="liuxue">
-                <text>{{item.apd_name}}</text>
-                <text>{{item.apt_type}}</text>
-                <text decode='true'>销量 : {{item.apd_product_sales_count}}&nbsp;&nbsp;{{item.apd_created_date}}</text>
-                 <image class="details" src="../../static/image/details.png"></image>
-              </view>
-        </view>
-         <text class="xianqing">详情咨询</text>
-         <text class="xianqing">详情咨询</text>
-      </view>
-    </view>
-  </van-tab>
+			{{nowStore.agt_description||nowStore.usd_intro||'暂无更多介绍'}}
+		</view>
+		<view class="contact" bindtap="CreateChatDirectGroup">
+			<image src="../../static/image/contact.png"></image>
+			<text>在线联系</text>
+		</view>
+	</van-tab>
+	<van-tab title="文章">
+		<view class="hotfix"></view>
+		<view class="page" wx:if="{{indexData.length}}" wx:for="{{indexData}}">
+			<view class="heat">
+				<image src="../../static/image/heat.png"></image>
+				<text>热</text>
+			</view>
+			<view class="articleTitle clearfix">
+      	<view class="ask" wx:if="{{item.ntp_type=='问题'}}">问</view>
+				<text>{{item.new_header}}</text>
+				<!-- <text>2020.4.22</text> -->
+			</view>
+			<view class="article">
+         <rich-text nodes="{{item.new_content}}"></rich-text>
+			</view>
+			<view class="comment" >
+				<text decode='true'>{{item.new_like||0}}&nbsp;关注</text>
+				<text class="line">|</text>
+				<text decode='true'>{{item.ncm_comment_count||0}}&nbsp;评论</text>
+				<text class="line">|</text>
+				<text decode='true'>{{item.new_visit || 0}}&nbsp;浏览</text>
+				<text class="line">|</text>
+				<text decode='true'>{{item.new_favourite || 0}}&nbsp;收藏</text>
+			</view>
+		</view>
+    <view wx:if="{{!indexData.length}}">'暂无数据。。</view>
+	</van-tab>
+	<!-- 评价 -->
+	<van-tab title="评价">
+		<view class="hotfix"></view>
+		<view class="body">
+			<view class="evaluateBg">
+				<view class="evaluate">
+					<view class="lfet">
+						<image class="hua" src="../../static/image/evaluate.png"></image>
+						<text>对我评价</text>
+					</view>
+					<view class="right">
+						<text>2020.4.22</text>
+					</view>
+				</view>
+				<view class="name2">
+					<image class="topimg" src="../../static/image/xiaoxitouxiang.png"></image>
+					<text class="title">昵称</text>
+					<view class="txt">这是一篇不一样的干货篇！有些东西你想都可能没想过要用到！当前国内疫情有所减缓！！</view>
+					<view class="zantong pingfen">
+						<text class="hui" decode='true'>赞同&nbsp;160</text>
+						<text class="fen">评分</text>
+						<image src="{{store.agt_rate>=1?'/static/image/star_select.png':'/static/image/star.png'}}"></image>
+						<image src="{{store.agt_rate>=2?'/static/image/star_select.png':'/static/image/star.png'}}"></image>
+						<image src="{{store.agt_rate>=3?'/static/image/star_select.png':'/static/image/star.png'}}"></image>
+						<image src="{{store.agt_rate>=4?'/static/image/star_select.png':'/static/image/star.png'}}"></image>
+						<image src="{{store.agt_rate>=5?'/static/image/star_select.png':'/static/image/star.png'}}"></image>
+					</view>
+				</view>
+			</view>
+		</view>
+	</van-tab>
+	<van-tab title="服务项目" wx:if="{{!userId}}">
+		<view class="hotfix"></view>
+		<view class="serviceBg">
+			<view class="service">
+				<!-- <text class="classification">全部分类</text> -->
+				<van-dropdown-menu class="filter">
+					<van-dropdown-item value="{{ 1 }}" options="{{ option1 }}" bind:change="changeP" />
+				</van-dropdown-menu>
+				<!-- <image src="../../static/image/classification1.png"></image> -->
+				<text class="xiaolian">销量</text>
+			</view>
+			<view class="class1" bindtap="goGoodsDetail" data-index="{{index}}" wx:for="{{productList}}">
+				<view class="xianmu">
+					<image class="tupian" src="http://www.liuxuetalk.com/{{item.apd_image_url}}"></image>
+					<view class="liuxue">
+						<text>{{item.apd_name}}</text>
+						<text>{{item.apt_type}}</text>
+						<text decode='true'>销量 : {{item.apd_product_sales_count}}&nbsp;&nbsp;{{item.apd_created_date}}</text>
+						<image class="details" src="../../static/image/details.png"></image>
+					</view>
+				</view>
+				<text class="xianqing">详情咨询</text>
+				<text class="xianqing">详情咨询</text>
+			</view>
+		</view>
+	</van-tab>
 </van-tabs>

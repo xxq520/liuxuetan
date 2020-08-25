@@ -1,5 +1,5 @@
 // 请求域名
-const url = "http://uksefws.liuxuetalk.com";
+const url = "https://uksefws.liuxuetalk.com";
 // 请求后台的url不包括请求参数 若需查询请求参数 到相应的页面查找
 module.exports = {
     url: url,

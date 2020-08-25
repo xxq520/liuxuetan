@@ -442,14 +442,22 @@ Page({
       that.getAuthor()
     })
   },
+   // 点击详细资料
+   goUser() {
+    wx.setStorageSync('nowStore', this.data.author)
+    wx.navigateTo({
+      url: `/other/personalData/personalData?userId=${this.data.author.usr_key}`,
+    })
+  },
   // 获取发布文章的用户信息
   getAuthor() {
     var that = this;
     request.getReq({
       toast: false,// 是否显示加载动画
       data:{
+        author_usr_key: this.data.comment[0] ? this.data.comment[0].usr_key : "",
         // 用户的登录id
-        usr_key : this.data.userInfo.usr_key || "", 
+        usr_key : this.data.userInfo.usr_key, 
         // 新闻的加密key
         new_key: this.data.newContent.new_key, 
       },

@@ -5,7 +5,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
 		"enhance": true,
 		"postcss": true,
@@ -21,12 +21,12 @@
 		"checkInvalidKey": true,
 		"checkSiteMap": true,
 		"uploadWithSourceMap": true,
-		"compileHotReLoad": false,
 		"babelSetting": {
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
 		},
+		"compileHotReLoad": false,
 		"useIsolateContext": true,
 		"useCompilerModule": false,
 		"userConfirmedUseCompilerModuleSwitch": false

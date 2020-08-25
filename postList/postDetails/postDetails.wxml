@@ -110,7 +110,7 @@
             <view class="card_top_info">
                 <view class="card_top_left">
                     <image src="http://www.liuxuetalk.com/{{newContent.usr_profile_image_tn}}" />
-                    <view class="left_childer">
+                    <view class="left_childer" bindtap="goUser">
                         <text class="card_user_name">{{newContent.usr_display_name}}</text>
                         <text class="user_details_info">详细资料></text>
                     </view>
@@ -122,15 +122,15 @@
             </view>
             <view class="card_bottom_info">
                 <view class="card_bottm_info-item">
-                    <text>{{newContent.new_like}}</text>
+                    <text>{{author.usr_post_like}}</text>
                     <text>赞</text>
                 </view>
                 <view class="card_bottm_info-item">
-                    <text>{{newContent.new_favourite}}</text>
+                    <text>{{author.usr_follow}}</text>
                     <text>收藏</text>
                 </view>
                 <view class="card_bottm_info-item">
-                    <text>{{newContent.new_like}}</text>
+                    <text>{{author.usr_like}}</text>
                     <text>关注</text>
                 </view>
             </view>
