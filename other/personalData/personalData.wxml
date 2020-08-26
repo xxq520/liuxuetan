@@ -76,14 +76,14 @@
 	</van-tab>
 	<van-tab title="文章">
 		<view class="hotfix"></view>
-		<view class="page" wx:if="{{indexData.length}}" wx:for="{{indexData}}">
+		<view class="page" wx:if="{{indexData.length}}" wx:for="{{indexData}}" bindtap="goPostdetails" data-type="{{item.ntp_type=='问题'?2:1}}" data-item="{{item}}" data-index="{{index}}" data-id="{{item.new_key}}">
 			<view class="heat">
 				<image src="../../static/image/heat.png"></image>
 				<text>热</text>
 			</view>
 			<view class="articleTitle clearfix">
       	<view class="ask" wx:if="{{item.ntp_type=='问题'}}">问</view>
-				<text>{{item.new_header}}</text>
+				<text class="noneFloat">{{item.new_header}}</text>
 				<!-- <text>2020.4.22</text> -->
 			</view>
 			<view class="article">

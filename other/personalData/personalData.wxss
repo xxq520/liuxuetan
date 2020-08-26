@@ -344,6 +344,11 @@ margin-bottom: 22rpx;
   font-size: 16rpx;
   color: #8c8c8c;
 }
+.noneFloat{
+  float: none !important;
+  padding-left: 20rpx;
+  font-size: 24rpx !important;
+}
 .article{
   font-size: 22rpx;
 	line-height: 36rpx;

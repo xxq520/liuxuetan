@@ -9,6 +9,8 @@ module.exports = {
     userLogin: url + `/wsGenericDatabind.asmx/ValUserLogin`,
     // 首页 获取新闻帖子数据
     indexNews: url + "/wsNewsDatabind.asmx/GetNewsItems",
+    // 获取顾问帖子
+    agentNews: url + "/wsAgentDatabind.asmx/GetAgentNewsItems",
     // 首页 获取用户关注的新闻类型
     userLickType: url + "/wsNewsDatabind.asmx/GetUserFavNewsItems",
     // 获取发现页的tabbar选项卡

@@ -26,7 +26,7 @@
     </view>
     <!-- 每位商家展示 -->
     <view class="shopList" bindtap="gopreploData" data-index="{{index}}" wx:for="{{storeList}}" wx:if="{{storeList.length}}">
-      <image mode="aspectFill" class="avart" src="http://www.liuxuetalk.com{{item.agt_background_image_url}}"></image>
+      <image mode="aspectFill" class="avart" src="http://www.liuxuetalk.com{{item.agt_profile_image}}"></image>
       <view class="shopListCenter">
         <view class="shopTitle">{{item.agt_name}}</view>
         <view class="shopStar">
