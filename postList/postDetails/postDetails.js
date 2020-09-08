@@ -31,7 +31,8 @@ Page({
       // 文章作者的信息
       author : {},
       // 上个页面传递过来的文章下标
-      index:0
+      index:0,
+      displayName: {}
   },
   // 去搜索
   goSearch(){
@@ -108,7 +109,9 @@ Page({
     } else {
       this.setData({ type: 1});  
     }
-    this.setData({ show: true, commentItem:e.detail.currentTarget.dataset.item});
+    let item = e.detail.currentTarget.dataset.subitem;
+    // this.setData({ show: true, commentItem:e.detail.currentTarget.dataset.item,displayName:item?item.usr_display_name:e.detail.currentTarget.dataset.item.usr_display_name});
+    this.setData({ show: true, commentItem:e.detail.currentTarget.dataset.item,displayName:item||e.detail.currentTarget.dataset.item});
   },
   onClose() {
     this.setData({ show: false });
@@ -335,7 +338,7 @@ Page({
       })
       return
     }
-    let str =  `回复 <a style=\"color: #337ab7;\"  class=\"lnkUserProfile\" >@${this.data.commentItem.usr_display_name}</a>&nbsp;: `
+    let str =  `回复 <a style=\"color: #337ab7;\"  class=\"lnkUserProfile\" >@${this.data.displayName.usr_display_name}</a>&nbsp;: `
     var data = {
       toast: false,// 是否显示加载动画
       data:{

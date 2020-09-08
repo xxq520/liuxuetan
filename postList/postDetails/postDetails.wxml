@@ -217,7 +217,7 @@
   custom-style="height: 20%;z-index:200;background:#ccc"
   bind:close="onClose"
 >
-<view class="commentPL">回复: <text>@{{commentItem.usr_display_name}}</text></view>
+<view class="commentPL">回复: <text>@{{displayName.usr_display_name}}</text></view>
 <view class="alertInput">
  <input placeholder="添加评论..."  bindinput="changeComment" />
  <button size="mini" type="primary" bindtap="SaveNewsCommentRecord">发送</button>

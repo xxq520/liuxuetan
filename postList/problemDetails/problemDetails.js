@@ -36,7 +36,8 @@ Page({
     author : {},
     index:0,
     // 需要评论人的内容
-    commentItem: {}
+    commentItem: {},
+    displayName: {}
   },
   insertImage() {
     const that = this
@@ -99,7 +100,8 @@ Page({
     } else {
       this.setData({ type: 1});  
     }
-    this.setData({ show: true, commentItem:e.detail.currentTarget.dataset.item});
+    let item = e.detail.currentTarget.dataset.subitem;
+    this.setData({ show: true, commentItem:e.detail.currentTarget.dataset.item,displayName:item||e.detail.currentTarget.dataset.item});
   },
   showhuidaPopup() {
     this.setData({ huida: true });
@@ -354,7 +356,7 @@ Page({
       })
       return
     }
-    let str =  `回复 <a style=\"color: #337ab7;\"  class=\"lnkUserProfile\" >@${this.data.commentItem.usr_display_name}</a>&nbsp;: `
+    let str =  `回复 <a style=\"color: #337ab7;\"  class=\"lnkUserProfile\" >@${this.data.displayName.usr_display_name}</a>&nbsp;: `
     var data = {
       toast: false,// 是否显示加载动画
       data:{

@@ -113,7 +113,7 @@
         <view class="info_card" wx:if="{{author.rol_id}}">
           <view class="card_top_info">
             <view class="card_top_left">
-              <image src="http://www.liuxuetalk.com/{{newContent.usr_profile_image_tn}}" />
+              <image src="http://www.liuxuetalk.com/{{author.usr_profile_image}}" />
               <view class="left_childer" bindtap="goUser">
                 <text class="card_user_name">{{author.usr_display_name}}</text>
                 <text class="user_details_info">详细资料></text>
@@ -185,7 +185,7 @@
   custom-style="height: 20%;z-index:200;background:#ccc"
   bind:close="onClose"
 >
-<view class="commentPL">回复: <text>@{{commentItem.usr_display_name}}</text></view>
+<view class="commentPL">回复: <text>@{{displayName.usr_display_name}}</text></view>
 <view class="alertInput">
  <input placeholder="添加评论..."  bindinput="changeComment" />
  <button size="mini" type="primary" bindtap="SaveNewsCommentRecord">发送</button>

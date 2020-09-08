@@ -22,7 +22,7 @@
             </view>
             <view class="plCount" bindtap="showPopup" data-item="{{item}}"><image src="../../static/image/xiaoxi.png"></image> <text> 回复</text></view>
 						<view class="commentList" wx:if="{{item.childrenList.length}}">
-								<view class="commItem"  wx:for="{{item.childrenList}}"  wx:for-item="newItem" bindtap="showPopup" data-item="{{item}}" data-type="3">
+								<view class="commItem"  wx:for="{{item.childrenList}}"  wx:for-item="newItem" bindtap="showPopup" data-subItem="{{newItem}}" data-item="{{item}}" data-type="3">
 									<text>{{newItem.usr_display_name}}：</text>
 									 <view >
 									 <rich-text nodes="{{newItem.ncm_comment}}"></rich-text>
