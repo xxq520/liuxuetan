@@ -34,7 +34,7 @@
       <navigator class="label_item" wx:for="{{newContent.new_tags}}" url="/postList/topicColumn/topicColumn?id={{item}}">{{item}}</navigator>
     </view>
     <view class="user_info">
-      <image class="user_tx" src="http://www.liuxuetalk.com/{{newContent.usr_profile_image_tn}}" />
+      <image bindtap="goUser1" data-user="{{newContent.ncm_usr_key}}" class="user_tx" src="http://www.liuxuetalk.com/{{newContent.usr_profile_image_tn}}" />
       <view class="right_info">
         <view class="right_top">
           <text class="user_name">{{newContent.usr_display_name}}</text>
@@ -74,9 +74,9 @@
           <image src="http://www.liuxuetalk.com/{{comment[0].usr_profile_image_tn}}" />
           <text>{{comment[0].usr_display_name}}</text>
         </view>
-        <view class="guanzhu_btm" bindtap="SaveUserFavForumAdmin" data-id="{{comment[0].usr_id}}">
+        <view class="guanzhu_btm" bindtap="SaveUserFavForumAdmin" data-id="{{newContent.id}}">
           <image src="../../static/image/guanzhu_2.png" />
-          <text>关注</text>
+          <text>{{author.is_like?"已关注":"关注"}}</text>
         </view>
       </view>
       <view class="context">

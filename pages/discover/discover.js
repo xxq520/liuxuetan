@@ -87,7 +87,7 @@ Page({
         // 如果不搜索特定的新闻/帖子记录，则为0
         new_key: "", 
         // 返回数据页码. 1=归还所有记录
-        pageSize: "1",
+        pageSize: "10",
         // 每个数据页的记录数量 1=归还所有记录
         pageNumber: "1",
         // 按标签名称搜索新闻/帖子
@@ -146,6 +146,7 @@ Page({
          let str  = unescapeHtml( res.data[i].ncm_comment)
          let commentImg = getimgsrc(str);
          res.data[i].ncm_commentImg = commentImg.slice(0,3)
+         res.data[i].ncm_comment =  res.data[i].ncm_comment.replace(/style=/ig, '').replace(/<b/ig, '<span').replace(/<strong/ig, '<span').replace(/<img/ig, '<span')
        }
         that.setData({
           newList : res.data,

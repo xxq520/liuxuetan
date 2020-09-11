@@ -53,14 +53,14 @@
                     <image src="../../static/image/aixin.png" wx:if="{{!newContent.isFavourite}}" />
                     <text>{{newContent.isFavourite?'已收藏问题':'收藏问题'}}</text>
                 </view>
-                <view class="options_item" bindtap="showhuidaPopup">
+                <view wx:if="{{newContent.ntp_type=='问题'}}" class="options_item" bindtap="showhuidaPopup">
                     <image src="../../static/image/bianji.png" />
                     <text>我来回答</text>
                 </view>
-                 <!-- <view class="options_item" bindtap="showPopup">
+                 <view wx:else class="options_item" bindtap="showPopup">
                     <image src="../../static/image/bianji.png" />
-                    <text>我来回答</text>
-                </view> -->
+                    <text>我来评论</text>
+                </view>
                 <view class="options_item" bindtap="likeNew" data-type="favourite">
                     <image src="../../static/image/wenti_yellow.png" />
                     <text>关注问题</text>
@@ -156,5 +156,5 @@
   custom-style="height: 50%"
   bind:close="onHuidaClose"
 >
-	<edithtml></edithtml>
+	<edithtml bind:saveHuida="saveHuida"></edithtml>
 </van-popup>

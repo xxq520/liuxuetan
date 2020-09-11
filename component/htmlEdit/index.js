@@ -17,7 +17,12 @@ Component({
       },
       methods:{
         saveHuida() {
-          console.log("回答")
+          let that = this;
+          this.editorCtx.getContents({success:content=>{
+            console.log("回答")
+            that.triggerEvent('saveHuida',content)//通过triggerEvent将参数传给父组件
+          }
+        })
         },
         upLoadImg(res){
           console.log(res,456)
@@ -47,13 +52,11 @@ Component({
         },
         onEditorReady() {
           const that = this
-          if( wx.createSelectorQuery().select('#editor').context) {
-            wx.createSelectorQuery().select('#editor').context(function (res) {
-              console.log(res,666)
-              that.editorCtx = res ? res.context : ""
-              // 是否是修改内容
-            }).exec()
-          }
+          wx.createSelectorQuery().in(this).select('#editor').context(function (res) {
+            console.log(res,666)
+            that.editorCtx =res.context
+            // 是否是修改内容
+          }).exec()
         },
         onStatusChange(e) {
           const formats = e.detail

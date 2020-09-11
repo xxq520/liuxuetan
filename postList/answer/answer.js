@@ -29,8 +29,8 @@ Page({
     this.setData({ huida: false });
   },
    // 保存回答
-   saveHuida(){ 
-    this.editorCtx.getContents({success:content=>{
+   saveHuida(content){ 
+    content = content.detail
       var userInfo = wx.getStorageSync('userInfo');
       if(!content.html || content.html=="<p><br></p>"){
         wx.showToast({
@@ -46,7 +46,7 @@ Page({
           // 用户的登录id
           usr_key : userInfo.usr_key || "", 
           // 如果不搜索特定的新闻/帖子记录，则为0
-          new_key: this.data.newsId, 
+          new_key: this.data.id, 
           ncm_key:"",
           // 新评论的内容
           new_comment: content.html,
@@ -59,19 +59,18 @@ Page({
       request.getReq(data).then(res=>{
         if(res.data[0].response=="储存成功"){
           wx.showToast({
-            title: '回答成功',
+            title: '存储成功',
             icon:"none"
           })
            this.getComment()
         } else {
           wx.showToast({
-            title: '回答失败',
+            title: '存储失败',
             icon:"none"
           })
         }
         that.onHuidaClose()
       })
-    }})
   },
    // 去搜索
    goSearch(){

@@ -445,6 +445,12 @@ Page({
     })
   },
    // 点击详细资料
+   goUser1(e) {
+    wx.navigateTo({
+      url: `/other/personalData/personalData?userId=${this.data.author.usr_key}`,
+    })
+  },
+   // 点击详细资料
    goUser() {
     wx.setStorageSync('nowStore', this.data.author)
     wx.navigateTo({
