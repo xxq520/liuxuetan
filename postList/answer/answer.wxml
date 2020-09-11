@@ -53,10 +53,14 @@
                     <image src="../../static/image/aixin.png" wx:if="{{!newContent.isFavourite}}" />
                     <text>{{newContent.isFavourite?'已收藏问题':'收藏问题'}}</text>
                 </view>
-                <view class="options_item" bindtap="showPopup">
+                <view class="options_item" bindtap="showhuidaPopup">
                     <image src="../../static/image/bianji.png" />
                     <text>我来回答</text>
                 </view>
+                 <!-- <view class="options_item" bindtap="showPopup">
+                    <image src="../../static/image/bianji.png" />
+                    <text>我来回答</text>
+                </view> -->
                 <view class="options_item" bindtap="likeNew" data-type="favourite">
                     <image src="../../static/image/wenti_yellow.png" />
                     <text>关注问题</text>
@@ -81,13 +85,13 @@
             </view>
         </view>
         <view class="answer_container">
-            <view class="sorting">
+            <!-- <view class="sorting">
                 <view class="Question_answer">回答</view>
                 <view class="sorting_way">
                     <text>默认排序</text>
                     <image src="../../static/image/xiala_3.png" />
                 </view>
-            </view>
+            </view> -->
             <view class="answer_list">
                 <view class="answer_item" wx:for="{{comment}}"> 
                     <view class="context line_4" >
@@ -144,4 +148,13 @@
  <input placeholder="添加评论..."  bindinput="changeComment" />
  <button size="mini" type="primary" bindtap="SaveNewsCommentRecord">发送</button>
 </view>
+</van-popup>
+<van-popup
+  show="{{ huida }}"
+  closeable
+  position="bottom"
+  custom-style="height: 50%"
+  bind:close="onHuidaClose"
+>
+	<edithtml></edithtml>
 </van-popup>

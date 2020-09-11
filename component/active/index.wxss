@@ -66,10 +66,19 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 5;
     overflow: hidden;
-    font-size: 24rpx;
+    font-size: 12px !important;
       line-height: 1.8;
       letter-spacing: 0rpx;
       color: #333333;
+  }
+  .article_context p{
+    font-size: 24rpx !important;
+  }
+  .article_context b{
+    font-weight: normal !important;
+  }
+  .article_context img{
+    display: none !important;
   }
   .full_text{
     font-size: 24rpx;

@@ -205,6 +205,7 @@ Page({
           let str  = unescapeHtml( res.data[i].ncm_comment)
           let commentImg = getimgsrc(str);
           res.data[i].ncm_commentImg = commentImg.slice(0,3)
+          res.data[i].ncm_comment =  res.data[i].ncm_comment.replace(/style=/ig, '').replace(/<b/ig, '<span').replace(/<strong/ig, '<span').replace(/<img/ig, '<span')
         }
         that.setData({
           indexData : that.data.indexData.concat(res.data),

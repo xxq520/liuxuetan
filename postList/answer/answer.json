@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "van-popup": "/dist/popup/index"
+    "van-popup": "/dist/popup/index",
+    "edithtml": "/component/htmlEdit/index"
   },
   "backgroundTextStyle": "light",
   "navigationBarBackgroundColor": "#fff",
