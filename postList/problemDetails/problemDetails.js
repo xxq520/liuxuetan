@@ -37,7 +37,9 @@ Page({
     index:0,
     // 需要评论人的内容
     commentItem: {},
-    displayName: {}
+    displayName: {},
+    // 查看评论的内容
+    commentType: 0
   },
   insertImage() {
     const that = this
@@ -95,13 +97,19 @@ Page({
   },
   showPopup(e) {
     console.log(e,4546)
-    if(e.detail.currentTarget.dataset.type==3){
-      this.setData({ type: 3});  
-    } else {
-      this.setData({ type: 1});  
+    if(e.detail.currentTarget) {
+      if(e.detail.currentTarget.dataset.type==3){
+        this.setData({ type: 3});  
+      } else {
+        this.setData({ type: 1});  
+      }
     }
-    let item = e.detail.currentTarget.dataset.subitem;
-    this.setData({ show: true, commentItem:e.detail.currentTarget.dataset.item,displayName:item||e.detail.currentTarget.dataset.item});
+    if(e.detail.currentTarget) {
+      let item = e.detail.currentTarget.dataset ? e.detail.currentTarget.dataset.subitem : "";
+      this.setData({ show: true, commentItem:e.detail.currentTarget.dataset.item,displayName:item||e.detail.currentTarget.dataset.item});
+    } else {
+      this.setData({ show: true});
+    }
   },
   showhuidaPopup() {
     this.setData({ huida: true });
@@ -285,10 +293,11 @@ Page({
     })
   },
   // 查看全部评论
-  watchOlder(){
-    this.setData({
-      watch: !this.data.watch
-    })
+  watchOlder(e){
+      this.setData({
+        commentType : e.currentTarget.dataset.type || 0,
+        watch: !this.data.watch
+      })
   },
   closewatchOlder() {
     this.setData({
@@ -346,8 +355,53 @@ Page({
       })
     }})
   },
+  SaveNewsCommentRecord1() {
+    var userInfo = wx.getStorageSync('userInfo');
+    if(!this.data.commentContent){
+      wx.showToast({
+        title: '请输入评论内容',
+        icon:"none"
+      })
+      return
+    }
+    var data = {
+      toast: false,// 是否显示加载动画
+      data:{
+        // 用户的登录id
+        usr_key : userInfo.usr_key || "", 
+        // 如果不搜索特定的新闻/帖子记录，则为0
+        new_key: this.data.newsId, 
+        ncm_key:"",
+        // 新评论的内容
+        new_comment: this.data.commentContent,
+      },
+      type:"POST",
+      url:url.SaveNewsCommentRecord,
+      header:{"Content-Type":"application/json; charset=utf-8"}
+    }
+    var that = this;
+    request.getReq(data).then(res=>{
+      if(res.data[0].response=="储存成功"){
+        wx.showToast({
+          title: '评论成功',
+          icon:"none"
+        })
+        this.getComment()
+      } else {
+        wx.showToast({
+          title: '评论失败',
+          icon:"none"
+        })
+      }
+      that.onClose()
+    })
+  },
   // 添加评论
   SaveNewsCommentRecord(){
+    if(!this.data.commentItem.ncm_key) {
+      this.SaveNewsCommentRecord1();
+      return
+    }
     var userInfo = wx.getStorageSync('userInfo');
     if(!this.data.commentContent){
       wx.showToast({

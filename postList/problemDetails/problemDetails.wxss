@@ -492,7 +492,7 @@ padding: 14rpx 20rpx;
 }
 .alertInput{
     display: flex;
-    margin-top: 50rpx;
+    margin-top: 60rpx;
 }
 .commentPL{
     padding-top: 10rpx;

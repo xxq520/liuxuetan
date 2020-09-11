@@ -86,11 +86,10 @@
     <view class="watching_item">
       <view class="publish_time_info" wx:if="{{comment[0]}}">编辑于 2018-05-03・著作权归作者所有</view>
       <view class="comment_list">
-        <view class="view_arr" bindtap="watchOlder">查看全部{{comment.length}}个回答>></view>
         <view class="comment_info">
           <view class="left_comment">
             <image src="http://www.liuxuetalk.com/{{userInfo.usr_profile_image}}"  />
-            <input disabled="disabled" placeholder="添加回答..." bindtap="showhuidaPopup"/>
+            <input disabled="disabled" placeholder="评论..." bindtap="showPopup"/>
           </view>
           <view class="right_cz">
             <view class="cz_item">
@@ -103,9 +102,9 @@
               <image src="{{isActive?'../../static/image/dianzan.png':'../../static/image/dianzan_gray.png'}}" />
               <text class="">点赞{{newContent.new_like}}</text>
             </view>
-            <view class="cz_item" bindtap="watchOlder">
+            <view class="cz_item" bindtap="watchOlder" data-type="1">
               <image src="../../static/image/pinglun_gray.png" />
-              <text class="">回答{{comment.length}}</text>
+              <text class="">评论{{comment[0]?comment[0].ncm_comment_count : 0}}</text>
             </view>
           </view>
         </view>
@@ -147,10 +146,11 @@
       <view class="arr_comment">
         <view class="arr_comment_title">
           <image class="close" src="../../static/image/guanbi.png" bindtap="closewatchOlder" />
-          <text>全部{{comment.length}}个回答</text>
+          <text wx:if="{{!commentType}}">全部{{comment.length}}个回答</text>
+          <text wx:else>全部{{comment[0]?comment[0].ncm_comment_count : 0}}个评论</text>
         </view>
         <view class="comment">
-          <comment comment="{{comment}}" bind:callSomeFun="showPopup" bind:callLikeCommentFun="LikeComment"> </comment>
+          <comment comment="{{commentType?[comment[0]]:comment}}" bind:callSomeFun="showPopup" bind:callLikeCommentFun="LikeComment"> </comment>
         </view>
       </view>
     </view>
@@ -185,7 +185,7 @@
   custom-style="height: 20%;z-index:200;background:#ccc"
   bind:close="onClose"
 >
-<view class="commentPL">回复: <text>@{{displayName.usr_display_name}}</text></view>
+<view wx:if="{{displayName.usr_display_name}}" class="commentPL">回复: <text>@{{displayName.usr_display_name}}</text></view>
 <view class="alertInput">
  <input placeholder="添加评论..."  bindinput="changeComment" />
  <button size="mini" type="primary" bindtap="SaveNewsCommentRecord">发送</button>

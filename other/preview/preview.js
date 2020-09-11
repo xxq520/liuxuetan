@@ -172,9 +172,13 @@ Page({
    */
   onShow: function () {
     // this.getIndexData();
+    let arr = wx.getStorageSync('preview');
+    for(let i=0; i<arr.length || []; i++) {
+      arr[i].ncm_comment =  arr[i].ncm_comment.replace(/style=/ig, '').replace(/<b/ig, '<span').replace(/<strong/ig, '<span').replace(/<img/ig, '<span')
+    }
     this.setData({
       noinfo: true,
-      newList: wx.getStorageSync('preview')||[],
+      newList:arr ||[],
     })
   },
 
