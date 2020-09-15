@@ -114,6 +114,13 @@
 					"pathName": "postList/answer/answer",
 					"query": "id= 8fGT6i1N4Us01a^^2f^^KrN9Z1Q%3d%3d",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "postList/problemDetails/problemDetails",
+					"pathName": "postList/problemDetails/problemDetails",
+					"query": "index=0&id=8fGT6i1N4Us01a^^2f^^KrN9Z1Q%3d%3d",
+					"scene": null
 				}
 			]
 		}

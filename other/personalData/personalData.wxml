@@ -47,27 +47,7 @@
 	<van-tab title="主页">
 		<view class="hotfix"></view>
 		<view class="page conter">
-			<!-- <view class="top clearfix">
-        <view class="xiaoxing">
-          <image src="../../static/image/toxian.png"></image>
-        </view>
-        <view class="rightText">
-          <text>夏威宇</text>
-          <text>美国事业部留学规划师</text>
-          <text>
-            资深留学规划师，专业英语八级，曾参加美国国务院的赴美带薪项目。互联网BAT工作背景，擅长指导学生职业规划。精通美国高中、本科、研究生申请，为康奈尔大学、哥伦比亚大学、纽约大学、波士顿大学输送多名学生。在长线申请规划和签证指导方面均有多年经验。
-          </text>
-        </view>
-      </view>
-      <view class="bottom">
-        <view class="title">
-          <text>擅长项目</text>
-        </view>
-        <text class="conter">
-          擅长给学生梳理申请难点，帮学生长线规划，引领学生通过语言提分，背景提升一步步帮学生拿到心仪的offer.很多学生都有名校梦，但竟争力不足。大一开始长骊规划，通过我的指导都如愿进入梦校。成功帮学生拿到加州大学洛杉矶分校、伯克利分校、康奈尔大学、哥伦比亚大学、东北大学等名校录取。
-        </text>
-      </view> -->
-			{{nowStore.agt_description||nowStore.usd_intro||'暂无更多介绍'}}
+		<rich-text nodes="{{nowStore.agt_description||nowStore.usd_intro||'暂无更多介绍'}}"></rich-text>
 		</view>
 		<view class="contact" bindtap="CreateChatDirectGroup">
 			<image src="../../static/image/contact.png"></image>

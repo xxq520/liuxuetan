@@ -97,16 +97,19 @@ Page({
   },
   showPopup(e) {
     console.log(e,4546)
-    if(e.detail.currentTarget) {
-      if(e.detail.currentTarget.dataset.type==3){
+    if(e.detail.currentTarget || e.currentTarget.dataset.item) {
+      let item = "";
+      if(e.currentTarget.dataset.item){
+        item = e.currentTarget.dataset.item;
+      } else {
+        item = e.detail.currentTarget.dataset ? e.detail.currentTarget.dataset.subitem : "";
+      }
+      if(e.detail.currentTarget && e.detail.currentTarget.dataset.type==3){
         this.setData({ type: 3});  
       } else {
         this.setData({ type: 1});  
       }
-    }
-    if(e.detail.currentTarget) {
-      let item = e.detail.currentTarget.dataset ? e.detail.currentTarget.dataset.subitem : "";
-      this.setData({ show: true, commentItem:e.detail.currentTarget.dataset.item,displayName:item||e.detail.currentTarget.dataset.item});
+      this.setData({ show: true, commentItem: e.currentTarget.dataset.item || e.detail.currentTarget.dataset.item,displayName:item||e.detail.currentTarget.dataset.item});
     } else {
       this.setData({ show: true});
     }
@@ -500,8 +503,31 @@ Page({
   },
    // 点击详细资料
    goUser1(e) {
-    wx.navigateTo({
-      url: `/other/personalData/personalData?userId=${this.data.author.usr_key}`,
+    var that = this;
+    request.getReq({
+      toast: false,// 是否显示加载动画
+      data:{
+        author_usr_key: e.currentTarget.dataset.user || "", // 不传指定的user_key则是查询当前文章的作者信息
+        // 用户的登录id
+        usr_key : this.data.userInfo.usr_key, 
+        // 新闻的加密key
+        new_key: this.data.newContent.new_key, 
+      },
+      type:"get",
+      url:url.GetNewUserProfilePopupDetails,
+      header:{"Content-Type":"application/json; charset=utf-8"}
+    }).then(res=>{
+      if(res.statusCode==200) {
+        wx.setStorageSync('nowStore', res.data[0])
+        wx.navigateTo({
+          url: `/other/personalData/personalData?userId=${ e.currentTarget.dataset.user}`,
+        })
+      } else {
+        wx.showToast({
+          title: '获取用户失败，请稍后再试',
+          icon:"none"
+        })
+      }
     })
   },
    // 点击详细资料

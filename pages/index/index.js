@@ -114,7 +114,7 @@ Page({
            a = "" + a;
            return a.replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&apos;/g, "'");
       }
-      if(res.data[0].Code != 404) {
+      if(res.data[0].Code != 404 && res.data[0].Code != 501) {
         that.setData({
           pageNumber: that.data.pageNumber+1
         })
@@ -211,7 +211,11 @@ Page({
           indexData : that.data.indexData.concat(res.data),
           noinfo:true
         })
-      }
+      } else {
+        that.setData({
+          noinfo:true
+        })
+      }   
     })
   },
   // 获取用户关注的新闻项目

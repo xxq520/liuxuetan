@@ -34,7 +34,7 @@
       <navigator class="label_item" wx:for="{{newContent.new_tags}}" url="/postList/topicColumn/topicColumn?id={{item}}">{{item}}</navigator>
     </view>
     <view class="user_info">
-      <image bindtap="goUser1" data-user="{{newContent.ncm_usr_key}}" class="user_tx" src="http://www.liuxuetalk.com/{{newContent.usr_profile_image_tn}}" />
+      <image bindtap="goUser1"  class="user_tx" src="http://www.liuxuetalk.com/{{newContent.usr_profile_image_tn}}" />
       <view class="right_info">
         <view class="right_top">
           <text class="user_name">{{newContent.usr_display_name}}</text>
@@ -48,7 +48,7 @@
     </view>
     <view class="article">
       <view class="article_txt">
-          <rich-text nodes=" {{newContent.new_content}}"></rich-text>
+          <rich-text nodes="{{newContent.new_content}}"></rich-text>
         <!-- <text class="open_details">展开详情>></text> -->
       </view>
     </view>
@@ -71,7 +71,7 @@
     <view class="dispatch_user" wx:if="{{comment[0]}}">
       <view class="dispatch_user_info">
         <view class="dispatch_user_left_info">
-          <image src="http://www.liuxuetalk.com/{{comment[0].usr_profile_image_tn}}" />
+          <image data-user="{{newContent.ncm_usr_key}}" bindtap="goUser1" src="http://www.liuxuetalk.com/{{comment[0].usr_profile_image_tn}}" />
           <text>{{comment[0].usr_display_name}}</text>
         </view>
         <view class="guanzhu_btm" bindtap="SaveUserFavForumAdmin" data-id="{{newContent.id}}">
@@ -89,7 +89,7 @@
         <view class="comment_info">
           <view class="left_comment">
             <image src="http://www.liuxuetalk.com/{{userInfo.usr_profile_image}}"  />
-            <input disabled="disabled" placeholder="评论..." bindtap="showPopup"/>
+            <input disabled="disabled" placeholder="评论..." bindtap="showPopup" data-item="{{comment[0]}}"/>
           </view>
           <view class="right_cz">
             <view class="cz_item">
