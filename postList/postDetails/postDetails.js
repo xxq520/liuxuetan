@@ -32,14 +32,16 @@ Page({
       author : {},
       // 上个页面传递过来的文章下标
       index:0,
-      displayName: {}
+      displayName: {},
+      // 是否显示搜索
+      isShow: false
   },
-  // 去搜索
-  goSearch(){
-    wx.navigateTo({
-      url:"/pages/discover/discover"
-    })
-  },
+ // 去搜索
+ goSearch(){
+  this.setData({
+    isShow: true
+  })
+},
    // 获取发布文章的用户信息
    getAuthor() {
     var that = this;

@@ -1,0 +1,13 @@
+<view class="pages">
+    <van-search value="{{ value }}" placeholder="请输入搜索关键词"
+      use-action-slot bind:change="onChange" bind:search="onSearch">
+      <view slot="action" bind:tap="onClick">取消</view>
+    </van-search>
+    <view class="list">
+      <van-cell-group>
+        <van-cell data-type="{{item.ntp_type=='问题'?2:1}}" data-item="{{item}}" data-index="{{index}}" data-id="{{item.new_key}}" wx:for="{{indexData}}" wx:key="index"
+         bind:click="goPostdetails" title="{{item.new_header}}" value="" icon="search"/>
+        <!-- <van-cell title="单元格" value="内容" label="描述信息" border="{{ false }}" /> -->
+      </van-cell-group>
+    </view>
+</view>

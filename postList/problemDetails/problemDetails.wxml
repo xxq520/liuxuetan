@@ -1,4 +1,8 @@
 <!-- pages/problemDetails/problemDetails.wxml -->
+<!-- 展示搜索的页面 -->
+<view wx:if="{{isShow}}">
+  <newsearch></newsearch>
+</view>
 <view class="problemDetails" >
   <!-- 下拉显示置顶问题 -->
   <view class="top_fixed" wx:if="{{scollHeight>100}}">

@@ -1,4 +1,7 @@
 <!-- pages/postDetails/postDetails.wxml -->
+<view wx:if="{{isShow}}">
+  <newsearch></newsearch>
+</view>
 <!-- 下拉显示置顶问题 -->
 <view class="top_fixed" wx:if="{{scollHeight>100}}">
     <view class="problem_title">

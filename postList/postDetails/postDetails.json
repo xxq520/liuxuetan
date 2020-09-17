@@ -2,6 +2,7 @@
   "usingComponents": {
     "van-transition": "/dist/transition/index",
     "van-popup": "/dist/popup/index",
-    "comment" : "/component/comment/index"
+    "comment" : "/component/comment/index",
+    "newsearch" : "/component/newsSearch/index"
   }
 }

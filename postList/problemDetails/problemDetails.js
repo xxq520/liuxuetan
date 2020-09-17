@@ -39,7 +39,9 @@ Page({
     commentItem: {},
     displayName: {},
     // 查看评论的内容
-    commentType: 0
+    commentType: 0,
+    // 是否显示搜索
+    isShow: false 
   },
   insertImage() {
     const that = this
@@ -91,8 +93,8 @@ Page({
   },
   // 去搜索
   goSearch(){
-    wx.switchTab({
-      url:"/pages/discover/discover"
+    this.setData({
+      isShow: true
     })
   },
   showPopup(e) {
